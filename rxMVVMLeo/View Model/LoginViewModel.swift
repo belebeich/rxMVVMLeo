@@ -18,8 +18,8 @@ struct LoginViewModel {
     let credentialsValid: Driver<Bool>
     
     //Input
-    var email = Variable<String>("")
-    var password = Variable<String>("")
+    //var email = Variable<String>("")
+    //var password = Variable<String>("")
     
     //Output
     var token = Variable<String?>("")
@@ -41,7 +41,7 @@ struct LoginViewModel {
         
     }
     
-    func login(email: String, password: String) -> Observable<AccessToken> {
+    func login(email: String, password: String) -> Observable<AccountStatus> {
         return LeoAPI.shared.login(email: email, password: password)
     }
     
@@ -50,12 +50,13 @@ struct LoginViewModel {
     }
     
     func bindOutput() {
-        let account = LeoAPI.init()
-        
-        
-        account.login(email: email.value, password: password.value)
-            .distinctUntilChanged()
-            .bind(to: token)
-            .disposed(by: bag)
+//        let account = LeoAPI.init()
+//        
+//        
+//        account.login(email: email.value, password: password.value)
+//            .distinctUntilChanged()
+//            .bind(to: token)
+//            .disposed(by: bag)
+//    }
     }
 }

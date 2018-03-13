@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -706,7 +707,7 @@
         <!--Login View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="LoginViewController" customModule="rxMVVMLeo" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="XfG-lQ-9wD" customClass="LoginViewController" customModule="rxMVVMLeo" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -801,7 +802,7 @@
         <!--Translate View Controller-->
         <scene sceneID="gIU-RP-o4q">
             <objects>
-                <viewController id="3RP-6x-Rta" customClass="TranslateViewController" customModule="rxMVVMLeo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TranslateViewController" id="3RP-6x-Rta" customClass="TranslateViewController" customModule="rxMVVMLeo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Tnw-kB-SWP">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -843,12 +844,30 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WkW-Ew-7EM">
+                                <rect key="frame" x="366" y="13" width="59" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WkW-Ew-7EM" secondAttribute="height" multiplier="47:21" id="do8-T5-azS"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="⛺️" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="POq-cs-RHk">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name="AppleColorEmoji"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="WkW-Ew-7EM" firstAttribute="top" secondItem="Tnw-kB-SWP" secondAttribute="top" constant="259" id="99u-eT-v5Y"/>
+                            <constraint firstItem="WkW-Ew-7EM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Tnw-kB-SWP" secondAttribute="leading" constant="20" symbolic="YES" id="Ws6-5F-WYe"/>
+                            <constraint firstAttribute="trailing" secondItem="WkW-Ew-7EM" secondAttribute="trailing" constant="31" id="kGU-F4-gma"/>
                             <constraint firstItem="eMH-Ud-4jt" firstAttribute="top" secondItem="Tnw-kB-SWP" secondAttribute="top" constant="20" id="thh-QI-KNL"/>
                             <constraint firstItem="eMH-Ud-4jt" firstAttribute="centerX" secondItem="Tnw-kB-SWP" secondAttribute="centerX" id="zkO-Ed-6gr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="logoutButton" destination="WkW-Ew-7EM" id="fB0-6L-AJt"/>
+                        <outlet property="translateTextField" destination="EJ5-j7-qbJ" id="bHM-VO-kHU"/>
+                        <outlet property="wordTextField" destination="lUT-gT-9Sw" id="1aT-7P-LX2"/>
+                    </connections>
                 </viewController>
                 <customObject id="LAd-0k-Iek" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

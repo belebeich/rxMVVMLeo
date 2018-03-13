@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C1DAECF2057EF7B00B6CFCF /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */; };
 		2C333C18204D639800E133CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C17204D639800E133CD /* AppDelegate.swift */; };
 		2C333C1A204D639800E133CD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C19204D639800E133CD /* LoginViewController.swift */; };
 		2C333C1C204D639800E133CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C333C1B204D639800E133CD /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
 		2C333C14204D639800E133CD /* rxMVVMLeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rxMVVMLeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C333C17204D639800E133CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C333C19204D639800E133CD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				2C333C2B204D662500E133CD /* LoginViewModel.swift */,
+				2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -228,6 +231,11 @@
 					2C333C13204D639800E133CD = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					2CFFB537204DBFDE007A816C = {
 						CreatedOnToolsVersion = 9.0;
@@ -405,6 +413,7 @@
 				2C333C1A204D639800E133CD /* LoginViewController.swift in Sources */,
 				2CACEED32050512E009A1EEF /* TranslateViewController.swift in Sources */,
 				2C333C2E204D664500E133CD /* LeoAPI.swift in Sources */,
+				2C1DAECF2057EF7B00B6CFCF /* TranslateViewModel.swift in Sources */,
 				2C333C18204D639800E133CD /* AppDelegate.swift in Sources */,
 				2C333C2C204D662500E133CD /* LoginViewModel.swift in Sources */,
 			);

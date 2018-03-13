@@ -48,7 +48,7 @@ class LoginViewController: NSViewController {
         viewModel.credentialsValid
             .drive(onNext: { [unowned self] valid in
                 self.loginButton.isEnabled = valid
-                print(valid)
+               
             })
             .disposed(by: bag)
         
@@ -63,12 +63,17 @@ class LoginViewController: NSViewController {
             }
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [unowned self] authStatus in
-                    self.tokenLabel.stringValue = authStatus
                 
                 
-                if authStatus != "" {
-                    self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "segue"), sender: self)
+                switch authStatus {
+                case .unavailable:
+                    break
+                case .success(_):
+                    self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "segue"), sender: nil)
                 }
+                
+                LeoAPI.shared.state.value = authStatus
+                
                 
                 
             })
