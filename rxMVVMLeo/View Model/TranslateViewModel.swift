@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import SwiftyJSON
 
 struct TranslateViewModel {
     
@@ -34,9 +35,12 @@ struct TranslateViewModel {
         
     }
     
+    func translate(word: String) -> Observable<String> {
+        return LeoAPI.shared.translate(of: word)
+    }
+    
     
     func logout() {
-        
         return LeoAPI.shared.logout()
     }
 }

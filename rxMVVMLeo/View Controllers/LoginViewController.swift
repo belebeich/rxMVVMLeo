@@ -41,7 +41,7 @@ class LoginViewController: NSViewController {
         
         let viewModel = LoginViewModel.init(email: emailTextField.rx.text.orEmpty.asDriver(), password: passwordTextField.rx.text.orEmpty.asDriver())
         emailTextField.stringValue = "appleseedjohnbon@yandex.ru"
-        //passwordTextField.stringValue = "sbnCV8bmzTb0"
+        passwordTextField.stringValue = "sbnCV8bmzTb0"
         
         
         

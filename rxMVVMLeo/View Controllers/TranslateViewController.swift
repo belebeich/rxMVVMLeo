@@ -27,6 +27,22 @@ class TranslateViewController: NSViewController {
     func bindUI() {
         let viewModel = TranslateViewModel.init(word: wordTextField.rx.text.orEmpty.asDriver())
         
+        let translateResults = wordTextField.rx.text.orEmpty
+            .throttle(0.3, scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .flatMapLatest { query -> Observable<String> in
+                if query.isEmpty {
+                    return .just("")
+                } else {
+                    return viewModel.translate(word: query)
+                }
+            }
+            .observeOn(MainScheduler.instance)
+        
+        translateResults
+            .bind(to: translateTextField.rx.text)
+            .disposed(by: bag)
+        
         logoutButton.rx.tap
             .subscribe(onNext: {
                 print("sds")
