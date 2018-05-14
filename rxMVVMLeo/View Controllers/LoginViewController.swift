@@ -90,9 +90,7 @@ class LoginViewController: NSViewController {
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         self.view.window?.close()
-//        let VC = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "TranslateViewController"))
-//        self.presentViewControllerAsModalWindow(VC as! NSViewController)
-        //self.presenting(VC, animated: false, completion: nil)
+
     }
     
     

@@ -20,7 +20,7 @@ class TranslateViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        
         bindUI()
     }
     
@@ -30,9 +30,9 @@ class TranslateViewController: NSViewController {
         let translateResults = wordTextField.rx.text.orEmpty
             .throttle(0.3, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .flatMapLatest { query -> Observable<String> in
+            .flatMapLatest { query -> Observable<[String]> in
                 if query.isEmpty {
-                    return .just("")
+                    return .just([])
                 } else {
                     return viewModel.translate(word: query)
                 }
@@ -40,16 +40,20 @@ class TranslateViewController: NSViewController {
             .observeOn(MainScheduler.instance)
         
         translateResults
+            
             .bind(to: translateTextField.rx.text)
             .disposed(by: bag)
         
         logoutButton.rx.tap
             .subscribe(onNext: {
-                print("sds")
+                self.performSegue(withIdentifier: NSStoryboardSegue.Identifier("logoutSegue"), sender: self)
                 viewModel.logout()
-                print(LeoAPI.shared.state.value)
             })
             .disposed(by: bag)
+    }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        self.view.window?.close()
     }
     
 }

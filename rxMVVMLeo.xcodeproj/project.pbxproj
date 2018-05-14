@@ -14,6 +14,7 @@
 		2C333C1F204D639800E133CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C333C1D204D639800E133CD /* Main.storyboard */; };
 		2C333C2C204D662500E133CD /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2B204D662500E133CD /* LoginViewModel.swift */; };
 		2C333C2E204D664500E133CD /* LeoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2D204D664500E133CD /* LeoAPI.swift */; };
+		2C5857B520A3379200C2CA47 /* LeoApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoApiProtocol.swift */; };
 		2CACEED32050512E009A1EEF /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACEED22050512E009A1EEF /* TranslateViewController.swift */; };
 		2CFFB53B204DBFDE007A816C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFB53A204DBFDE007A816C /* AppDelegate.swift */; };
 		2CFFB53D204DBFDE007A816C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFB53C204DBFDE007A816C /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 		2C333C21204D639800E133CD /* rxMVVMLeo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rxMVVMLeo.entitlements; sourceTree = "<group>"; };
 		2C333C2B204D662500E133CD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		2C333C2D204D664500E133CD /* LeoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoAPI.swift; sourceTree = "<group>"; };
+		2C5857B420A3379200C2CA47 /* LeoApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoApiProtocol.swift; sourceTree = "<group>"; };
 		2CACEED22050512E009A1EEF /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
 		2CFFB538204DBFDE007A816C /* rxMVVMLeoiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rxMVVMLeoiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFFB53A204DBFDE007A816C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				2C333C2D204D664500E133CD /* LeoAPI.swift */,
+				2C5857B420A3379200C2CA47 /* LeoApiProtocol.swift */,
 			);
 			path = "Leo Api";
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				2C333C2E204D664500E133CD /* LeoAPI.swift in Sources */,
 				2C1DAECF2057EF7B00B6CFCF /* TranslateViewModel.swift in Sources */,
 				2C333C18204D639800E133CD /* AppDelegate.swift in Sources */,
+				2C5857B520A3379200C2CA47 /* LeoApiProtocol.swift in Sources */,
 				2C333C2C204D662500E133CD /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

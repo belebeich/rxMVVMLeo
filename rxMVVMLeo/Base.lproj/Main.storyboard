@@ -726,17 +726,17 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6lr-xq-0KC">
+                                    <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UAu-WM-9eZ">
                                         <rect key="frame" x="0.0" y="119" width="200" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="ze9-nC-DvW"/>
-                                        </constraints>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="password" drawsBackground="YES" id="wza-Fg-M2v">
+                                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="vIg-zl-OUp">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
+                                            <allowedInputSourceLocales>
+                                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                            </allowedInputSourceLocales>
+                                        </secureTextFieldCell>
+                                    </secureTextField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s66-pb-osK">
                                         <rect key="frame" x="70.5" y="71" width="59" height="32"/>
                                         <buttonCell key="cell" type="push" title="🦁" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3qF-q1-tS0">
@@ -791,7 +791,7 @@
                         <outlet property="emailTextField" destination="Vb3-2Z-dZg" id="2xp-yq-8TN"/>
                         <outlet property="loginButton" destination="s66-pb-osK" id="yG6-FP-TOR"/>
                         <outlet property="logoutButton" destination="XgI-SB-jf7" id="hfj-fq-eyC"/>
-                        <outlet property="passwordTextField" destination="6lr-xq-0KC" id="7zH-MY-6DH"/>
+                        <outlet property="passwordTextField" destination="UAu-WM-9eZ" id="dkE-Hb-weA"/>
                         <outlet property="tokenLabel" destination="aET-r6-2yC" id="2Dh-I6-Tsb"/>
                     </connections>
                 </viewController>
@@ -853,6 +853,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="13" name="AppleColorEmoji"/>
                                 </buttonCell>
+                                <connections>
+                                    <segue destination="XfG-lQ-9wD" kind="show" identifier="logoutSegue" id="Jq3-mX-DfG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -874,4 +877,8 @@
             <point key="canvasLocation" x="697" y="655"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="5qS-92-2Ol"/>
+        <segue reference="Jq3-mX-DfG"/>
+    </inferredMetricsTieBreakers>
 </document>
