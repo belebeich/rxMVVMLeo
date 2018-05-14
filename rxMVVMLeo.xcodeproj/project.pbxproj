@@ -119,8 +119,8 @@
 		2C333C28204D654A00E133CD /* Leo Api */ = {
 			isa = PBXGroup;
 			children = (
-				2C333C2D204D664500E133CD /* LeoAPI.swift */,
 				2C5857B420A3379200C2CA47 /* LeoApiProtocol.swift */,
+				2C333C2D204D664500E133CD /* LeoAPI.swift */,
 			);
 			path = "Leo Api";
 			sourceTree = "<group>";
