@@ -15,7 +15,7 @@ class TranslateViewController: NSViewController {
     let bag = DisposeBag()
 
     @IBOutlet weak var wordTextField: NSTextField!
-    @IBOutlet weak var translateTextField: NSTextField!
+    @IBOutlet weak var translateTextField: NSTextView!
     @IBOutlet weak var logoutButton: NSButton!
     
     let nstext = NSTextView()
@@ -42,6 +42,7 @@ class TranslateViewController: NSViewController {
                 }
             }
             .observeOn(MainScheduler.instance)
+        
         
         translateResults
             .bind(to: translateTextField.rx.text)

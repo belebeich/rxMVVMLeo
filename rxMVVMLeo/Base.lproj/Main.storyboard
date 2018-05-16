@@ -797,7 +797,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="67" y="881"/>
         </scene>
         <!--Translate View Controller-->
         <scene sceneID="gIU-RP-o4q">
@@ -808,10 +808,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eMH-Ud-4jt">
-                                <rect key="frame" x="25" y="72" width="400" height="208"/>
+                                <rect key="frame" x="25" y="61" width="400" height="219"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lUT-gT-9Sw">
-                                        <rect key="frame" x="0.0" y="108" width="400" height="100"/>
+                                        <rect key="frame" x="0.0" y="119" width="400" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="qGq-j9-Cg6"/>
                                             <constraint firstAttribute="width" constant="400" id="v26-6g-9jP"/>
@@ -822,18 +822,32 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EJ5-j7-qbJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="400" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="400" id="Lkc-bw-dRo"/>
-                                            <constraint firstAttribute="height" constant="100" id="Wbj-rd-xKL"/>
-                                        </constraints>
-                                        <textFieldCell key="cell" selectable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" id="kl8-wP-2rh">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
+                                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1l-0m-xkh">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="111"/>
+                                        <clipView key="contentView" id="gCr-6N-UwF">
+                                            <rect key="frame" x="1" y="1" width="383" height="109"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="4xI-Uw-h21">
+                                                    <rect key="frame" x="0.0" y="0.0" width="383" height="109"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <size key="minSize" width="383" height="109"/>
+                                                    <size key="maxSize" width="463" height="10000000"/>
+                                                    <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </textView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </clipView>
+                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="1NU-SX-hoE">
+                                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="HvW-df-Sar">
+                                            <rect key="frame" x="384" y="1" width="15" height="109"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
                                 </subviews>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -860,6 +874,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="WkW-Ew-7EM" firstAttribute="top" secondItem="Tnw-kB-SWP" secondAttribute="top" constant="259" id="99u-eT-v5Y"/>
+                            <constraint firstItem="WkW-Ew-7EM" firstAttribute="top" secondItem="eMH-Ud-4jt" secondAttribute="bottom" constant="20" symbolic="YES" id="PvG-Ql-hGl"/>
                             <constraint firstItem="WkW-Ew-7EM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Tnw-kB-SWP" secondAttribute="leading" constant="20" symbolic="YES" id="Ws6-5F-WYe"/>
                             <constraint firstAttribute="trailing" secondItem="WkW-Ew-7EM" secondAttribute="trailing" constant="31" id="kGU-F4-gma"/>
                             <constraint firstItem="eMH-Ud-4jt" firstAttribute="top" secondItem="Tnw-kB-SWP" secondAttribute="top" constant="20" id="thh-QI-KNL"/>
@@ -868,13 +883,13 @@
                     </view>
                     <connections>
                         <outlet property="logoutButton" destination="WkW-Ew-7EM" id="fB0-6L-AJt"/>
-                        <outlet property="translateTextField" destination="EJ5-j7-qbJ" id="bHM-VO-kHU"/>
+                        <outlet property="translateTextField" destination="4xI-Uw-h21" id="eLG-rO-vz0"/>
                         <outlet property="wordTextField" destination="lUT-gT-9Sw" id="1aT-7P-LX2"/>
                     </connections>
                 </viewController>
                 <customObject id="LAd-0k-Iek" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="697" y="655"/>
+            <point key="canvasLocation" x="651" y="535"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

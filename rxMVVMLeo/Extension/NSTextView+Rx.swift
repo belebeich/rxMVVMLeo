@@ -1,14 +1,6 @@
 
 import Foundation
 
-//
-//  NSTextView+Rx.swift
-//  RxCocoa
-//
-//  Created by Tal Shrestha on 5/8/17.
-//  Copyright © 2015 Tal Shrestha. All rights reserved.
-//
-
 #if os(macOS)
     
     import Cocoa
@@ -18,8 +10,6 @@ import Foundation
 #endif
     
     /// Delegate proxy for `NSTextView`.
-    ///
-    /// For more information take a look at `DelegateProxyType`.
     public class RxTextViewDelegateProxy : DelegateProxy<NSTextView,NSTextViewDelegate>, NSTextViewDelegate, DelegateProxyType {
         
         public static func registerKnownImplementations() {
@@ -48,13 +38,11 @@ import Foundation
         public weak private(set) var textView: NSTextView?
         
         /// Initializes `RxTextViewDelegateProxy`
-        ///
         init(textView: NSTextView) {
             super.init(parentObject: textView, delegateProxy: RxTextViewDelegateProxy.self)
         }
         
         // MARK: Delegate methods
-        
         public override func controlTextDidChange(_ notification: Notification) {
             guard let textView = notification.object as? NSTextView else {
                 fatalError("Can't get NSTextView")
@@ -62,31 +50,23 @@ import Foundation
             let nextValue = textView.string
             self.textSubject.on(.next(nextValue))
         }
-        
-        // MARK: Delegate proxy methods
-        
-        /// For more information take a look at `DelegateProxyType`.
-        
-        
     }
     
-    extension NSTextView {
-        
-        /// Factory method that enables subclasses to implement their own `delegate`.
-        ///
-        /// - returns: Instance of delegate proxy that wraps `delegate`.
-        public func createRxDelegateProxy() -> RxTextViewDelegateProxy {
-            return RxTextViewDelegateProxy.init(textView: self)
-        }
-    }
+//    extension NSTextView {
+//        
+//        /// Factory method that enables subclasses to implement their own `delegate`.
+//        ///
+//        /// - returns: Instance of delegate proxy that wraps `delegate`.
+//        public func createRxDelegateProxy() -> RxTextViewDelegateProxy {
+//            return RxTextViewDelegateProxy.init(textView: self)
+//        }
+//    }
     
     extension Reactive where Base: NSTextView {
         
         /// Reactive wrapper for `delegate`.
-        ///
-        /// For more information take a look at `DelegateProxyType` protocol documentation.
         public var delegate: DelegateProxy<NSTextView, NSTextViewDelegate> {
-            return RxTextViewDelegateProxy.createProxy(for: base)
+            return RxTextViewDelegateProxy.proxy(for: base)
         }
         
         /// Reactive wrapper for `text` property.
