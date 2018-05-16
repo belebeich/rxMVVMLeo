@@ -826,9 +826,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="400" id="Lkc-bw-dRo"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="Wbj-rd-xKL"/>
+                                            <constraint firstAttribute="height" constant="100" id="Wbj-rd-xKL"/>
                                         </constraints>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="kl8-wP-2rh">
+                                        <textFieldCell key="cell" selectable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" id="kl8-wP-2rh">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -878,7 +878,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5qS-92-2Ol"/>
         <segue reference="Jq3-mX-DfG"/>
     </inferredMetricsTieBreakers>
 </document>

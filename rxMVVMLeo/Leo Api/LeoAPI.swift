@@ -55,37 +55,56 @@ struct LeoAPI : LeoAPIProtocol {
         case requestFailed
     }
     
-    func login(email: String, password: String) -> Observable<AccountStatus> {
-        return Observable.create { observer in
-            let parameters : Parameters = ["email":email, "password": password]
-            let request = Alamofire.request(Address.login.url, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: [:]).responseJSON {
-                response in
-                switch response.result {
-                case .success(let value):
-
-                    let json = JSON(value)
-                    
-                    if let autologin = json["user"]["autologin_key"].string {
-                        UserDefaults.standard.set(autologin, forKey: self.token)
-                        observer.onNext(.success(autologin))
-                        observer.onCompleted()
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                    observer.onNext(.unavailable)
+//    func login(email: String, password: String) -> Observable<AccountStatus> {
+//        return Observable.create { observer in
+//            let parameters : Parameters = ["email":email, "password": password]
+//            let request = Alamofire.request(Address.login.url, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: [:]).responseJSON {
+//                response in
+//                switch response.result {
+//                case .success(let value):
+//
+//                    let json = JSON(value)
+//
+//                    if let autologin = json["user"]["autologin_key"].string {
+//                        UserDefaults.standard.set(autologin, forKey: self.token)
+//                        observer.onNext(.success(autologin))
+//                        observer.onCompleted()
+//                    }
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                    observer.onNext(.unavailable)
+//                }
+//            }
+//
+//            return Disposables.create {
+//                request.cancel()
+//            }
+//        }
+//    }
+    
+    func logged(email: String, password: String) -> Observable<AccountStatus> {
+        
+        let params = ["email": email,
+                      "password" : password]
+        let response : Observable<JSON> = request(address: LeoAPI.Address.login, parameters: params)
+        
+        return response
+            .map { result in
+                if let autologin = result["user"]["autologin_key"].string {
+                    UserDefaults.standard.setValue(autologin, forKeyPath: self.token)
+                    return AccountStatus.success(autologin)
+                } else {
+                    return AccountStatus.unavailable
                 }
             }
-
-            return Disposables.create {
-                request.cancel()
-            }
-        }
+        
     }
     
-    func translation(of word: String) -> Observable<[String]> {
+    func translate(of word: String) -> Observable<[String]> {
         
         let params = ["word":word]
         let response : Observable<JSON> = request(address: LeoAPI.Address.translate, parameters: params)
+        
         return response
             .map { result in
                 var translates = [String]()
@@ -100,33 +119,45 @@ struct LeoAPI : LeoAPIProtocol {
         
     }
     
-    func translate(of word: String) -> Observable<String> {
-        return Observable.create { observer in
-            let params: Parameters = ["word": word]
-            let request = Alamofire.request(Address.translate.url,
-                                            method: .post,
-                                            parameters: params,
-                                            encoding: URLEncoding.httpBody,
-                                            headers: [:])
-            request.responseJSON { response in
-                switch response.result {
-                case .success(let value):
-                    let json = JSON(value)
-                    
-                    guard let translate = json["translate"].array?.first?["value"].string else { observer.onNext(""); observer.onCompleted(); return}
-                    observer.onNext(translate)
-                    observer.onCompleted()
-                    
-                case .failure(let error):
-                    print(error.localizedDescription)
-                    observer.onNext("")
-                }
-            }
-            return Disposables.create {
-                request.cancel()
-            }
-        }
+    func logout() {
+        
+        let logout : Observable<AnyObject> = request(address: Address.logout, parameters: [:])
+        
+        logout
+            .subscribe({ _ in
+                self.state.value = .unavailable
+                UserDefaults.standard.removeObject(forKey: self.token)
+            })
+            .dispose()
     }
+    
+//    func translate(of word: String) -> Observable<String> {
+//        return Observable.create { observer in
+//            let params: Parameters = ["word": word]
+//            let request = Alamofire.request(Address.translate.url,
+//                                            method: .post,
+//                                            parameters: params,
+//                                            encoding: URLEncoding.httpBody,
+//                                            headers: [:])
+//            request.responseJSON { response in
+//                switch response.result {
+//                case .success(let value):
+//                    let json = JSON(value)
+//
+//                    guard let translate = json["translate"].array?.first?["value"].string else { observer.onNext(""); observer.onCompleted(); return}
+//                    observer.onNext(translate)
+//                    observer.onCompleted()
+//
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                    observer.onNext("")
+//                }
+//            }
+//            return Disposables.create {
+//                request.cancel()
+//            }
+//        }
+//    }
     
     
     //MARK: - generic request
@@ -137,11 +168,9 @@ struct LeoAPI : LeoAPIProtocol {
                                             parameters: parameters,
                                             encoding: URLEncoding.httpBody,
                                             headers: [:])
+            
             request.responseJSON { response in
-                guard response.error == nil, let data = response.data, let json = try? JSON(data) as? T, let result = json else {
-                    observer.onError(Errors.requestFailed);
-                    return
-                }
+                guard response.error == nil, let data = response.data, let result = JSON(data) as? T else { return }
                 observer.onNext(result)
                 observer.onCompleted()
             }
@@ -151,13 +180,5 @@ struct LeoAPI : LeoAPIProtocol {
         }
     }
     
-    func logout() {
-        state.value = .unavailable
-        UserDefaults.standard.removeObject(forKey: token)
-        _ = Alamofire.request(Address.logout.url,
-                              method: .post,
-                              parameters: [:],
-                              encoding: URLEncoding.httpBody,
-                              headers: [:])
-    }
+    
 }

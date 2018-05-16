@@ -18,8 +18,12 @@ class TranslateViewController: NSViewController {
     @IBOutlet weak var translateTextField: NSTextField!
     @IBOutlet weak var logoutButton: NSButton!
     
+    let nstext = NSTextView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         bindUI()
     }
