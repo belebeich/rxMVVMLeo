@@ -42,7 +42,7 @@ struct LoginViewModel {
     }
     
     func login(email: String, password: String) -> Observable<AccountStatus> {
-        return LeoAPI.shared.logged(email: email, password: password)
+        return LeoAPI.shared.login(email: email, password: password)
     }
     
     func logout() {

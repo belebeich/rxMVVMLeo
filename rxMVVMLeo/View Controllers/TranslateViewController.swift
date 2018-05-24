@@ -18,14 +18,16 @@ class TranslateViewController: NSViewController {
     @IBOutlet weak var translateTextField: NSTextView!
     @IBOutlet weak var logoutButton: NSButton!
     
-    let nstext = NSTextView()
+    @IBOutlet weak var backgroundNSBox: NSBox!
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         
         
         bindUI()
+        //setUI()
     }
     
     func bindUI() {
@@ -54,6 +56,16 @@ class TranslateViewController: NSViewController {
                 viewModel.logout()
             })
             .disposed(by: bag)
+    }
+    
+    func setUI() {
+        let fillColor = NSColor(red: 0.04313725, green: 0.43137255, blue: 0.21960784, alpha: CGFloat(0.9))
+        self.backgroundNSBox.fillColor = fillColor
+        self.translateTextField.backgroundColor = fillColor
+        self.wordTextField.backgroundColor = fillColor
+        self.translateTextField.textColor = NSColor.white
+        self.translateTextField.backgroundColor = fillColor
+        
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {

@@ -22,6 +22,7 @@ struct LeoAPI : LeoAPIProtocol {
     
     //Constants
     private let token = "token"
+    private let points = "meatballs"
     
     static var shared = LeoAPI()
     
@@ -32,6 +33,8 @@ struct LeoAPI : LeoAPIProtocol {
             return Variable(AccountStatus.unavailable)
         }
     }
+    
+    
     
     fileprivate enum Address: String {
         case translate = "gettranslates"
@@ -55,34 +58,8 @@ struct LeoAPI : LeoAPIProtocol {
         case requestFailed
     }
     
-//    func login(email: String, password: String) -> Observable<AccountStatus> {
-//        return Observable.create { observer in
-//            let parameters : Parameters = ["email":email, "password": password]
-//            let request = Alamofire.request(Address.login.url, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: [:]).responseJSON {
-//                response in
-//                switch response.result {
-//                case .success(let value):
-//
-//                    let json = JSON(value)
-//
-//                    if let autologin = json["user"]["autologin_key"].string {
-//                        UserDefaults.standard.set(autologin, forKey: self.token)
-//                        observer.onNext(.success(autologin))
-//                        observer.onCompleted()
-//                    }
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                    observer.onNext(.unavailable)
-//                }
-//            }
-//
-//            return Disposables.create {
-//                request.cancel()
-//            }
-//        }
-//    }
     
-    func logged(email: String, password: String) -> Observable<AccountStatus> {
+    func login(email: String, password: String) -> Observable<AccountStatus> {
         
         let params = ["email": email,
                       "password" : password]
@@ -92,6 +69,10 @@ struct LeoAPI : LeoAPIProtocol {
             .map { result in
                 if let autologin = result["user"]["autologin_key"].string {
                     UserDefaults.standard.setValue(autologin, forKeyPath: self.token)
+                    
+                    if let meatballs = result["user"]["meatballs"].int {
+                        UserDefaults.standard.setValue(meatballs, forKey: self.points)
+                    }
                     return AccountStatus.success(autologin)
                 } else {
                     return AccountStatus.unavailable
@@ -131,34 +112,7 @@ struct LeoAPI : LeoAPIProtocol {
             .dispose()
     }
     
-//    func translate(of word: String) -> Observable<String> {
-//        return Observable.create { observer in
-//            let params: Parameters = ["word": word]
-//            let request = Alamofire.request(Address.translate.url,
-//                                            method: .post,
-//                                            parameters: params,
-//                                            encoding: URLEncoding.httpBody,
-//                                            headers: [:])
-//            request.responseJSON { response in
-//                switch response.result {
-//                case .success(let value):
-//                    let json = JSON(value)
-//
-//                    guard let translate = json["translate"].array?.first?["value"].string else { observer.onNext(""); observer.onCompleted(); return}
-//                    observer.onNext(translate)
-//                    observer.onCompleted()
-//
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                    observer.onNext("")
-//                }
-//            }
-//            return Disposables.create {
-//                request.cancel()
-//            }
-//        }
-//    }
-    
+
     
     //MARK: - generic request
     private func request<T:Any>(address: Address, parameters: [String:String] = [:]) -> Observable<T> {

@@ -47,7 +47,6 @@ struct TranslateViewModel {
         return stroke
     }
     
-    
     func logout() {
         return LeoAPI.shared.logout()
     }
