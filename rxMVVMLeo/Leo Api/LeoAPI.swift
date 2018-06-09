@@ -21,13 +21,15 @@ enum AccountStatus {
 struct LeoAPI : LeoAPIProtocol {
     
     //Constants
-    private let token = "token"
-    private let points = "meatballs"
+    enum Keys {
+        static let token = "token"
+        static let points = "meatballs"
+    }
     
     static var shared = LeoAPI()
     
     var state: Variable<AccountStatus> {
-        if let storedToken = UserDefaults.standard.string(forKey: token) {
+        if let storedToken = UserDefaults.standard.string(forKey: Keys.token) {
             return Variable(AccountStatus.success(storedToken))
         } else {
             return Variable(AccountStatus.unavailable)
@@ -68,10 +70,10 @@ struct LeoAPI : LeoAPIProtocol {
         return response
             .map { result in
                 if let autologin = result["user"]["autologin_key"].string {
-                    UserDefaults.standard.setValue(autologin, forKeyPath: self.token)
+                    UserDefaults.standard.setValue(autologin, forKeyPath: Keys.token)
                     
                     if let meatballs = result["user"]["meatballs"].int {
-                        UserDefaults.standard.setValue(meatballs, forKey: self.points)
+                        UserDefaults.standard.setValue(meatballs, forKey: Keys.points)
                     }
                     return AccountStatus.success(autologin)
                 } else {
@@ -102,14 +104,24 @@ struct LeoAPI : LeoAPIProtocol {
     
     func logout() {
         
-        let logout : Observable<AnyObject> = request(address: Address.logout, parameters: [:])
+//        let logout : Observable<AnyObject> = request(address: LeoAPI.Address.logout, parameters: [:])
+//
+//        logout
+//            .subscribe({ _ in
+//                self.state.value = .unavailable
+//                print("lol")
+//                UserDefaults.standard.removeObject(forKey: self.token)
+//            })
+//            .dispose()
         
-        logout
-            .subscribe({ _ in
+        let requester = Alamofire.request(LeoAPI.Address.logout.url, method: .post, parameters: [:], encoding: URLEncoding.httpBody, headers: [:])
+        requester
+            .response {_ in
+                print("logout")
                 self.state.value = .unavailable
-                UserDefaults.standard.removeObject(forKey: self.token)
-            })
-            .dispose()
+                UserDefaults.standard.removeObject(forKey: Keys.token)
+        }
+        
     }
     
 

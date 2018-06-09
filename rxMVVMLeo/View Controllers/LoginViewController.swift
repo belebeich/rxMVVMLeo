@@ -9,7 +9,6 @@
 import Cocoa
 import RxSwift
 import RxCocoa
-import RxGesture
 
 class LoginViewController: NSViewController {
     
@@ -81,6 +80,7 @@ class LoginViewController: NSViewController {
         
         logoutButton.rx.tap
             .subscribe(onNext: {
+                
                 viewModel.logout()
             })
             .disposed(by: bag)

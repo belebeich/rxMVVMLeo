@@ -17,17 +17,13 @@ class TranslateViewController: NSViewController {
     @IBOutlet weak var wordTextField: NSTextField!
     @IBOutlet weak var translateTextField: NSTextView!
     @IBOutlet weak var logoutButton: NSButton!
-    
     @IBOutlet weak var backgroundNSBox: NSBox!
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        
-        
         bindUI()
-        //setUI()
     }
     
     func bindUI() {
