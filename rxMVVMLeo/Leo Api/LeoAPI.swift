@@ -20,10 +20,13 @@ enum AccountStatus {
 
 struct LeoAPI : LeoAPIProtocol {
     
+    
+    
     //Constants
     enum Keys {
         static let token = "token"
         static let points = "meatballs"
+        static let cookies = "cookies"
     }
     
     static var shared = LeoAPI()
@@ -36,12 +39,17 @@ struct LeoAPI : LeoAPIProtocol {
         }
     }
     
+    var meatballs: Variable<Int> {
+        guard let points = UserDefaults.standard.object(forKey: Keys.points) as? Int else { return Variable(0) }
+        return Variable(points)
+     }
     
     
     fileprivate enum Address: String {
         case translate = "gettranslates"
         case login = "api/login"
         case logout = "logout"
+        case addword = "addword"
         
         private var baseURL: String { return "http://api.lingualeo.com/"}
         private var mainURL : String { return "http://lingualeo.com/" }
@@ -65,22 +73,26 @@ struct LeoAPI : LeoAPIProtocol {
         
         let params = ["email": email,
                       "password" : password]
+        
         let response : Observable<JSON> = request(address: LeoAPI.Address.login, parameters: params)
         
         return response
             .map { result in
+                
+                
                 if let autologin = result["user"]["autologin_key"].string {
                     UserDefaults.standard.setValue(autologin, forKeyPath: Keys.token)
                     
                     if let meatballs = result["user"]["meatballs"].int {
                         UserDefaults.standard.setValue(meatballs, forKey: Keys.points)
                     }
+                    
                     return AccountStatus.success(autologin)
                 } else {
                     return AccountStatus.unavailable
                 }
             }
-        
+       
     }
     
     func translate(of word: String) -> Observable<[String]> {
@@ -102,29 +114,29 @@ struct LeoAPI : LeoAPIProtocol {
         
     }
     
+    func add(a word: String, with translate: String) {
+        let params = ["word": word,
+                      "tword": translate]
+        
+        let response : Observable<JSON> = request(address: LeoAPI.Address.addword, parameters: params)
+    
+        response
+            .subscribe(onNext: { result in
+                print(result)
+            })
+            .disposed(by: DisposeBag())
+    }
+    
     func logout() {
-        
-//        let logout : Observable<AnyObject> = request(address: LeoAPI.Address.logout, parameters: [:])
-//
-//        logout
-//            .subscribe({ _ in
-//                self.state.value = .unavailable
-//                print("lol")
-//                UserDefaults.standard.removeObject(forKey: self.token)
-//            })
-//            .dispose()
-        
         let requester = Alamofire.request(LeoAPI.Address.logout.url, method: .post, parameters: [:], encoding: URLEncoding.httpBody, headers: [:])
         requester
             .response {_ in
-                print("logout")
+                
                 self.state.value = .unavailable
                 UserDefaults.standard.removeObject(forKey: Keys.token)
         }
         
     }
-    
-
     
     //MARK: - generic request
     private func request<T:Any>(address: Address, parameters: [String:String] = [:]) -> Observable<T> {
@@ -137,6 +149,7 @@ struct LeoAPI : LeoAPIProtocol {
             
             request.responseJSON { response in
                 guard response.error == nil, let data = response.data, let result = JSON(data) as? T else { return }
+                
                 observer.onNext(result)
                 observer.onCompleted()
             }

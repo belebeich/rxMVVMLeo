@@ -14,6 +14,8 @@ class TranslateViewController: NSViewController {
     
     let bag = DisposeBag()
 
+    @IBOutlet weak var addWordButton: NSButton!
+    @IBOutlet weak var availableWordsLabel: NSTextField!
     @IBOutlet weak var wordTextField: NSTextField!
     @IBOutlet weak var translateTextField: NSTextView!
     @IBOutlet weak var logoutButton: NSButton!
@@ -44,6 +46,16 @@ class TranslateViewController: NSViewController {
         
         translateResults
             .bind(to: translateTextField.rx.text)
+            .disposed(by: bag)
+        
+        
+        
+        addWordButton.rx.tap
+            .subscribe({_ in
+                
+                viewModel.add(word: self.wordTextField.stringValue, translate: self.translateTextField.string)
+                
+            })
             .disposed(by: bag)
         
         logoutButton.rx.tap

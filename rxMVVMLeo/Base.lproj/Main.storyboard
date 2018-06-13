@@ -813,6 +813,39 @@
                                 <view key="contentView" id="VRM-Re-3RB">
                                     <rect key="frame" x="0.0" y="0.0" width="802" height="413"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="46" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lrQ-JN-RNb">
+                                            <rect key="frame" x="101" y="31" width="218" height="21"/>
+                                            <subviews>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="L6Y-gB-6i1">
+                                                    <rect key="frame" x="-2" y="0.0" width="90" height="21"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Vap-7E-qom">
+                                                        <font key="font" size="15" name="LucidaSans-Typewriter"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kok-5y-8TN">
+                                                    <rect key="frame" x="126" y="-7" width="98" height="32"/>
+                                                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xgb-aw-XL9">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" size="16" name="LucidaSans-Typewriter"/>
+                                                    </buttonCell>
+                                                </button>
+                                            </subviews>
+                                            <visibilityPriorities>
+                                                <integer value="1000"/>
+                                                <integer value="1000"/>
+                                            </visibilityPriorities>
+                                            <customSpacing>
+                                                <real value="3.4028234663852886e+38"/>
+                                                <real value="3.4028234663852886e+38"/>
+                                            </customSpacing>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="lrQ-JN-RNb" firstAttribute="leading" secondItem="VRM-Re-3RB" secondAttribute="leading" constant="101" id="ZNd-Na-4cc"/>
+                                    </constraints>
                                 </view>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WkW-Ew-7EM">
@@ -888,6 +921,7 @@
                             <constraint firstItem="WkW-Ew-7EM" firstAttribute="top" secondItem="VRM-Re-3RB" secondAttribute="bottom" constant="-41" id="3fQ-na-1Lh"/>
                             <constraint firstItem="WkW-Ew-7EM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Tnw-kB-SWP" secondAttribute="leading" constant="20" symbolic="YES" id="QRa-dI-raZ"/>
                             <constraint firstItem="yeF-cy-nNE" firstAttribute="centerX" secondItem="Tnw-kB-SWP" secondAttribute="centerX" id="Qxi-qB-zNY"/>
+                            <constraint firstItem="lrQ-JN-RNb" firstAttribute="top" secondItem="4xI-Uw-h21" secondAttribute="bottom" constant="34" id="hLh-Xj-D4l"/>
                             <constraint firstAttribute="trailing" secondItem="WkW-Ew-7EM" secondAttribute="trailing" constant="20" id="owL-ps-gy7"/>
                             <constraint firstItem="eMH-Ud-4jt" firstAttribute="top" secondItem="Tnw-kB-SWP" secondAttribute="top" constant="20" id="thh-QI-KNL"/>
                             <constraint firstItem="yeF-cy-nNE" firstAttribute="width" secondItem="Tnw-kB-SWP" secondAttribute="width" id="yAg-qq-Wcc"/>
@@ -896,6 +930,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addWordButton" destination="Kok-5y-8TN" id="TbM-Ev-LJe"/>
+                        <outlet property="availableWordsLabel" destination="L6Y-gB-6i1" id="in1-VC-Qec"/>
                         <outlet property="backgroundNSBox" destination="yeF-cy-nNE" id="lQU-4K-thg"/>
                         <outlet property="logoutButton" destination="WkW-Ew-7EM" id="fB0-6L-AJt"/>
                         <outlet property="translateTextField" destination="4xI-Uw-h21" id="eLG-rO-vz0"/>
@@ -908,7 +944,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5qS-92-2Ol"/>
         <segue reference="Jq3-mX-DfG"/>
     </inferredMetricsTieBreakers>
 </document>
