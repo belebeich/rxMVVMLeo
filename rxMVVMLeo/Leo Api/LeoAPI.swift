@@ -118,13 +118,19 @@ struct LeoAPI : LeoAPIProtocol {
         let params = ["word": word,
                       "tword": translate]
         
-        let response : Observable<JSON> = request(address: LeoAPI.Address.addword, parameters: params)
-    
+//        let response : Observable<JSON> = request(address: LeoAPI.Address.addword, parameters: params)
+//
+//        response
+//            .subscribe(onNext: { result in
+//                print(result)
+//            })
+//            .disposed(by: DisposeBag())
+        let response = Alamofire.request(LeoAPI.Address.addword.url, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: nil)
         response
-            .subscribe(onNext: { result in
-                print(result)
-            })
-            .disposed(by: DisposeBag())
+            .response { result in
+                guard let json = try? JSON(result.data) else { return }
+                print(json)
+        }
     }
     
     func logout() {
