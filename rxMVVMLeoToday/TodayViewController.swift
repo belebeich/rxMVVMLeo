@@ -18,6 +18,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     
     @IBOutlet var wordTextView: NSTextField!
     @IBOutlet var translateTextView: NSTextView!
+    @IBOutlet weak var addWordButton: NSButton!
     
     let bag = DisposeBag()
     
@@ -28,7 +29,10 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     override func viewDidLoad() {
         
         
-        
+//        let cookie = HTTPCookieStorage.shared.cookies(for: URL(string: "http://api.lingualeo.com")! )
+//        for cook in cookie! {
+//            print(cook)
+//        }
         setUI()
         bindUI()
     }
@@ -72,6 +76,13 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         
         translateResults
             .bind(to: translateTextView.rx.text)
+            .disposed(by: bag)
+        
+        addWordButton.rx.tap
+            .subscribe(onNext: {
+                viewModel.add(word: self.wordTextView.stringValue, translate: self.translateTextView.string)
+                print("yeap")
+            })
             .disposed(by: bag)
     }
     

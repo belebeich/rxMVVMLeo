@@ -20,8 +20,6 @@ enum AccountStatus {
 
 struct LeoAPI : LeoAPIProtocol {
     
-    
-    
     //Constants
     enum Keys {
         static let token = "token"
@@ -79,20 +77,17 @@ struct LeoAPI : LeoAPIProtocol {
         return response
             .map { result in
                 
-                
                 if let autologin = result["user"]["autologin_key"].string {
                     UserDefaults.standard.setValue(autologin, forKeyPath: Keys.token)
                     
                     if let meatballs = result["user"]["meatballs"].int {
                         UserDefaults.standard.setValue(meatballs, forKey: Keys.points)
                     }
-                    
                     return AccountStatus.success(autologin)
                 } else {
                     return AccountStatus.unavailable
                 }
             }
-       
     }
     
     func translate(of word: String) -> Observable<[String]> {
@@ -117,6 +112,11 @@ struct LeoAPI : LeoAPIProtocol {
     func add(a word: String, with translate: String) {
         let params = ["word": word,
                       "tword": translate]
+        
+        guard let cookies = HTTPCookieStorage.shared.cookies else { return }
+        Alamofire.HTTPCookieStorage.shared.setCookies(cookies, for: URL(string: "http://api.lingualeo.com"), mainDocumentURL: nil)
+        
+        print(Alamofire.HTTPCookieStorage.shared.cookies)
         
 //        let response : Observable<JSON> = request(address: LeoAPI.Address.addword, parameters: params)
 //
