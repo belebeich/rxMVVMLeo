@@ -54,7 +54,7 @@ struct LeoAPI : LeoAPIProtocol {
     //Properties
     static var shared = LeoAPI()
     
-    let keychain = KeychainSwift()
+    private let keychain = KeychainSwift()
     
     var state: Variable<AccountStatus> {
         if let storedToken = UserDefaults.standard.string(forKey: Keys.token) {
@@ -124,7 +124,6 @@ struct LeoAPI : LeoAPIProtocol {
         let params = ["word": word,
                       "tword": translate]
         
-       
         guard let data = self.keychain.getData("cookies") else { return }
         guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return }
         
@@ -132,12 +131,10 @@ struct LeoAPI : LeoAPIProtocol {
             Alamofire.HTTPCookieStorage.shared.setCookie(cookie)
         }
         
-       
-        
         let response = Alamofire.request(LeoAPI.Address.addword.url, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: nil)
         response
             .response { result in
-                guard let json = try? JSON(result.data) else { return }
+                guard let json = try? JSON(result.data!) else { return }
                 print(json)
         }
     }

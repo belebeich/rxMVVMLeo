@@ -64,6 +64,10 @@ class TranslateViewController: NSViewController {
                 viewModel.logout()
             })
             .disposed(by: bag)
+        
+        viewModel.meatballs()
+            .bind(to: availableWordsLabel.rx.text)
+            .disposed(by: bag)
     }
     
     func setUI() {

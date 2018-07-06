@@ -36,11 +36,14 @@ struct TranslateViewModel {
     }
     
     func add(word: String, translate: String) {
+        
         return LeoAPI.shared.add(a: word, with: translate)
     }
     
-    func meatballs() -> Observable<Int> {
-        return LeoAPI.shared.meatballs.asObservable()
+    func meatballs() -> Observable<String> {
+        
+        let text = Observable.of("\(LeoAPI.shared.meatballs.value)")
+        return text
     }
     
     func translate(word: String) -> Observable<String> {
