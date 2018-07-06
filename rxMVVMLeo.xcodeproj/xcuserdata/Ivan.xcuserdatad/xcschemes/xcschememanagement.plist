@@ -7,17 +7,17 @@
 		<key>rxMVVMLeo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>15</integer>
+			<integer>18</integer>
 		</dict>
 		<key>rxMVVMLeoToday.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>17</integer>
+			<integer>20</integer>
 		</dict>
 		<key>rxMVVMLeoiOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>16</integer>
+			<integer>19</integer>
 		</dict>
 	</dict>
 </dict>

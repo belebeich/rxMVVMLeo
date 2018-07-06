@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import Alamofire
 import SwiftyJSON
+import KeychainSwift
 
 typealias AccessToken = String
 
@@ -20,28 +21,12 @@ enum AccountStatus {
 
 struct LeoAPI : LeoAPIProtocol {
     
-    //Constants
+    //Types
     enum Keys {
         static let token = "token"
         static let points = "meatballs"
         static let cookies = "cookies"
     }
-    
-    static var shared = LeoAPI()
-    
-    var state: Variable<AccountStatus> {
-        if let storedToken = UserDefaults.standard.string(forKey: Keys.token) {
-            return Variable(AccountStatus.success(storedToken))
-        } else {
-            return Variable(AccountStatus.unavailable)
-        }
-    }
-    
-    var meatballs: Variable<Int> {
-        guard let points = UserDefaults.standard.object(forKey: Keys.points) as? Int else { return Variable(0) }
-        return Variable(points)
-     }
-    
     
     fileprivate enum Address: String {
         case translate = "gettranslates"
@@ -66,6 +51,23 @@ struct LeoAPI : LeoAPIProtocol {
         case requestFailed
     }
     
+    //Properties
+    static var shared = LeoAPI()
+    
+    let keychain = KeychainSwift()
+    
+    var state: Variable<AccountStatus> {
+        if let storedToken = UserDefaults.standard.string(forKey: Keys.token) {
+            return Variable(AccountStatus.success(storedToken))
+        } else {
+            return Variable(AccountStatus.unavailable)
+        }
+    }
+    
+    var meatballs: Variable<Int> {
+        guard let points = UserDefaults.standard.object(forKey: Keys.points) as? Int else { return Variable(0) }
+        return Variable(points)
+     }
     
     func login(email: String, password: String) -> Observable<AccountStatus> {
         
@@ -83,11 +85,20 @@ struct LeoAPI : LeoAPIProtocol {
                     if let meatballs = result["user"]["meatballs"].int {
                         UserDefaults.standard.setValue(meatballs, forKey: Keys.points)
                     }
+                    
+                    guard let cookies = HTTPCookieStorage.shared.cookies else { return AccountStatus.unavailable }
+                    
+                    
+                    let data = NSKeyedArchiver.archivedData(withRootObject: cookies)
+                    self.keychain.set(data, forKey: "cookies")
+                    
                     return AccountStatus.success(autologin)
                 } else {
                     return AccountStatus.unavailable
                 }
             }
+        
+        
     }
     
     func translate(of word: String) -> Observable<[String]> {
@@ -113,18 +124,16 @@ struct LeoAPI : LeoAPIProtocol {
         let params = ["word": word,
                       "tword": translate]
         
-        guard let cookies = HTTPCookieStorage.shared.cookies else { return }
-        Alamofire.HTTPCookieStorage.shared.setCookies(cookies, for: URL(string: "http://api.lingualeo.com"), mainDocumentURL: nil)
+       
+        guard let data = self.keychain.getData("cookies") else { return }
+        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return }
         
-        print(Alamofire.HTTPCookieStorage.shared.cookies)
+        for cookie in cookies {
+            Alamofire.HTTPCookieStorage.shared.setCookie(cookie)
+        }
         
-//        let response : Observable<JSON> = request(address: LeoAPI.Address.addword, parameters: params)
-//
-//        response
-//            .subscribe(onNext: { result in
-//                print(result)
-//            })
-//            .disposed(by: DisposeBag())
+       
+        
         let response = Alamofire.request(LeoAPI.Address.addword.url, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: nil)
         response
             .response { result in
