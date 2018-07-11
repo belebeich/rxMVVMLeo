@@ -827,7 +827,7 @@
                                                 </textField>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kok-5y-8TN">
                                                     <rect key="frame" x="126" y="-7" width="98" height="32"/>
-                                                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xgb-aw-XL9">
+                                                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xgb-aw-XL9">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" size="16" name="LucidaSans-Typewriter"/>
                                                     </buttonCell>
@@ -842,8 +842,13 @@
                                                 <real value="3.4028234663852886e+38"/>
                                             </customSpacing>
                                         </stackView>
+                                        <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="8Ij-ER-kzd">
+                                            <rect key="frame" x="71" y="217" width="16" height="16"/>
+                                        </progressIndicator>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="8Ij-ER-kzd" firstAttribute="top" secondItem="VRM-Re-3RB" secondAttribute="top" constant="180" id="3Lj-tQ-lzH"/>
+                                        <constraint firstItem="8Ij-ER-kzd" firstAttribute="leading" secondItem="VRM-Re-3RB" secondAttribute="leading" constant="71" id="Dr4-na-uPA"/>
                                         <constraint firstItem="lrQ-JN-RNb" firstAttribute="leading" secondItem="VRM-Re-3RB" secondAttribute="leading" constant="101" id="ZNd-Na-4cc"/>
                                     </constraints>
                                 </view>
@@ -919,6 +924,7 @@
                         <constraints>
                             <constraint firstItem="yeF-cy-nNE" firstAttribute="centerY" secondItem="Tnw-kB-SWP" secondAttribute="centerY" id="0eh-u2-d21"/>
                             <constraint firstItem="WkW-Ew-7EM" firstAttribute="top" secondItem="VRM-Re-3RB" secondAttribute="bottom" constant="-41" id="3fQ-na-1Lh"/>
+                            <constraint firstItem="4xI-Uw-h21" firstAttribute="leading" secondItem="8Ij-ER-kzd" secondAttribute="trailing" constant="15" id="95h-QX-QE6"/>
                             <constraint firstItem="WkW-Ew-7EM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Tnw-kB-SWP" secondAttribute="leading" constant="20" symbolic="YES" id="QRa-dI-raZ"/>
                             <constraint firstItem="yeF-cy-nNE" firstAttribute="centerX" secondItem="Tnw-kB-SWP" secondAttribute="centerX" id="Qxi-qB-zNY"/>
                             <constraint firstItem="lrQ-JN-RNb" firstAttribute="top" secondItem="4xI-Uw-h21" secondAttribute="bottom" constant="34" id="hLh-Xj-D4l"/>
@@ -934,6 +940,7 @@
                         <outlet property="availableWordsLabel" destination="L6Y-gB-6i1" id="in1-VC-Qec"/>
                         <outlet property="backgroundNSBox" destination="yeF-cy-nNE" id="lQU-4K-thg"/>
                         <outlet property="logoutButton" destination="WkW-Ew-7EM" id="fB0-6L-AJt"/>
+                        <outlet property="searchIndicator" destination="8Ij-ER-kzd" id="kKv-le-RTd"/>
                         <outlet property="translateTextField" destination="4xI-Uw-h21" id="eLG-rO-vz0"/>
                         <outlet property="wordTextField" destination="lUT-gT-9Sw" id="1aT-7P-LX2"/>
                     </connections>

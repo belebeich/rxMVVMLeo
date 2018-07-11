@@ -28,11 +28,6 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     
     override func viewDidLoad() {
         
-        
-//        let cookie = HTTPCookieStorage.shared.cookies(for: URL(string: "http://api.lingualeo.com")! )
-//        for cook in cookie! {
-//            print(cook)
-//        }
         setUI()
         bindUI()
     }
@@ -66,8 +61,10 @@ class TodayViewController: NSViewController, NCWidgetProviding {
             .flatMapLatest { query -> Observable<String> in
                 
                 if query.isEmpty {
+                    self.addWordButton.isEnabled = false
                     return .just("")
                 } else {
+                    self.addWordButton.isEnabled = true
                     return viewModel.translate(word: query)
                 }
             }

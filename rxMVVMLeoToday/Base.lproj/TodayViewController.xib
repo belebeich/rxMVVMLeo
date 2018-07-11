@@ -69,7 +69,7 @@
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="Rxn-oA-Hpl"/>
                         <constraint firstAttribute="height" constant="21" id="w1c-nz-0vV"/>
                     </constraints>
-                    <buttonCell key="cell" type="push" title="Add word" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VCU-6n-pMd">
+                    <buttonCell key="cell" type="push" title="Add word" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VCU-6n-pMd">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
