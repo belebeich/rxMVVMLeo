@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController" customModule="rxMVVMLeoToday" customModuleProvider="target">
             <connections>
                 <outlet property="addWordButton" destination="OYY-Yr-Kz8" id="dlm-qO-Y4x"/>
+                <outlet property="searchIndicator" destination="sbL-8R-2Oe" id="jY0-fy-pqY"/>
                 <outlet property="translateTextView" destination="fnS-Df-3C7" id="tDE-Aa-gxh"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
                 <outlet property="wordTextView" destination="J9F-gN-Uw5" id="Qwt-Y8-Slx"/>
@@ -74,6 +75,9 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
+                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="sbL-8R-2Oe">
+                    <rect key="frame" x="7" y="205" width="16" height="16"/>
+                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstItem="J9F-gN-Uw5" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" symbolic="YES" id="39H-P2-kTj"/>
@@ -89,7 +93,9 @@
                 <constraint firstItem="J9F-gN-Uw5" firstAttribute="trailing" secondItem="7m1-Sp-HTf" secondAttribute="trailing" id="VlJ-9y-Kit"/>
                 <constraint firstItem="as0-Q6-Rhc" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="dLb-0O-uoq"/>
                 <constraint firstItem="OYY-Yr-Kz8" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="fEJ-6H-1KX"/>
+                <constraint firstItem="sbL-8R-2Oe" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="7" id="kd4-o6-vHk"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OYY-Yr-Kz8" secondAttribute="trailing" id="rBd-J6-6Z2"/>
+                <constraint firstItem="sbL-8R-2Oe" firstAttribute="top" secondItem="as0-Q6-Rhc" secondAttribute="top" id="umz-ha-NCW"/>
             </constraints>
             <point key="canvasLocation" x="147.5" y="339"/>
         </customView>

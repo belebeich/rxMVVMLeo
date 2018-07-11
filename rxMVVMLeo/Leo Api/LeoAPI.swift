@@ -57,7 +57,7 @@ struct LeoAPI : LeoAPIProtocol {
     private let keychain = KeychainSwift()
     
     var state: Variable<AccountStatus> {
-        if let storedToken = UserDefaults.standard.string(forKey: Keys.token) {
+        if let storedToken = self.keychain.get(Keys.token) {
             return Variable(AccountStatus.success(storedToken))
         } else {
             return Variable(AccountStatus.unavailable)
@@ -80,17 +80,16 @@ struct LeoAPI : LeoAPIProtocol {
             .map { result in
                 
                 if let autologin = result["user"]["autologin_key"].string {
-                    UserDefaults.standard.setValue(autologin, forKeyPath: Keys.token)
-                    
+                    //UserDefaults.standard.setValue(autologin, forKeyPath: Keys.token)
+                    self.keychain.set(autologin, forKey: Keys.token)
                     if let meatballs = result["user"]["meatballs"].int {
                         UserDefaults.standard.setValue(meatballs, forKey: Keys.points)
                     }
                     
                     guard let cookies = HTTPCookieStorage.shared.cookies else { return AccountStatus.unavailable }
-                    
-                    
+                
                     let data = NSKeyedArchiver.archivedData(withRootObject: cookies)
-                    self.keychain.set(data, forKey: "cookies")
+                    self.keychain.set(data, forKey: Keys.cookies)
                     
                     return AccountStatus.success(autologin)
                 } else {
@@ -124,7 +123,7 @@ struct LeoAPI : LeoAPIProtocol {
         let params = ["word": word,
                       "tword": translate]
         
-        guard let data = self.keychain.getData("cookies") else { return }
+        guard let data = self.keychain.getData(Keys.cookies) else { return }
         guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return }
         
         for cookie in cookies {
@@ -145,7 +144,10 @@ struct LeoAPI : LeoAPIProtocol {
             .response {_ in
                 
                 self.state.value = .unavailable
-                UserDefaults.standard.removeObject(forKey: Keys.token)
+                self.keychain.delete(Keys.cookies)
+                self.keychain.delete(Keys.token)
+                //UserDefaults.standard.removeObject(forKey: Keys.token)
+                
         }
         
     }

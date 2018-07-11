@@ -16,6 +16,7 @@ import NotificationCenter
 class TodayViewController: NSViewController, NCWidgetProviding {
 
     
+    @IBOutlet weak var searchIndicator: NSProgressIndicator!
     @IBOutlet var wordTextView: NSTextField!
     @IBOutlet var translateTextView: NSTextView!
     @IBOutlet weak var addWordButton: NSButton!
@@ -36,24 +37,27 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     
     func bindUI() {
         let viewModel = TranslateViewModel.init(word: wordTextView.rx.text.orEmpty.asDriver())
-//        print(LeoAPI.shared.state.value)
-//        switch LeoAPI.shared.state.value {
-//        case .unavailable:
-//
-//
-//            self.wordTextView.isEnabled = false
-//            let text = Observable.of("Please login through main app")
-//            text
-//                .bind(to: self.wordTextView.rx.text)
-//                .disposed(by: bag)
-//        case .success(_):
-//
-//            self.wordTextView.isEnabled = true
-//            let text = Observable.of("")
-//            text
-//                .bind(to: self.wordTextView.rx.text)
-//                .disposed(by: bag)
-//        }
+        print(LeoAPI.shared.state.value)
+        switch LeoAPI.shared.state.value {
+        case .unavailable:
+
+            self.addWordButton.isEnabled = false
+            self.wordTextView.isEnabled = false
+            let text = Observable.of("Please login through main app")
+            text
+                .bind(to: self.wordTextView.rx.text)
+                .disposed(by: bag)
+            
+        case .success(_):
+            
+            self.wordTextView.isEnabled = true
+            let text = Observable.of("")
+            text
+                .bind(to: self.wordTextView.rx.text)
+                .disposed(by: bag)
+        }
+        
+        
         
         let translateResults = wordTextView.rx.text.orEmpty
             .throttle(0.3, scheduler: MainScheduler.instance)
@@ -62,12 +66,19 @@ class TodayViewController: NSViewController, NCWidgetProviding {
                 
                 if query.isEmpty {
                     self.addWordButton.isEnabled = false
+                    
                     return .just("")
                 } else {
                     self.addWordButton.isEnabled = true
+                    self.searchIndicator.isHidden = false
+                    self.searchIndicator.startAnimation(self)
                     return viewModel.translate(word: query)
                 }
             }
+            .do(onNext: { _ in
+                self.searchIndicator.stopAnimation(self)
+                self.searchIndicator.isHidden = true
+            })
             .observeOn(MainScheduler.instance)
         
         
