@@ -42,8 +42,8 @@ struct TranslateViewModel {
     
     func meatballs() -> Observable<String> {
         
-        let text = Observable.of("\(LeoAPI.shared.meatballs.value)")
-        return text
+        
+        return LeoAPI.shared.getMeatballs()
     }
     
     func translate(word: String) -> Observable<String> {

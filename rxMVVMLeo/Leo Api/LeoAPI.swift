@@ -80,7 +80,7 @@ struct LeoAPI : LeoAPIProtocol {
             .map { result in
                 
                 if let autologin = result["user"]["autologin_key"].string {
-                    //UserDefaults.standard.setValue(autologin, forKeyPath: Keys.token)
+                    
                     self.keychain.set(autologin, forKey: Keys.token)
                     if let meatballs = result["user"]["meatballs"].int {
                         UserDefaults.standard.setValue(meatballs, forKey: Keys.points)
@@ -138,16 +138,32 @@ struct LeoAPI : LeoAPIProtocol {
         }
     }
     
+    func getMeatballs() -> Observable<String> {
+        switch LeoAPI.shared.state.value {
+            case .success( _):
+                let response : Observable<JSON> = request(address: LeoAPI.Address.login)
+                return response
+                    .map { result in
+                        
+                        if let words = result["user"]["meatballs"].int {
+                            return "\(words)"
+                        } else {
+                            return "NO"
+                        }
+                    }
+            
+            case .unavailable:
+                return Observable.of("un")
+            }
+    }
+    
     func logout() {
         let requester = Alamofire.request(LeoAPI.Address.logout.url, method: .post, parameters: [:], encoding: URLEncoding.httpBody, headers: [:])
         requester
             .response {_ in
                 
                 self.state.value = .unavailable
-                self.keychain.delete(Keys.cookies)
-                self.keychain.delete(Keys.token)
-                //UserDefaults.standard.removeObject(forKey: Keys.token)
-                
+                self.keychain.clear()
         }
         
     }
@@ -155,6 +171,7 @@ struct LeoAPI : LeoAPIProtocol {
     //MARK: - generic request
     private func request<T:Any>(address: Address, parameters: [String:String] = [:]) -> Observable<T> {
         return Observable.create { observer in
+            
             let request = Alamofire.request(address.url,
                                             method: .post,
                                             parameters: parameters,

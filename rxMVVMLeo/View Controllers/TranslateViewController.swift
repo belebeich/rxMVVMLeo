@@ -61,6 +61,9 @@ class TranslateViewController: NSViewController {
             .subscribe({_ in
                 
                 viewModel.add(word: self.wordTextField.stringValue, translate: self.translateTextField.string)
+                viewModel.meatballs()
+                    .bind(to: self.availableWordsLabel.rx.text)
+                    
                 
             })
             .disposed(by: bag)
