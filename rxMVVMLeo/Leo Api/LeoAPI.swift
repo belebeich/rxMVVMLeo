@@ -139,6 +139,13 @@ struct LeoAPI : LeoAPIProtocol {
     }
     
     func getMeatballs() -> Observable<String> {
+        guard let data = self.keychain.getData(Keys.cookies) else { return  Observable.of("")}
+        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return Observable.of("")}
+        
+        for cookie in cookies {
+            Alamofire.HTTPCookieStorage.shared.setCookie(cookie)
+        }
+        
         switch LeoAPI.shared.state.value {
             case .success( _):
                 let response : Observable<JSON> = request(address: LeoAPI.Address.login)
@@ -146,6 +153,8 @@ struct LeoAPI : LeoAPIProtocol {
                     .map { result in
                         
                         if let words = result["user"]["meatballs"].int {
+                            print(words)
+                            print(result)
                             return "\(words)"
                         } else {
                             return "NO"
@@ -163,6 +172,8 @@ struct LeoAPI : LeoAPIProtocol {
             .response {_ in
                 
                 self.state.value = .unavailable
+                self.keychain.delete(Keys.cookies)
+                self.keychain.delete(Keys.token)
                 self.keychain.clear()
         }
         

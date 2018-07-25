@@ -64,7 +64,7 @@ class TranslateViewController: NSViewController {
                 viewModel.meatballs()
                     .bind(to: self.availableWordsLabel.rx.text)
                     
-                
+                self.addWordButton.isEnabled = false
             })
             .disposed(by: bag)
         

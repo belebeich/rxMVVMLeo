@@ -16,6 +16,7 @@ import NotificationCenter
 class TodayViewController: NSViewController, NCWidgetProviding {
 
     
+    @IBOutlet weak var availableWordsLabel: NSTextField!
     @IBOutlet weak var searchIndicator: NSProgressIndicator!
     @IBOutlet var wordTextView: NSTextField!
     @IBOutlet var translateTextView: NSTextView!
@@ -37,25 +38,31 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     
     func bindUI() {
         let viewModel = TranslateViewModel.init(word: wordTextView.rx.text.orEmpty.asDriver())
-        print(LeoAPI.shared.state.value)
+        
         switch LeoAPI.shared.state.value {
         case .unavailable:
 
             self.addWordButton.isEnabled = false
             self.wordTextView.isEnabled = false
+
             let text = Observable.of("Please login through main app")
             text
                 .bind(to: self.wordTextView.rx.text)
                 .disposed(by: bag)
-            
+
+
+            self.addWordButton.isHidden = true
+
         case .success(_):
-            
+
             self.wordTextView.isEnabled = true
             let text = Observable.of("")
             text
                 .bind(to: self.wordTextView.rx.text)
                 .disposed(by: bag)
         }
+        
+        
         
         
         
@@ -87,10 +94,19 @@ class TodayViewController: NSViewController, NCWidgetProviding {
             .disposed(by: bag)
         
         addWordButton.rx.tap
-            .subscribe(onNext: {
+            .subscribe(onNext: { [unowned self] in
                 viewModel.add(word: self.wordTextView.stringValue, translate: self.translateTextView.string)
-                print("yeap")
+                viewModel.meatballs()
+                    .bind(to: self.availableWordsLabel.rx.text)
+                    
+                
+                self.addWordButton.isEnabled = false
+                
             })
+            .disposed(by: bag)
+        
+        viewModel.meatballs()
+            .bind(to: availableWordsLabel.rx.text)
             .disposed(by: bag)
     }
     
