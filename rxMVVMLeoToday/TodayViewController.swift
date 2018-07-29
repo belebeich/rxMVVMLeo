@@ -15,6 +15,7 @@ import NotificationCenter
 
 class TodayViewController: NSViewController, NCWidgetProviding {
 
+    @IBOutlet weak var translateScrollView: NSScrollView!
     
     @IBOutlet weak var availableWordsLabel: NSTextField!
     @IBOutlet weak var searchIndicator: NSProgressIndicator!
@@ -29,7 +30,8 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     }
     
     override func viewDidLoad() {
-        
+        translateScrollView.becomeFirstResponder()
+        translateScrollView.documentView = translateTextView
         setUI()
         bindUI()
     }
@@ -76,9 +78,11 @@ class TodayViewController: NSViewController, NCWidgetProviding {
                     
                     return .just("")
                 } else {
+                    
                     self.addWordButton.isEnabled = true
                     self.searchIndicator.isHidden = false
                     self.searchIndicator.startAnimation(self)
+                    self.translateTextView.scrollToBeginningOfDocument(self)
                     return viewModel.translate(word: query)
                 }
             }
@@ -98,7 +102,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
                 viewModel.add(word: self.wordTextView.stringValue, translate: self.translateTextView.string)
                 viewModel.meatballs()
                     .bind(to: self.availableWordsLabel.rx.text)
-                    
+                    .disposed(by: self.bag)
                 
                 self.addWordButton.isEnabled = false
                 
@@ -106,8 +110,9 @@ class TodayViewController: NSViewController, NCWidgetProviding {
             .disposed(by: bag)
         
         viewModel.meatballs()
-            .bind(to: availableWordsLabel.rx.text)
-            .disposed(by: bag)
+            .bind(to: self.availableWordsLabel.rx.text)
+            .disposed(by: self.bag)
+        
     }
     
     func setUI() {
