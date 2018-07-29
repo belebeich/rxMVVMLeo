@@ -7,3 +7,64 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
+import RxSwift
+
+struct UrbanAPI: UrbanAPIProtocol {
+    
+    static let shared = UrbanAPI()
+    
+    fileprivate enum Address: String {
+        
+        case word = "/v0/define?term="
+        
+        private var baseURL: String { return "http://api.urbandictionary.com"}
+        
+        var url: URL {
+            return URL(string: baseURL.appending(rawValue))!
+        }
+    }
+    
+    func translate(of word: String) -> Observable<[String]> {
+        
+        let url = URL(string: "http://api.urbandictionary.com/v0/define?term=\(word)")
+        
+        let response : Observable<JSON> = request(address: url!)
+        
+        return response
+            .map{ result in
+                print(result)
+                var translates = [String]()
+                guard let list = result["list"].array else { return []}
+                for element in list {
+                    if let parsed = element["definition"].string {
+                        translates.append(parsed)
+                    }
+                }
+                return translates
+        }
+    }
+    
+    //MARK: - generic request
+    private func request<T:Any>(address: URL) -> Observable<T> {
+        return Observable.create { observer in
+            
+            let request = Alamofire.request(address,
+                                            method: .get,
+                                            parameters: [:],
+                                            encoding: URLEncoding.httpBody,
+                                            headers: [:])
+            
+            request.responseJSON { response in
+                guard response.error == nil, let data = response.data, let result = JSON(data) as? T else { return }
+                
+                observer.onNext(result)
+                observer.onCompleted()
+            }
+            return Disposables.create {
+                request.cancel()
+            }
+        }
+    }
+}
