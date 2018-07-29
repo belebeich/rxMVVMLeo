@@ -22,7 +22,7 @@ enum AccountStatus {
 struct LeoAPI : LeoAPIProtocol {
     
     //Types
-    enum Keys {
+    fileprivate enum Keys {
         static let token = "token"
         static let points = "meatballs"
         static let cookies = "cookies"
@@ -64,11 +64,6 @@ struct LeoAPI : LeoAPIProtocol {
         }
     }
     
-    var meatballs: Variable<Int> {
-        guard let points = UserDefaults.standard.object(forKey: Keys.points) as? Int else { return Variable(0) }
-        return Variable(points)
-     }
-    
     func login(email: String, password: String) -> Observable<AccountStatus> {
         
         let params = ["email": email,
@@ -103,6 +98,7 @@ struct LeoAPI : LeoAPIProtocol {
     func translate(of word: String) -> Observable<[String]> {
         
         let params = ["word":word]
+        
         let response : Observable<JSON> = request(address: LeoAPI.Address.translate, parameters: params)
         
         return response
@@ -120,6 +116,7 @@ struct LeoAPI : LeoAPIProtocol {
     }
     
     func add(a word: String, with translate: String) {
+        
         let params = ["word": word,
                       "tword": translate]
         
@@ -132,13 +129,13 @@ struct LeoAPI : LeoAPIProtocol {
         
         let response = Alamofire.request(LeoAPI.Address.addword.url, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: nil)
         response
-            .response { result in
-                guard let json = try? JSON(result.data!) else { return }
-                print(json)
+            .response { _ in
+
         }
     }
     
     func getMeatballs() -> Observable<String> {
+        
         guard let data = self.keychain.getData(Keys.cookies) else { return  Observable.of("")}
         guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return Observable.of("")}
         
@@ -153,16 +150,15 @@ struct LeoAPI : LeoAPIProtocol {
                     .map { result in
                         
                         if let words = result["user"]["meatballs"].int {
-                            print(words)
-                            print(result)
+                            
                             return "\(words)"
                         } else {
-                            return "NO"
+                            return ""
                         }
                     }
             
             case .unavailable:
-                return Observable.of("un")
+                return Observable.of("")
             }
     }
     
