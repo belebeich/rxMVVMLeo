@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import Alamofire
 import SwiftyJSON
+import KeychainSwift
 
 typealias AccessToken = String
 
@@ -20,23 +21,18 @@ enum AccountStatus {
 
 struct LeoAPI : LeoAPIProtocol {
     
-    //Constants
-    private let token = "token"
-    
-    static var shared = LeoAPI()
-    
-    var state: Variable<AccountStatus> {
-        if let storedToken = UserDefaults.standard.string(forKey: token) {
-            return Variable(AccountStatus.success(storedToken))
-        } else {
-            return Variable(AccountStatus.unavailable)
-        }
+    //Types
+    fileprivate enum Keys {
+        static let token = "token"
+        static let points = "meatballs"
+        static let cookies = "cookies"
     }
     
     fileprivate enum Address: String {
         case translate = "gettranslates"
         case login = "api/login"
         case logout = "logout"
+        case addword = "addword"
         
         private var baseURL: String { return "http://api.lingualeo.com/"}
         private var mainURL : String { return "http://lingualeo.com/" }
@@ -55,54 +51,54 @@ struct LeoAPI : LeoAPIProtocol {
         case requestFailed
     }
     
-//    func login(email: String, password: String) -> Observable<AccountStatus> {
-//        return Observable.create { observer in
-//            let parameters : Parameters = ["email":email, "password": password]
-//            let request = Alamofire.request(Address.login.url, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: [:]).responseJSON {
-//                response in
-//                switch response.result {
-//                case .success(let value):
-//
-//                    let json = JSON(value)
-//
-//                    if let autologin = json["user"]["autologin_key"].string {
-//                        UserDefaults.standard.set(autologin, forKey: self.token)
-//                        observer.onNext(.success(autologin))
-//                        observer.onCompleted()
-//                    }
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                    observer.onNext(.unavailable)
-//                }
-//            }
-//
-//            return Disposables.create {
-//                request.cancel()
-//            }
-//        }
-//    }
+    //Properties
+    static var shared = LeoAPI()
     
-    func logged(email: String, password: String) -> Observable<AccountStatus> {
+    private let keychain = KeychainSwift()
+    
+    var state: Variable<AccountStatus> {
+        if let storedToken = self.keychain.get(Keys.token) {
+            return Variable(AccountStatus.success(storedToken))
+        } else {
+            return Variable(AccountStatus.unavailable)
+        }
+    }
+    
+    func login(email: String, password: String) -> Observable<AccountStatus> {
         
         let params = ["email": email,
                       "password" : password]
+        
         let response : Observable<JSON> = request(address: LeoAPI.Address.login, parameters: params)
         
         return response
             .map { result in
+                
                 if let autologin = result["user"]["autologin_key"].string {
-                    UserDefaults.standard.setValue(autologin, forKeyPath: self.token)
+                    
+                    self.keychain.set(autologin, forKey: Keys.token)
+                    if let meatballs = result["user"]["meatballs"].int {
+                        UserDefaults.standard.setValue(meatballs, forKey: Keys.points)
+                    }
+                    
+                    guard let cookies = HTTPCookieStorage.shared.cookies else { return AccountStatus.unavailable }
+                
+                    let data = NSKeyedArchiver.archivedData(withRootObject: cookies)
+                    self.keychain.set(data, forKey: Keys.cookies)
+                    
                     return AccountStatus.success(autologin)
                 } else {
                     return AccountStatus.unavailable
                 }
             }
         
+        
     }
     
     func translate(of word: String) -> Observable<[String]> {
         
         let params = ["word":word]
+        
         let response : Observable<JSON> = request(address: LeoAPI.Address.translate, parameters: params)
         
         return response
@@ -119,50 +115,70 @@ struct LeoAPI : LeoAPIProtocol {
         
     }
     
-    func logout() {
+    func add(a word: String, with translate: String) {
         
-        let logout : Observable<AnyObject> = request(address: Address.logout, parameters: [:])
+        let params = ["word": word,
+                      "tword": translate]
         
-        logout
-            .subscribe({ _ in
-                self.state.value = .unavailable
-                UserDefaults.standard.removeObject(forKey: self.token)
-            })
-            .dispose()
+        guard let data = self.keychain.getData(Keys.cookies) else { return }
+        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return }
+        
+        for cookie in cookies {
+            Alamofire.HTTPCookieStorage.shared.setCookie(cookie)
+        }
+        
+        let response = Alamofire.request(LeoAPI.Address.addword.url, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: nil)
+        response
+            .response { _ in
+
+        }
     }
     
-//    func translate(of word: String) -> Observable<String> {
-//        return Observable.create { observer in
-//            let params: Parameters = ["word": word]
-//            let request = Alamofire.request(Address.translate.url,
-//                                            method: .post,
-//                                            parameters: params,
-//                                            encoding: URLEncoding.httpBody,
-//                                            headers: [:])
-//            request.responseJSON { response in
-//                switch response.result {
-//                case .success(let value):
-//                    let json = JSON(value)
-//
-//                    guard let translate = json["translate"].array?.first?["value"].string else { observer.onNext(""); observer.onCompleted(); return}
-//                    observer.onNext(translate)
-//                    observer.onCompleted()
-//
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                    observer.onNext("")
-//                }
-//            }
-//            return Disposables.create {
-//                request.cancel()
-//            }
-//        }
-//    }
+    func getMeatballs() -> Observable<String> {
+        
+        guard let data = self.keychain.getData(Keys.cookies) else { return  Observable.of("")}
+        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return Observable.of("")}
+        
+        for cookie in cookies {
+            Alamofire.HTTPCookieStorage.shared.setCookie(cookie)
+        }
+        
+        switch LeoAPI.shared.state.value {
+            case .success( _):
+                let response : Observable<JSON> = request(address: LeoAPI.Address.login)
+                return response
+                    .map { result in
+                        
+                        if let words = result["user"]["meatballs"].int {
+                            
+                            return "\(words)"
+                        } else {
+                            return ""
+                        }
+                    }
+            
+            case .unavailable:
+                return Observable.of("")
+            }
+    }
     
+    func logout() {
+        let requester = Alamofire.request(LeoAPI.Address.logout.url, method: .post, parameters: [:], encoding: URLEncoding.httpBody, headers: [:])
+        requester
+            .response {_ in
+                
+                self.state.value = .unavailable
+                self.keychain.delete(Keys.cookies)
+                self.keychain.delete(Keys.token)
+                self.keychain.clear()
+        }
+        
+    }
     
     //MARK: - generic request
     private func request<T:Any>(address: Address, parameters: [String:String] = [:]) -> Observable<T> {
         return Observable.create { observer in
+            
             let request = Alamofire.request(address.url,
                                             method: .post,
                                             parameters: parameters,
@@ -171,6 +187,7 @@ struct LeoAPI : LeoAPIProtocol {
             
             request.responseJSON { response in
                 guard response.error == nil, let data = response.data, let result = JSON(data) as? T else { return }
+                
                 observer.onNext(result)
                 observer.onCompleted()
             }

@@ -9,7 +9,6 @@
 import Cocoa
 import RxSwift
 import RxCocoa
-import RxGesture
 
 class LoginViewController: NSViewController {
     
@@ -40,8 +39,8 @@ class LoginViewController: NSViewController {
     func bindUI() {
         
         let viewModel = LoginViewModel.init(email: emailTextField.rx.text.orEmpty.asDriver(), password: passwordTextField.rx.text.orEmpty.asDriver())
-        emailTextField.stringValue = "appleseedjohnbon@yandex.ru"
-        passwordTextField.stringValue = "sbnCV8bmzTb0"
+//        emailTextField.stringValue = "appleseedjohnbon@yandex.ru"
+//        passwordTextField.stringValue = "sbnCV8bmzTb0"
         
         
         
@@ -81,6 +80,7 @@ class LoginViewController: NSViewController {
         
         logoutButton.rx.tap
             .subscribe(onNext: {
+                
                 viewModel.logout()
             })
             .disposed(by: bag)

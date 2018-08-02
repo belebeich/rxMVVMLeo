@@ -47,7 +47,17 @@ class ViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [unowned self] authStatus in
                 
-                self.tokenLabel.text = authStatus
+                
+                switch authStatus {
+                case .unavailable:
+                    
+                    break
+                case .success(let value):
+                    self.tokenLabel.text = value
+                }
+                
+                LeoAPI.shared.state.value = authStatus
+                
                 
                 
             })

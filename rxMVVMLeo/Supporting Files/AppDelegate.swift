@@ -15,8 +15,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         
-        //print(LeoAPI.shared.state.value)
-//        print(LeoAPI.shared.state)
         switch LeoAPI.shared.state.value {
         case .success( _):
             let storyBoard = NSStoryboard(name: NSStoryboard.Name(rawValue:"Main"), bundle: nil)
