@@ -46,14 +46,14 @@ struct TranslateViewModel {
         return LeoAPI.shared.getMeatballs()
     }
     
-    func translate(word: String) -> Observable<String> {
+    func translate(word: String) -> Observable<[String]> {
         let words = LeoAPI.shared.translate(of: word)
         //let words = UrbanAPI.shared.translate(of: word)
         
         let stroke = words
-            .flatMap { words -> Observable<String> in
-                let text = Observable.of(words.joined(separator: ", "))
-                return text
+            .flatMap { words -> Observable<[String]> in
+                
+                return Observable.of(words)
             }
         return stroke
     }

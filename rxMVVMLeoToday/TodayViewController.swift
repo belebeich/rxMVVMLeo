@@ -15,23 +15,26 @@ import NotificationCenter
 
 class TodayViewController: NSViewController, NCWidgetProviding {
 
-    @IBOutlet weak var translateScrollView: NSScrollView!
     
+    
+    @IBOutlet weak var translateTableView: NSTableView!
     @IBOutlet weak var availableWordsLabel: NSTextField!
     @IBOutlet weak var searchIndicator: NSProgressIndicator!
     @IBOutlet var wordTextView: NSTextField!
-    @IBOutlet var translateTextView: NSTextView!
+    
     @IBOutlet weak var addWordButton: NSButton!
     
     let bag = DisposeBag()
+    var translates = [String]()
     
     override var nibName: NSNib.Name? {
         return NSNib.Name("TodayViewController")
     }
     
     override func viewDidLoad() {
-        translateScrollView.becomeFirstResponder()
-        translateScrollView.documentView = translateTextView
+        translateTableView.delegate = self
+        translateTableView.dataSource = self
+        
         setUI()
         bindUI()
     }
@@ -71,18 +74,18 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         let translateResults = wordTextView.rx.text.orEmpty
             .throttle(0.3, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .flatMapLatest { query -> Observable<String> in
+            .flatMapLatest { query -> Observable<[String]> in
                 
                 if query.isEmpty {
                     self.addWordButton.isEnabled = false
                     
-                    return .just("")
+                    return .just([])
                 } else {
                     
                     self.addWordButton.isEnabled = true
                     self.searchIndicator.isHidden = false
                     self.searchIndicator.startAnimation(self)
-                    self.translateTextView.scrollToBeginningOfDocument(self)
+                    
                     return viewModel.translate(word: query)
                 }
             }
@@ -94,20 +97,41 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         
         
         translateResults
-            .bind(to: translateTextView.rx.text)
+            .subscribe(onNext: { words in
+                print(words)
+                
+                self.translates = words
+                self.translateTableView.reloadData()
+            })
             .disposed(by: bag)
+        
         
         addWordButton.rx.tap
             .subscribe(onNext: { [unowned self] in
-                viewModel.add(word: self.wordTextView.stringValue, translate: self.translateTextView.string)
+                
+                if !self.translates.isEmpty {
+                    viewModel.add(word: self.wordTextView.stringValue, translate: self.translates[self.translateTableView.selectedRow])
+                }
+                
+                
                 viewModel.meatballs()
                     .bind(to: self.availableWordsLabel.rx.text)
                     .disposed(by: self.bag)
-                
                 self.addWordButton.isEnabled = false
                 
             })
             .disposed(by: bag)
+//        addWordButton.rx.tap
+//            .subscribe(onNext: { [unowned self] in
+//                viewModel.add(word: self.wordTextView.stringValue, translate: self.translateTextView.string)
+//                viewModel.meatballs()
+//                    .bind(to: self.availableWordsLabel.rx.text)
+//                    .disposed(by: self.bag)
+//
+//                self.addWordButton.isEnabled = false
+//
+//            })
+//            .disposed(by: bag)
         
         viewModel.meatballs()
             .bind(to: self.availableWordsLabel.rx.text)
@@ -115,10 +139,70 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         
     }
     
+    func updatePreferredContentSize() {
+        
+    }
+    
     func setUI() {
-
+        //translateTableView.needsLayout = true
+        
+        translateTableView.sizeToFit()
+        let height = translateTableView.fittingSize.height
+        let width: CGFloat = 320
+        let size = NSSize(width: width, height: height)
+        
+        translateTableView.setFrameSize(size)
+        
+        //preferredContentSize = CGSize(width: width, height: height)
+        
+        translateTableView.layoutSubtreeIfNeeded()
     }
 
-    
+}
 
+
+extension TodayViewController: NSTableViewDataSource {
+    
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return self.translates.count
+    }
+    
+}
+
+extension TodayViewController: NSTableViewDelegate {
+    
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "translateTableViewCell"), owner: nil) as? NSTableCellView {
+            if !self.translates.isEmpty {
+                if !self.translates[row].isEmpty {
+                    cell.textField?.stringValue = self.translates[row]
+                    setUI()
+                    
+                }
+            }
+            
+            
+            
+            return cell
+        }
+        return nil
+    }
+}
+
+class GridClipTableView: NSTableView {
+    
+    override func drawGrid(inClipRect clipRect: NSRect) {
+        
+        let lastRowRect = self.rect(ofRow: (self.numberOfRows - 1 ))
+        let myClipRect = NSMakeRect(0, 0, lastRowRect.size.width, lastRowRect.size.height)
+        
+        let finalRect = NSIntersectionRect(clipRect, myClipRect)
+        
+        super.drawGrid(inClipRect: finalRect)
+    }
+    
 }

@@ -32,13 +32,13 @@ class TranslateViewController: NSViewController {
     func bindUI() {
         let viewModel = TranslateViewModel.init(word: wordTextField.rx.text.orEmpty.asDriver())
         self.addWordButton.isEnabled = false
-        let translateResults = wordTextField.rx.text.orEmpty
+        _ = wordTextField.rx.text.orEmpty
             .throttle(0.3, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .flatMapLatest { query -> Observable<String> in
+            .flatMapLatest { query -> Observable<[String]> in
                 if query.isEmpty {
                     self.addWordButton.isEnabled = false
-                    return .just("")
+                    return .just([])
                 } else {
                     self.addWordButton.isEnabled = true
                     self.searchIndicator.isHidden = false
@@ -53,9 +53,9 @@ class TranslateViewController: NSViewController {
             .observeOn(MainScheduler.instance)
         
         
-        translateResults
-            .bind(to: translateTextField.rx.text)
-            .disposed(by: bag)
+//        translateResults
+//            .bind(to: translateTextField.rx.text)
+//            .disposed(by: bag)
         
         addWordButton.rx.tap
             .subscribe({ _ in
