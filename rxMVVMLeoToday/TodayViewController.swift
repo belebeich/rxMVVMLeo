@@ -17,7 +17,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
 
     
     
-    @IBOutlet weak var translateTableView: NSTableView!
+    @IBOutlet internal var translateTableView: CustomNSTableView!
     @IBOutlet weak var availableWordsLabel: NSTextField!
     @IBOutlet weak var searchIndicator: NSProgressIndicator!
     @IBOutlet var wordTextView: NSTextField!
@@ -30,7 +30,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     override var nibName: NSNib.Name? {
         return NSNib.Name("TodayViewController")
     }
-    
+        
     override func viewDidLoad() {
         translateTableView.delegate = self
         translateTableView.dataSource = self
@@ -167,6 +167,8 @@ extension TodayViewController: NSTableViewDataSource {
         return self.translates.count
     }
     
+    
+    
 }
 
 extension TodayViewController: NSTableViewDelegate {
@@ -185,24 +187,11 @@ extension TodayViewController: NSTableViewDelegate {
                 }
             }
             
-            
-            
             return cell
         }
         return nil
     }
 }
 
-class GridClipTableView: NSTableView {
-    
-    override func drawGrid(inClipRect clipRect: NSRect) {
-        
-        let lastRowRect = self.rect(ofRow: (self.numberOfRows - 1 ))
-        let myClipRect = NSMakeRect(0, 0, lastRowRect.size.width, lastRowRect.size.height)
-        
-        let finalRect = NSIntersectionRect(clipRect, myClipRect)
-        
-        super.drawGrid(inClipRect: finalRect)
-    }
-    
-}
+
+

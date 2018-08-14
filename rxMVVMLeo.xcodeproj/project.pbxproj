@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C08296920B7351F00E0F61A /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C08296820B7350200E0F61A /* BindableType.swift */; };
 		2C1DAECF2057EF7B00B6CFCF /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */; };
+		2C1ED3E8212338EC009108DF /* CustomNSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1ED3E7212338EC009108DF /* CustomNSTableView.swift */; };
 		2C333C18204D639800E133CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C17204D639800E133CD /* AppDelegate.swift */; };
 		2C333C1A204D639800E133CD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C19204D639800E133CD /* LoginViewController.swift */; };
 		2C333C1C204D639800E133CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C333C1B204D639800E133CD /* Assets.xcassets */; };
@@ -31,7 +32,6 @@
 		2C9F5EBD210D9476007DAEF1 /* UrbanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */; };
 		2CACEED32050512E009A1EEF /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACEED22050512E009A1EEF /* TranslateViewController.swift */; };
 		2CC6FCB320BD2DFA00885892 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C64AAEB20B846A90032E2AA /* TodayViewController.swift */; };
-		2CC6FCB520BD2E2300885892 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C64AAEB20B846A90032E2AA /* TodayViewController.swift */; };
 		2CC6FCB620BD2E4600885892 /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */; };
 		2CFFB53B204DBFDE007A816C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFB53A204DBFDE007A816C /* AppDelegate.swift */; };
 		2CFFB53D204DBFDE007A816C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFB53C204DBFDE007A816C /* ViewController.swift */; };
@@ -78,6 +78,7 @@
 		2C08296020B731EC00E0F61A /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		2C08296820B7350200E0F61A /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BindableType.swift; path = rxMVVMLeo/Model/BindableType.swift; sourceTree = SOURCE_ROOT; };
 		2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
+		2C1ED3E7212338EC009108DF /* CustomNSTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSTableView.swift; sourceTree = "<group>"; };
 		2C333C14204D639800E133CD /* rxMVVMLeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rxMVVMLeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C333C17204D639800E133CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C333C19204D639800E133CD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				2C64AAEB20B846A90032E2AA /* TodayViewController.swift */,
+				2C1ED3E7212338EC009108DF /* CustomNSTableView.swift */,
 				2C64AAED20B846A90032E2AA /* TodayViewController.xib */,
 				2C64AAF020B846A90032E2AA /* Info.plist */,
 				2C64AAF120B846A90032E2AA /* InfoPlist.strings */,
@@ -581,7 +583,6 @@
 			files = (
 				2C333C1A204D639800E133CD /* LoginViewController.swift in Sources */,
 				2CACEED32050512E009A1EEF /* TranslateViewController.swift in Sources */,
-				2CC6FCB520BD2E2300885892 /* TodayViewController.swift in Sources */,
 				2C333C2E204D664500E133CD /* LeoAPI.swift in Sources */,
 				2C1DAECF2057EF7B00B6CFCF /* TranslateViewModel.swift in Sources */,
 				2C81C09720AC20F90071E96E /* NSTextView+Rx.swift in Sources */,
@@ -599,6 +600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CC6FCB320BD2DFA00885892 /* TodayViewController.swift in Sources */,
+				2C1ED3E8212338EC009108DF /* CustomNSTableView.swift in Sources */,
 				2C9E74F4210E1275007E429E /* UrbanAPI.swift in Sources */,
 				2C7BB01820BD31500083034F /* LeoAPI.swift in Sources */,
 				2CC6FCB620BD2E4600885892 /* TranslateViewModel.swift in Sources */,

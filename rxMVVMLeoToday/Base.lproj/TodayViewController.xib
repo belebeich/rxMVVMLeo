@@ -69,7 +69,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="360" height="259"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" id="fhm-Ii-j8m">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" id="fhm-Ii-j8m" customClass="CustomNSTableView" customModule="rxMVVMLeoToday" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="360" height="259"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
