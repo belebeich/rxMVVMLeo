@@ -36,7 +36,9 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         translateTableView.delegate = self
         translateTableView.dataSource = self
         
-        translateScrollView.translatesAutoresizingMaskIntoConstraints = false
+        let height = NSLayoutConstraint(item: translateScrollView, attribute: .height, relatedBy: .equal, toItem: translateTableView, attribute: .height, multiplier: 1, constant: 0)
+        
+        self.view.addConstraint(height)
         
         
         //updatePreferredContentSize()
@@ -162,12 +164,16 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     func setUI() {
         //translateTableView.needsLayout = true
         
-        translateTableView.sizeToFit()
-        let height = translateTableView.fittingSize.height
-        let width: CGFloat = 320
-        let size = NSSize(width: width, height: height)
+//        translateTableView.sizeToFit()
+//        let height = translateTableView.fittingSize.height
+//        let width: CGFloat = 320
+//        let size = NSSize(width: width, height: height)
+//        
+//        translateTableView.setFrameSize(size)
+//        
+//        print(translateTableView.frame.size)
         
-        translateTableView.setFrameSize(size)
+        //translateScrollView.frame.size = translateTableView.frame.size
         
         //preferredContentSize = CGSize(width: width, height: height)
         
