@@ -17,6 +17,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
 
     
     
+    @IBOutlet weak var translateScrollView: NSScrollView!
     @IBOutlet internal var translateTableView: CustomNSTableView!
     @IBOutlet weak var availableWordsLabel: NSTextField!
     @IBOutlet weak var searchIndicator: NSProgressIndicator!
@@ -30,11 +31,15 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     override var nibName: NSNib.Name? {
         return NSNib.Name("TodayViewController")
     }
-        
+    
     override func viewDidLoad() {
         translateTableView.delegate = self
         translateTableView.dataSource = self
         
+        translateScrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        //updatePreferredContentSize()
         setUI()
         bindUI()
     }
@@ -98,9 +103,10 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         
         translateResults
             .subscribe(onNext: { words in
-                print(words)
+                
                 
                 self.translates = words
+                self.setUI()
                 self.translateTableView.reloadData()
             })
             .disposed(by: bag)
@@ -140,7 +146,17 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     }
     
     func updatePreferredContentSize() {
+        translateTableView.needsLayout = true
+        translateTableView.layoutSubtreeIfNeeded()
         
+        
+        
+        let height = translateTableView.fittingSize.height
+        let width: CGFloat = 320
+        
+        preferredContentSize = CGSize(width: width, height: height)
+        
+        self.translateScrollView.frame.size = self.translateTableView.fittingSize
     }
     
     func setUI() {
@@ -155,7 +171,9 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         
         //preferredContentSize = CGSize(width: width, height: height)
         
-        translateTableView.layoutSubtreeIfNeeded()
+        //preferredContentSize = CGSize(width: width, height: height)
+        
+        //translateTableView.layoutSubtreeIfNeeded()
     }
 
 }
@@ -164,7 +182,12 @@ class TodayViewController: NSViewController, NCWidgetProviding {
 extension TodayViewController: NSTableViewDataSource {
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return self.translates.count
+        
+        if self.translates.count > 5 {
+            return 5
+        } else {
+            return self.translates.count
+        }
     }
     
     
@@ -174,7 +197,35 @@ extension TodayViewController: NSTableViewDataSource {
 extension TodayViewController: NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        return 30
+       
+        let text = self.translates[row]
+        let cell = NSTextField.init()
+        
+        
+        cell.lineBreakMode = .byWordWrapping
+        
+        cell.usesSingleLineMode = false
+        cell.cell?.wraps = true
+        cell.translatesAutoresizingMaskIntoConstraints = false
+        cell.font = NSFont(name: "System Regular", size: 24)
+        
+        cell.frame.size.width = tableView.bounds.size.width
+        cell.preferredMaxLayoutWidth = cell.frame.size.width
+        //
+        cell.needsLayout = true
+        
+        cell.attributedStringValue  = NSAttributedString(string: text)
+        cell.sizeToFit()
+        
+        cell.isEditable = false
+        
+        cell.updateConstraintsForSubtreeIfNeeded()
+        cell.layoutSubtreeIfNeeded()
+        cell.needsUpdateConstraints = true
+        
+        //print(cell.fittingSize.height)
+        
+        return cell.fittingSize.height + 10
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
