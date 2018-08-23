@@ -41,7 +41,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         self.view.addConstraint(height)
         
         
-        //updatePreferredContentSize()
+        updatePreferredContentSize()
         setUI()
         bindUI()
     }
@@ -108,6 +108,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
                 
                 
                 self.translates = words
+                
                 self.setUI()
                 self.translateTableView.reloadData()
             })
@@ -162,26 +163,21 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     }
     
     func setUI() {
-        //translateTableView.needsLayout = true
+        translateScrollView.needsLayout = true
+        translateTableView.sizeToFit()
         
-//        translateTableView.sizeToFit()
-//        let height = translateTableView.fittingSize.height
-//        let width: CGFloat = 320
-//        let size = NSSize(width: width, height: height)
-//        
-//        translateTableView.setFrameSize(size)
-//        
-//        print(translateTableView.frame.size)
         
-        //translateScrollView.frame.size = translateTableView.frame.size
+        let height = translateTableView.fittingSize.height
+        translateScrollView.frame.size.height = height
+        translateTableView.frame.size.height = height
         
-        //preferredContentSize = CGSize(width: width, height: height)
+        translateTableView.setFrameSize(CGSize(width: translateScrollView.frame.size.width, height: height))
         
-        //preferredContentSize = CGSize(width: width, height: height)
+        translateScrollView.autoresizesSubviews = true
+        translateTableView.layoutSubtreeIfNeeded()
+        translateScrollView.layoutSubtreeIfNeeded()
         
-        //translateTableView.layoutSubtreeIfNeeded()
     }
-
 }
 
 
@@ -195,9 +191,6 @@ extension TodayViewController: NSTableViewDataSource {
             return self.translates.count
         }
     }
-    
-    
-    
 }
 
 extension TodayViewController: NSTableViewDelegate {
@@ -228,8 +221,6 @@ extension TodayViewController: NSTableViewDelegate {
         cell.updateConstraintsForSubtreeIfNeeded()
         cell.layoutSubtreeIfNeeded()
         cell.needsUpdateConstraints = true
-        
-        //print(cell.fittingSize.height)
         
         return cell.fittingSize.height + 10
     }
