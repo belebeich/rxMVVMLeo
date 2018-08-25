@@ -13,6 +13,7 @@
                 <outlet property="availableWordsLabel" destination="eo3-M0-OlR" id="MV9-HF-DEP"/>
                 <outlet property="searchIndicator" destination="sbL-8R-2Oe" id="jY0-fy-pqY"/>
                 <outlet property="translateScrollView" destination="kH8-OJ-C05" id="ahs-wT-Rbp"/>
+                <outlet property="translateSegmentControl" destination="Kim-C4-57U" id="TOx-zJ-21C"/>
                 <outlet property="translateTableView" destination="fhm-Ii-j8m" id="P3J-Wa-rUc"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
                 <outlet property="wordTextView" destination="J9F-gN-Uw5" id="Qwt-Y8-Slx"/>
@@ -102,7 +103,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="rfx-dk-wR8">
-                                                        <rect key="frame" x="-2" y="-1" width="359" height="15"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="359" height="14"/>
                                                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" alignment="justified" title="Table View Cell" id="jjB-sQ-kS5">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -139,24 +140,55 @@
                     </scroller>
                 </scrollView>
                 <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J9F-gN-Uw5">
-                    <rect key="frame" x="18" y="378" width="360" height="132"/>
+                    <rect key="frame" x="18" y="378" width="360" height="96"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="132" id="Wrx-gW-aW1"/>
+                        <constraint firstAttribute="height" constant="96" id="oH6-jV-Gvm"/>
                         <constraint firstAttribute="width" constant="356" id="qAe-9p-7mc"/>
                     </constraints>
-                    <textFieldCell key="cell" lineBreakMode="charWrapping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" id="Go4-2s-gBA">
+                    <textFieldCell key="cell" lineBreakMode="charWrapping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" id="Go4-2s-gBA">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" red="0.14888422109999999" green="0.14854765619999999" blue="0.14958278799999999" alpha="0.61305961880000004" colorSpace="calibratedRGB"/>
                     </textFieldCell>
                 </textField>
+                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pzb-bU-Oyi">
+                    <rect key="frame" x="227" y="488" width="153" height="22"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CvN-5u-mwe">
+                            <rect key="frame" x="-2" y="2.5" width="39" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Input:" id="EuP-2z-tc2">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kim-C4-57U">
+                            <rect key="frame" x="55" y="-1" width="98" height="23"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="selectOne" id="CL2-Ss-uZ8">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment label="U" width="46"/>
+                                    <segment label="L" width="45" selected="YES" tag="1"/>
+                                </segments>
+                            </segmentedCell>
+                        </segmentedControl>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
             </subviews>
             <constraints>
                 <constraint firstItem="dy0-M4-WKz" firstAttribute="top" secondItem="kH8-OJ-C05" secondAttribute="bottom" constant="20" id="8bH-pu-5cs"/>
                 <constraint firstItem="as0-Q6-Rhc" firstAttribute="leading" secondItem="sbL-8R-2Oe" secondAttribute="trailing" constant="8" id="Ddy-lS-PsM"/>
                 <constraint firstItem="J9F-gN-Uw5" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="KT6-Jm-OCE"/>
+                <constraint firstItem="Pzb-bU-Oyi" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="M89-4y-8RR"/>
                 <constraint firstAttribute="width" constant="405" id="Xif-mC-1AU"/>
-                <constraint firstItem="J9F-gN-Uw5" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="YX1-lC-0XI"/>
                 <constraint firstAttribute="bottom" secondItem="kH8-OJ-C05" secondAttribute="bottom" constant="73" id="bTN-gH-vYm"/>
                 <constraint firstAttribute="trailing" secondItem="kH8-OJ-C05" secondAttribute="trailing" constant="27" id="eb8-OA-1Wj"/>
                 <constraint firstItem="sbL-8R-2Oe" firstAttribute="top" secondItem="as0-Q6-Rhc" secondAttribute="bottom" id="fhi-CJ-eIp"/>
@@ -164,6 +196,8 @@
                 <constraint firstItem="dy0-M4-WKz" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="kTy-eB-Ye9"/>
                 <constraint firstItem="as0-Q6-Rhc" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="24" id="lk3-nK-EWm"/>
                 <constraint firstItem="kH8-OJ-C05" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="18" id="nvT-DR-bi7"/>
+                <constraint firstAttribute="trailing" secondItem="Pzb-bU-Oyi" secondAttribute="trailing" constant="25" id="o4U-FQ-gfT"/>
+                <constraint firstItem="J9F-gN-Uw5" firstAttribute="top" secondItem="Pzb-bU-Oyi" secondAttribute="bottom" constant="14" id="oMW-mr-dSr"/>
                 <constraint firstAttribute="trailing" secondItem="as0-Q6-Rhc" secondAttribute="trailing" constant="25" id="on7-pR-2LU"/>
                 <constraint firstItem="kH8-OJ-C05" firstAttribute="top" secondItem="as0-Q6-Rhc" secondAttribute="bottom" constant="26" id="srO-aW-VOq"/>
             </constraints>

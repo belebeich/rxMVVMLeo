@@ -38,7 +38,7 @@ struct UrbanAPI: UrbanAPIProtocol {
         
         return response
             .map{ result in
-                print(result)
+                
                 var translates = [String]()
                 guard let list = result["list"].array else { return []}
                 for element in list {

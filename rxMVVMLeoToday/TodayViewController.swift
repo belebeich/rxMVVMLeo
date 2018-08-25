@@ -17,6 +17,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
 
     
     
+    @IBOutlet weak var translateSegmentControl: NSSegmentedControl!
     @IBOutlet weak var translateScrollView: NSScrollView!
     @IBOutlet internal var translateTableView: CustomNSTableView!
     @IBOutlet weak var availableWordsLabel: NSTextField!
@@ -51,6 +52,13 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     func bindUI() {
         let viewModel = TranslateViewModel.init(word: wordTextView.rx.text.orEmpty.asDriver())
         
+//        self.translateSegmentControl.rx.value
+//            .subscribe(onNext: {
+//                //print($0)
+//            })
+//            .disposed(by: bag)
+        
+        
         switch LeoAPI.shared.state.value {
         case .unavailable:
 
@@ -77,11 +85,10 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         
         
         
-        
         let translateResults = wordTextView.rx.text.orEmpty
             .throttle(0.3, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .flatMapLatest { query -> Observable<[String]> in
+            .flatMapLatest { [unowned self] query -> Observable<[String]> in
                 
                 if query.isEmpty {
                     self.addWordButton.isEnabled = false
@@ -93,7 +100,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
                     self.searchIndicator.isHidden = false
                     self.searchIndicator.startAnimation(self)
                     
-                    return viewModel.translate(word: query)
+                    return viewModel.translate(word: query, translateAPI: self.translateSegmentControl.rx.value.asDriver())
                 }
             }
             .do(onNext: { _ in
@@ -130,17 +137,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
                 
             })
             .disposed(by: bag)
-//        addWordButton.rx.tap
-//            .subscribe(onNext: { [unowned self] in
-//                viewModel.add(word: self.wordTextView.stringValue, translate: self.translateTextView.string)
-//                viewModel.meatballs()
-//                    .bind(to: self.availableWordsLabel.rx.text)
-//                    .disposed(by: self.bag)
-//
-//                self.addWordButton.isEnabled = false
-//
-//            })
-//            .disposed(by: bag)
+
         
         viewModel.meatballs()
             .bind(to: self.availableWordsLabel.rx.text)
@@ -222,7 +219,7 @@ extension TodayViewController: NSTableViewDelegate {
         cell.layoutSubtreeIfNeeded()
         cell.needsUpdateConstraints = true
         
-        return cell.fittingSize.height + 10
+        return cell.fittingSize.height
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
