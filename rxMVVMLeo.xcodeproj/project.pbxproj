@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14C86F941D912DD0CD29F39D /* libPods-rxMVVMLeoiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B52D8C83708DD285AB2563 /* libPods-rxMVVMLeoiOS.a */; };
 		2C1DAECF2057EF7B00B6CFCF /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */; };
 		2C1ED3E8212338EC009108DF /* CustomNSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1ED3E7212338EC009108DF /* CustomNSTableView.swift */; };
 		2C328406212EF564002B444D /* NSSegmentedConrol+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C328405212EF564002B444D /* NSSegmentedConrol+Rx.swift */; };
@@ -41,6 +42,8 @@
 		2CFFB545204DBFDE007A816C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFFB543204DBFDE007A816C /* LaunchScreen.storyboard */; };
 		2CFFB54A204DC18A007A816C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2B204D662500E133CD /* LoginViewModel.swift */; };
 		2CFFB54B204DC18C007A816C /* LeoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2D204D664500E133CD /* LeoAPI.swift */; };
+		42716A6BF6B07BCB60698BCB /* libPods-rxMVVMLeoToday.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 421C68A82745AC44A44460D2 /* libPods-rxMVVMLeoToday.a */; };
+		B6EACAEA0D1BAE3F74574581 /* libPods-rxMVVMLeo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D502289DD58B5DE8D608001 /* libPods-rxMVVMLeo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,10 +108,13 @@
 		2CFFB541204DBFDE007A816C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CFFB544204DBFDE007A816C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CFFB546204DBFDE007A816C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		421C68A82745AC44A44460D2 /* libPods-rxMVVMLeoToday.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rxMVVMLeoToday.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46C041E4D68A4B54A716B86B /* Pods-rxMVVMLeoiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxMVVMLeoiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-rxMVVMLeoiOS/Pods-rxMVVMLeoiOS.release.xcconfig"; sourceTree = "<group>"; };
 		9B586A8A232C7D65D18D6E8F /* Pods-rxMVVMLeo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxMVVMLeo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rxMVVMLeo/Pods-rxMVVMLeo.debug.xcconfig"; sourceTree = "<group>"; };
+		9D502289DD58B5DE8D608001 /* libPods-rxMVVMLeo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rxMVVMLeo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4070F47096ADEF00DA6CC7B /* Pods-rxMVVMLeoiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxMVVMLeoiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rxMVVMLeoiOS/Pods-rxMVVMLeoiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		AFB97AB96A76B04FB245C47A /* Pods-rxMVVMLeoToday.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxMVVMLeoToday.release.xcconfig"; path = "Pods/Target Support Files/Pods-rxMVVMLeoToday/Pods-rxMVVMLeoToday.release.xcconfig"; sourceTree = "<group>"; };
+		E7B52D8C83708DD285AB2563 /* libPods-rxMVVMLeoiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rxMVVMLeoiOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CCA9DF330856B06F0BE9A9 /* Pods-rxMVVMLeo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxMVVMLeo.release.xcconfig"; path = "Pods/Target Support Files/Pods-rxMVVMLeo/Pods-rxMVVMLeo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6EACAEA0D1BAE3F74574581 /* libPods-rxMVVMLeo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C64AAE920B846A90032E2AA /* NotificationCenter.framework in Frameworks */,
+				42716A6BF6B07BCB60698BCB /* libPods-rxMVVMLeoToday.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14C86F941D912DD0CD29F39D /* libPods-rxMVVMLeoiOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +282,9 @@
 			isa = PBXGroup;
 			children = (
 				2C64AAE820B846A90032E2AA /* NotificationCenter.framework */,
+				9D502289DD58B5DE8D608001 /* libPods-rxMVVMLeo.a */,
+				421C68A82745AC44A44460D2 /* libPods-rxMVVMLeoToday.a */,
+				E7B52D8C83708DD285AB2563 /* libPods-rxMVVMLeoiOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -301,7 +313,6 @@
 				2C333C10204D639800E133CD /* Sources */,
 				2C333C11204D639800E133CD /* Frameworks */,
 				2C333C12204D639800E133CD /* Resources */,
-				27B96E9D7A3D495276FFBBF6 /* [CP] Embed Pods Frameworks */,
 				2C64AAFB20B846A90032E2AA /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -340,7 +351,6 @@
 				2CFFB534204DBFDE007A816C /* Sources */,
 				2CFFB535204DBFDE007A816C /* Frameworks */,
 				2CFFB536204DBFDE007A816C /* Resources */,
-				790935C3B40139FFADA7D658 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -461,37 +471,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		27B96E9D7A3D495276FFBBF6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-rxMVVMLeo/Pods-rxMVVMLeo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire-macOS10.12/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainSwift-macOS10.12/KeychainSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa-macOS10.12/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift-macOS10.12/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-macOS10.12/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/Alamofire-macOS10.11/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainSwift-macOS10.11/KeychainSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa-macOS10.11/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift-macOS10.11/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-macOS10.11/SwiftyJSON.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-rxMVVMLeo/Pods-rxMVVMLeo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6C0489C45B9697CB4F9E1F59 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -508,32 +487,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		790935C3B40139FFADA7D658 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-rxMVVMLeoiOS/Pods-rxMVVMLeoiOS-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire-iOS11.0/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainSwift-iOS11.0/KeychainSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa-iOS11.0/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift-iOS11.0/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-iOS11.0/SwiftyJSON.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-rxMVVMLeoiOS/Pods-rxMVVMLeoiOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		80ACF7EBE102280F53734ADF /* [CP] Check Pods Manifest.lock */ = {

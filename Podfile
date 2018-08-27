@@ -2,23 +2,27 @@
 # platform :ios, '9.0'
 
 target 'rxMVVMLeo' do
-  pod 'RxSwift',    '~> 4.0'
-  pod 'RxCocoa',    '~> 4.0'
-  pod 'SwiftyJSON'
-  pod 'Alamofire'
-  pod 'KeychainSwift'
+    pod 'RxSwift',    '~> 4.0'
+    pod 'RxCocoa',    '~> 4.0'
+    pod 'SwiftyJSON'
+    pod 'Alamofire'
+    pod 'KeychainSwift'
 end
 
 target 'rxMVVMLeoiOS' do
-  
+    pod 'RxSwift',    '~> 4.0'
+    pod 'RxCocoa',    '~> 4.0'
+    pod 'SwiftyJSON'
+    pod 'Alamofire'
+    pod 'KeychainSwift'
 end
 
 target 'rxMVVMLeoToday' do
-  pod 'RxSwift',    '~> 4.0'
-  pod 'RxCocoa',    '~> 4.0'
-  pod 'SwiftyJSON'
-  pod 'Alamofire'
-  pod 'KeychainSwift'
+    pod 'RxSwift',    '~> 4.0'
+    pod 'RxCocoa',    '~> 4.0'
+    pod 'SwiftyJSON'
+    pod 'Alamofire'
+    pod 'KeychainSwift'
 end
 
 post_install do |installer|
