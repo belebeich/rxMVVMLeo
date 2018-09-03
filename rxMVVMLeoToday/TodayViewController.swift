@@ -37,6 +37,8 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         translateTableView.delegate = self
         translateTableView.dataSource = self
         
+        
+        
         let height = NSLayoutConstraint(item: translateScrollView, attribute: .height, relatedBy: .equal, toItem: translateTableView, attribute: .height, multiplier: 1, constant: 0)
         
         self.view.addConstraint(height)
@@ -52,37 +54,57 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     func bindUI() {
         let viewModel = TranslateViewModel.init(word: wordTextView.rx.text.orEmpty.asDriver())
         
-//        self.translateSegmentControl.rx.value
-//            .subscribe(onNext: {
-//                //print($0)
-//            })
-//            .disposed(by: bag)
-        
-        
         switch LeoAPI.shared.state.value {
         case .unavailable:
 
             self.addWordButton.isEnabled = false
             self.wordTextView.isEnabled = false
+            self.addWordButton.isHidden = true
 
-            let text = Observable.of("Please login through main app")
-            text
+            let _ = Observable.of("Please login through main app")
+            
                 .bind(to: self.wordTextView.rx.text)
                 .disposed(by: bag)
-
-
-            self.addWordButton.isHidden = true
 
         case .success(_):
 
             self.wordTextView.isEnabled = true
-            let text = Observable.of("")
-            text
+            
+            let _ = Observable.of("")
                 .bind(to: self.wordTextView.rx.text)
                 .disposed(by: bag)
         }
         
         
+        let test = Observable.combineLatest(wordTextView.rx.text.orEmpty, translateSegmentControl.rx.selectedSegmentIndex)
+            
+       
+            .throttle(0.3, scheduler: MainScheduler.instance)
+            
+            .flatMapLatest { [unowned self] query, index -> Observable<[String]> in
+                self.enableSegments()
+                print("index : \(index) | query : \(query) | height: \(self.translateTableView.frame.height.description)")
+                if query.isEmpty {
+                    self.addWordButton.isEnabled = false
+                    self.setUI()
+                    return .just([])
+                } else {
+                    
+                    self.addWordButton.isEnabled = true
+                    self.searchIndicator.isHidden = false
+                    self.searchIndicator.startAnimation(self)
+                    let enabled = self.translateSegmentControl.isSelected(forSegment: index)
+                    self.translateSegmentControl.setEnabled(!enabled, forSegment: index)
+                    
+                    return viewModel.translate(word: query, translateAPI: index)
+                }
+            }
+            .do(onNext: { [unowned self] _ in
+                
+                self.searchIndicator.stopAnimation(self)
+                self.searchIndicator.isHidden = true
+            })
+            .observeOn(MainScheduler.instance)
         
         
         let translateResults = wordTextView.rx.text.orEmpty
@@ -92,7 +114,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
                 
                 if query.isEmpty {
                     self.addWordButton.isEnabled = false
-                    
+                   
                     return .just([])
                 } else {
                     
@@ -100,18 +122,18 @@ class TodayViewController: NSViewController, NCWidgetProviding {
                     self.searchIndicator.isHidden = false
                     self.searchIndicator.startAnimation(self)
                     
-                    return viewModel.translate(word: query, translateAPI: self.translateSegmentControl.rx.value.asDriver())
+                    return viewModel.translate(word: query, translateAPI: 0)
                 }
             }
-            .do(onNext: { _ in
+            .do(onNext: { [unowned self] _ in
                 self.searchIndicator.stopAnimation(self)
                 self.searchIndicator.isHidden = true
             })
             .observeOn(MainScheduler.instance)
         
         
-        translateResults
-            .subscribe(onNext: { words in
+        test
+            .subscribe(onNext: { [unowned self] words in
                 
                 
                 self.translates = words
@@ -143,6 +165,16 @@ class TodayViewController: NSViewController, NCWidgetProviding {
             .bind(to: self.availableWordsLabel.rx.text)
             .disposed(by: self.bag)
         
+        
+        
+    }
+    
+    func enableSegments() {
+        let count = self.translateSegmentControl.segmentCount - 1
+        
+        for index in 0...count {
+            self.translateSegmentControl.setEnabled(true, forSegment: index)
+        }
     }
     
     func updatePreferredContentSize() {

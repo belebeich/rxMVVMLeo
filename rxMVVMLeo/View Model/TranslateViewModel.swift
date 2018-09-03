@@ -51,21 +51,25 @@ struct TranslateViewModel {
         return LeoAPI.shared.getMeatballs()
     }
     
-    func translate(word: String, translateAPI: Driver<Int>) -> Observable<[String]> {
+    func translate(word: String, translateAPI: Int) -> Observable<[String]> {
         
         var words: Observable<[String]> = Observable.of([])
         
-        translateAPI.asObservable()
-            .subscribe(onNext: { api in
-                if api == 0 {
-                    words = UrbanAPI.shared.translate(of: word)
-                } else {
-                    words = LeoAPI.shared.translate(of: word)
-                }
-            })
-            .disposed(by: bag)
+//        translateAPI.asObservable()
+//            .subscribe(onNext: { api in
+//                if api == 0 {
+//                    words = UrbanAPI.shared.translate(of: word)
+//                } else {
+//                    words = LeoAPI.shared.translate(of: word)
+//                }
+//            })
+//            .disposed(by: bag)
         
-        
+        if translateAPI == 0 {
+            words = UrbanAPI.shared.translate(of: word)
+        } else {
+            words = LeoAPI.shared.translate(of: word)
+        }
         
         
         

@@ -43,7 +43,7 @@ class TranslateViewController: NSViewController {
                     self.addWordButton.isEnabled = true
                     self.searchIndicator.isHidden = false
                     self.searchIndicator.startAnimation(self)
-                    return viewModel.translate(word: query, translateAPI: Driver.of(0))
+                    return viewModel.translate(word: query, translateAPI: 0)
                 }
             }
             .do(onNext: { _ in
