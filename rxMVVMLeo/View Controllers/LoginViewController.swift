@@ -71,7 +71,7 @@ class LoginViewController: NSViewController {
                     self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "segue"), sender: nil)
                 }
                 
-                LeoAPI.shared.state.value = authStatus
+                LeoAPI.shared.state.accept(.unavailable)
                 
                 
                 

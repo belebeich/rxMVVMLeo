@@ -27,7 +27,8 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     @IBOutlet weak var addWordButton: NSButton!
     
     let bag = DisposeBag()
-    var translates = [String]()
+    private var translates = [String]()
+    private var previousHeight = CGFloat()
     
     override var nibName: NSNib.Name? {
         return NSNib.Name("TodayViewController")
@@ -36,15 +37,28 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     override func viewDidLoad() {
         translateTableView.delegate = self
         translateTableView.dataSource = self
+        translateSegmentControl.selectedSegment = 0
         
         
+//        let height = NSLayoutConstraint(item: translateScrollView, attribute: .height, relatedBy: .equal, toItem: translateTableView, attribute: .height, multiplier: 1, constant: 0)
         
-        let height = NSLayoutConstraint(item: translateScrollView, attribute: .height, relatedBy: .equal, toItem: translateTableView, attribute: .height, multiplier: 1, constant: 0)
+        let top = NSLayoutConstraint(item: translateScrollView, attribute: .top, relatedBy: .equal, toItem: translateTableView, attribute: .top, multiplier: 1, constant: 0)
         
-        self.view.addConstraint(height)
+        let bottom = NSLayoutConstraint(item: translateScrollView, attribute: .bottom, relatedBy: .equal, toItem: translateTableView, attribute: .bottom, multiplier: 1, constant: 0)
+        
+        let left = NSLayoutConstraint(item: translateScrollView, attribute: .trailing, relatedBy: .equal, toItem: translateTableView, attribute: .trailing, multiplier: 1, constant: 0)
+        
+        let right = NSLayoutConstraint(item: translateScrollView, attribute: .leading, relatedBy: .equal, toItem: translateTableView, attribute: .leading, multiplier: 1, constant: 0)
+        
+        top.identifier = "id21"
+        bottom.identifier = "id22"
+        left.identifier = "id23"
+        right.identifier = "id24" 
+        
+        self.view.addConstraints([top, bottom, left, right])
         
         
-        updatePreferredContentSize()
+        //updatePreferredContentSize()
         setUI()
         bindUI()
     }
@@ -76,17 +90,13 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         }
         
         
-        let test = Observable.combineLatest(wordTextView.rx.text.orEmpty, translateSegmentControl.rx.selectedSegmentIndex)
-            
-       
+        let translateResults = Observable.combineLatest(wordTextView.rx.text.orEmpty, translateSegmentControl.rx.selectedSegmentIndex)
             .throttle(0.3, scheduler: MainScheduler.instance)
-            
             .flatMapLatest { [unowned self] query, index -> Observable<[String]> in
                 self.enableSegments()
-                print("index : \(index) | query : \(query) | height: \(self.translateTableView.frame.height.description)")
                 if query.isEmpty {
                     self.addWordButton.isEnabled = false
-                    self.setUI()
+                    
                     return .just([])
                 } else {
                     
@@ -105,44 +115,40 @@ class TodayViewController: NSViewController, NCWidgetProviding {
                 self.searchIndicator.isHidden = true
             })
             .observeOn(MainScheduler.instance)
-        
-        
-        let translateResults = wordTextView.rx.text.orEmpty
-            .throttle(0.3, scheduler: MainScheduler.instance)
-            .distinctUntilChanged()
-            .flatMapLatest { [unowned self] query -> Observable<[String]> in
-                
-                if query.isEmpty {
-                    self.addWordButton.isEnabled = false
-                   
-                    return .just([])
-                } else {
-                    
-                    self.addWordButton.isEnabled = true
-                    self.searchIndicator.isHidden = false
-                    self.searchIndicator.startAnimation(self)
-                    
-                    return viewModel.translate(word: query, translateAPI: 0)
-                }
-            }
-            .do(onNext: { [unowned self] _ in
-                self.searchIndicator.stopAnimation(self)
-                self.searchIndicator.isHidden = true
-            })
-            .observeOn(MainScheduler.instance)
-        
-        
-        test
+
+        translateResults
             .subscribe(onNext: { [unowned self] words in
                 
-                
                 self.translates = words
-                
-                self.setUI()
                 self.translateTableView.reloadData()
+                var g = ""
+                print("\(self.previousHeight) | \(self.translateTableView.frame.size.height)")
+                if self.previousHeight >= self.translateTableView.frame.size.height {
+                    self.setUI()
+                    g = "P>"
+                } else {
+                    
+                    
+                    
+                    //self.translateTableView.reloadData()
+//                    self.translateTableView.sizeToFit()
+//                    self.translateTableView.needsLayout = true
+//                    self.translateTableView.needsDisplay = true
+//                    self.translateScrollView.needsLayout = true
+//                    self.translateScrollView.needsDisplay = true
+//                    self.translateScrollView.autoresizesSubviews = true
+//                    
+//                    self.translateTableView.endUpdates()
+//                    
+                    g = "P<"
+                
+                }
+               
+                
+                print("\(g) | word:\(self.wordTextView.stringValue) | heigth: \(self.translateTableView.frame.size.height) | \(self.previousHeight) ")
+                 self.previousHeight = self.translateTableView.frame.size.height
             })
             .disposed(by: bag)
-        
         
         addWordButton.rx.tap
             .subscribe(onNext: { [unowned self] in
@@ -164,12 +170,10 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         viewModel.meatballs()
             .bind(to: self.availableWordsLabel.rx.text)
             .disposed(by: self.bag)
-        
-        
-        
+
     }
     
-    func enableSegments() {
+    private func enableSegments() {
         let count = self.translateSegmentControl.segmentCount - 1
         
         for index in 0...count {
@@ -177,7 +181,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         }
     }
     
-    func updatePreferredContentSize() {
+    private func updatePreferredContentSize() {
         translateTableView.needsLayout = true
         translateTableView.layoutSubtreeIfNeeded()
         
@@ -191,22 +195,25 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         self.translateScrollView.frame.size = self.translateTableView.fittingSize
     }
     
-    func setUI() {
-        translateScrollView.needsLayout = true
+    private func setUI() {
+        //translateTableView.needsLayout = true
         translateTableView.sizeToFit()
         
-        
         let height = translateTableView.fittingSize.height
-        translateScrollView.frame.size.height = height
-        translateTableView.frame.size.height = height
         
-        translateTableView.setFrameSize(CGSize(width: translateScrollView.frame.size.width, height: height))
+        
+        //translateScrollView.frame.size.height = height
+        
+        
+        translateScrollView.setFrameSize(CGSize(width: translateScrollView.frame.size.width, height: height))
         
         translateScrollView.autoresizesSubviews = true
-        translateTableView.layoutSubtreeIfNeeded()
-        translateScrollView.layoutSubtreeIfNeeded()
-        
+        ///translateTableView.setNeedsDisplay()
+        //translateTableView.layoutSubtreeIfNeeded()
+        //translateScrollView.layoutSubtreeIfNeeded()
     }
+    
+    
 }
 
 
@@ -259,8 +266,6 @@ extension TodayViewController: NSTableViewDelegate {
             if !self.translates.isEmpty {
                 if !self.translates[row].isEmpty {
                     cell.textField?.stringValue = self.translates[row]
-                    setUI()
-                    
                 }
             }
             
@@ -270,5 +275,13 @@ extension TodayViewController: NSTableViewDelegate {
     }
 }
 
+
+//extension NSLayoutConstraint {
+//    
+//    override open var description: String {
+//        let id = identifier ?? ""
+//        return "id: \(id), constant: \(constant)" //you may print whatever you want here
+//    }
+//}
 
 

@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 import Alamofire
 import SwiftyJSON
 import KeychainSwift
@@ -56,11 +57,11 @@ struct LeoAPI : LeoAPIProtocol {
     
     private let keychain = KeychainSwift()
     
-    var state: Variable<AccountStatus> {
+    var state: BehaviorRelay<AccountStatus> {
         if let storedToken = self.keychain.get(Keys.token) {
-            return Variable(AccountStatus.success(storedToken))
+            return BehaviorRelay(value: AccountStatus.success(storedToken))
         } else {
-            return Variable(AccountStatus.unavailable)
+            return BehaviorRelay(value: AccountStatus.unavailable)
         }
     }
     
@@ -144,7 +145,7 @@ struct LeoAPI : LeoAPIProtocol {
         }
         
         switch LeoAPI.shared.state.value {
-            case .success( _):
+            case .success(_):
                 let response : Observable<JSON> = request(address: LeoAPI.Address.login)
                 return response
                     .map { result in
@@ -159,7 +160,8 @@ struct LeoAPI : LeoAPIProtocol {
             
             case .unavailable:
                 return Observable.of("")
-            }
+        }
+        
     }
     
     func logout() {
@@ -167,7 +169,7 @@ struct LeoAPI : LeoAPIProtocol {
         requester
             .response {_ in
                 
-                self.state.value = .unavailable
+                self.state.accept(.unavailable)
                 self.keychain.delete(Keys.cookies)
                 self.keychain.delete(Keys.token)
                 self.keychain.clear()
