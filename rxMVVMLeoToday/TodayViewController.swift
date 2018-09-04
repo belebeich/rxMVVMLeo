@@ -15,8 +15,6 @@ import NotificationCenter
 
 class TodayViewController: NSViewController, NCWidgetProviding {
 
-    
-    
     @IBOutlet weak var translateSegmentControl: NSSegmentedControl!
     @IBOutlet weak var translateScrollView: NSScrollView!
     @IBOutlet internal var translateTableView: CustomNSTableView!
@@ -38,34 +36,15 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         translateTableView.delegate = self
         translateTableView.dataSource = self
         translateSegmentControl.selectedSegment = 0
+
         
-        
-//        let height = NSLayoutConstraint(item: translateScrollView, attribute: .height, relatedBy: .equal, toItem: translateTableView, attribute: .height, multiplier: 1, constant: 0)
-        
-        let top = NSLayoutConstraint(item: translateScrollView, attribute: .top, relatedBy: .equal, toItem: translateTableView, attribute: .top, multiplier: 1, constant: 0)
-        
-        let bottom = NSLayoutConstraint(item: translateScrollView, attribute: .bottom, relatedBy: .equal, toItem: translateTableView, attribute: .bottom, multiplier: 1, constant: 0)
-        
-        let left = NSLayoutConstraint(item: translateScrollView, attribute: .trailing, relatedBy: .equal, toItem: translateTableView, attribute: .trailing, multiplier: 1, constant: 0)
-        
-        let right = NSLayoutConstraint(item: translateScrollView, attribute: .leading, relatedBy: .equal, toItem: translateTableView, attribute: .leading, multiplier: 1, constant: 0)
-        
-        top.identifier = "id21"
-        bottom.identifier = "id22"
-        left.identifier = "id23"
-        right.identifier = "id24" 
-        
-        self.view.addConstraints([top, bottom, left, right])
-        
-        
-        //updatePreferredContentSize()
+        setConstraints()
         setUI()
         bindUI()
     }
     
-    
-    
-    func bindUI() {
+
+    private func bindUI() {
         let viewModel = TranslateViewModel.init(word: wordTextView.rx.text.orEmpty.asDriver())
         
         switch LeoAPI.shared.state.value {
@@ -121,48 +100,25 @@ class TodayViewController: NSViewController, NCWidgetProviding {
                 
                 self.translates = words
                 self.translateTableView.reloadData()
-                var g = ""
-                print("\(self.previousHeight) | \(self.translateTableView.frame.size.height)")
+                
                 if self.previousHeight >= self.translateTableView.frame.size.height {
                     self.setUI()
-                    g = "P>"
-                } else {
-                    
-                    
-                    
-                    //self.translateTableView.reloadData()
-//                    self.translateTableView.sizeToFit()
-//                    self.translateTableView.needsLayout = true
-//                    self.translateTableView.needsDisplay = true
-//                    self.translateScrollView.needsLayout = true
-//                    self.translateScrollView.needsDisplay = true
-//                    self.translateScrollView.autoresizesSubviews = true
-//                    
-//                    self.translateTableView.endUpdates()
-//                    
-                    g = "P<"
-                
                 }
-               
-                
-                print("\(g) | word:\(self.wordTextView.stringValue) | heigth: \(self.translateTableView.frame.size.height) | \(self.previousHeight) ")
-                 self.previousHeight = self.translateTableView.frame.size.height
+                self.previousHeight = self.translateTableView.frame.size.height
             })
             .disposed(by: bag)
         
         addWordButton.rx.tap
             .subscribe(onNext: { [unowned self] in
-                
                 if !self.translates.isEmpty {
                     viewModel.add(word: self.wordTextView.stringValue, translate: self.translates[self.translateTableView.selectedRow])
+                    
                 }
-                
                 
                 viewModel.meatballs()
                     .bind(to: self.availableWordsLabel.rx.text)
                     .disposed(by: self.bag)
                 self.addWordButton.isEnabled = false
-                
             })
             .disposed(by: bag)
 
@@ -181,36 +137,17 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         }
     }
     
-    private func updatePreferredContentSize() {
-        translateTableView.needsLayout = true
-        translateTableView.layoutSubtreeIfNeeded()
+    private func setConstraints() {
+        let height = NSLayoutConstraint(item: translateScrollView, attribute: .height, relatedBy: .equal, toItem: translateTableView, attribute: .height, multiplier: 1, constant: 0)
         
-        
-        
-        let height = translateTableView.fittingSize.height
-        let width: CGFloat = 320
-        
-        preferredContentSize = CGSize(width: width, height: height)
-        
-        self.translateScrollView.frame.size = self.translateTableView.fittingSize
+        self.view.addConstraint(height)
     }
     
     private func setUI() {
-        //translateTableView.needsLayout = true
         translateTableView.sizeToFit()
-        
         let height = translateTableView.fittingSize.height
-        
-        
-        //translateScrollView.frame.size.height = height
-        
-        
         translateScrollView.setFrameSize(CGSize(width: translateScrollView.frame.size.width, height: height))
-        
         translateScrollView.autoresizesSubviews = true
-        ///translateTableView.setNeedsDisplay()
-        //translateTableView.layoutSubtreeIfNeeded()
-        //translateScrollView.layoutSubtreeIfNeeded()
     }
     
     
