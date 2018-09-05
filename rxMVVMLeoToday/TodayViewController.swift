@@ -126,6 +126,8 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         viewModel.meatballs()
             .bind(to: self.availableWordsLabel.rx.text)
             .disposed(by: self.bag)
+        
+        
 
     }
     
@@ -210,6 +212,11 @@ extension TodayViewController: NSTableViewDelegate {
         }
         return nil
     }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        self.addWordButton.isEnabled = true
+    }
+    
 }
 
 
