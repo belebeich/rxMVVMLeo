@@ -6,6 +6,7 @@ target 'rxMVVMLeo' do
     pod 'RxCocoa',    '~> 4.0'
     pod 'SwiftyJSON'
     pod 'Alamofire'
+    pod 'RxAlamofire'
     pod 'KeychainSwift'
 end
 
@@ -14,6 +15,7 @@ target 'rxMVVMLeoiOS' do
     pod 'RxCocoa',    '~> 4.0'
     pod 'SwiftyJSON'
     pod 'Alamofire'
+    pod 'RxAlamofire'
     pod 'KeychainSwift'
 end
 
@@ -22,6 +24,7 @@ target 'rxMVVMLeoToday' do
     pod 'RxCocoa',    '~> 4.0'
     pod 'SwiftyJSON'
     pod 'Alamofire'
+    pod 'RxAlamofire'
     pod 'KeychainSwift'
 end
 

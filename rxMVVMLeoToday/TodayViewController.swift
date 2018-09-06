@@ -111,14 +111,22 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         addWordButton.rx.tap
             .subscribe(onNext: { [unowned self] in
                 if !self.translates.isEmpty {
-                    viewModel.add(word: self.wordTextView.stringValue, translate: self.translates[self.translateTableView.selectedRow])
+                    let response = viewModel.add(word: self.wordTextView.stringValue, translate: self.translates[self.translateTableView.selectedRow])
+                    response
+                        .debug()
+                        .subscribe(onNext: { feed in
+                            if feed == true {
+                                viewModel.meatballs()
+                                    .bind(to: self.availableWordsLabel.rx.text)
+                                    .disposed(by: self.bag)
+                                self.addWordButton.isEnabled = false
+                            }
+                        })
+                        .disposed(by: self.bag)
                     
                 }
                 
-                viewModel.meatballs()
-                    .bind(to: self.availableWordsLabel.rx.text)
-                    .disposed(by: self.bag)
-                self.addWordButton.isEnabled = false
+               
             })
             .disposed(by: bag)
 
