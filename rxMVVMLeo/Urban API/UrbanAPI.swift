@@ -28,13 +28,17 @@ struct UrbanAPI: UrbanAPIProtocol {
     
     func translate(of word: String) -> Observable<[String]> {
         
-        let url = URL(string: "http://api.urbandictionary.com/v0/define?term=\(word)")
+        let urlString = "https://api.urbandictionary.com/v0/define?term=\(word)"
         
-        let response : Observable<JSON> = request(address: url!)
+        let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        
+        guard let url = URL(string: encodedURLString!) else { return Observable.of([])}
+        
+        let response : Observable<JSON> = request(address: url)
         
         return response
             .map{ result in
-                print(result)
+                
                 var translates = [String]()
                 guard let list = result["list"].array else { return []}
                 for element in list {

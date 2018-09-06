@@ -14,6 +14,7 @@ import SwiftyJSON
 struct TranslateViewModel {
     
     var inputValid: Driver<Bool>
+    let bag = DisposeBag()
     
     
     //Init
@@ -26,12 +27,16 @@ struct TranslateViewModel {
                 
                 for ch in word.characters {
                     if ch != " " { flag = true }
-                   
+                    
                 }
                 return flag
         }
         
-       inputValid = wordValid
+        
+        
+        
+        inputValid = wordValid
+        
         
     }
     
@@ -46,16 +51,37 @@ struct TranslateViewModel {
         return LeoAPI.shared.getMeatballs()
     }
     
-    func translate(word: String) -> Observable<String> {
-        let words = LeoAPI.shared.translate(of: word)
-        //let words = UrbanAPI.shared.translate(of: word)
+    func translate(word: String, translateAPI: Int) -> Observable<[String]> {
         
-        let stroke = words
-            .flatMap { words -> Observable<String> in
-                let text = Observable.of(words.joined(separator: ", "))
-                return text
-            }
+        var words: Observable<[String]> = Observable.of([])
+        
+//        translateAPI.asObservable()
+//            .subscribe(onNext: { api in
+//                if api == 0 {
+//                    words = UrbanAPI.shared.translate(of: word)
+//                } else {
+//                    words = LeoAPI.shared.translate(of: word)
+//                }
+//            })
+//            .disposed(by: bag)
+        
+        if translateAPI == 0 {
+            words = UrbanAPI.shared.translate(of: word)
+        } else {
+            words = LeoAPI.shared.translate(of: word)
+        }
+        
+        
+        
+        //        let words = UrbanAPI.shared.translate(of: word)
+        //
+                let stroke = words
+                    .flatMap { words -> Observable<[String]> in
+        
+                        return Observable.of(words)
+                    }
         return stroke
+        
     }
     
     func logout() {
