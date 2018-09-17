@@ -113,7 +113,6 @@ class TodayViewController: NSViewController, NCWidgetProviding {
                 if !self.translates.isEmpty {
                     let response = viewModel.add(word: self.wordTextView.stringValue, translate: self.translates[self.translateTableView.selectedRow])
                     response
-                        .debug()
                         .subscribe(onNext: { feed in
                             if feed == true {
                                 viewModel.meatballs()

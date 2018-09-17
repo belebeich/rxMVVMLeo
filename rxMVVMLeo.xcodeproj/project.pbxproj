@@ -18,12 +18,14 @@
 		2C333C1F204D639800E133CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C333C1D204D639800E133CD /* Main.storyboard */; };
 		2C333C2C204D662500E133CD /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2B204D662500E133CD /* LoginViewModel.swift */; };
 		2C333C2E204D664500E133CD /* LeoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2D204D664500E133CD /* LeoAPI.swift */; };
+		2C40CC9A21479FB100CA5002 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40CC9921479FB100CA5002 /* Utils.swift */; };
 		2C5857B520A3379200C2CA47 /* LeoAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIProtocol.swift */; };
 		2C64AAE920B846A90032E2AA /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C64AAE820B846A90032E2AA /* NotificationCenter.framework */; };
 		2C64AAEF20B846A90032E2AA /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C64AAED20B846A90032E2AA /* TodayViewController.xib */; };
 		2C64AAF320B846A90032E2AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C64AAF120B846A90032E2AA /* InfoPlist.strings */; };
 		2C64AAF720B846A90032E2AA /* rxMVVMLeoToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2C64AAE720B846A90032E2AA /* rxMVVMLeoToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2C64AAFE20B865BE0032E2AA /* LeoAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIProtocol.swift */; };
+		2C765082214662B0002236D7 /* NSTextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C765081214662B0002236D7 /* NSTextViewExtension.swift */; };
 		2C7BB01820BD31500083034F /* LeoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2D204D664500E133CD /* LeoAPI.swift */; };
 		2C7BB01920BD31530083034F /* LeoAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIProtocol.swift */; };
 		2C7BB01A20BD32B90083034F /* NSTextView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */; };
@@ -89,6 +91,7 @@
 		2C333C21204D639800E133CD /* rxMVVMLeo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rxMVVMLeo.entitlements; sourceTree = "<group>"; };
 		2C333C2B204D662500E133CD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		2C333C2D204D664500E133CD /* LeoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoAPI.swift; sourceTree = "<group>"; };
+		2C40CC9921479FB100CA5002 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2C5857B420A3379200C2CA47 /* LeoAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoAPIProtocol.swift; sourceTree = "<group>"; };
 		2C64AAE720B846A90032E2AA /* rxMVVMLeoToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = rxMVVMLeoToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C64AAE820B846A90032E2AA /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -97,6 +100,7 @@
 		2C64AAF020B846A90032E2AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C64AAF220B846A90032E2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C64AAF420B846A90032E2AA /* rxMVVMLeoToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rxMVVMLeoToday.entitlements; sourceTree = "<group>"; };
+		2C765081214662B0002236D7 /* NSTextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextViewExtension.swift; sourceTree = "<group>"; };
 		2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Rx.swift"; sourceTree = "<group>"; };
 		2C9F5EBA210D9466007DAEF1 /* UrbanAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanAPIProtocol.swift; sourceTree = "<group>"; };
 		2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanAPI.swift; sourceTree = "<group>"; };
@@ -252,6 +256,8 @@
 			children = (
 				2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */,
 				2C328405212EF564002B444D /* NSSegmentedConrol+Rx.swift */,
+				2C765081214662B0002236D7 /* NSTextViewExtension.swift */,
+				2C40CC9921479FB100CA5002 /* Utils.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -516,8 +522,10 @@
 			files = (
 				2C333C1A204D639800E133CD /* LoginViewController.swift in Sources */,
 				2CACEED32050512E009A1EEF /* TranslateViewController.swift in Sources */,
+				2C765082214662B0002236D7 /* NSTextViewExtension.swift in Sources */,
 				2C333C2E204D664500E133CD /* LeoAPI.swift in Sources */,
 				2C1DAECF2057EF7B00B6CFCF /* TranslateViewModel.swift in Sources */,
+				2C40CC9A21479FB100CA5002 /* Utils.swift in Sources */,
 				2C328406212EF564002B444D /* NSSegmentedConrol+Rx.swift in Sources */,
 				2C81C09720AC20F90071E96E /* NSTextView+Rx.swift in Sources */,
 				2C333C18204D639800E133CD /* AppDelegate.swift in Sources */,

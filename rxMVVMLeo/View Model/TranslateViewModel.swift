@@ -55,33 +55,16 @@ struct TranslateViewModel {
         
         var words: Observable<[String]> = Observable.of([])
         
-//        translateAPI.asObservable()
-//            .subscribe(onNext: { api in
-//                if api == 0 {
-//                    words = UrbanAPI.shared.translate(of: word)
-//                } else {
-//                    words = LeoAPI.shared.translate(of: word)
-//                }
-//            })
-//            .disposed(by: bag)
-        
         if translateAPI == 0 {
             words = UrbanAPI.shared.translate(of: word)
         } else {
             words = LeoAPI.shared.translate(of: word)
         }
-        
-        
-        
-        //        let words = UrbanAPI.shared.translate(of: word)
-        //
-                let stroke = words
-                    .flatMap { words -> Observable<[String]> in
-        
-                        return Observable.of(words)
-                    }
+        let stroke = words
+            .flatMap { words -> Observable<[String]> in
+                return Observable.of(words)
+        }
         return stroke
-        
     }
     
     func logout() {

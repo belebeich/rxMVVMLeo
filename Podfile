@@ -17,6 +17,7 @@ target 'rxMVVMLeoiOS' do
     pod 'Alamofire'
     pod 'RxAlamofire'
     pod 'KeychainSwift'
+    pod 'RxAnimated'
 end
 
 target 'rxMVVMLeoToday' do

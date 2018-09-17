@@ -32,7 +32,7 @@ class TranslateViewController: NSViewController {
     func bindUI() {
         let viewModel = TranslateViewModel.init(word: wordTextField.rx.text.orEmpty.asDriver())
         self.addWordButton.isEnabled = false
-        _ = wordTextField.rx.text.orEmpty
+        let translateResults = wordTextField.rx.text.orEmpty
             .throttle(0.3, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .flatMapLatest { query -> Observable<[String]> in
@@ -57,15 +57,25 @@ class TranslateViewController: NSViewController {
 //            .bind(to: translateTextField.rx.text)
 //            .disposed(by: bag)
         
+        
+        
         addWordButton.rx.tap
-            .subscribe({ _ in
+            .subscribe({ [unowned self] _ in
                 
                 viewModel.add(word: self.wordTextField.stringValue, translate: self.translateTextField.string)
-                viewModel.meatballs()
-                    .bind(to: self.availableWordsLabel.rx.text)
+                    .map { result in
+                        if result == true {
+                            viewModel.meatballs()
+                                .bind(to: self.availableWordsLabel.rx.text)
+                                .disposed(by: self.bag)
+                        }
+                        return result
+                    }
+                    .asDriver(onErrorJustReturn: false)
+                    .drive(self.addWordButton.rx.isEnabled)
                     .disposed(by: self.bag)
-                    
-                self.addWordButton.isEnabled = false
+                
+                
             })
             .disposed(by: bag)
         

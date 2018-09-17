@@ -116,22 +116,32 @@ struct LeoAPI : LeoAPIProtocol {
         
     }
     
-    func add(a word: String, with translate: String) {
-        
-        let params = ["word": word,
-                      "tword": translate]
-        
-        guard let data = self.keychain.getData(Keys.cookies) else { return }
-        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return }
+    func add(a word: String, with translate: String) -> Observable<Bool> {
+        guard let data = self.keychain.getData(Keys.cookies) else {  return Observable.of(true) }
+        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return Observable.of(true) }
         
         for cookie in cookies {
             Alamofire.HTTPCookieStorage.shared.setCookie(cookie)
         }
         
-        let response = Alamofire.request(LeoAPI.Address.addword.url, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: nil)
-        response
-            .response { _ in
-
+        let params = ["word": word,
+                      "tword": translate]
+        
+        return Observable.create { observer in
+            let response = Alamofire.request(LeoAPI.Address.addword.url, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: nil)
+            response
+                .responseJSON { response in
+                    switch response.result {
+                    case .success(_):
+                        observer.onNext(false)
+                        observer.onCompleted()
+                    case .failure(_):
+                        observer.onNext(true)
+                    }
+            }
+            return Disposables.create {
+                observer.onNext(true)
+            }
         }
     }
     
