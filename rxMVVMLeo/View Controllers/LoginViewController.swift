@@ -18,7 +18,7 @@ class LoginViewController: NSViewController {
     @IBOutlet weak var loginInfoStack: NSStackView!
     @IBOutlet var tesy: NSTextView!
     @IBOutlet weak var loginButton: NSButton!
-    @IBOutlet weak var emailTextField: NSTextField!
+    @IBOutlet weak var emailTextField: CustomNSTextField!
     @IBOutlet weak var passwordTextField: NSTextField!
     @IBOutlet weak var tokenLabel: NSTextField!
     
@@ -36,6 +36,24 @@ class LoginViewController: NSViewController {
         bindUI()
         
     }
+    
+    override func viewWillLayout() {
+        
+        let gradientLayer = CAGradientLayer()
+        
+        //        gradientLayer.colors = [NSColor.init(calibratedRed: 0.64, green: 0.4, blue: 0.49, alpha: 1.0).cgColor, NSColor.init(calibratedRed: 0.168, green: 0.11, blue: 0.2, alpha: 1.0).cgColor]
+        gradientLayer.colors = [NSColor.init(calibratedRed: 202/255, green: 196/255, blue: 187/255, alpha: 1.0).cgColor, NSColor.init(calibratedRed: 119/255, green: 110/255, blue: 94/255, alpha: 1.0).cgColor]
+        gradientLayer.frame = self.view.frame
+        view.layer?.insertSublayer(gradientLayer, at: 0)
+        
+        
+        
+        self.emailTextField.customizeCaretColor()
+        self.emailTextField.setNeedsDisplay()
+    
+    }
+    
+   
 
     override var representedObject: Any? {
         didSet {
@@ -46,21 +64,58 @@ class LoginViewController: NSViewController {
     func setUI() {
         loginInfoStack.animator().alphaValue = 0.0
         
+        // made it more neon
+        let neonyellowColor = NSColor.init(calibratedRed: 219/255, green: 255/255, blue: 91/255, alpha: 1.0)
+        
+        // made resizeble NSTextField
+        self.emailTextField.backgroundColor = NSColor.clear
+        self.emailTextField.textColor = NSColor.white
+        
+        
+        self.passwordTextField.backgroundColor = NSColor.clear
+        self.passwordTextField.textColor = NSColor.white
+        
+        let placeholderColor = NSColor.white
+        let placeholderParagraphStyle = NSMutableParagraphStyle()
+        placeholderParagraphStyle.alignment = .right
+        let placeholderFont = NSFont.init(name: "PFDinMono-Light", size: 13)
+        let placeholderAttributes : [NSAttributedStringKey:AnyObject] = [NSAttributedStringKey.foregroundColor: placeholderColor, NSAttributedStringKey.font: placeholderFont!, NSAttributedStringKey.paragraphStyle: placeholderParagraphStyle]
+        
+        let emailPlaceholderString = NSAttributedString.init(string: "email", attributes: placeholderAttributes)
+        let passwordPlaceholderString = NSAttributedString.init(string: "password", attributes: placeholderAttributes)
+        self.emailTextField.placeholderAttributedString = emailPlaceholderString
+        self.passwordTextField.placeholderAttributedString = passwordPlaceholderString
+        
+        
+        
+        //rgb(225, 216, 202) - ksg beige
+        ///rgb(119, 110, 94) - brown/beige/gray - made it more beigy
+        
+        ///#E1D8CA
+        
+        
+        
+        
+        
+        
         
         let test = self.tesy.setTextWithTypeAnimation(typedText: "It's a demo MacOS Application that helps you to import your translated words to Lingualeo service. To better experience please add this app to Today Notification center.", characterDelay: 3.0)
+        
+        self.tesy.textColor = neonyellowColor
+        self.tesy.font = NSFont(name: "PFDinMono-Regular", size: 13)
+        self.tesy.sizeToFit()
+        
         test
-            //.bind(to: self.loginInfoStack.rx.isHidden)
             .skip(1)
             .subscribe(onNext: { [unowned self] bool in
-                print(bool)
+               
                 if bool == false {
                     NSAnimationContext.runAnimationGroup({ _ in
-                        NSAnimationContext.current.duration = 5.0
+                        NSAnimationContext.current.duration = 2.0
                         self.loginInfoStack.animator().alphaValue = 1.0
                         
                     }, completionHandler: {
-                        
-                        print("animation completed")
+                       self.emailTextField.selectText(self)
                     })
                     
                 }
@@ -79,10 +134,16 @@ class LoginViewController: NSViewController {
             })
             .disposed(by: bag)
         
+        emailTextField.rx.controlEvent
+            .subscribe(onNext: {
+                self.emailTextField.currentEditor()?.moveToBeginningOfDocument(self)
+            })
+            .disposed(by: bag)
+        
         loginButton.rx.tap
             .withLatestFrom(viewModel.credentialsValid)
             .filter { $0 }
-            .debug()
+            
             .flatMapLatest { [unowned self] valid in
                 
                 

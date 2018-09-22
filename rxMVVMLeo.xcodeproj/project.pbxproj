@@ -25,6 +25,8 @@
 		2C64AAF320B846A90032E2AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C64AAF120B846A90032E2AA /* InfoPlist.strings */; };
 		2C64AAF720B846A90032E2AA /* rxMVVMLeoToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2C64AAE720B846A90032E2AA /* rxMVVMLeoToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2C64AAFE20B865BE0032E2AA /* LeoAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIProtocol.swift */; };
+		2C7636BE2154F56C00ED94F3 /* CustomNSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7636BD2154F56C00ED94F3 /* CustomNSTextField.swift */; };
+		2C7636C0215620CB00ED94F3 /* CustomNSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7636BF215620CB00ED94F3 /* CustomNSTextView.swift */; };
 		2C765082214662B0002236D7 /* NSTextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C765081214662B0002236D7 /* NSTextViewExtension.swift */; };
 		2C7BB01820BD31500083034F /* LeoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2D204D664500E133CD /* LeoAPI.swift */; };
 		2C7BB01920BD31530083034F /* LeoAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIProtocol.swift */; };
@@ -100,6 +102,8 @@
 		2C64AAF020B846A90032E2AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C64AAF220B846A90032E2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C64AAF420B846A90032E2AA /* rxMVVMLeoToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rxMVVMLeoToday.entitlements; sourceTree = "<group>"; };
+		2C7636BD2154F56C00ED94F3 /* CustomNSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSTextField.swift; sourceTree = "<group>"; };
+		2C7636BF215620CB00ED94F3 /* CustomNSTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSTextView.swift; sourceTree = "<group>"; };
 		2C765081214662B0002236D7 /* NSTextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextViewExtension.swift; sourceTree = "<group>"; };
 		2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Rx.swift"; sourceTree = "<group>"; };
 		2C9F5EBA210D9466007DAEF1 /* UrbanAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanAPIProtocol.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 		2C333C16204D639800E133CD /* rxMVVMLeo */ = {
 			isa = PBXGroup;
 			children = (
+				2C7636BC2154F53200ED94F3 /* Subclasses */,
 				2C821A86210B909E00A20D9D /* Urban API */,
 				2C333C28204D654A00E133CD /* Leo API */,
 				2C08295B20B731DC00E0F61A /* Scenes */,
@@ -249,6 +254,15 @@
 				2C64AAF420B846A90032E2AA /* rxMVVMLeoToday.entitlements */,
 			);
 			path = rxMVVMLeoToday;
+			sourceTree = "<group>";
+		};
+		2C7636BC2154F53200ED94F3 /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				2C7636BD2154F56C00ED94F3 /* CustomNSTextField.swift */,
+				2C7636BF215620CB00ED94F3 /* CustomNSTextView.swift */,
+			);
+			path = Subclasses;
 			sourceTree = "<group>";
 		};
 		2C81C09520AC20E40071E96E /* Extension */ = {
@@ -533,6 +547,8 @@
 				2C9F5EBB210D9466007DAEF1 /* UrbanAPIProtocol.swift in Sources */,
 				2C5857B520A3379200C2CA47 /* LeoAPIProtocol.swift in Sources */,
 				2C333C2C204D662500E133CD /* LoginViewModel.swift in Sources */,
+				2C7636C0215620CB00ED94F3 /* CustomNSTextView.swift in Sources */,
+				2C7636BE2154F56C00ED94F3 /* CustomNSTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
