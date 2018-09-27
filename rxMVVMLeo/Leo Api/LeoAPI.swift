@@ -35,8 +35,8 @@ struct LeoAPI : LeoAPIProtocol {
         case logout = "logout"
         case addword = "addword"
         
-        private var baseURL: String { return "http://api.lingualeo.com/"}
-        private var mainURL : String { return "http://lingualeo.com/" }
+        private var baseURL: String { return "https://api.lingualeo.com/"}
+        private var mainURL : String { return "https://lingualeo.com/" }
         
         var url: URL {
             switch self {

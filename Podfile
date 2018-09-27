@@ -18,6 +18,7 @@ target 'rxMVVMLeoiOS' do
     pod 'RxAlamofire'
     pod 'KeychainSwift'
     pod 'RxAnimated'
+    pod 'RxDataSources'
 end
 
 target 'rxMVVMLeoToday' do

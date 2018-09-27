@@ -796,13 +796,45 @@
                                     <segue destination="3RP-6x-Rta" kind="show" identifier="segue" id="5qS-92-2Ol"/>
                                 </connections>
                             </button>
+                            <scrollView wantsLayer="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ht1-MW-2dK">
+                                <rect key="frame" x="220" y="34" width="240" height="135"/>
+                                <clipView key="contentView" id="3y3-1o-dVd">
+                                    <rect key="frame" x="1" y="1" width="238" height="133"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="Cjj-kV-kU8" customClass="CustomNSTextView" customModule="rxMVVMLeo" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="-0.5" width="238" height="133"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="238" height="133"/>
+                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="EAN-lN-pvG"/>
+                                    <constraint firstAttribute="height" constant="135" id="krc-yK-qHc"/>
+                                </constraints>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="kkt-cU-EE7">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="goG-Ap-fx8">
+                                    <rect key="frame" x="-100" y="-100" width="15" height="133"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ht1-MW-2dK" secondAttribute="bottom" constant="34" id="3fD-g2-8uL"/>
                             <constraint firstItem="s66-pb-osK" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="197" id="4IL-Xa-hRe"/>
                             <constraint firstItem="pID-54-6ph" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="7f1-SQ-UAW"/>
                             <constraint firstAttribute="trailing" secondItem="JzV-ra-bD8" secondAttribute="trailing" constant="20" id="BWM-lc-8a4"/>
                             <constraint firstItem="s66-pb-osK" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="ZPU-fN-b3k"/>
                             <constraint firstAttribute="trailing" secondItem="pID-54-6ph" secondAttribute="trailing" constant="20" id="aDF-0X-Njm"/>
+                            <constraint firstAttribute="trailing" secondItem="ht1-MW-2dK" secondAttribute="trailing" constant="20" id="bff-lx-pQ4"/>
                             <constraint firstItem="JzV-ra-bD8" firstAttribute="top" secondItem="q5G-O8-z3Y" secondAttribute="bottom" constant="9" id="i1O-NZ-J4E"/>
                             <constraint firstItem="pID-54-6ph" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="zPS-Qi-rO7"/>
                         </constraints>

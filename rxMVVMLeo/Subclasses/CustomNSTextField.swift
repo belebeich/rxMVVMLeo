@@ -71,7 +71,9 @@ class CustomNSTextField: NSTextField {
         
         fieldEditor.insertionPointColor = NSColor.white
         
-       
+        
+        
+        self.setNeedsDisplay()
     }
     
     override func becomeFirstResponder() -> Bool {

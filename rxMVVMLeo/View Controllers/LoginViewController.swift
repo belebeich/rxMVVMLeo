@@ -46,11 +46,17 @@ class LoginViewController: NSViewController {
         gradientLayer.frame = self.view.frame
         view.layer?.insertSublayer(gradientLayer, at: 0)
         
+        let editor = self.emailTextField.window?.fieldEditor(true, for: self.emailTextField) as! NSTextView
         
+        
+        let rect = NSRect.init(x: 5.0, y: 10.0, width: 10.0, height: 2.0)
+        
+        editor.drawInsertionPoint(in: rect, color: NSColor.white, turnedOn: true)
+         
         
         self.emailTextField.customizeCaretColor()
-        self.emailTextField.setNeedsDisplay()
-    
+        
+        
     }
     
    
