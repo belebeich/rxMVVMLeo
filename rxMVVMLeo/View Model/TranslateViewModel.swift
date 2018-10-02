@@ -40,7 +40,7 @@ struct TranslateViewModel {
         
     }
     
-    func add(word: String, translate: String) -> Observable<Bool> {
+    func add(word: String, translate: String) -> Observable<AddWord> {
         
         return LeoAPI.shared.add(a: word, with: translate)
     }

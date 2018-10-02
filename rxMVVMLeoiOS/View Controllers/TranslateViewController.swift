@@ -117,6 +117,7 @@ class TranslateViewController: UIViewController, BindableType {
         let testin = Observable.zip(addWordButton.rx.tap, translateTableView.rx.modelSelected(String.self))
             
             .flatMapLatest { _, model -> Observable<Bool> in
+                self.addWordButton.isEnabled = false
                 return self.viewModel.add(word: self.wordTextField.text!, translate: model)
             }
             .observeOn(MainScheduler.instance)

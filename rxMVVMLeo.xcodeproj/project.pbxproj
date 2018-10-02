@@ -51,6 +51,11 @@
 		2CBDA06E215942400022F39E /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA06D215942400022F39E /* TranslateViewModel.swift */; };
 		2CC6FCB320BD2DFA00885892 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C64AAEB20B846A90032E2AA /* TodayViewController.swift */; };
 		2CC6FCB620BD2E4600885892 /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */; };
+		2CCC1D81216346B600713DD7 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D80216346B600713DD7 /* Scene.swift */; };
+		2CCC1D8321634E2F00713DD7 /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D8221634E2F00713DD7 /* SceneCoordinatorType.swift */; };
+		2CCC1D8521634E3B00713DD7 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D8421634E3B00713DD7 /* SceneCoordinator.swift */; };
+		2CCC1D8721634E5200713DD7 /* Scene+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D8621634E5200713DD7 /* Scene+ViewController.swift */; };
+		2CCC1D8921634E6100713DD7 /* SceneTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D8821634E6100713DD7 /* SceneTransitionType.swift */; };
 		2CFFB53B204DBFDE007A816C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFB53A204DBFDE007A816C /* AppDelegate.swift */; };
 		2CFFB53D204DBFDE007A816C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFB53C204DBFDE007A816C /* LoginViewController.swift */; };
 		2CFFB540204DBFDE007A816C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFFB53E204DBFDE007A816C /* Main.storyboard */; };
@@ -87,11 +92,6 @@
 
 /* Begin PBXFileReference section */
 		0DC1891712A1F013C92C2477 /* Pods-rxMVVMLeoToday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxMVVMLeoToday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rxMVVMLeoToday/Pods-rxMVVMLeoToday.debug.xcconfig"; sourceTree = "<group>"; };
-		2C08295C20B731EB00E0F61A /* Scene+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scene+ViewController.swift"; sourceTree = "<group>"; };
-		2C08295D20B731EB00E0F61A /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
-		2C08295E20B731EC00E0F61A /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
-		2C08295F20B731EC00E0F61A /* SceneTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTransitionType.swift; sourceTree = "<group>"; };
-		2C08296020B731EC00E0F61A /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
 		2C1ED3E7212338EC009108DF /* CustomNSTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSTableView.swift; sourceTree = "<group>"; };
 		2C328405212EF564002B444D /* NSSegmentedConrol+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSegmentedConrol+Rx.swift"; sourceTree = "<group>"; };
@@ -130,6 +130,11 @@
 		2CBDA06721593F930022F39E /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
 		2CBDA06B2159421D0022F39E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		2CBDA06D215942400022F39E /* TranslateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
+		2CCC1D80216346B600713DD7 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		2CCC1D8221634E2F00713DD7 /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
+		2CCC1D8421634E3B00713DD7 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
+		2CCC1D8621634E5200713DD7 /* Scene+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scene+ViewController.swift"; sourceTree = "<group>"; };
+		2CCC1D8821634E6100713DD7 /* SceneTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTransitionType.swift; sourceTree = "<group>"; };
 		2CFFB538204DBFDE007A816C /* rxMVVMLeoiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rxMVVMLeoiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFFB53A204DBFDE007A816C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CFFB53C204DBFDE007A816C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -176,18 +181,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C08295B20B731DC00E0F61A /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				2C08295D20B731EB00E0F61A /* Scene.swift */,
-				2C08295C20B731EB00E0F61A /* Scene+ViewController.swift */,
-				2C08296020B731EC00E0F61A /* SceneCoordinator.swift */,
-				2C08295E20B731EC00E0F61A /* SceneCoordinatorType.swift */,
-				2C08295F20B731EC00E0F61A /* SceneTransitionType.swift */,
-			);
-			path = Scenes;
-			sourceTree = "<group>";
-		};
 		2C1CCCDF215A19BB00D37289 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,10 +224,10 @@
 		2C333C16204D639800E133CD /* rxMVVMLeo */ = {
 			isa = PBXGroup;
 			children = (
+				2CCC1D7F2163469C00713DD7 /* Scenes */,
 				2C7636BC2154F53200ED94F3 /* Subclasses */,
 				2C821A86210B909E00A20D9D /* Urban API */,
 				2C333C28204D654A00E133CD /* Leo API */,
-				2C08295B20B731DC00E0F61A /* Scenes */,
 				2C81C09520AC20E40071E96E /* Extension */,
 				2C333C29204D655B00E133CD /* View Controllers */,
 				2C333C27204D653A00E133CD /* View Model */,
@@ -334,6 +327,18 @@
 				2CBDA062215928A50022F39E /* SceneTransitionType.swift */,
 			);
 			path = Scene;
+			sourceTree = "<group>";
+		};
+		2CCC1D7F2163469C00713DD7 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				2CCC1D80216346B600713DD7 /* Scene.swift */,
+				2CCC1D8221634E2F00713DD7 /* SceneCoordinatorType.swift */,
+				2CCC1D8421634E3B00713DD7 /* SceneCoordinator.swift */,
+				2CCC1D8621634E5200713DD7 /* Scene+ViewController.swift */,
+				2CCC1D8821634E6100713DD7 /* SceneTransitionType.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		2CFFB539204DBFDE007A816C /* rxMVVMLeoiOS */ = {
@@ -592,18 +597,23 @@
 				2C333C1A204D639800E133CD /* LoginViewController.swift in Sources */,
 				2CACEED32050512E009A1EEF /* TranslateViewController.swift in Sources */,
 				2C765082214662B0002236D7 /* NSTextViewExtension.swift in Sources */,
+				2CCC1D8921634E6100713DD7 /* SceneTransitionType.swift in Sources */,
 				2C333C2E204D664500E133CD /* LeoAPI.swift in Sources */,
+				2CCC1D81216346B600713DD7 /* Scene.swift in Sources */,
 				2C1DAECF2057EF7B00B6CFCF /* TranslateViewModel.swift in Sources */,
 				2C40CC9A21479FB100CA5002 /* Utils.swift in Sources */,
 				2C328406212EF564002B444D /* NSSegmentedConrol+Rx.swift in Sources */,
 				2C81C09720AC20F90071E96E /* NSTextView+Rx.swift in Sources */,
+				2CCC1D8521634E3B00713DD7 /* SceneCoordinator.swift in Sources */,
 				2C333C18204D639800E133CD /* AppDelegate.swift in Sources */,
+				2CCC1D8321634E2F00713DD7 /* SceneCoordinatorType.swift in Sources */,
 				2C9F5EBD210D9476007DAEF1 /* UrbanAPI.swift in Sources */,
 				2C9F5EBB210D9466007DAEF1 /* UrbanAPIProtocol.swift in Sources */,
 				2C5857B520A3379200C2CA47 /* LeoAPIProtocol.swift in Sources */,
 				2C333C2C204D662500E133CD /* LoginViewModel.swift in Sources */,
 				2C7636C0215620CB00ED94F3 /* CustomNSTextView.swift in Sources */,
 				2C7636BE2154F56C00ED94F3 /* CustomNSTextField.swift in Sources */,
+				2CCC1D8721634E5200713DD7 /* Scene+ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

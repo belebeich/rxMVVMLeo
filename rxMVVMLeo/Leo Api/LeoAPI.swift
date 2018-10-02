@@ -20,6 +20,11 @@ enum AccountStatus {
     case success(AccessToken)
 }
 
+enum AddWord {
+    case error
+    case success(Bool)
+}
+
 struct LeoAPI : LeoAPIProtocol {
     
     //Types
@@ -116,9 +121,9 @@ struct LeoAPI : LeoAPIProtocol {
         
     }
     
-    func add(a word: String, with translate: String) -> Observable<Bool> {
-        guard let data = self.keychain.getData(Keys.cookies) else {  return Observable.of(true) }
-        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return Observable.of(true) }
+    func add(a word: String, with translate: String) -> Observable<AddWord> {
+        guard let data = self.keychain.getData(Keys.cookies) else {  return Observable.of(AddWord.error) }
+        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return Observable.of(AddWord.error) }
         
         for cookie in cookies {
             Alamofire.HTTPCookieStorage.shared.setCookie(cookie)
@@ -127,21 +132,20 @@ struct LeoAPI : LeoAPIProtocol {
         let params = ["word": word,
                       "tword": translate]
         
-        return Observable.create { observer in
-            let response = Alamofire.request(LeoAPI.Address.addword.url, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: nil)
-            response
-                .responseJSON { response in
-                    switch response.result {
-                    case .success(_):
-                        observer.onNext(false)
-                        observer.onCompleted()
-                    case .failure(_):
-                        observer.onNext(true)
-                    }
-            }
-            return Disposables.create {
-                observer.onNext(true)
-            }
+        let response : Observable<JSON> = request(address: LeoAPI.Address.addword, parameters: params)
+        
+        return response
+            .map { result in
+                var bool = AddWord.error
+                guard let isNew = result["is_new"].int else { return bool }
+
+                if isNew == 1 {
+                    bool = AddWord.success(true)
+                } else {
+                    bool = AddWord.success(false)
+                }
+
+                return bool
         }
     }
     
@@ -177,7 +181,7 @@ struct LeoAPI : LeoAPIProtocol {
     func logout() {
         let requester = Alamofire.request(LeoAPI.Address.logout.url, method: .post, parameters: [:], encoding: URLEncoding.httpBody, headers: [:])
         requester
-            .response {_ in
+            .response { _ in
                 
                 self.state.accept(.unavailable)
                 self.keychain.delete(Keys.cookies)
@@ -198,6 +202,8 @@ struct LeoAPI : LeoAPIProtocol {
                                             headers: [:])
             
             request.responseJSON { response in
+                
+                
                 guard response.error == nil, let data = response.data, let result = JSON(data) as? T else { return }
                 
                 observer.onNext(result)

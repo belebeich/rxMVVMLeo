@@ -37,6 +37,7 @@ class LoginViewController: NSViewController {
         
     }
     
+    
     override func viewWillLayout() {
         
         let gradientLayer = CAGradientLayer()
@@ -57,14 +58,6 @@ class LoginViewController: NSViewController {
         self.emailTextField.customizeCaretColor()
         
         
-    }
-    
-   
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
     }
     
     func setUI() {
@@ -98,12 +91,6 @@ class LoginViewController: NSViewController {
         ///rgb(119, 110, 94) - brown/beige/gray - made it more beigy
         
         ///#E1D8CA
-        
-        
-        
-        
-        
-        
         
         let test = self.tesy.setTextWithTypeAnimation(typedText: "It's a demo MacOS Application that helps you to import your translated words to Lingualeo service. To better experience please add this app to Today Notification center.", characterDelay: 3.0)
         
@@ -169,6 +156,11 @@ class LoginViewController: NSViewController {
                 LeoAPI.shared.state.accept(.unavailable)
             })
             .disposed(by: bag)
+    }
+    
+    
+    func animationOfTip() {
+        
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {

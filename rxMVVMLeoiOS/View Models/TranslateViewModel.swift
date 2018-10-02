@@ -9,10 +9,9 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import RxDataSources
 import SwiftyJSON
 
-typealias TranslateSection = AnimatableSectionModel<String, String>
+//typealias TranslateSection = AnimatableSectionModel<String, String>
 
 struct TranslateViewModel {
     
