@@ -1,15 +1,16 @@
 //
-//  CustomNSTextField.swift
+//  CustomNSSecureTextField.swift
 //  rxMVVMLeo
 //
-//  Created by Ivan  on 21/09/2018.
+//  Created by Ivan  on 03/10/2018.
 //  Copyright © 2018 Ivan . All rights reserved.
 //
 
 import Cocoa
 
-class CustomNSTextField: NSTextField {
 
+class CustomNSSecureTextField: NSSecureTextField {
+    
     var myColorCursor : NSCursor?
     
     var mouseIn : Bool = false
@@ -35,7 +36,7 @@ class CustomNSTextField: NSTextField {
         customizeCaretColor()
     }
     
-   
+    
     override func mouseExited(with event: NSEvent) {
         super.mouseExited(with: event)
         self.mouseIn = false
@@ -60,7 +61,7 @@ class CustomNSTextField: NSTextField {
         trackingArea = areaToSet
     }
     
-   
+    
     
     func customizeCaretColor() {
         // change the insertion caret to another color
@@ -91,6 +92,3 @@ class CustomNSTextField: NSTextField {
     }
     
 }
-
-
-

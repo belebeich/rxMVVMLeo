@@ -20,7 +20,7 @@ class CustomNSTextView: NSTextView {
         rect.size.height = caretHeight
         rect.origin.y = 10
         
-        print("width: \(rect.size.width) height: \(rect.size.height) x: \(rect.origin.x) y: \(rect.origin.y)")
+//        print("width: \(rect.size.width) height: \(rect.size.height) x: \(rect.origin.x) y: \(rect.origin.y)")
         super.drawInsertionPoint(in: rect, color: color, turnedOn: flag)
     }
     

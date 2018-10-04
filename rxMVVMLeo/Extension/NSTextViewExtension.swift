@@ -29,7 +29,7 @@ extension NSTextView {
             if let task = writingTask {
                 let queue = DispatchQueue(label: "typespeed", qos: DispatchQoS.userInteractive)
                  observer.onNext(true)
-                //observer.onNext(true)
+                
                 queue.asyncAfter(deadline: .now() + 0.05, execute: task)
                 
             }

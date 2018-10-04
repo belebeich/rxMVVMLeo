@@ -10,24 +10,25 @@ import Cocoa
 import RxSwift
 import RxCocoa
 
+
 class LoginViewController: NSViewController {
     
     
     let bag = DisposeBag()
     
+    @IBOutlet weak var menuButtonView: NSImageView!
+    @IBOutlet weak var tipView: NSView!
+    @IBOutlet weak var menuBarImageView: NSImageView!
+    @IBOutlet weak var notificationCenterImageView: NSImageView!
     @IBOutlet weak var loginInfoStack: NSStackView!
-    @IBOutlet var tesy: NSTextView!
+    @IBOutlet var firstMessage: NSTextView!
     @IBOutlet weak var loginButton: NSButton!
     @IBOutlet weak var emailTextField: CustomNSTextField!
-    @IBOutlet weak var passwordTextField: NSTextField!
-    @IBOutlet weak var tokenLabel: NSTextField!
+    @IBOutlet weak var passwordTextField: CustomNSTextField!
     
-    @IBOutlet weak var logoutButton: NSButton!
     
-    override func viewDidAppear() {
-       
-        
-    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,58 @@ class LoginViewController: NSViewController {
         
     }
     
+    private func animation() {
+        var animations = [CABasicAnimation]()
+        
+        menuBarImageView.isHidden = false
+        let menuBarAnimation = CABasicAnimation(keyPath: "opacity")
+        menuBarAnimation.fromValue = 0
+        menuBarAnimation.toValue = 1
+        menuBarAnimation.duration = 1.5
+        menuBarImageView.layer?.add(menuBarAnimation, forKey: "opacity")
+        
+        menuButtonView.isHidden = false
+        menuButtonView.layer?.masksToBounds = false
+        menuButtonView.layer?.shadowColor = NSColor.white.cgColor
+        menuButtonView.layer?.shadowRadius = 0
+        menuButtonView.layer?.shadowOpacity = 1.0
+        menuButtonView.layer?.shadowOffset = .zero
+        
+        let opacityAnimation = CABasicAnimation(keyPath: "opacity")
+        opacityAnimation.fromValue = 0
+        opacityAnimation.toValue = 1
+        opacityAnimation.duration = 1.5
+        animations.append(opacityAnimation)
+        
+        let glowAnimation = CABasicAnimation(keyPath: "shadowRadius")
+        glowAnimation.fromValue = 0
+        glowAnimation.toValue = 12
+        glowAnimation.beginTime = 2.5
+        glowAnimation.duration = CFTimeInterval(0.5)
+        glowAnimation.fillMode = kCAFillModeRemoved
+        glowAnimation.autoreverses = true
+        glowAnimation.isRemovedOnCompletion = true
+        animations.append(glowAnimation)
+        
+        let group = CAAnimationGroup()
+        group.animations = animations
+        group.duration = 3
+        menuButtonView.layer?.add(group, forKey: "group")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+            self.notificationCenterImageView.isHidden = false
+        })
+        
+        let position = CABasicAnimation(keyPath: "position")
+        position.fromValue = CGPoint(x: tipView.bounds.width, y: notificationCenterImageView.frame.minY)
+        position.toValue = CGPoint(x: notificationCenterImageView.frame.minX, y: notificationCenterImageView.frame.minY)
+        position.duration = 1.5
+        
+        position.beginTime = CACurrentMediaTime() + 3
+        position.autoreverses = false
+        
+        notificationCenterImageView.layer?.add(position, forKey: "group")
+    }
     
     override func viewWillLayout() {
         
@@ -56,20 +109,42 @@ class LoginViewController: NSViewController {
          
         
         self.emailTextField.customizeCaretColor()
-        
-        
+        self.passwordTextField.customizeCaretColor()
     }
     
     func setUI() {
         loginInfoStack.animator().alphaValue = 0.0
+        self.menuButtonView.isHidden = true
+        self.menuBarImageView.isHidden = true
+        self.notificationCenterImageView.isHidden = true
+        
+        let mainFont = NSFont.init(name: "PFDinMono-Regular", size: 13)
+        let placeholderFont = NSFont.init(name: "PFDinMono-Light", size: 13)
         
         // made it more neon
         let neonyellowColor = NSColor.init(calibratedRed: 219/255, green: 255/255, blue: 91/255, alpha: 1.0)
+        let cgNeon = CGColor.init(red: 219/255, green: 255/255, blue: 91/255, alpha: 1.0)
+        
         
         // made resizeble NSTextField
         self.emailTextField.backgroundColor = NSColor.clear
         self.emailTextField.textColor = NSColor.white
         
+        let buttonParagraphStyle = NSMutableParagraphStyle()
+        buttonParagraphStyle.alignment = .center
+        
+        let buttonAttributes : [NSAttributedStringKey:AnyObject] =
+            [NSAttributedStringKey.foregroundColor: neonyellowColor,
+             NSAttributedStringKey.font: mainFont!,
+             NSAttributedStringKey.paragraphStyle: buttonParagraphStyle]
+        
+        let buttonAttributedTitle = NSAttributedString.init(string: "Login", attributes: buttonAttributes)
+        
+        self.loginButton.attributedTitle = buttonAttributedTitle
+        //self.loginButton.layer?.backgroundColor = CGColor.clear
+        self.loginButton.layer?.borderWidth = 1.0
+        self.loginButton.layer?.borderColor = cgNeon
+        self.loginButton.wantsLayer = true
         
         self.passwordTextField.backgroundColor = NSColor.clear
         self.passwordTextField.textColor = NSColor.white
@@ -77,26 +152,27 @@ class LoginViewController: NSViewController {
         let placeholderColor = NSColor.white
         let placeholderParagraphStyle = NSMutableParagraphStyle()
         placeholderParagraphStyle.alignment = .right
-        let placeholderFont = NSFont.init(name: "PFDinMono-Light", size: 13)
+        
         let placeholderAttributes : [NSAttributedStringKey:AnyObject] = [NSAttributedStringKey.foregroundColor: placeholderColor, NSAttributedStringKey.font: placeholderFont!, NSAttributedStringKey.paragraphStyle: placeholderParagraphStyle]
         
         let emailPlaceholderString = NSAttributedString.init(string: "email", attributes: placeholderAttributes)
         let passwordPlaceholderString = NSAttributedString.init(string: "password", attributes: placeholderAttributes)
         self.emailTextField.placeholderAttributedString = emailPlaceholderString
         self.passwordTextField.placeholderAttributedString = passwordPlaceholderString
-        
-        
+        self.emailTextField.font = mainFont
+        self.passwordTextField.font = mainFont
         
         //rgb(225, 216, 202) - ksg beige
         ///rgb(119, 110, 94) - brown/beige/gray - made it more beigy
         
         ///#E1D8CA
         
-        let test = self.tesy.setTextWithTypeAnimation(typedText: "It's a demo MacOS Application that helps you to import your translated words to Lingualeo service. To better experience please add this app to Today Notification center.", characterDelay: 3.0)
+        let test = self.firstMessage.setTextWithTypeAnimation(typedText: "It's a demo MacOS Application that helps you to import your translated words to Lingualeo service. To better experience please add this app to Today Notification center.", characterDelay: 3.0)
         
-        self.tesy.textColor = neonyellowColor
-        self.tesy.font = NSFont(name: "PFDinMono-Regular", size: 13)
-        self.tesy.sizeToFit()
+        self.firstMessage.textColor = neonyellowColor
+        self.firstMessage.font = mainFont
+        
+        self.firstMessage.sizeToFit()
         
         test
             .skip(1)
@@ -109,14 +185,20 @@ class LoginViewController: NSViewController {
                         
                     }, completionHandler: {
                        self.emailTextField.selectText(self)
+                        
                     })
                     
                 }
             })
             .disposed(by: bag)
+        
+        
+        
     }
 
     func bindUI() {
+        
+        
         
         let viewModel = LoginViewModel.init(email: emailTextField.rx.text.orEmpty.asDriver(), password: passwordTextField.rx.text.orEmpty.asDriver())
  
@@ -126,6 +208,8 @@ class LoginViewController: NSViewController {
                
             })
             .disposed(by: bag)
+        
+        viewModel.requestWebPass()
         
         emailTextField.rx.controlEvent
             .subscribe(onNext: {

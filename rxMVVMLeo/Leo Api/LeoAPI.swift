@@ -12,6 +12,7 @@ import RxCocoa
 import Alamofire
 import SwiftyJSON
 import KeychainSwift
+//import KeychainAccess
 
 typealias AccessToken = String
 
@@ -62,6 +63,9 @@ struct LeoAPI : LeoAPIProtocol {
     
     private let keychain = KeychainSwift()
     
+    //let kc = Keychain(server: "lingualeo.com", protocolType: .https)
+    //let kc = Keychain(service: "lingualeo.com")
+    
     var state: BehaviorRelay<AccountStatus> {
         if let storedToken = self.keychain.get(Keys.token) {
             return BehaviorRelay(value: AccountStatus.success(storedToken))
@@ -91,6 +95,7 @@ struct LeoAPI : LeoAPIProtocol {
                 
                     let data = NSKeyedArchiver.archivedData(withRootObject: cookies)
                     self.keychain.set(data, forKey: Keys.cookies)
+                    //self.keychain.set(data, forKey: Keys.cookies, withAccess: )
                     
                     return AccountStatus.success(autologin)
                 } else {
@@ -147,6 +152,13 @@ struct LeoAPI : LeoAPIProtocol {
 
                 return bool
         }
+    }
+    
+    func requestWebPass() {
+        //let data = self.keychain.get("lingualeo.com (belebeich@me.com)")
+        //guard let data = try? self.kc.get("belebeich@me.com") else { return }
+        
+        //print("webpass: \(data)")
     }
     
     func getMeatballs() -> Observable<String> {

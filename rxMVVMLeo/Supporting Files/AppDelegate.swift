@@ -22,8 +22,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSApp.keyWindow?.contentViewController = homeViewController
         default:
             let storyBoard = NSStoryboard(name: NSStoryboard.Name(rawValue:"Main"), bundle: nil)
-            let homeViewController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "LoginViewController")) as! LoginViewController
-            NSApp.keyWindow?.contentViewController = homeViewController
+            
+            
+            
+//            let windowController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "WindowController")) as! NSWindowController
+//
+//            windowController.window?.makeKeyAndOrderFront(nil)
+//
+//            NSApp.keyWindow?.windowController = windowController
+//            windowController.showWindow(self)
+            
+            //let homeViewController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "LoginViewController")) as! LoginViewController
+            
+//            let window = NSWindow(contentViewController: homeViewController)
+//            NSApp.activate(ignoringOtherApps: true)
+//            window.makeKeyAndOrderFront(self)
+//            let wc = NSWindowController(window: window)
+//            wc.showWindow(self)
+            //NSApp.keyWindow?.contentViewController = homeViewController
         }
     }
 

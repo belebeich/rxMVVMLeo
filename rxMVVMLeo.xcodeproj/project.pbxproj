@@ -19,12 +19,14 @@
 		2C333C2C204D662500E133CD /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2B204D662500E133CD /* LoginViewModel.swift */; };
 		2C333C2E204D664500E133CD /* LeoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2D204D664500E133CD /* LeoAPI.swift */; };
 		2C40CC9A21479FB100CA5002 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40CC9921479FB100CA5002 /* Utils.swift */; };
+		2C4D928B21660D470083DF07 /* NSViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D928A21660D470083DF07 /* NSViewExtention.swift */; };
 		2C5857B520A3379200C2CA47 /* LeoAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIProtocol.swift */; };
 		2C64AAE920B846A90032E2AA /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C64AAE820B846A90032E2AA /* NotificationCenter.framework */; };
 		2C64AAEF20B846A90032E2AA /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C64AAED20B846A90032E2AA /* TodayViewController.xib */; };
 		2C64AAF320B846A90032E2AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C64AAF120B846A90032E2AA /* InfoPlist.strings */; };
 		2C64AAF720B846A90032E2AA /* rxMVVMLeoToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2C64AAE720B846A90032E2AA /* rxMVVMLeoToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2C64AAFE20B865BE0032E2AA /* LeoAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIProtocol.swift */; };
+		2C7428FD21639FDA00773D25 /* NSWindowControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7428FC21639FDA00773D25 /* NSWindowControllerExtension.swift */; };
 		2C7636BE2154F56C00ED94F3 /* CustomNSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7636BD2154F56C00ED94F3 /* CustomNSTextField.swift */; };
 		2C7636C0215620CB00ED94F3 /* CustomNSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7636BF215620CB00ED94F3 /* CustomNSTextView.swift */; };
 		2C765082214662B0002236D7 /* NSTextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C765081214662B0002236D7 /* NSTextViewExtension.swift */; };
@@ -38,6 +40,7 @@
 		2C9F5EBB210D9466007DAEF1 /* UrbanAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBA210D9466007DAEF1 /* UrbanAPIProtocol.swift */; };
 		2C9F5EBD210D9476007DAEF1 /* UrbanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */; };
 		2CACEED32050512E009A1EEF /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACEED22050512E009A1EEF /* TranslateViewController.swift */; };
+		2CB2875E2164E908003AD64D /* CustomNSSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2875D2164E908003AD64D /* CustomNSSecureTextField.swift */; };
 		2CBDA05B215928650022F39E /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA05A215928650022F39E /* Scene.swift */; };
 		2CBDA05D215928750022F39E /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA05C215928750022F39E /* SceneCoordinatorType.swift */; };
 		2CBDA05F215928840022F39E /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA05E215928840022F39E /* SceneCoordinator.swift */; };
@@ -105,6 +108,9 @@
 		2C333C2B204D662500E133CD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		2C333C2D204D664500E133CD /* LeoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoAPI.swift; sourceTree = "<group>"; };
 		2C40CC9921479FB100CA5002 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		2C4D92882165F09D0083DF07 /* ncButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ncButton.png; sourceTree = "<group>"; };
+		2C4D92892165F2CD0083DF07 /* menuBarWithoutButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBarWithoutButton.png; sourceTree = "<group>"; };
+		2C4D928A21660D470083DF07 /* NSViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewExtention.swift; sourceTree = "<group>"; };
 		2C5857B420A3379200C2CA47 /* LeoAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoAPIProtocol.swift; sourceTree = "<group>"; };
 		2C64AAE720B846A90032E2AA /* rxMVVMLeoToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = rxMVVMLeoToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C64AAE820B846A90032E2AA /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -113,6 +119,7 @@
 		2C64AAF020B846A90032E2AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C64AAF220B846A90032E2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C64AAF420B846A90032E2AA /* rxMVVMLeoToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rxMVVMLeoToday.entitlements; sourceTree = "<group>"; };
+		2C7428FC21639FDA00773D25 /* NSWindowControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSWindowControllerExtension.swift; sourceTree = "<group>"; };
 		2C7636BD2154F56C00ED94F3 /* CustomNSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSTextField.swift; sourceTree = "<group>"; };
 		2C7636BF215620CB00ED94F3 /* CustomNSTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSTextView.swift; sourceTree = "<group>"; };
 		2C765081214662B0002236D7 /* NSTextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextViewExtension.swift; sourceTree = "<group>"; };
@@ -120,7 +127,10 @@
 		2C864A07215B861C00C8EB48 /* TranslateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateTableViewCell.swift; sourceTree = "<group>"; };
 		2C9F5EBA210D9466007DAEF1 /* UrbanAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanAPIProtocol.swift; sourceTree = "<group>"; };
 		2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanAPI.swift; sourceTree = "<group>"; };
+		2CAA82962163595E0010B35B /* menubar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubar.png; sourceTree = "<group>"; };
+		2CAA8297216359660010B35B /* notificationcenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationcenter.png; sourceTree = "<group>"; };
 		2CACEED22050512E009A1EEF /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
+		2CB2875D2164E908003AD64D /* CustomNSSecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSSecureTextField.swift; sourceTree = "<group>"; };
 		2CBDA05A215928650022F39E /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		2CBDA05C215928750022F39E /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
 		2CBDA05E215928840022F39E /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
@@ -267,6 +277,10 @@
 		2C333C2A204D656800E133CD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2CAA82962163595E0010B35B /* menubar.png */,
+				2C4D92892165F2CD0083DF07 /* menuBarWithoutButton.png */,
+				2C4D92882165F09D0083DF07 /* ncButton.png */,
+				2CAA8297216359660010B35B /* notificationcenter.png */,
 				2C333C1B204D639800E133CD /* Assets.xcassets */,
 				2C333C21204D639800E133CD /* rxMVVMLeo.entitlements */,
 				2C333C20204D639800E133CD /* Info.plist */,
@@ -293,6 +307,7 @@
 			children = (
 				2C7636BD2154F56C00ED94F3 /* CustomNSTextField.swift */,
 				2C7636BF215620CB00ED94F3 /* CustomNSTextView.swift */,
+				2CB2875D2164E908003AD64D /* CustomNSSecureTextField.swift */,
 			);
 			path = Subclasses;
 			sourceTree = "<group>";
@@ -304,6 +319,8 @@
 				2C328405212EF564002B444D /* NSSegmentedConrol+Rx.swift */,
 				2C765081214662B0002236D7 /* NSTextViewExtension.swift */,
 				2C40CC9921479FB100CA5002 /* Utils.swift */,
+				2C7428FC21639FDA00773D25 /* NSWindowControllerExtension.swift */,
+				2C4D928A21660D470083DF07 /* NSViewExtention.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -606,6 +623,8 @@
 				2C81C09720AC20F90071E96E /* NSTextView+Rx.swift in Sources */,
 				2CCC1D8521634E3B00713DD7 /* SceneCoordinator.swift in Sources */,
 				2C333C18204D639800E133CD /* AppDelegate.swift in Sources */,
+				2C4D928B21660D470083DF07 /* NSViewExtention.swift in Sources */,
+				2C7428FD21639FDA00773D25 /* NSWindowControllerExtension.swift in Sources */,
 				2CCC1D8321634E2F00713DD7 /* SceneCoordinatorType.swift in Sources */,
 				2C9F5EBD210D9476007DAEF1 /* UrbanAPI.swift in Sources */,
 				2C9F5EBB210D9466007DAEF1 /* UrbanAPIProtocol.swift in Sources */,
@@ -613,6 +632,7 @@
 				2C333C2C204D662500E133CD /* LoginViewModel.swift in Sources */,
 				2C7636C0215620CB00ED94F3 /* CustomNSTextView.swift in Sources */,
 				2C7636BE2154F56C00ED94F3 /* CustomNSTextField.swift in Sources */,
+				2CB2875E2164E908003AD64D /* CustomNSSecureTextField.swift in Sources */,
 				2CCC1D8721634E5200713DD7 /* Scene+ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

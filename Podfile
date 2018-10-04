@@ -8,6 +8,7 @@ target 'rxMVVMLeo' do
     pod 'Alamofire'
     pod 'RxAlamofire'
     pod 'KeychainSwift'
+    pod 'KeychainAccess'
 end
 
 target 'rxMVVMLeoiOS' do
@@ -17,6 +18,7 @@ target 'rxMVVMLeoiOS' do
     pod 'Alamofire'
     pod 'RxAlamofire'
     pod 'KeychainSwift'
+    pod 'KeychainAccess'
     pod 'RxAnimated'
     pod 'RxDataSources'
 end
