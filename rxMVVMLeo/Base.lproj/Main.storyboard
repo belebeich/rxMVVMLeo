@@ -786,7 +786,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <stackView distribution="fill" orientation="vertical" alignment="trailing" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfA-e6-jPb">
+                            <stackView distribution="fillProportionally" orientation="vertical" alignment="trailing" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfA-e6-jPb">
                                 <rect key="frame" x="260" y="163" width="200" height="243"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="0vK-YC-cp7">
@@ -832,12 +832,11 @@
                                         </constraints>
                                     </customView>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZaF-yJ-Fx0" customClass="FlatButton" customModule="FlatButton">
-                                        <rect key="frame" x="112" y="0.0" width="88" height="24"/>
+                                        <rect key="frame" x="136" y="0.0" width="64" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="Kf2-iF-d7O"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="88" id="qnu-tb-wwx"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" title="Ok, got it!" bezelStyle="rounded" alignment="center" inset="2" id="lo4-Xu-sUh">
+                                        <buttonCell key="cell" type="bevel" title="Ok, got it!" bezelStyle="rounded" alignment="center" imageScaling="axesIndependently" inset="2" id="lo4-Xu-sUh">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -879,7 +878,7 @@
                                 </customSpacing>
                             </stackView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s66-pb-osK" customClass="FlatButton" customModule="FlatButton">
-                                <rect key="frame" x="395" y="18" width="60" height="24"/>
+                                <rect key="frame" x="400" y="18" width="60" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="1df-3X-Jj2"/>
                                     <constraint firstAttribute="height" constant="24" id="NT8-Jk-AEv"/>
@@ -980,21 +979,21 @@
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="s66-pb-osK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="3S4-Me-LB7"/>
                             <constraint firstItem="pID-54-6ph" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="7f1-SQ-UAW"/>
                             <constraint firstItem="2RA-3R-hcI" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="93Z-HX-R1k"/>
                             <constraint firstAttribute="trailing" secondItem="JzV-ra-bD8" secondAttribute="trailing" constant="20" id="BWM-lc-8a4"/>
+                            <constraint firstItem="s66-pb-osK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="DIV-uy-PoI"/>
                             <constraint firstItem="JzV-ra-bD8" firstAttribute="leading" secondItem="2RA-3R-hcI" secondAttribute="trailing" constant="-200" id="EyT-3e-VNP"/>
                             <constraint firstItem="EWn-NK-7UG" firstAttribute="top" secondItem="s66-pb-osK" secondAttribute="bottom" constant="20" id="Niv-Ac-L6Q"/>
                             <constraint firstItem="JzV-ra-bD8" firstAttribute="top" secondItem="2RA-3R-hcI" secondAttribute="bottom" constant="14" id="SS8-N2-iOK"/>
                             <constraint firstItem="s66-pb-osK" firstAttribute="top" secondItem="JzV-ra-bD8" secondAttribute="bottom" constant="6" id="TEJ-zW-Oil"/>
                             <constraint firstItem="2RA-3R-hcI" firstAttribute="top" secondItem="bfA-e6-jPb" secondAttribute="bottom" constant="15" id="TUW-cm-IIb"/>
                             <constraint firstItem="JzV-ra-bD8" firstAttribute="leading" secondItem="2RA-3R-hcI" secondAttribute="trailing" constant="-200" id="UNn-X5-RFL"/>
-                            <constraint firstItem="bfA-e6-jPb" firstAttribute="leading" secondItem="JzV-ra-bD8" secondAttribute="leading" id="XJH-qn-Rd1"/>
                             <constraint firstAttribute="trailing" secondItem="EWn-NK-7UG" secondAttribute="trailing" constant="25" id="XaR-3B-U0J"/>
                             <constraint firstAttribute="trailing" secondItem="pID-54-6ph" secondAttribute="trailing" constant="20" id="aDF-0X-Njm"/>
-                            <constraint firstAttribute="trailing" secondItem="s66-pb-osK" secondAttribute="trailing" constant="25" id="cod-Fj-vGt"/>
+                            <constraint firstAttribute="trailing" secondItem="s66-pb-osK" secondAttribute="trailing" constant="20" id="cod-Fj-vGt"/>
                             <constraint firstItem="bfA-e6-jPb" firstAttribute="top" secondItem="pID-54-6ph" secondAttribute="bottom" constant="8" symbolic="YES" id="eF2-LB-Xzn"/>
+                            <constraint firstAttribute="trailing" secondItem="0vK-YC-cp7" secondAttribute="trailing" constant="20" id="rcV-mQ-0iI"/>
                             <constraint firstAttribute="trailing" secondItem="2RA-3R-hcI" secondAttribute="trailing" constant="20" id="ykm-kX-pdc"/>
                             <constraint firstItem="pID-54-6ph" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="zPS-Qi-rO7"/>
                         </constraints>
@@ -1011,7 +1010,9 @@
                         <outlet property="passwordTextField" destination="UAu-WM-9eZ" id="dkE-Hb-weA"/>
                         <outlet property="secondMessage" destination="lBB-pW-lwM" id="Q4k-LX-ygE"/>
                         <outlet property="thirdMessage" destination="ltV-HV-PaC" id="Bk1-ac-tFF"/>
+                        <outlet property="tipStackView" destination="bfA-e6-jPb" id="oUs-Vl-Pfz"/>
                         <outlet property="tipView" destination="0vK-YC-cp7" id="B7w-sR-kDF"/>
+                        <outlet property="tipViewConstraint" destination="gDF-wC-xHx" id="CaX-cX-g70"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
