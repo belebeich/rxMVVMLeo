@@ -53,6 +53,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
             self.addWordButton.isEnabled = false
             self.wordTextView.isEnabled = false
             self.addWordButton.isHidden = true
+            self.translateSegmentControl.isEnabled = false
 
             let _ = Observable.of("Please login through main app")
             
@@ -71,7 +72,6 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         
         let translateResults = Observable.combineLatest(wordTextView.rx.text.orEmpty, translateSegmentControl.rx.selectedSegmentIndex)
             .throttle(0.3, scheduler: MainScheduler.instance)
-            
             .skip(1)
             .flatMapLatest { [unowned self] query, index -> Observable<[String]> in
                 self.enableSegments()
@@ -295,14 +295,4 @@ extension TodayViewController: NSTableViewDelegate {
     }
     
 }
-
-
-//extension NSLayoutConstraint {
-//    
-//    override open var description: String {
-//        let id = identifier ?? ""
-//        return "id: \(id), constant: \(constant)" //you may print whatever you want here
-//    }
-//}
-
 

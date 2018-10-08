@@ -16,15 +16,20 @@ class LoginViewController: NSViewController {
     
     let bag = DisposeBag()
     
+    @IBOutlet var thirdMessage: NSTextView!
+    @IBOutlet weak var okButton: NSButton!
     @IBOutlet weak var menuButtonView: NSImageView!
     @IBOutlet weak var tipView: NSView!
     @IBOutlet weak var menuBarImageView: NSImageView!
     @IBOutlet weak var notificationCenterImageView: NSImageView!
     @IBOutlet weak var loginInfoStack: NSStackView!
-    @IBOutlet var firstMessage: NSTextView!
+    @IBOutlet weak var firstMessage: NSTextView!
     @IBOutlet weak var loginButton: NSButton!
     @IBOutlet weak var emailTextField: CustomNSTextField!
     @IBOutlet weak var passwordTextField: CustomNSTextField!
+    
+    @IBOutlet var secondMessage: NSTextView!
+    
     
     
     
@@ -36,6 +41,47 @@ class LoginViewController: NSViewController {
         setUI()
         bindUI()
         
+    }
+    
+    private func disappearAnimation() {
+        //self.tipView.animator().alphaValue = 1.0
+        //self.tipView.layer?.anchorPoint = CGPoint.init(x: 0.0, y: -1.0)
+        print("origin X: \(tipView.bounds.origin.x)")
+        print("origin Y: \(tipView.bounds.origin.y)")
+        print("max X: \(tipView.bounds.maxX)")
+        print("max Y: \(tipView.bounds.maxY)")
+        print("min X: \(tipView.bounds.minX)")
+        print("min Y: \(tipView.bounds.minY)")
+        
+        let bounds = NSRect.init(x: self.tipView.bounds.origin.x, y: self.tipView.bounds.origin.y, width: self.tipView.bounds.width, height: self.tipView.bounds.height)
+        let end = NSRect.init(x: self.tipView.bounds.origin.x, y: self.tipView.bounds.origin.y, width: self.tipView.bounds.width, height: 0)
+        //let end = NSRect.init(x: self.tipView.bounds.midX, y: self.tipView.bounds.maxY, width: self.tipView.bounds.width, height: self.tipView.bounds.height)
+        //self.tipView.wantsLayer = true
+        let disappear = CABasicAnimation(keyPath: "bounds")
+        disappear.fromValue = bounds
+        disappear.toValue = end
+        //disappear.
+        disappear.duration = 1.0
+        disappear.autoreverses = false
+        disappear.fillMode = kCAFillModeBoth
+        
+        disappear.isRemovedOnCompletion = false
+
+        tipView.layer?.add(disappear, forKey: "opacity")
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+             //self.tipView.removeFromSuperview()
+
+            self.tipView.isHidden = true
+            self.okButton.isEnabled = false
+        })
+        
+//        NSAnimationContext.runAnimationGroup({ _ in
+//            NSAnimationContext.current.duration = 1.0
+//            self.tipView.animator().alphaValue = 0.0
+//        }, completionHandler: {
+//            self.tipView.isHidden = true
+//            self.okButton.isEnabled = false
+//        })
     }
     
     private func animation() {
@@ -89,6 +135,10 @@ class LoginViewController: NSViewController {
         position.autoreverses = false
         
         notificationCenterImageView.layer?.add(position, forKey: "group")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
+            self.okButton.isHidden = false
+        })
     }
     
     override func viewWillLayout() {
@@ -116,6 +166,8 @@ class LoginViewController: NSViewController {
         loginInfoStack.animator().alphaValue = 0.0
         self.menuButtonView.isHidden = true
         self.menuBarImageView.isHidden = true
+        self.okButton.isHidden = true
+        self.loginButton.isHidden = true
         self.notificationCenterImageView.isHidden = true
         
         let mainFont = NSFont.init(name: "PFDinMono-Regular", size: 13)
@@ -139,12 +191,10 @@ class LoginViewController: NSViewController {
              NSAttributedStringKey.paragraphStyle: buttonParagraphStyle]
         
         let buttonAttributedTitle = NSAttributedString.init(string: "Login", attributes: buttonAttributes)
+        let okButtonAttributedTitle = NSAttributedString.init(string: "Ok, got it!", attributes: buttonAttributes)
         
         self.loginButton.attributedTitle = buttonAttributedTitle
-        //self.loginButton.layer?.backgroundColor = CGColor.clear
-        self.loginButton.layer?.borderWidth = 1.0
-        self.loginButton.layer?.borderColor = cgNeon
-        self.loginButton.wantsLayer = true
+        self.okButton.attributedTitle = okButtonAttributedTitle
         
         self.passwordTextField.backgroundColor = NSColor.clear
         self.passwordTextField.textColor = NSColor.white
@@ -167,31 +217,23 @@ class LoginViewController: NSViewController {
         
         ///#E1D8CA
         
-        let test = self.firstMessage.setTextWithTypeAnimation(typedText: "It's a demo MacOS Application that helps you to import your translated words to Lingualeo service. To better experience please add this app to Today Notification center.", characterDelay: 3.0)
+        
         
         self.firstMessage.textColor = neonyellowColor
         self.firstMessage.font = mainFont
         
         self.firstMessage.sizeToFit()
         
-        test
-            .skip(1)
-            .subscribe(onNext: { [unowned self] bool in
-               
-                if bool == false {
-                    NSAnimationContext.runAnimationGroup({ _ in
-                        NSAnimationContext.current.duration = 2.0
-                        self.loginInfoStack.animator().alphaValue = 1.0
-                        
-                    }, completionHandler: {
-                       self.emailTextField.selectText(self)
-                        
-                    })
-                    
-                }
-            })
-            .disposed(by: bag)
         
+        self.secondMessage.textColor = neonyellowColor
+        self.secondMessage.font = mainFont
+        
+        self.secondMessage.sizeToFit()
+        
+        
+        self.thirdMessage.textColor = neonyellowColor
+        self.thirdMessage.font = mainFont
+        self.thirdMessage.sizeToFit()
         
         
     }
@@ -209,7 +251,44 @@ class LoginViewController: NSViewController {
             })
             .disposed(by: bag)
         
-        viewModel.requestWebPass()
+        let firstMessage = self.firstMessage.setTextWithTypeAnimation(typedText: "It's a demo MacOS Application that helps you to import your translated words to LinguaLeo service. This app only works in Today Notification center. Please add it as shown below.", characterDelay: 3.0)
+        
+        firstMessage
+            .skip(1)
+            .subscribe(onNext: { [unowned self] bool in
+                
+                if bool == false {
+                    
+                    self.animation()
+                    
+                }
+            })
+            .disposed(by: bag)
+        
+        okButton.rx.tap
+            .take(1)
+            .flatMapFirst { [unowned self] _ -> Observable<Bool> in
+                self.disappearAnimation()
+                let secondMessage = self.secondMessage.setTextWithTypeAnimation(typedText: "You should be logged in to export words to LinguaLeo service. Now you can do it.", characterDelay: 3.0)
+
+                return secondMessage
+
+            }
+            .subscribe(onNext: { [unowned self] bool in
+                if bool == false {
+                    //self.disappearAnimation()
+                    
+                    NSAnimationContext.runAnimationGroup({ _ in
+                        NSAnimationContext.current.duration = 2.0
+                        self.loginInfoStack.animator().alphaValue = 1.0
+                    }, completionHandler: {
+                       self.emailTextField.selectText(self)
+                        self.loginButton.isHidden = false
+                    })
+                }
+            })
+            .disposed(by: bag)
+        
         
         emailTextField.rx.controlEvent
             .subscribe(onNext: {
@@ -233,7 +312,12 @@ class LoginViewController: NSViewController {
                 
                 switch authStatus {
                 case .unavailable:
-                    break
+                    let thirdMessage = self.thirdMessage.setTextWithTypeAnimation(typedText: "Something went wrong, please try again!", characterDelay: 2.0)
+                    thirdMessage
+                        .subscribe(onNext: { _ in
+                            
+                        })
+                        .disposed(by: self.bag)
                 case .success(_):
                     self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "segue"), sender: nil)
                 }
@@ -265,3 +349,8 @@ class LoginViewController: NSViewController {
     
 }
 
+extension LoginViewController {
+    class FlippedView: NSView {
+        override var isFlipped: Bool { return true }
+    }
+}
