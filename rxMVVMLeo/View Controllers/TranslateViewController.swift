@@ -9,12 +9,18 @@
 import Cocoa
 import RxCocoa
 import RxSwift
+import Quartz
 
 class MainViewController: NSViewController {
     
     let bag = DisposeBag()
 
    
+    @IBOutlet var firstTextView: NSTextView!
+    @IBOutlet var secondTextView: NSTextView!
+    
+    @IBOutlet var thirdTextView: NSTextView!
+    @IBOutlet var fourthTextView: NSTextView!
     @IBOutlet weak var tipView: NSView!
     @IBOutlet weak var menuButtonView: NSImageView!
     @IBOutlet weak var notificationCenterImageView: NSImageView!
@@ -24,11 +30,15 @@ class MainViewController: NSViewController {
     @IBOutlet weak var logoutButton: NSButton!
     @IBOutlet weak var helpButton: NSButton!
     @IBOutlet weak var accountButton: NSButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUI()
         bindUI()
+        
+        
+
     }
     
     override func viewWillLayout() {
@@ -40,11 +50,17 @@ class MainViewController: NSViewController {
         self.view.layer?.insertSublayer(gradientLayer, at: 0)
         
         self.view.wantsLayer = true
+        
+        
     }
+    
+    
+    
 
     func setUI() {
         let neonyellowColor = NSColor.init(calibratedRed: 219/255, green: 255/255, blue: 91/255, alpha: 1.0)
         let mainFont = NSFont.init(name: "PFDinMono-Regular", size: 13)
+        let tipsFont = NSFont.init(name: "PFDinMono-Regular", size: 12)
         
         self.menuButtonView.isHidden = true
         self.menuBarImageView.isHidden = true
@@ -53,6 +69,22 @@ class MainViewController: NSViewController {
         self.introMessage.textColor = neonyellowColor
         self.introMessage.font = mainFont
         self.introMessage.sizeToFit()
+        
+        self.firstTextView.textColor = NSColor.white
+        self.firstTextView.font = tipsFont
+        self.firstTextView.sizeToFit()
+        
+        self.secondTextView.textColor = NSColor.white
+        self.secondTextView.font = tipsFont
+        self.secondTextView.sizeToFit()
+        
+        self.thirdTextView.textColor = NSColor.white
+        self.thirdTextView.font = tipsFont
+        self.thirdTextView.sizeToFit()
+        
+        self.fourthTextView.textColor = NSColor.white
+        self.fourthTextView.font = tipsFont
+        self.fourthTextView.sizeToFit()
     }
     
     func helpTab() {
@@ -62,6 +94,7 @@ class MainViewController: NSViewController {
             .subscribe(onNext: { [unowned self] bool in
                 if bool == false {
                     self.animation()
+                    
                 }
             })
             .disposed(by: bag)
@@ -165,6 +198,76 @@ class MainViewController: NSViewController {
 
 extension MainViewController {
     
+    typealias CompletionHandler = (_ success:Bool) -> Void
+    
+    private func drawingAnimations(textView: NSTextView, text: String, x: Double, y: Double, completionHandler: @escaping CompletionHandler) {
+        
+        let text = textView.setTextWithTypeAnimation(typedText: text, characterDelay: 5.0)
+        
+        text
+            .subscribe(onNext: { [unowned self] bool in
+                if bool == false {
+                    let line = CAShapeLayer()
+                    
+                    line.lineWidth = 2.0
+                    
+                    line.shadowColor = CGColor.white
+                    
+                    line.shadowOffset = CGSize.zero
+                    line.shadowOpacity = 1.0
+                    
+                    line.lineCap = kCALineCapRound
+                    line.strokeEnd = 0.0
+                    line.strokeColor = CGColor.white
+                    line.shadowRadius = 5.0
+                    line.fillColor = CGColor.clear
+                    line.fillMode = kCAFillModeForwards
+                    
+                    
+                    let pt = NSBezierPath()
+                    pt.move(to: CGPoint(x: x, y: y))
+                    
+                    pt.line(to: CGPoint(x: x+48, y: y))
+                    
+                    line.path = pt.cgPath
+                    
+                    CATransaction.begin()
+                    
+                    let pathAnimation = CABasicAnimation(keyPath: "strokeEnd")
+                    pathAnimation.duration = 0.5
+                    pathAnimation.fromValue = 0.0
+                    pathAnimation.toValue = 1.0
+                    pathAnimation.fillMode = kCAFillModeForwards
+                    pathAnimation.autoreverses = false
+                    line.strokeEnd = 1.0
+                    
+                    CATransaction.setCompletionBlock { [unowned self] in
+                        completionHandler(true)
+//                        let secondTextView = self.secondTextView.setTextWithTypeAnimation(typedText: "Words input", characterDelay: 5.0)
+//
+//                        secondTextView
+//                            .subscribe(onNext: { [unowned self] bool in
+//                                if bool == false {
+//                                    print("ok")
+//                                }
+//                            })
+//                            .disposed(by: self.bag)
+                        
+                    }
+                    
+                    line.add(pathAnimation, forKey: "path")
+                    //self.view.layer?.addSublayer(line)
+                    self.tabView.selectedTabViewItem?.view?.layer?.addSublayer(line)
+                    CATransaction.commit()
+                }
+            })
+            .disposed(by: bag)
+        
+        
+        
+        
+    }
+    
     private func animation() {
         var animations = [CABasicAnimation]()
        
@@ -218,8 +321,25 @@ extension MainViewController {
         
         notificationCenterImageView.layer?.add(position, forKey: "group")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
-            //self.okButton.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: { [unowned self] in
+            self.drawingAnimations(textView: self.firstTextView, text: "translate options", x: 170.0, y: 196.0) { _ in
+                self.drawingAnimations(textView: self.secondTextView, text: "words input", x: 170, y: 165.0) {_ in
+                    self.drawingAnimations(textView: self.thirdTextView, text: "translates table will appear here", x: 170.0, y: 125) { _ in
+                        self.drawingAnimations(textView: self.fourthTextView, text: "enables with selected row", x: 170.0, y: 105.0) { _ in
+                            print("ok")
+                        }
+                    }
+                }
+            }
+//            let firstTextView = self.firstTextView.setTextWithTypeAnimation(typedText: "Translate options", characterDelay: 5.0)
+//
+//            firstTextView
+//                .subscribe(onNext: { [unowned self] bool in
+//                    if bool == false {
+//                        self.drawingAnimations(with: 199.0, and: 265.0)
+//                    }
+//                })
+//                .disposed(by: self.bag)
         })
     }
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		14C86F941D912DD0CD29F39D /* libPods-rxMVVMLeoiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B52D8C83708DD285AB2563 /* libPods-rxMVVMLeoiOS.a */; };
+		2C0101CA2170BAB30062721B /* NSBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0101C92170BAB30062721B /* NSBezierPath.swift */; };
+		2C0101CC2170EC990062721B /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0101CB2170EC990062721B /* CALayerExtension.swift */; };
 		2C1DAECF2057EF7B00B6CFCF /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */; };
 		2C1ED3E8212338EC009108DF /* CustomNSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1ED3E7212338EC009108DF /* CustomNSTableView.swift */; };
 		2C328406212EF564002B444D /* NSSegmentedConrol+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C328405212EF564002B444D /* NSSegmentedConrol+Rx.swift */; };
@@ -94,6 +96,8 @@
 
 /* Begin PBXFileReference section */
 		0DC1891712A1F013C92C2477 /* Pods-rxMVVMLeoToday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxMVVMLeoToday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rxMVVMLeoToday/Pods-rxMVVMLeoToday.debug.xcconfig"; sourceTree = "<group>"; };
+		2C0101C92170BAB30062721B /* NSBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSBezierPath.swift; sourceTree = "<group>"; };
+		2C0101CB2170EC990062721B /* CALayerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
 		2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
 		2C1ED3E7212338EC009108DF /* CustomNSTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSTableView.swift; sourceTree = "<group>"; };
 		2C328405212EF564002B444D /* NSSegmentedConrol+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSegmentedConrol+Rx.swift"; sourceTree = "<group>"; };
@@ -318,6 +322,8 @@
 				2C765081214662B0002236D7 /* NSTextViewExtension.swift */,
 				2C40CC9921479FB100CA5002 /* Utils.swift */,
 				2C7428FC21639FDA00773D25 /* NSWindowControllerExtension.swift */,
+				2C0101C92170BAB30062721B /* NSBezierPath.swift */,
+				2C0101CB2170EC990062721B /* CALayerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -623,7 +629,9 @@
 				2C7428FD21639FDA00773D25 /* NSWindowControllerExtension.swift in Sources */,
 				2CCC1D8321634E2F00713DD7 /* SceneCoordinatorType.swift in Sources */,
 				2C9F5EBD210D9476007DAEF1 /* UrbanAPI.swift in Sources */,
+				2C0101CC2170EC990062721B /* CALayerExtension.swift in Sources */,
 				2C9F5EBB210D9466007DAEF1 /* UrbanAPIProtocol.swift in Sources */,
+				2C0101CA2170BAB30062721B /* NSBezierPath.swift in Sources */,
 				2C5857B520A3379200C2CA47 /* LeoAPIProtocol.swift in Sources */,
 				2C333C2C204D662500E133CD /* LoginViewModel.swift in Sources */,
 				2C7636C0215620CB00ED94F3 /* CustomNSTextView.swift in Sources */,
