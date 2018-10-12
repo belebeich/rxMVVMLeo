@@ -236,7 +236,7 @@
 				2C7636BC2154F53200ED94F3 /* Subclasses */,
 				2C821A86210B909E00A20D9D /* Urban API */,
 				2C333C28204D654A00E133CD /* Leo API */,
-				2C81C09520AC20E40071E96E /* Extension */,
+				2C81C09520AC20E40071E96E /* Extensions */,
 				2C333C29204D655B00E133CD /* View Controllers */,
 				2C333C27204D653A00E133CD /* View Model */,
 				2C333C1D204D639800E133CD /* Main.storyboard */,
@@ -310,7 +310,7 @@
 			path = Subclasses;
 			sourceTree = "<group>";
 		};
-		2C81C09520AC20E40071E96E /* Extension */ = {
+		2C81C09520AC20E40071E96E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */,
@@ -319,7 +319,7 @@
 				2C40CC9921479FB100CA5002 /* Utils.swift */,
 				2C7428FC21639FDA00773D25 /* NSWindowControllerExtension.swift */,
 			);
-			path = Extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		2C821A86210B909E00A20D9D /* Urban API */ = {

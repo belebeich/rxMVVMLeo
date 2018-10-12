@@ -1247,7 +1247,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="uHN-4P-A1c">
-                                                    <rect key="frame" x="228" y="11" width="200" height="211"/>
+                                                    <rect key="frame" x="228" y="74" width="200" height="211"/>
                                                     <subviews>
                                                         <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D2e-CS-aqh">
                                                             <rect key="frame" x="0.0" y="193" width="200" height="18"/>
@@ -1289,16 +1289,16 @@
                                                     </constraints>
                                                 </customView>
                                                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqV-g7-30V">
-                                                    <rect key="frame" x="0.0" y="230" width="428" height="120"/>
+                                                    <rect key="frame" x="0.0" y="295" width="428" height="50"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Sye-FY-eOr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="428" height="120"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="428" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" continuousSpellChecking="YES" dataDetection="YES" dashSubstitution="YES" smartInsertDelete="YES" id="sY0-k1-pkp">
-                                                                <rect key="frame" x="0.0" y="0.0" width="428" height="120"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="428" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <size key="minSize" width="428" height="120"/>
+                                                                <size key="minSize" width="428" height="50"/>
                                                                 <size key="maxSize" width="463" height="10000000"/>
                                                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             </textView>
@@ -1306,7 +1306,7 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </clipView>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="120" id="9pf-Nr-mCs"/>
+                                                        <constraint firstAttribute="height" constant="50" id="9pf-Nr-mCs"/>
                                                     </constraints>
                                                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="PpN-4h-itV">
                                                         <rect key="frame" x="-100" y="-100" width="87" height="18"/>
@@ -1320,8 +1320,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="uHN-4P-A1c" secondAttribute="trailing" id="SEq-cc-W3K"/>
-                                                <constraint firstAttribute="bottom" secondItem="uHN-4P-A1c" secondAttribute="bottom" constant="11" id="SgP-uB-MpS"/>
-                                                <constraint firstItem="zqV-g7-30V" firstAttribute="top" secondItem="HH8-sb-i7u" secondAttribute="top" constant="-5" id="crD-GN-VGK"/>
+                                                <constraint firstItem="uHN-4P-A1c" firstAttribute="top" secondItem="zqV-g7-30V" secondAttribute="bottom" constant="10" id="SMT-bW-rMl"/>
+                                                <constraint firstItem="zqV-g7-30V" firstAttribute="top" secondItem="HH8-sb-i7u" secondAttribute="top" id="crD-GN-VGK"/>
                                                 <constraint firstItem="zqV-g7-30V" firstAttribute="centerX" secondItem="HH8-sb-i7u" secondAttribute="centerX" id="poG-zd-Kyb"/>
                                                 <constraint firstItem="zqV-g7-30V" firstAttribute="width" secondItem="HH8-sb-i7u" secondAttribute="width" id="w6S-kj-e6c"/>
                                             </constraints>
@@ -1364,8 +1364,13 @@
                     <connections>
                         <outlet property="accountButton" destination="tJ9-wT-kyz" id="hqT-OK-ov0"/>
                         <outlet property="helpButton" destination="Nze-jt-3Ar" id="c4s-fw-YKY"/>
+                        <outlet property="introMessage" destination="sY0-k1-pkp" id="ika-0G-1in"/>
                         <outlet property="logoutButton" destination="hEN-yd-YU6" id="7cb-zV-8VJ"/>
+                        <outlet property="menuBarImageView" destination="D2e-CS-aqh" id="ktx-b9-KJH"/>
+                        <outlet property="menuButtonView" destination="TW1-ax-taG" id="HrO-e8-Dou"/>
+                        <outlet property="notificationCenterImageView" destination="qUR-y1-ggM" id="pRg-mR-Nox"/>
                         <outlet property="tabView" destination="XKm-oQ-KhL" id="MLC-02-wCL"/>
+                        <outlet property="tipView" destination="uHN-4P-A1c" id="VCc-r2-yOg"/>
                     </connections>
                 </viewController>
                 <customObject id="ulb-ak-Ug8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

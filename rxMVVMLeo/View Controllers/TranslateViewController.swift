@@ -14,6 +14,12 @@ class MainViewController: NSViewController {
     
     let bag = DisposeBag()
 
+   
+    @IBOutlet weak var tipView: NSView!
+    @IBOutlet weak var menuButtonView: NSImageView!
+    @IBOutlet weak var notificationCenterImageView: NSImageView!
+    @IBOutlet weak var menuBarImageView: NSImageView!
+    @IBOutlet var introMessage: NSTextView!
     @IBOutlet weak var tabView: NSTabView!
     @IBOutlet weak var logoutButton: NSButton!
     @IBOutlet weak var helpButton: NSButton!
@@ -21,6 +27,7 @@ class MainViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUI()
         bindUI()
     }
     
@@ -35,12 +42,38 @@ class MainViewController: NSViewController {
         self.view.wantsLayer = true
     }
 
+    func setUI() {
+        let neonyellowColor = NSColor.init(calibratedRed: 219/255, green: 255/255, blue: 91/255, alpha: 1.0)
+        let mainFont = NSFont.init(name: "PFDinMono-Regular", size: 13)
+        
+        self.menuButtonView.isHidden = true
+        self.menuBarImageView.isHidden = true
+        self.notificationCenterImageView.isHidden = true
+        
+        self.introMessage.textColor = neonyellowColor
+        self.introMessage.font = mainFont
+        self.introMessage.sizeToFit()
+    }
+    
+    func helpTab() {
+        let introMessage = self.introMessage.setTextWithTypeAnimation(typedText: "This app is designed to work only in Notification Center. It helps you to quickly translate and add some words to your LinguaLeo account.", characterDelay: 3.0)
+        
+        introMessage
+            .subscribe(onNext: { [unowned self] bool in
+                if bool == false {
+                    self.animation()
+                }
+            })
+            .disposed(by: bag)
+    }
     
     func bindUI() {
+        
         
         accountButton.rx.tap
             .subscribe(onNext: { [unowned self] _ in
                 self.tabView.selectTabViewItem(at: 0)
+                
             })
             .disposed(by: bag)
         
@@ -49,6 +82,16 @@ class MainViewController: NSViewController {
                 self.tabView.selectTabViewItem(at: 1)
             })
             .disposed(by: bag)
+        
+        
+        helpButton.rx.tap
+            .take(1)
+            .subscribe(onNext: { [unowned self] _ in
+                self.helpTab()
+            })
+            .disposed(by: bag)
+        
+        
         
 //        let viewModel = TranslateViewModel.init(word: wordTextField.rx.text.orEmpty.asDriver())
 //        self.addWordButton.isEnabled = false
@@ -117,4 +160,66 @@ class MainViewController: NSViewController {
         self.view.window?.close()
     }
     
+}
+
+
+extension MainViewController {
+    
+    private func animation() {
+        var animations = [CABasicAnimation]()
+       
+        
+        menuBarImageView.isHidden = false
+        let menuBarAnimation = CABasicAnimation(keyPath: "opacity")
+        menuBarAnimation.fromValue = 0
+        menuBarAnimation.toValue = 1
+        menuBarAnimation.duration = 1.5
+        menuBarImageView.layer?.add(menuBarAnimation, forKey: "opacity")
+        
+        menuButtonView.isHidden = false
+        menuButtonView.layer?.masksToBounds = false
+        menuButtonView.layer?.shadowColor = NSColor.white.cgColor
+        menuButtonView.layer?.shadowRadius = 0
+        menuButtonView.layer?.shadowOpacity = 1.0
+        menuButtonView.layer?.shadowOffset = .zero
+        
+        let opacityAnimation = CABasicAnimation(keyPath: "opacity")
+        opacityAnimation.fromValue = 0
+        opacityAnimation.toValue = 1
+        opacityAnimation.duration = 1.5
+        animations.append(opacityAnimation)
+        
+        let glowAnimation = CABasicAnimation(keyPath: "shadowRadius")
+        glowAnimation.fromValue = 0
+        glowAnimation.toValue = 14
+        glowAnimation.beginTime = 2.5
+        glowAnimation.duration = CFTimeInterval(0.5)
+        glowAnimation.fillMode = kCAFillModeRemoved
+        glowAnimation.autoreverses = true
+        glowAnimation.isRemovedOnCompletion = true
+        animations.append(glowAnimation)
+        
+        let group = CAAnimationGroup()
+        group.animations = animations
+        group.duration = 3
+        menuButtonView.layer?.add(group, forKey: "group")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+            self.notificationCenterImageView.isHidden = false
+        })
+        
+        let position = CABasicAnimation(keyPath: "position")
+        position.fromValue = CGPoint(x: tipView.bounds.width, y: notificationCenterImageView.frame.minY)
+        position.toValue = CGPoint(x: notificationCenterImageView.frame.minX, y: notificationCenterImageView.frame.minY)
+        position.duration = 1.5
+        
+        position.beginTime = CACurrentMediaTime() + 3
+        position.autoreverses = false
+        
+        notificationCenterImageView.layer?.add(position, forKey: "group")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
+            //self.okButton.isHidden = false
+        })
+    }
 }
