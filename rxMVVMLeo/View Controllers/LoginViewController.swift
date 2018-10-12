@@ -48,6 +48,7 @@ class LoginViewController: NSViewController {
         
         self.emailTextField.customizeCaretColor()
         self.passwordTextField.customizeCaretColor()
+        
     }
     
     func setUI() {
@@ -261,7 +262,7 @@ extension LoginViewController {
         
         let glowAnimation = CABasicAnimation(keyPath: "shadowRadius")
         glowAnimation.fromValue = 0
-        glowAnimation.toValue = 12
+        glowAnimation.toValue = 14
         glowAnimation.beginTime = 2.5
         glowAnimation.duration = CFTimeInterval(0.5)
         glowAnimation.fillMode = kCAFillModeRemoved

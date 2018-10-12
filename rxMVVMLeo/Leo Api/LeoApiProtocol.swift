@@ -15,6 +15,5 @@ protocol LeoAPIProtocol {
     func getMeatballs() -> Observable<String>
     func login(email: String, password: String) -> Observable<AccountStatus>
     func logout()
-    func requestWebPass()
 }
 

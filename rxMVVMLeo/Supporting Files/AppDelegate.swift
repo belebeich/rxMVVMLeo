@@ -17,12 +17,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         switch LeoAPI.shared.state.value {
         case .success( _):
+            print("success")
             let storyBoard = NSStoryboard(name: NSStoryboard.Name(rawValue:"Main"), bundle: nil)
-            let homeViewController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "TranslateViewController")) as! TranslateViewController
+            let homeViewController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "TranslateViewController")) as! MainViewController
             NSApp.keyWindow?.contentViewController = homeViewController
-        default:
+        case .unavailable:
+            print("un")
             let storyBoard = NSStoryboard(name: NSStoryboard.Name(rawValue:"Main"), bundle: nil)
-            
+            let homeViewController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "LoginViewController")) as! LoginViewController
+            NSApp.keyWindow?.contentViewController = homeViewController
             
             
 //            let windowController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "WindowController")) as! NSWindowController

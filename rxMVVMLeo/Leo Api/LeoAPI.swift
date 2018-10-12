@@ -95,7 +95,6 @@ struct LeoAPI : LeoAPIProtocol {
                 
                     let data = NSKeyedArchiver.archivedData(withRootObject: cookies)
                     self.keychain.set(data, forKey: Keys.cookies)
-                    //self.keychain.set(data, forKey: Keys.cookies, withAccess: )
                     
                     return AccountStatus.success(autologin)
                 } else {
@@ -154,13 +153,6 @@ struct LeoAPI : LeoAPIProtocol {
         }
     }
     
-    func requestWebPass() {
-        //let data = self.keychain.get("lingualeo.com (belebeich@me.com)")
-        //guard let data = try? self.kc.get("belebeich@me.com") else { return }
-        
-        //print("webpass: \(data)")
-    }
-    
     func getMeatballs() -> Observable<String> {
         
         guard let data = self.keychain.getData(Keys.cookies) else { return  Observable.of("")}
@@ -175,7 +167,7 @@ struct LeoAPI : LeoAPIProtocol {
                 let response : Observable<JSON> = request(address: LeoAPI.Address.login)
                 return response
                     .map { result in
-                        
+                        print(result)
                         if let words = result["user"]["meatballs"].int {
                             
                             return "\(words)"

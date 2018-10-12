@@ -46,9 +46,7 @@ struct LoginViewModel {
         return LeoAPI.shared.login(email: email, password: password)
     }
     
-    func requestWebPass() {
-        return LeoAPI.shared.requestWebPass()
-    }
+    
     
     func logout() {
         return LeoAPI.shared.logout()
