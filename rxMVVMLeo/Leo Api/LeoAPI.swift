@@ -12,7 +12,6 @@ import RxCocoa
 import Alamofire
 import SwiftyJSON
 import KeychainSwift
-//import KeychainAccess
 
 typealias AccessToken = String
 
@@ -167,7 +166,7 @@ struct LeoAPI : LeoAPIProtocol {
                 let response : Observable<JSON> = request(address: LeoAPI.Address.login)
                 return response
                     .map { result in
-                        print(result)
+                        
                         if let words = result["user"]["meatballs"].int {
                             
                             return "\(words)"
@@ -186,13 +185,66 @@ struct LeoAPI : LeoAPIProtocol {
         let requester = Alamofire.request(LeoAPI.Address.logout.url, method: .post, parameters: [:], encoding: URLEncoding.httpBody, headers: [:])
         requester
             .response { _ in
-                
+
                 self.state.accept(.unavailable)
                 self.keychain.delete(Keys.cookies)
                 self.keychain.delete(Keys.token)
                 self.keychain.clear()
+                
         }
         
+//        let params : [String:String] = [:]
+//        let response : Observable<JSON> = request(address: LeoAPI.Address.logout, parameters: params)
+//
+//        return response
+//            .map { result in
+//                print("OL")
+//                self.state.accept(.unavailable)
+//                self.keychain.delete(Keys.cookies)
+//                self.keychain.delete(Keys.token)
+//
+//                return true
+//        }
+        
+    }
+    
+    func accountInfo() -> Observable<User?> {
+        guard let data = self.keychain.getData(Keys.cookies) else { return  Observable.of(nil)}
+        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return Observable.of(nil)}
+        
+        for cookie in cookies {
+            Alamofire.HTTPCookieStorage.shared.setCookie(cookie)
+        }
+        
+        switch LeoAPI.shared.state.value {
+        case .success(_):
+            let response : Observable<JSON> = request(address: LeoAPI.Address.login)
+            return response
+                .map { result in
+                    
+                    var user = User()
+                    
+                    if let words = result["user"]["meatballs"].int {
+                        user.available = words
+                    }
+                    if let known = result["user"]["words_known"].int {
+                        user.known = known
+                    }
+                    if let nickname = result["user"]["nickname"].string {
+                        user.nickname = nickname
+                    }
+                    if let native = result["user"]["lang_native"].string {
+                        user.native = native
+                    }
+                    if let refcode = result["user"]["refcode"].string {
+                        user.refcode = refcode
+                    }
+                    return user
+            }
+            
+        case .unavailable:
+            return Observable.of(nil)
+        }
     }
     
     //MARK: - generic request

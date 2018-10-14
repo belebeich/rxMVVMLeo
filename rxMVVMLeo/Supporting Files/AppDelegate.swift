@@ -19,7 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         switch LeoAPI.shared.state.value {
         case .success( _):
-            print("success")
+            
             let storyBoard = NSStoryboard(name: NSStoryboard.Name(rawValue:"Main"), bundle: nil)
             window = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "MainWindowController")) as! NSWindowController
             let homeViewController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "TranslateViewController")) as! MainViewController
@@ -28,12 +28,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             window.showWindow(self)
             
         case .unavailable:
-            print("un")
+            
             let storyBoard = NSStoryboard(name: NSStoryboard.Name(rawValue:"Main"), bundle: nil)
             window = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "LoginWindowController")) as! NSWindowController
             let homeViewController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "LoginViewController")) as! LoginViewController
 
             window.contentViewController = homeViewController
+            
             window.showWindow(self)
             
             

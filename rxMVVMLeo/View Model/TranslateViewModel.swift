@@ -27,16 +27,11 @@ struct TranslateViewModel {
                 
                 for ch in word.characters {
                     if ch != " " { flag = true }
-                    
                 }
                 return flag
         }
         
-        
-        
-        
         inputValid = wordValid
-        
         
     }
     
@@ -46,8 +41,6 @@ struct TranslateViewModel {
     }
     
     func meatballs() -> Observable<String> {
-        
-        
         return LeoAPI.shared.getMeatballs()
     }
     
@@ -70,4 +63,6 @@ struct TranslateViewModel {
     func logout() {
         return LeoAPI.shared.logout()
     }
+    
+    
 }
