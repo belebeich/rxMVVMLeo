@@ -35,6 +35,24 @@ struct TranslateViewModel {
         
     }
     
+    var segment: BehaviorRelay<Int> {
+        if let segment = UserDefaults.standard.value(forKey: "segment") as? Int {
+            return BehaviorRelay(value: segment)
+        } else {
+            return BehaviorRelay(value: 1)
+        }
+    }
+    
+    func setTranslateOptions(with segm: Driver<Int>) {
+        
+        segm.asObservable()
+            .subscribe(onNext: { seg in
+                UserDefaults.standard.set(seg, forKey: "segment")
+            })
+            .disposed(by: bag)
+        
+    }
+    
     func add(word: String, translate: String) -> Observable<AddWord> {
         
         return LeoAPI.shared.add(a: word, with: translate)
@@ -53,16 +71,15 @@ struct TranslateViewModel {
         } else {
             words = LeoAPI.shared.translate(of: word)
         }
-        let stroke = words
-            .flatMap { words -> Observable<[String]> in
-                return Observable.of(words)
-        }
-        return stroke
+//        let stroke = words
+//            .flatMap { words -> Observable<[String]> in
+//                return Observable.of(words)
+//        }
+//        return stroke
+        return words
     }
     
-    func logout() {
-        return LeoAPI.shared.logout()
-    }
+    
     
     
 }

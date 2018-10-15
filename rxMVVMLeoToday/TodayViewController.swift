@@ -70,6 +70,10 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         }
         
         
+        viewModel.segment
+            .bind(to: translateSegmentControl.rx.selectedSegmentIndex)
+            .disposed(by: bag)
+        
         let translateResults = Observable.combineLatest(wordTextView.rx.text.orEmpty, translateSegmentControl.rx.selectedSegmentIndex)
             .throttle(0.3, scheduler: MainScheduler.instance)
             .skip(1)
@@ -112,10 +116,16 @@ class TodayViewController: NSViewController, NCWidgetProviding {
             })
             .disposed(by: bag)
         
+        viewModel.setTranslateOptions(with: translateSegmentControl.rx.value.asDriver())
+        
+        
+        
+        
         translateSegmentControl.rx.value.asObservable()
             .distinctUntilChanged()
             .subscribe(onNext: { _ in
                 self.addWordButton.isEnabled = false
+            
             })
             .disposed(by: bag)
         
@@ -142,44 +152,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         
                     
         
-//        addWordButton.rx.tap
-//            .subscribe(onNext: { [unowned self] in
-//                if !self.translates.isEmpty {
-//                    let response = viewModel.add(word: self.wordTextView.stringValue, translate: self.translates[self.translateTableView.selectedRow])
-//
-//
-//                    response
-//                        .subscribe(onNext: { res in
-//                            switch res {
-//                            case .error:
-//                                print("s")
-//                            case .success(let new):
-//                                viewModel.meatballs()
-//                                    .bind(to: self.availableWordsLabel.rx.text)
-//                                    .disposed(by: self.bag)
-//                                self.alreadyLabel.isHidden = new
-//                            }
-//                        })
-//                        .disposed(by: self.bag)
-//                    response
-//                        .bind(to: self.alreadyLabel.rx.isHidden)
-//                        .disposed(by: self.bag)
-//
-//                    response
-//                        .subscribe(onNext: { _ in
-//                            viewModel.meatballs()
-//                                .bind(to: self.availableWordsLabel.rx.text)
-//                                .disposed(by: self.bag)
-//                            self.addWordButton.isEnabled = false
-//                        })
-//                        .disposed(by: self.bag)
-                    
-                   
-//                }
-//            })
-//            .disposed(by: bag)
 
-        
         
         viewModel.meatballs()
             .bind(to: self.availableWordsLabel.rx.text)

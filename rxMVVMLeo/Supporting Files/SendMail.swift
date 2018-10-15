@@ -14,7 +14,12 @@ class SendEmail: NSObject {
         let service = NSSharingService(named: NSSharingService.Name.composeEmail)!
         service.recipients = ["belebeich@me.com"]
         service.subject = "Feedback / Write to developer"
+        let os = ProcessInfo.processInfo.operatingSystemVersionString
+        if let app = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") {
+            service.perform(withItems: ["macOS version: \(os)", "app version: \(app)"])
+        } else {
+            service.perform(withItems: ["macOS version: \(os)"])
+        }
         
-        service.perform(withItems: [""])
     }
 }

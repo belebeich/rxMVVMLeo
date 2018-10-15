@@ -62,9 +62,6 @@ struct LeoAPI : LeoAPIProtocol {
     
     private let keychain = KeychainSwift()
     
-    //let kc = Keychain(server: "lingualeo.com", protocolType: .https)
-    //let kc = Keychain(service: "lingualeo.com")
-    
     var state: BehaviorRelay<AccountStatus> {
         if let storedToken = self.keychain.get(Keys.token) {
             return BehaviorRelay(value: AccountStatus.success(storedToken))
@@ -192,19 +189,6 @@ struct LeoAPI : LeoAPIProtocol {
                 self.keychain.clear()
                 
         }
-        
-//        let params : [String:String] = [:]
-//        let response : Observable<JSON> = request(address: LeoAPI.Address.logout, parameters: params)
-//
-//        return response
-//            .map { result in
-//                print("OL")
-//                self.state.accept(.unavailable)
-//                self.keychain.delete(Keys.cookies)
-//                self.keychain.delete(Keys.token)
-//
-//                return true
-//        }
         
     }
     

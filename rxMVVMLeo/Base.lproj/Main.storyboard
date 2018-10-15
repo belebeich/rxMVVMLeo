@@ -1210,12 +1210,12 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sV8-wB-4tc" customClass="FlatButton" customModule="FlatButton">
+                                    <button toolTip="write to developer" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sV8-wB-4tc" customClass="FlatButton" customModule="FlatButton">
                                         <rect key="frame" x="0.0" y="0.0" width="123" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="X5b-mW-4nx"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" title="𝔪𝔞𝔡𝔢 𝔟𝔶 𝔟𝔢𝔩𝔢𝔟𝔢𝔦𝔠𝔥" bezelStyle="regularSquare" alignment="center" toolTip="write to developer" transparent="YES" imageScaling="proportionallyDown" inset="2" id="U1N-Lv-p7C">
+                                        <buttonCell key="cell" type="bevel" title="𝔪𝔞𝔡𝔢 𝔟𝔶 𝔟𝔢𝔩𝔢𝔟𝔢𝔦𝔠𝔥" bezelStyle="regularSquare" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="U1N-Lv-p7C">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" size="15" name="PFDinMono-Regular"/>
                                         </buttonCell>
@@ -1699,7 +1699,7 @@
                                                     <rect key="frame" x="0.0" y="295" width="440" height="50"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Sye-FY-eOr">
                                                         <rect key="frame" x="0.0" y="0.0" width="440" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" continuousSpellChecking="YES" dataDetection="YES" dashSubstitution="YES" smartInsertDelete="YES" id="sY0-k1-pkp">
                                                                 <rect key="frame" x="0.0" y="0.0" width="440" height="50"/>
@@ -1728,7 +1728,7 @@
                                                     <rect key="frame" x="59" y="187" width="130" height="15"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="ac5-or-p0G">
                                                         <rect key="frame" x="0.0" y="0.0" width="130" height="15"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="Zrm-l3-JEQ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="130" height="15"/>
@@ -1759,7 +1759,7 @@
                                                     <rect key="frame" x="95" y="160" width="94" height="15"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Lov-pB-w9U">
                                                         <rect key="frame" x="0.0" y="0.0" width="94" height="15"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="AzU-mn-LIM">
                                                                 <rect key="frame" x="0.0" y="0.0" width="94" height="15"/>
@@ -1789,7 +1789,7 @@
                                                     <rect key="frame" x="63" y="118" width="126" height="32"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Bz0-p3-344">
                                                         <rect key="frame" x="0.0" y="0.0" width="126" height="32"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="HxD-fT-TuC">
                                                                 <rect key="frame" x="0.0" y="0.0" width="126" height="32"/>
@@ -1819,7 +1819,7 @@
                                                     <rect key="frame" x="9" y="98" width="180" height="16"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="fwe-PH-Cmc">
                                                         <rect key="frame" x="0.0" y="0.0" width="180" height="16"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="OBu-k6-RAc">
                                                                 <rect key="frame" x="0.0" y="0.0" width="180" height="16"/>
@@ -1849,7 +1849,7 @@
                                                     <rect key="frame" x="26" y="49" width="144" height="24"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="jEA-z4-tE7">
                                                         <rect key="frame" x="0.0" y="0.0" width="144" height="24"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="f6K-7I-dYx">
                                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="24"/>
@@ -1879,7 +1879,7 @@
                                                     <rect key="frame" x="0.0" y="11" width="440" height="32"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="cws-6O-g3q">
                                                         <rect key="frame" x="0.0" y="0.0" width="440" height="32"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="JIr-it-m2B">
                                                                 <rect key="frame" x="0.0" y="-0.5" width="440" height="32"/>
