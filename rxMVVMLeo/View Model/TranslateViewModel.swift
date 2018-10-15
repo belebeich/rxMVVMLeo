@@ -27,27 +27,38 @@ struct TranslateViewModel {
                 
                 for ch in word.characters {
                     if ch != " " { flag = true }
-                    
                 }
                 return flag
         }
         
-        
-        
-        
         inputValid = wordValid
-        
         
     }
     
-    func add(word: String, translate: String) {
+    var segment: BehaviorRelay<Int> {
+        if let segment = UserDefaults.standard.value(forKey: "segment") as? Int {
+            return BehaviorRelay(value: segment)
+        } else {
+            return BehaviorRelay(value: 1)
+        }
+    }
+    
+    func setTranslateOptions(with segm: Driver<Int>) {
+        
+        segm.asObservable()
+            .subscribe(onNext: { seg in
+                UserDefaults.standard.set(seg, forKey: "segment")
+            })
+            .disposed(by: bag)
+        
+    }
+    
+    func add(word: String, translate: String) -> Observable<AddWord> {
         
         return LeoAPI.shared.add(a: word, with: translate)
     }
     
     func meatballs() -> Observable<String> {
-        
-        
         return LeoAPI.shared.getMeatballs()
     }
     
@@ -55,36 +66,20 @@ struct TranslateViewModel {
         
         var words: Observable<[String]> = Observable.of([])
         
-//        translateAPI.asObservable()
-//            .subscribe(onNext: { api in
-//                if api == 0 {
-//                    words = UrbanAPI.shared.translate(of: word)
-//                } else {
-//                    words = LeoAPI.shared.translate(of: word)
-//                }
-//            })
-//            .disposed(by: bag)
-        
         if translateAPI == 0 {
             words = UrbanAPI.shared.translate(of: word)
         } else {
             words = LeoAPI.shared.translate(of: word)
         }
-        
-        
-        
-        //        let words = UrbanAPI.shared.translate(of: word)
-        //
-                let stroke = words
-                    .flatMap { words -> Observable<[String]> in
-        
-                        return Observable.of(words)
-                    }
-        return stroke
-        
+//        let stroke = words
+//            .flatMap { words -> Observable<[String]> in
+//                return Observable.of(words)
+//        }
+//        return stroke
+        return words
     }
     
-    func logout() {
-        return LeoAPI.shared.logout()
-    }
+    
+    
+    
 }

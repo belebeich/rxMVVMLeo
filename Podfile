@@ -2,26 +2,34 @@
 # platform :ios, '9.0'
 
 target 'rxMVVMLeo' do
-    pod 'RxSwift',    '~> 4.0'
-    pod 'RxCocoa',    '~> 4.0'
+    pod 'RxSwift',    '4.3.0'
+    pod 'RxCocoa',    '4.3.0'
     pod 'SwiftyJSON'
     pod 'Alamofire'
+    pod 'RxAlamofire'
     pod 'KeychainSwift'
+    pod 'FlatButton'
+    pod 'KeychainAccess'
 end
 
 target 'rxMVVMLeoiOS' do
-    pod 'RxSwift',    '~> 4.0'
-    pod 'RxCocoa',    '~> 4.0'
+    pod 'RxSwift',    '4.3.0'
+    pod 'RxCocoa',    '4.3.0'
     pod 'SwiftyJSON'
     pod 'Alamofire'
+    pod 'RxAlamofire'
     pod 'KeychainSwift'
+    pod 'KeychainAccess'
+    pod 'RxAnimated'
+    pod 'RxDataSources'
 end
 
 target 'rxMVVMLeoToday' do
-    pod 'RxSwift',    '~> 4.0'
-    pod 'RxCocoa',    '~> 4.0'
+    pod 'RxSwift',    '4.3.0'
+    pod 'RxCocoa',    '4.3.0'
     pod 'SwiftyJSON'
     pod 'Alamofire'
+    pod 'RxAlamofire'
     pod 'KeychainSwift'
 end
 

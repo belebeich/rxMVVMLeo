@@ -20,6 +20,11 @@ enum AccountStatus {
     case success(AccessToken)
 }
 
+enum AddWord {
+    case error
+    case success(Bool)
+}
+
 struct LeoAPI : LeoAPIProtocol {
     
     //Types
@@ -35,8 +40,8 @@ struct LeoAPI : LeoAPIProtocol {
         case logout = "logout"
         case addword = "addword"
         
-        private var baseURL: String { return "http://api.lingualeo.com/"}
-        private var mainURL : String { return "http://lingualeo.com/" }
+        private var baseURL: String { return "https://api.lingualeo.com/"}
+        private var mainURL : String { return "https://lingualeo.com/" }
         
         var url: URL {
             switch self {
@@ -116,22 +121,31 @@ struct LeoAPI : LeoAPIProtocol {
         
     }
     
-    func add(a word: String, with translate: String) {
-        
-        let params = ["word": word,
-                      "tword": translate]
-        
-        guard let data = self.keychain.getData(Keys.cookies) else { return }
-        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return }
+    func add(a word: String, with translate: String) -> Observable<AddWord> {
+        guard let data = self.keychain.getData(Keys.cookies) else {  return Observable.of(AddWord.error) }
+        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return Observable.of(AddWord.error) }
         
         for cookie in cookies {
             Alamofire.HTTPCookieStorage.shared.setCookie(cookie)
         }
         
-        let response = Alamofire.request(LeoAPI.Address.addword.url, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: nil)
-        response
-            .response { _ in
+        let params = ["word": word,
+                      "tword": translate]
+        
+        let response : Observable<JSON> = request(address: LeoAPI.Address.addword, parameters: params)
+        
+        return response
+            .map { result in
+                var bool = AddWord.error
+                guard let isNew = result["is_new"].int else { return bool }
 
+                if isNew == 1 {
+                    bool = AddWord.success(true)
+                } else {
+                    bool = AddWord.success(false)
+                }
+
+                return bool
         }
     }
     
@@ -167,14 +181,54 @@ struct LeoAPI : LeoAPIProtocol {
     func logout() {
         let requester = Alamofire.request(LeoAPI.Address.logout.url, method: .post, parameters: [:], encoding: URLEncoding.httpBody, headers: [:])
         requester
-            .response {_ in
-                
+            .response { _ in
+
                 self.state.accept(.unavailable)
                 self.keychain.delete(Keys.cookies)
                 self.keychain.delete(Keys.token)
                 self.keychain.clear()
+                
         }
         
+    }
+    
+    func accountInfo() -> Observable<User?> {
+        guard let data = self.keychain.getData(Keys.cookies) else { return  Observable.of(nil)}
+        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return Observable.of(nil)}
+        
+        for cookie in cookies {
+            Alamofire.HTTPCookieStorage.shared.setCookie(cookie)
+        }
+        
+        switch LeoAPI.shared.state.value {
+        case .success(_):
+            let response : Observable<JSON> = request(address: LeoAPI.Address.login)
+            return response
+                .map { result in
+                    
+                    var user = User()
+                    
+                    if let words = result["user"]["meatballs"].int {
+                        user.available = words
+                    }
+                    if let known = result["user"]["words_known"].int {
+                        user.known = known
+                    }
+                    if let nickname = result["user"]["nickname"].string {
+                        user.nickname = nickname
+                    }
+                    if let native = result["user"]["lang_native"].string {
+                        user.native = native
+                    }
+                    if let refcode = result["user"]["refcode"].string {
+                        user.refcode = refcode
+                    }
+                    return user
+            }
+            
+        case .unavailable:
+            return Observable.of(nil)
+        }
     }
     
     //MARK: - generic request
@@ -188,6 +242,8 @@ struct LeoAPI : LeoAPIProtocol {
                                             headers: [:])
             
             request.responseJSON { response in
+                
+                
                 guard response.error == nil, let data = response.data, let result = JSON(data) as? T else { return }
                 
                 observer.onNext(result)

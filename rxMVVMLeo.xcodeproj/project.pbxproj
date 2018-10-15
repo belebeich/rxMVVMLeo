@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		14C86F941D912DD0CD29F39D /* libPods-rxMVVMLeoiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B52D8C83708DD285AB2563 /* libPods-rxMVVMLeoiOS.a */; };
+		2C0101CA2170BAB30062721B /* NSBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0101C92170BAB30062721B /* NSBezierPath.swift */; };
 		2C1DAECF2057EF7B00B6CFCF /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */; };
 		2C1ED3E8212338EC009108DF /* CustomNSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1ED3E7212338EC009108DF /* CustomNSTableView.swift */; };
 		2C328406212EF564002B444D /* NSSegmentedConrol+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C328405212EF564002B444D /* NSSegmentedConrol+Rx.swift */; };
@@ -24,23 +25,50 @@
 		2C64AAF320B846A90032E2AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C64AAF120B846A90032E2AA /* InfoPlist.strings */; };
 		2C64AAF720B846A90032E2AA /* rxMVVMLeoToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2C64AAE720B846A90032E2AA /* rxMVVMLeoToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2C64AAFE20B865BE0032E2AA /* LeoAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIProtocol.swift */; };
+		2C7636BE2154F56C00ED94F3 /* CustomNSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7636BD2154F56C00ED94F3 /* CustomNSTextField.swift */; };
+		2C7636C0215620CB00ED94F3 /* CustomNSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7636BF215620CB00ED94F3 /* CustomNSTextView.swift */; };
+		2C765082214662B0002236D7 /* NSTextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C765081214662B0002236D7 /* NSTextViewExtension.swift */; };
 		2C7BB01820BD31500083034F /* LeoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2D204D664500E133CD /* LeoAPI.swift */; };
 		2C7BB01920BD31530083034F /* LeoAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIProtocol.swift */; };
 		2C7BB01A20BD32B90083034F /* NSTextView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */; };
 		2C81C09720AC20F90071E96E /* NSTextView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */; };
+		2C864A08215B861C00C8EB48 /* TranslateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C864A07215B861C00C8EB48 /* TranslateTableViewCell.swift */; };
 		2C9E74F4210E1275007E429E /* UrbanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */; };
 		2C9E74F5210E1289007E429E /* UrbanAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBA210D9466007DAEF1 /* UrbanAPIProtocol.swift */; };
 		2C9F5EBB210D9466007DAEF1 /* UrbanAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBA210D9466007DAEF1 /* UrbanAPIProtocol.swift */; };
 		2C9F5EBD210D9476007DAEF1 /* UrbanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */; };
 		2CACEED32050512E009A1EEF /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACEED22050512E009A1EEF /* TranslateViewController.swift */; };
+		2CB2875E2164E908003AD64D /* CustomNSSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2875D2164E908003AD64D /* CustomNSSecureTextField.swift */; };
+		2CB58E3121736CAC0020A774 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB58E3021736CAC0020A774 /* User.swift */; };
+		2CB58E3221736CEC0020A774 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB58E3021736CAC0020A774 /* User.swift */; };
+		2CB58E3421736D930020A774 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB58E3321736D930020A774 /* MainViewModel.swift */; };
+		2CB58E36217399510020A774 /* SendMail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB58E35217399510020A774 /* SendMail.swift */; };
+		2CB58E3B2173A5150020A774 /* PF Din Mono Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB58E392173A33A0020A774 /* PF Din Mono Bold.otf */; };
+		2CB58E3C2173A5180020A774 /* PF Din Mono.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB58E3A2173A3560020A774 /* PF Din Mono.otf */; };
+		2CB58E3D2173A51A0020A774 /* PF Din Mono Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB58E382173A3280020A774 /* PF Din Mono Medium.otf */; };
+		2CBDA05B215928650022F39E /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA05A215928650022F39E /* Scene.swift */; };
+		2CBDA05D215928750022F39E /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA05C215928750022F39E /* SceneCoordinatorType.swift */; };
+		2CBDA05F215928840022F39E /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA05E215928840022F39E /* SceneCoordinator.swift */; };
+		2CBDA061215928960022F39E /* Scene+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA060215928960022F39E /* Scene+ViewController.swift */; };
+		2CBDA063215928A50022F39E /* SceneTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA062215928A50022F39E /* SceneTransitionType.swift */; };
+		2CBDA06621592ED10022F39E /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA06521592ED10022F39E /* TranslateViewController.swift */; };
+		2CBDA06821593F930022F39E /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA06721593F930022F39E /* BindableType.swift */; };
+		2CBDA069215940400022F39E /* UrbanAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBA210D9466007DAEF1 /* UrbanAPIProtocol.swift */; };
+		2CBDA06A215940430022F39E /* UrbanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */; };
+		2CBDA06C2159421D0022F39E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA06B2159421D0022F39E /* LoginViewModel.swift */; };
+		2CBDA06E215942400022F39E /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA06D215942400022F39E /* TranslateViewModel.swift */; };
 		2CC6FCB320BD2DFA00885892 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C64AAEB20B846A90032E2AA /* TodayViewController.swift */; };
 		2CC6FCB620BD2E4600885892 /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */; };
+		2CCC1D81216346B600713DD7 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D80216346B600713DD7 /* Scene.swift */; };
+		2CCC1D8321634E2F00713DD7 /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D8221634E2F00713DD7 /* SceneCoordinatorType.swift */; };
+		2CCC1D8521634E3B00713DD7 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D8421634E3B00713DD7 /* SceneCoordinator.swift */; };
+		2CCC1D8721634E5200713DD7 /* Scene+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D8621634E5200713DD7 /* Scene+ViewController.swift */; };
+		2CCC1D8921634E6100713DD7 /* SceneTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D8821634E6100713DD7 /* SceneTransitionType.swift */; };
 		2CFFB53B204DBFDE007A816C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFB53A204DBFDE007A816C /* AppDelegate.swift */; };
-		2CFFB53D204DBFDE007A816C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFB53C204DBFDE007A816C /* ViewController.swift */; };
+		2CFFB53D204DBFDE007A816C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFB53C204DBFDE007A816C /* LoginViewController.swift */; };
 		2CFFB540204DBFDE007A816C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFFB53E204DBFDE007A816C /* Main.storyboard */; };
 		2CFFB542204DBFDE007A816C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CFFB541204DBFDE007A816C /* Assets.xcassets */; };
 		2CFFB545204DBFDE007A816C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFFB543204DBFDE007A816C /* LaunchScreen.storyboard */; };
-		2CFFB54A204DC18A007A816C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2B204D662500E133CD /* LoginViewModel.swift */; };
 		2CFFB54B204DC18C007A816C /* LeoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2D204D664500E133CD /* LeoAPI.swift */; };
 		42716A6BF6B07BCB60698BCB /* libPods-rxMVVMLeoToday.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 421C68A82745AC44A44460D2 /* libPods-rxMVVMLeoToday.a */; };
 		B6EACAEA0D1BAE3F74574581 /* libPods-rxMVVMLeo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D502289DD58B5DE8D608001 /* libPods-rxMVVMLeo.a */; };
@@ -72,11 +100,7 @@
 
 /* Begin PBXFileReference section */
 		0DC1891712A1F013C92C2477 /* Pods-rxMVVMLeoToday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxMVVMLeoToday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rxMVVMLeoToday/Pods-rxMVVMLeoToday.debug.xcconfig"; sourceTree = "<group>"; };
-		2C08295C20B731EB00E0F61A /* Scene+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scene+ViewController.swift"; sourceTree = "<group>"; };
-		2C08295D20B731EB00E0F61A /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
-		2C08295E20B731EC00E0F61A /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
-		2C08295F20B731EC00E0F61A /* SceneTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTransitionType.swift; sourceTree = "<group>"; };
-		2C08296020B731EC00E0F61A /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
+		2C0101C92170BAB30062721B /* NSBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSBezierPath.swift; sourceTree = "<group>"; };
 		2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
 		2C1ED3E7212338EC009108DF /* CustomNSTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSTableView.swift; sourceTree = "<group>"; };
 		2C328405212EF564002B444D /* NSSegmentedConrol+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSegmentedConrol+Rx.swift"; sourceTree = "<group>"; };
@@ -89,6 +113,8 @@
 		2C333C21204D639800E133CD /* rxMVVMLeo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rxMVVMLeo.entitlements; sourceTree = "<group>"; };
 		2C333C2B204D662500E133CD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		2C333C2D204D664500E133CD /* LeoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoAPI.swift; sourceTree = "<group>"; };
+		2C4D92882165F09D0083DF07 /* ncButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ncButton.png; sourceTree = "<group>"; };
+		2C4D92892165F2CD0083DF07 /* menuBarWithoutButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBarWithoutButton.png; sourceTree = "<group>"; };
 		2C5857B420A3379200C2CA47 /* LeoAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoAPIProtocol.swift; sourceTree = "<group>"; };
 		2C64AAE720B846A90032E2AA /* rxMVVMLeoToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = rxMVVMLeoToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C64AAE820B846A90032E2AA /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -97,13 +123,40 @@
 		2C64AAF020B846A90032E2AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C64AAF220B846A90032E2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C64AAF420B846A90032E2AA /* rxMVVMLeoToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rxMVVMLeoToday.entitlements; sourceTree = "<group>"; };
+		2C7636BD2154F56C00ED94F3 /* CustomNSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSTextField.swift; sourceTree = "<group>"; };
+		2C7636BF215620CB00ED94F3 /* CustomNSTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSTextView.swift; sourceTree = "<group>"; };
+		2C765081214662B0002236D7 /* NSTextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextViewExtension.swift; sourceTree = "<group>"; };
 		2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Rx.swift"; sourceTree = "<group>"; };
+		2C864A07215B861C00C8EB48 /* TranslateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateTableViewCell.swift; sourceTree = "<group>"; };
 		2C9F5EBA210D9466007DAEF1 /* UrbanAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanAPIProtocol.swift; sourceTree = "<group>"; };
 		2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanAPI.swift; sourceTree = "<group>"; };
+		2CAA82962163595E0010B35B /* menubar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubar.png; sourceTree = "<group>"; };
+		2CAA8297216359660010B35B /* notificationcenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationcenter.png; sourceTree = "<group>"; };
 		2CACEED22050512E009A1EEF /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
+		2CB2875D2164E908003AD64D /* CustomNSSecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSSecureTextField.swift; sourceTree = "<group>"; };
+		2CB58E3021736CAC0020A774 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2CB58E3321736D930020A774 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		2CB58E35217399510020A774 /* SendMail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMail.swift; sourceTree = "<group>"; };
+		2CB58E382173A3280020A774 /* PF Din Mono Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PF Din Mono Medium.otf"; sourceTree = "<group>"; };
+		2CB58E392173A33A0020A774 /* PF Din Mono Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PF Din Mono Bold.otf"; sourceTree = "<group>"; };
+		2CB58E3A2173A3560020A774 /* PF Din Mono.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PF Din Mono.otf"; sourceTree = "<group>"; };
+		2CBDA05A215928650022F39E /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		2CBDA05C215928750022F39E /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
+		2CBDA05E215928840022F39E /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
+		2CBDA060215928960022F39E /* Scene+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scene+ViewController.swift"; sourceTree = "<group>"; };
+		2CBDA062215928A50022F39E /* SceneTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTransitionType.swift; sourceTree = "<group>"; };
+		2CBDA06521592ED10022F39E /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
+		2CBDA06721593F930022F39E /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
+		2CBDA06B2159421D0022F39E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		2CBDA06D215942400022F39E /* TranslateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
+		2CCC1D80216346B600713DD7 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		2CCC1D8221634E2F00713DD7 /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
+		2CCC1D8421634E3B00713DD7 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
+		2CCC1D8621634E5200713DD7 /* Scene+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scene+ViewController.swift"; sourceTree = "<group>"; };
+		2CCC1D8821634E6100713DD7 /* SceneTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTransitionType.swift; sourceTree = "<group>"; };
 		2CFFB538204DBFDE007A816C /* rxMVVMLeoiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rxMVVMLeoiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFFB53A204DBFDE007A816C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2CFFB53C204DBFDE007A816C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2CFFB53C204DBFDE007A816C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2CFFB53F204DBFDE007A816C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2CFFB541204DBFDE007A816C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CFFB544204DBFDE007A816C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -147,16 +200,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C08295B20B731DC00E0F61A /* Scenes */ = {
+		2C1CCCDF215A19BB00D37289 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2C08295D20B731EB00E0F61A /* Scene.swift */,
-				2C08295C20B731EB00E0F61A /* Scene+ViewController.swift */,
-				2C08296020B731EC00E0F61A /* SceneCoordinator.swift */,
-				2C08295E20B731EC00E0F61A /* SceneCoordinatorType.swift */,
-				2C08295F20B731EC00E0F61A /* SceneTransitionType.swift */,
+				2CFFB53C204DBFDE007A816C /* LoginViewController.swift */,
+				2CBDA06521592ED10022F39E /* TranslateViewController.swift */,
 			);
-			path = Scenes;
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		2C1CCCE0215A19C900D37289 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				2CBDA06B2159421D0022F39E /* LoginViewModel.swift */,
+				2CBDA06D215942400022F39E /* TranslateViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 		2C333C0B204D639800E133CD = {
@@ -184,10 +243,12 @@
 		2C333C16204D639800E133CD /* rxMVVMLeo */ = {
 			isa = PBXGroup;
 			children = (
+				2CB58E2F21736C980020A774 /* Models */,
+				2CCC1D7F2163469C00713DD7 /* Scenes */,
+				2C7636BC2154F53200ED94F3 /* Subclasses */,
 				2C821A86210B909E00A20D9D /* Urban API */,
 				2C333C28204D654A00E133CD /* Leo API */,
-				2C08295B20B731DC00E0F61A /* Scenes */,
-				2C81C09520AC20E40071E96E /* Extension */,
+				2C81C09520AC20E40071E96E /* Extensions */,
 				2C333C29204D655B00E133CD /* View Controllers */,
 				2C333C27204D653A00E133CD /* View Model */,
 				2C333C1D204D639800E133CD /* Main.storyboard */,
@@ -201,6 +262,7 @@
 			children = (
 				2C333C2B204D662500E133CD /* LoginViewModel.swift */,
 				2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */,
+				2CB58E3321736D930020A774 /* MainViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -226,10 +288,16 @@
 		2C333C2A204D656800E133CD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2CB58E372173A2D60020A774 /* Fonts */,
+				2CAA82962163595E0010B35B /* menubar.png */,
+				2C4D92892165F2CD0083DF07 /* menuBarWithoutButton.png */,
+				2C4D92882165F09D0083DF07 /* ncButton.png */,
+				2CAA8297216359660010B35B /* notificationcenter.png */,
 				2C333C1B204D639800E133CD /* Assets.xcassets */,
 				2C333C21204D639800E133CD /* rxMVVMLeo.entitlements */,
 				2C333C20204D639800E133CD /* Info.plist */,
 				2C333C17204D639800E133CD /* AppDelegate.swift */,
+				2CB58E35217399510020A774 /* SendMail.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -247,13 +315,25 @@
 			path = rxMVVMLeoToday;
 			sourceTree = "<group>";
 		};
-		2C81C09520AC20E40071E96E /* Extension */ = {
+		2C7636BC2154F53200ED94F3 /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				2C7636BD2154F56C00ED94F3 /* CustomNSTextField.swift */,
+				2C7636BF215620CB00ED94F3 /* CustomNSTextView.swift */,
+				2CB2875D2164E908003AD64D /* CustomNSSecureTextField.swift */,
+			);
+			path = Subclasses;
+			sourceTree = "<group>";
+		};
+		2C81C09520AC20E40071E96E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */,
 				2C328405212EF564002B444D /* NSSegmentedConrol+Rx.swift */,
+				2C765081214662B0002236D7 /* NSTextViewExtension.swift */,
+				2C0101C92170BAB30062721B /* NSBezierPath.swift */,
 			);
-			path = Extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		2C821A86210B909E00A20D9D /* Urban API */ = {
@@ -265,15 +345,61 @@
 			path = "Urban API";
 			sourceTree = "<group>";
 		};
+		2CB58E2F21736C980020A774 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2CB58E3021736CAC0020A774 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2CB58E372173A2D60020A774 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2CB58E382173A3280020A774 /* PF Din Mono Medium.otf */,
+				2CB58E3A2173A3560020A774 /* PF Din Mono.otf */,
+				2CB58E392173A33A0020A774 /* PF Din Mono Bold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		2CBDA0592159284E0022F39E /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				2CBDA05A215928650022F39E /* Scene.swift */,
+				2CBDA05C215928750022F39E /* SceneCoordinatorType.swift */,
+				2CBDA05E215928840022F39E /* SceneCoordinator.swift */,
+				2CBDA060215928960022F39E /* Scene+ViewController.swift */,
+				2CBDA062215928A50022F39E /* SceneTransitionType.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		2CCC1D7F2163469C00713DD7 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				2CCC1D80216346B600713DD7 /* Scene.swift */,
+				2CCC1D8221634E2F00713DD7 /* SceneCoordinatorType.swift */,
+				2CCC1D8421634E3B00713DD7 /* SceneCoordinator.swift */,
+				2CCC1D8621634E5200713DD7 /* Scene+ViewController.swift */,
+				2CCC1D8821634E6100713DD7 /* SceneTransitionType.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		2CFFB539204DBFDE007A816C /* rxMVVMLeoiOS */ = {
 			isa = PBXGroup;
 			children = (
+				2C1CCCE0215A19C900D37289 /* View Models */,
+				2C1CCCDF215A19BB00D37289 /* View Controllers */,
+				2CBDA0592159284E0022F39E /* Scene */,
 				2CFFB53A204DBFDE007A816C /* AppDelegate.swift */,
-				2CFFB53C204DBFDE007A816C /* ViewController.swift */,
 				2CFFB53E204DBFDE007A816C /* Main.storyboard */,
 				2CFFB541204DBFDE007A816C /* Assets.xcassets */,
 				2CFFB543204DBFDE007A816C /* LaunchScreen.storyboard */,
 				2CFFB546204DBFDE007A816C /* Info.plist */,
+				2CBDA06721593F930022F39E /* BindableType.swift */,
+				2C864A07215B861C00C8EB48 /* TranslateTableViewCell.swift */,
 			);
 			path = rxMVVMLeoiOS;
 			sourceTree = "<group>";
@@ -426,7 +552,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CB58E3C2173A5180020A774 /* PF Din Mono.otf in Resources */,
 				2C333C1C204D639800E133CD /* Assets.xcassets in Resources */,
+				2CB58E3B2173A5150020A774 /* PF Din Mono Bold.otf in Resources */,
+				2CB58E3D2173A51A0020A774 /* PF Din Mono Medium.otf in Resources */,
 				2C333C1F204D639800E133CD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,15 +645,28 @@
 			files = (
 				2C333C1A204D639800E133CD /* LoginViewController.swift in Sources */,
 				2CACEED32050512E009A1EEF /* TranslateViewController.swift in Sources */,
+				2C765082214662B0002236D7 /* NSTextViewExtension.swift in Sources */,
+				2CB58E3121736CAC0020A774 /* User.swift in Sources */,
+				2CCC1D8921634E6100713DD7 /* SceneTransitionType.swift in Sources */,
+				2CB58E3421736D930020A774 /* MainViewModel.swift in Sources */,
+				2CB58E36217399510020A774 /* SendMail.swift in Sources */,
 				2C333C2E204D664500E133CD /* LeoAPI.swift in Sources */,
+				2CCC1D81216346B600713DD7 /* Scene.swift in Sources */,
 				2C1DAECF2057EF7B00B6CFCF /* TranslateViewModel.swift in Sources */,
 				2C328406212EF564002B444D /* NSSegmentedConrol+Rx.swift in Sources */,
 				2C81C09720AC20F90071E96E /* NSTextView+Rx.swift in Sources */,
+				2CCC1D8521634E3B00713DD7 /* SceneCoordinator.swift in Sources */,
 				2C333C18204D639800E133CD /* AppDelegate.swift in Sources */,
+				2CCC1D8321634E2F00713DD7 /* SceneCoordinatorType.swift in Sources */,
 				2C9F5EBD210D9476007DAEF1 /* UrbanAPI.swift in Sources */,
 				2C9F5EBB210D9466007DAEF1 /* UrbanAPIProtocol.swift in Sources */,
+				2C0101CA2170BAB30062721B /* NSBezierPath.swift in Sources */,
 				2C5857B520A3379200C2CA47 /* LeoAPIProtocol.swift in Sources */,
 				2C333C2C204D662500E133CD /* LoginViewModel.swift in Sources */,
+				2C7636C0215620CB00ED94F3 /* CustomNSTextView.swift in Sources */,
+				2C7636BE2154F56C00ED94F3 /* CustomNSTextField.swift in Sources */,
+				2CB2875E2164E908003AD64D /* CustomNSSecureTextField.swift in Sources */,
+				2CCC1D8721634E5200713DD7 /* Scene+ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +682,7 @@
 				2CC6FCB620BD2E4600885892 /* TranslateViewModel.swift in Sources */,
 				2C9E74F5210E1289007E429E /* UrbanAPIProtocol.swift in Sources */,
 				2C7BB01920BD31530083034F /* LeoAPIProtocol.swift in Sources */,
+				2CB58E3221736CEC0020A774 /* User.swift in Sources */,
 				2C7BB01A20BD32B90083034F /* NSTextView+Rx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,10 +692,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C64AAFE20B865BE0032E2AA /* LeoAPIProtocol.swift in Sources */,
-				2CFFB53D204DBFDE007A816C /* ViewController.swift in Sources */,
+				2CBDA05D215928750022F39E /* SceneCoordinatorType.swift in Sources */,
+				2CFFB53D204DBFDE007A816C /* LoginViewController.swift in Sources */,
+				2CBDA063215928A50022F39E /* SceneTransitionType.swift in Sources */,
+				2CBDA061215928960022F39E /* Scene+ViewController.swift in Sources */,
+				2CBDA06821593F930022F39E /* BindableType.swift in Sources */,
+				2CBDA06C2159421D0022F39E /* LoginViewModel.swift in Sources */,
+				2CBDA06621592ED10022F39E /* TranslateViewController.swift in Sources */,
+				2C864A08215B861C00C8EB48 /* TranslateTableViewCell.swift in Sources */,
+				2CBDA05F215928840022F39E /* SceneCoordinator.swift in Sources */,
+				2CBDA06E215942400022F39E /* TranslateViewModel.swift in Sources */,
+				2CBDA05B215928650022F39E /* Scene.swift in Sources */,
 				2CFFB54B204DC18C007A816C /* LeoAPI.swift in Sources */,
+				2CBDA06A215940430022F39E /* UrbanAPI.swift in Sources */,
+				2CBDA069215940400022F39E /* UrbanAPIProtocol.swift in Sources */,
 				2CFFB53B204DBFDE007A816C /* AppDelegate.swift in Sources */,
-				2CFFB54A204DC18A007A816C /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -804,7 +958,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y9G5U4WZMN;
 				INFOPLIST_FILE = rxMVVMLeoiOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ivan-lebedev.rxMVVMLeoiOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -823,7 +977,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y9G5U4WZMN;
 				INFOPLIST_FILE = rxMVVMLeoiOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ivan-lebedev.rxMVVMLeoiOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";

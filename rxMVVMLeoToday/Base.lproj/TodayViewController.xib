@@ -10,6 +10,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController" customModule="rxMVVMLeoToday" customModuleProvider="target">
             <connections>
                 <outlet property="addWordButton" destination="OYY-Yr-Kz8" id="dlm-qO-Y4x"/>
+                <outlet property="alreadyLabel" destination="Vzx-6M-xay" id="Ysj-ge-Qyi"/>
                 <outlet property="availableWordsLabel" destination="eo3-M0-OlR" id="MV9-HF-DEP"/>
                 <outlet property="searchIndicator" destination="sbL-8R-2Oe" id="jY0-fy-pqY"/>
                 <outlet property="translateScrollView" destination="kH8-OJ-C05" id="ahs-wT-Rbp"/>
@@ -25,7 +26,7 @@
             <rect key="frame" x="0.0" y="0.0" width="405" height="530"/>
             <subviews>
                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="as0-Q6-Rhc">
-                    <rect key="frame" x="24" y="356" width="356" height="5"/>
+                    <rect key="frame" x="24" y="402" width="356" height="5"/>
                 </box>
                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="30" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dy0-M4-WKz">
                     <rect key="frame" x="20" y="32" width="120" height="21"/>
@@ -59,13 +60,13 @@
                     <rect key="frame" x="0.0" y="342" width="16" height="16"/>
                 </progressIndicator>
                 <scrollView autoresizesSubviews="NO" focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kH8-OJ-C05">
-                    <rect key="frame" x="18" y="73" width="360" height="259"/>
+                    <rect key="frame" x="18" y="73" width="360" height="305"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="vCJ-sO-KdM">
-                        <rect key="frame" x="0.0" y="0.0" width="360" height="259"/>
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="305"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" id="fhm-Ii-j8m" customClass="CustomNSTableView" customModule="rxMVVMLeoToday" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="360" height="259"/>
+                                <rect key="frame" x="0.0" y="0.0" width="360" height="305"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -123,9 +124,9 @@
                     </scroller>
                 </scrollView>
                 <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J9F-gN-Uw5">
-                    <rect key="frame" x="18" y="378" width="360" height="96"/>
+                    <rect key="frame" x="18" y="424" width="360" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="96" id="7FS-Hu-ojm"/>
+                        <constraint firstAttribute="height" constant="50" id="7FS-Hu-ojm"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="charWrapping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" id="Go4-2s-gBA">
                         <font key="font" metaFont="system"/>
@@ -164,6 +165,17 @@
                         <real value="3.4028234663852886e+38"/>
                     </customSpacing>
                 </stackView>
+                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vzx-6M-xay">
+                    <rect key="frame" x="258" y="34" width="124" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="azw-T2-h5Q"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="already added word" id="I7z-lm-ZNf">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="dy0-M4-WKz" firstAttribute="top" secondItem="kH8-OJ-C05" secondAttribute="bottom" constant="20" id="0uZ-ty-uY1"/>
@@ -172,13 +184,16 @@
                 <constraint firstItem="sbL-8R-2Oe" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="172" id="GmD-AP-fKl"/>
                 <constraint firstItem="kH8-OJ-C05" firstAttribute="top" secondItem="as0-Q6-Rhc" secondAttribute="bottom" constant="26" id="GwJ-S4-hK5"/>
                 <constraint firstItem="as0-Q6-Rhc" firstAttribute="top" secondItem="J9F-gN-Uw5" secondAttribute="bottom" constant="19" id="KxD-7K-KTG"/>
+                <constraint firstAttribute="bottom" secondItem="Vzx-6M-xay" secondAttribute="bottom" constant="34" id="NxI-f5-aT5"/>
                 <constraint firstItem="J9F-gN-Uw5" firstAttribute="centerX" secondItem="kH8-OJ-C05" secondAttribute="centerX" id="Or4-1S-3x6"/>
                 <constraint firstAttribute="bottom" secondItem="dy0-M4-WKz" secondAttribute="bottom" constant="32" id="Plr-Nd-edo"/>
                 <constraint firstItem="kH8-OJ-C05" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="18" id="R7O-3E-9O4"/>
                 <constraint firstItem="Pzb-bU-Oyi" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" symbolic="YES" id="Wxy-AK-Laf"/>
                 <constraint firstItem="J9F-gN-Uw5" firstAttribute="leading" secondItem="dy0-M4-WKz" secondAttribute="leading" id="XtR-RF-1Al"/>
+                <constraint firstItem="Vzx-6M-xay" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="blM-4c-o4Q"/>
                 <constraint firstItem="as0-Q6-Rhc" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="cmq-Hd-fu5"/>
                 <constraint firstItem="as0-Q6-Rhc" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="24" id="ghx-XU-zKb"/>
+                <constraint firstAttribute="trailing" secondItem="Vzx-6M-xay" secondAttribute="trailing" constant="25" id="ofb-2V-5eQ"/>
                 <constraint firstItem="Pzb-bU-Oyi" firstAttribute="trailing" secondItem="as0-Q6-Rhc" secondAttribute="trailing" id="r2E-Vc-H8d"/>
                 <constraint firstItem="J9F-gN-Uw5" firstAttribute="top" secondItem="Pzb-bU-Oyi" secondAttribute="bottom" constant="14" id="yzg-SK-y6p"/>
                 <constraint firstItem="J9F-gN-Uw5" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="zsc-aT-2PS"/>

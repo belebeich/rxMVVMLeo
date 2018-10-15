@@ -33,5 +33,15 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>PF Din Mono Medium.otf</string>
+		<string>PF Din Mono.otf</string>
+		<string>PF Din Mono Bold.otf</string>
+	</array>
+	<key>ATSApplicationFontsPath</key>
+	<string></string>
+	<key>CSResourcesFileMapped</key>
+	<false/>
 </dict>
 </plist>

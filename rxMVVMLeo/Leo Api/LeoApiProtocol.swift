@@ -11,9 +11,10 @@ import RxSwift
 
 protocol LeoAPIProtocol {
     func translate(of word: String) -> Observable<[String]>
-    func add(a word: String, with translate: String)
+    func add(a word: String, with translate: String) -> Observable<AddWord>
     func getMeatballs() -> Observable<String>
     func login(email: String, password: String) -> Observable<AccountStatus>
     func logout()
+    func accountInfo() -> Observable<User?>
 }
 
