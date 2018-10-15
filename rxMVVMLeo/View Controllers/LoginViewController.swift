@@ -38,6 +38,12 @@ class LoginViewController: NSViewController {
         bindUI()
     }
     
+    override func viewWillAppear() {
+        self.view.window?.titlebarAppearsTransparent = true
+        self.view.window?.titleVisibility = .hidden
+        self.view.window?.styleMask.insert(NSWindow.StyleMask.fullSizeContentView)
+    }
+    
     override func viewWillLayout() {
         
         let gradientLayer = CAGradientLayer()
@@ -49,6 +55,9 @@ class LoginViewController: NSViewController {
         self.emailTextField.customizeCaretColor()
         self.passwordTextField.customizeCaretColor()
         
+        self.view.window?.titlebarAppearsTransparent = true
+        self.view.window?.titleVisibility = .hidden
+        self.view.window?.styleMask.insert(NSWindow.StyleMask.fullSizeContentView)
     }
     
     func setUI() {

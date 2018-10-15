@@ -14,6 +14,7 @@ class MainViewController: NSViewController {
     
     let bag = DisposeBag()
 
+    @IBOutlet var sixthTextView: NSTextView!
     @IBOutlet weak var writeToDeveloperButton: NSButton!
     @IBOutlet weak var logoutButtons: NSStackView!
     @IBOutlet weak var noButton: NSButton!
@@ -54,7 +55,12 @@ class MainViewController: NSViewController {
         
     }
     
-    
+    override func viewWillAppear() {
+        self.view.window?.titlebarAppearsTransparent = true
+        self.view.window?.titleVisibility = .hidden
+        self.view.window?.styleMask.insert(NSWindow.StyleMask.fullSizeContentView)
+
+    }
     
     override func viewWillLayout() {
         
@@ -107,6 +113,10 @@ class MainViewController: NSViewController {
         self.fifthTextView.textColor = NSColor.white
         self.fifthTextView.font = tipsFont
         self.fifthTextView.sizeToFit()
+        
+        self.sixthTextView.textColor = neonyellowColor
+        self.sixthTextView.font = mainFont
+        self.sixthTextView.sizeToFit()
         
         self.accountInfoTextView.textColor = NSColor.white
         self.accountInfoTextView.font = mainFont
@@ -247,10 +257,12 @@ extension MainViewController {
     
     override func mouseEntered(with event: NSEvent) {
         writeToDeveloperButton.font = NSFont.init(name: "PFDinMono-Regular", size: 16)
+        glowOn()
     }
     
     override func mouseExited(with event: NSEvent) {
         writeToDeveloperButton.font = NSFont.init(name: "PFDinMono-Regular", size: 15)
+        glowOff()
     }
     
     typealias CompletionHandler = (_ success:Bool) -> Void
@@ -329,12 +341,51 @@ extension MainViewController {
         
     }
     
+    private func glowOn() {
+        
+
+        writeToDeveloperButton.layer?.masksToBounds = false
+        writeToDeveloperButton.layer?.shadowColor = NSColor.white.cgColor
+        writeToDeveloperButton.layer?.shadowRadius = 0.0
+        writeToDeveloperButton.layer?.shadowOpacity = 1.0
+        writeToDeveloperButton.layer?.shadowOffset = .zero
+        
+        let glow = CABasicAnimation(keyPath: "shadowRadius")
+        glow.fromValue = 0.0
+        glow.toValue = 5.0
+        glow.duration = CFTimeInterval(0.5)
+        glow.fillMode = kCAFillModeForwards
+        glow.autoreverses = false
+        glow.isRemovedOnCompletion = false
+        
+        writeToDeveloperButton.layer?.shadowRadius = 5.0
+        
+        writeToDeveloperButton.layer?.add(glow, forKey: nil)
+        
+        
+        
+    }
     
+    private func glowOff() {
+        
+        let glow = CABasicAnimation(keyPath: "shadowRadius")
+        glow.fromValue = 5.0
+        glow.toValue = 0.0
+        glow.duration = CFTimeInterval(0.5)
+        glow.fillMode = kCAFillModeRemoved
+        glow.autoreverses = false
+        glow.isRemovedOnCompletion = false
+        
+        writeToDeveloperButton.layer?.shadowRadius = 0.0
+        writeToDeveloperButton.layer?.shadowOpacity = 0.0
+        
+        writeToDeveloperButton.layer?.add(glow, forKey: nil)
+    }
     
     private func shine() {
         
-        self.writeToDeveloperButton.wantsLayer = true
-        guard let view = self.writeToDeveloperButton else { return }
+        writeToDeveloperButton.wantsLayer = true
+        guard let view = writeToDeveloperButton else { return }
         
         let gradient = CAGradientLayer()
         gradient.startPoint = CGPoint(x: 0, y: 0)
@@ -362,11 +413,11 @@ extension MainViewController {
     }
     
     private func updatedInformation(of user: User) {
-        self.userNicknameTextView.string = user.nickname
-        self.userNativeTextView.string = user.native
-        self.userKnownTextView.string = "\(user.known)"
-        self.userAvailableTextView.string = "\(user.available)"
-        self.userRefcodeTextView.string = user.refcode
+        userNicknameTextView.string = user.nickname
+        userNativeTextView.string = user.native
+        userKnownTextView.string = "\(user.known)"
+        userAvailableTextView.string = "\(user.available)"
+        userRefcodeTextView.string = user.refcode
     }
     
     private func parsedInformation(of user: User) {
@@ -451,7 +502,7 @@ extension MainViewController {
                 self.drawingAnimations(textView: self.secondTextView, text: "words input", x: 179.0, y: 169.0, lenght:  48.0) {_ in
                     self.drawingAnimations(textView: self.thirdTextView, text: "translates table will appear here", x: 179.0, y: 130, lenght: 48.0) { _ in
                         self.drawingAnimations(textView: self.fourthTextView, text: "enables with selected row", x: 179.0, y: 107.0, lenght:  48.0) { _ in
-                            self.drawingAnimations(textView: self.fifthTextView, text: "available words to add", x: 179.0, y: 67.0, lenght: 158.0, completionHandler: { _ in })
+                            self.drawingAnimations(textView: self.fifthTextView, text: "available words to add", x: 179.0, y: 67.0, lenght: 158.0, completionHandler: { _ in self.sixthTextView.setTextWithTypeAnimationSimple(typedText: "UrbanDictionary and LinguaLeo are used now as translate options.") {  } })
                         }
                     }
                 }

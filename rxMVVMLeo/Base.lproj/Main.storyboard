@@ -1699,7 +1699,7 @@
                                                     <rect key="frame" x="0.0" y="295" width="440" height="50"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Sye-FY-eOr">
                                                         <rect key="frame" x="0.0" y="0.0" width="440" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" continuousSpellChecking="YES" dataDetection="YES" dashSubstitution="YES" smartInsertDelete="YES" id="sY0-k1-pkp">
                                                                 <rect key="frame" x="0.0" y="0.0" width="440" height="50"/>
@@ -1728,7 +1728,7 @@
                                                     <rect key="frame" x="59" y="187" width="130" height="15"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="ac5-or-p0G">
                                                         <rect key="frame" x="0.0" y="0.0" width="130" height="15"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="Zrm-l3-JEQ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="130" height="15"/>
@@ -1759,7 +1759,7 @@
                                                     <rect key="frame" x="95" y="160" width="94" height="15"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Lov-pB-w9U">
                                                         <rect key="frame" x="0.0" y="0.0" width="94" height="15"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="AzU-mn-LIM">
                                                                 <rect key="frame" x="0.0" y="0.0" width="94" height="15"/>
@@ -1789,7 +1789,7 @@
                                                     <rect key="frame" x="63" y="118" width="126" height="32"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Bz0-p3-344">
                                                         <rect key="frame" x="0.0" y="0.0" width="126" height="32"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="HxD-fT-TuC">
                                                                 <rect key="frame" x="0.0" y="0.0" width="126" height="32"/>
@@ -1819,7 +1819,7 @@
                                                     <rect key="frame" x="9" y="98" width="180" height="16"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="fwe-PH-Cmc">
                                                         <rect key="frame" x="0.0" y="0.0" width="180" height="16"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="OBu-k6-RAc">
                                                                 <rect key="frame" x="0.0" y="0.0" width="180" height="16"/>
@@ -1849,7 +1849,7 @@
                                                     <rect key="frame" x="26" y="49" width="144" height="24"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="jEA-z4-tE7">
                                                         <rect key="frame" x="0.0" y="0.0" width="144" height="24"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="f6K-7I-dYx">
                                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="24"/>
@@ -1875,8 +1875,39 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
+                                                <scrollView wantsLayer="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fiq-ql-7s4">
+                                                    <rect key="frame" x="0.0" y="11" width="440" height="32"/>
+                                                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="cws-6O-g3q">
+                                                        <rect key="frame" x="0.0" y="0.0" width="440" height="32"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="JIr-it-m2B">
+                                                                <rect key="frame" x="0.0" y="-0.5" width="440" height="32"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <size key="minSize" width="440" height="32"/>
+                                                                <size key="maxSize" width="463" height="10000000"/>
+                                                                <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            </textView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </clipView>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="440" id="eJR-6H-fKx"/>
+                                                        <constraint firstAttribute="height" constant="32" id="p6H-IQ-PlJ"/>
+                                                    </constraints>
+                                                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Zcq-Kt-h7C">
+                                                        <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                    </scroller>
+                                                    <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Jfc-fz-ERv">
+                                                        <rect key="frame" x="424" y="0.0" width="16" height="32"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                    </scroller>
+                                                </scrollView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Fiq-ql-7s4" secondAttribute="bottom" constant="11" id="2HJ-5h-U3c"/>
                                                 <constraint firstItem="ld3-0y-DEd" firstAttribute="top" secondItem="LSe-Jg-mGx" secondAttribute="bottom" constant="25" id="5sK-zM-Ro1"/>
                                                 <constraint firstItem="uHN-4P-A1c" firstAttribute="leading" secondItem="LSe-Jg-mGx" secondAttribute="trailing" constant="51" id="6xR-u0-VSu"/>
                                                 <constraint firstItem="LSe-Jg-mGx" firstAttribute="top" secondItem="fs8-fE-4De" secondAttribute="bottom" constant="4" id="IbN-er-3Fm"/>
@@ -1889,6 +1920,7 @@
                                                 <constraint firstItem="uHN-4P-A1c" firstAttribute="leading" secondItem="K9r-fS-2jg" secondAttribute="trailing" constant="51" id="kI3-Zm-RKI"/>
                                                 <constraint firstItem="uHN-4P-A1c" firstAttribute="leading" secondItem="ld3-0y-DEd" secondAttribute="trailing" constant="70" id="oYz-62-2Uo"/>
                                                 <constraint firstItem="zqV-g7-30V" firstAttribute="centerX" secondItem="HH8-sb-i7u" secondAttribute="centerX" id="poG-zd-Kyb"/>
+                                                <constraint firstItem="Fiq-ql-7s4" firstAttribute="centerX" secondItem="HH8-sb-i7u" secondAttribute="centerX" id="rND-tj-74h"/>
                                                 <constraint firstItem="K9r-fS-2jg" firstAttribute="top" secondItem="HH8-sb-i7u" secondAttribute="top" constant="143" id="tQp-dg-X9c"/>
                                                 <constraint firstItem="uHN-4P-A1c" firstAttribute="leading" secondItem="T8R-ea-CuH" secondAttribute="trailing" constant="51" id="vAQ-dg-CZ5"/>
                                                 <constraint firstItem="zqV-g7-30V" firstAttribute="width" secondItem="HH8-sb-i7u" secondAttribute="width" id="w6S-kj-e6c"/>
@@ -2075,6 +2107,7 @@
                         <outlet property="notificationCenterImageView" destination="qUR-y1-ggM" id="pRg-mR-Nox"/>
                         <outlet property="refcodeTextView" destination="eyZ-2A-hPB" id="ZHl-20-QHN"/>
                         <outlet property="secondTextView" destination="AzU-mn-LIM" id="Ikg-Mc-YCw"/>
+                        <outlet property="sixthTextView" destination="JIr-it-m2B" id="8rz-yO-tg8"/>
                         <outlet property="tabView" destination="XKm-oQ-KhL" id="MLC-02-wCL"/>
                         <outlet property="thirdTextView" destination="HxD-fT-TuC" id="xHn-CY-Sgr"/>
                         <outlet property="tipView" destination="uHN-4P-A1c" id="VCc-r2-yOg"/>
