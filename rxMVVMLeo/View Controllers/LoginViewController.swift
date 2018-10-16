@@ -69,7 +69,7 @@ class LoginViewController: NSViewController {
         self.notificationCenterImageView.isHidden = true
         
         let mainFont = NSFont.init(name: "PFDinMono-Regular", size: 13)
-        let placeholderFont = NSFont.init(name: "PFDinMono-Light", size: 13)
+        
         
         // made it more neon
         let neonyellowColor = NSColor.init(calibratedRed: 219/255, green: 255/255, blue: 91/255, alpha: 1.0)
@@ -81,16 +81,20 @@ class LoginViewController: NSViewController {
         let buttonParagraphStyle = NSMutableParagraphStyle()
         buttonParagraphStyle.alignment = .center
         
-        let buttonAttributes : [NSAttributedStringKey:AnyObject] =
-            [NSAttributedStringKey.foregroundColor: neonyellowColor,
-             NSAttributedStringKey.font: mainFont!,
-             NSAttributedStringKey.paragraphStyle: buttonParagraphStyle]
+        if let buttonFont = NSFont.init(name: "PFDinMono-Regular", size: 13) {
+            let buttonAttributes : [NSAttributedStringKey:AnyObject] =
+                [NSAttributedStringKey.foregroundColor: neonyellowColor,
+                 NSAttributedStringKey.font: buttonFont,
+                 NSAttributedStringKey.paragraphStyle: buttonParagraphStyle]
+            
+            let buttonAttributedTitle = NSAttributedString.init(string: "Login", attributes: buttonAttributes)
+            let okButtonAttributedTitle = NSAttributedString.init(string: "Ok, got it!", attributes: buttonAttributes)
+            
+            self.loginButton.attributedTitle = buttonAttributedTitle
+            self.okButton.attributedTitle = okButtonAttributedTitle
+        }
         
-        let buttonAttributedTitle = NSAttributedString.init(string: "Login", attributes: buttonAttributes)
-        let okButtonAttributedTitle = NSAttributedString.init(string: "Ok, got it!", attributes: buttonAttributes)
         
-        self.loginButton.attributedTitle = buttonAttributedTitle
-        self.okButton.attributedTitle = okButtonAttributedTitle
         
         self.passwordTextField.backgroundColor = NSColor.clear
         self.passwordTextField.textColor = NSColor.white
@@ -99,19 +103,17 @@ class LoginViewController: NSViewController {
         let placeholderParagraphStyle = NSMutableParagraphStyle()
         placeholderParagraphStyle.alignment = .right
         
-        let placeholderAttributes : [NSAttributedStringKey:AnyObject] = [NSAttributedStringKey.foregroundColor: placeholderColor, NSAttributedStringKey.font: placeholderFont!, NSAttributedStringKey.paragraphStyle: placeholderParagraphStyle]
+        if let placeholderFont = NSFont.init(name: "PFDinMono-Light", size: 13) {
+            let placeholderAttributes : [NSAttributedStringKey:AnyObject] = [NSAttributedStringKey.foregroundColor: placeholderColor, NSAttributedStringKey.font: placeholderFont, NSAttributedStringKey.paragraphStyle: placeholderParagraphStyle]
+            
+            let emailPlaceholderString = NSAttributedString.init(string: "email", attributes: placeholderAttributes)
+            let passwordPlaceholderString = NSAttributedString.init(string: "password", attributes: placeholderAttributes)
+            self.emailTextField.placeholderAttributedString = emailPlaceholderString
+            self.passwordTextField.placeholderAttributedString = passwordPlaceholderString
+        }
         
-        let emailPlaceholderString = NSAttributedString.init(string: "email", attributes: placeholderAttributes)
-        let passwordPlaceholderString = NSAttributedString.init(string: "password", attributes: placeholderAttributes)
-        self.emailTextField.placeholderAttributedString = emailPlaceholderString
-        self.passwordTextField.placeholderAttributedString = passwordPlaceholderString
         self.emailTextField.font = mainFont
         self.passwordTextField.font = mainFont
-        
-        //rgb(225, 216, 202) - ksg beige
-        ///rgb(119, 110, 94) - brown/beige/gray - made it more beigy
-        
-        ///#E1D8CA
         
         self.firstMessage.textColor = neonyellowColor
         self.firstMessage.font = mainFont

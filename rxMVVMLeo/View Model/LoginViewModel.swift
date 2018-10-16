@@ -22,7 +22,7 @@ struct LoginViewModel {
     //var password = Variable<String>("")
     
     //Output
-    var token = Variable<String?>("")
+    //var token = Variable<String?>("")
     
     init(email: Driver<String>, password: Driver<String>) {
         
