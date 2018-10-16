@@ -19,24 +19,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         switch LeoAPI.shared.state.value {
         case .success( _):
-            
             let storyBoard = NSStoryboard(name: NSStoryboard.Name(rawValue:"Main"), bundle: nil)
-            window = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "MainWindowController")) as! NSWindowController
             let homeViewController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "TranslateViewController")) as! MainViewController
-            
-            window.contentViewController = homeViewController
-            window.showWindow(self)
-            
+            NSApp.keyWindow?.contentViewController = homeViewController
         case .unavailable:
-            
             let storyBoard = NSStoryboard(name: NSStoryboard.Name(rawValue:"Main"), bundle: nil)
-            window = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "LoginWindowController")) as! NSWindowController
             let homeViewController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "LoginViewController")) as! LoginViewController
-
-            window.contentViewController = homeViewController
+            NSApp.keyWindow?.contentViewController = homeViewController
             
-            window.showWindow(self)
-            
+        }
+//        switch LeoAPI.shared.state.value {
+//        case .success( _):
+//
+//            let storyBoard = NSStoryboard(name: NSStoryboard.Name(rawValue:"Main"), bundle: nil)
+//            window = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "MainWindowController")) as! NSWindowController
+//            let homeViewController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "TranslateViewController")) as! MainViewController
+//
+//            window.contentViewController = homeViewController
+//            window.showWindow(self)
+//
+//        case .unavailable:
+//
+//            let storyBoard = NSStoryboard(name: NSStoryboard.Name(rawValue:"Main"), bundle: nil)
+//            window = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "LoginWindowController")) as! NSWindowController
+//            let homeViewController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "LoginViewController")) as! LoginViewController
+//
+//            window.contentViewController = homeViewController
+//
+//            window.showWindow(self)
+        
             
 //            let windowController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "WindowController")) as! NSWindowController
 //
@@ -53,7 +64,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //            let wc = NSWindowController(window: window)
 //            wc.showWindow(self)
             //NSApp.keyWindow?.contentViewController = homeViewController
-        }
+      //  }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
