@@ -171,16 +171,25 @@ class LoginViewController: NSViewController {
             .disposed(by: bag)
         
         
+//        emailTextField.rx.controlEvent
+//            .subscribe(onNext: {
+//                self.emailTextField.currentEditor()?.moveToBeginningOfDocument(self)
+//            })
+//            .disposed(by: bag)
+        
         emailTextField.rx.controlEvent
             .subscribe(onNext: {
-                self.emailTextField.currentEditor()?.moveToBeginningOfDocument(self)
+                self.passwordTextField.selectText(self)
             })
             .disposed(by: bag)
         
-        loginButton.rx.tap
+        
+        let login = Observable.of(loginButton.rx.tap, passwordTextField.rx.controlEvent)
+        
+        login
+            .switchLatest()
             .withLatestFrom(viewModel.credentialsValid)
             .filter { $0 }
-            
             .flatMapLatest { [unowned self] valid in
                 
                 
@@ -193,12 +202,7 @@ class LoginViewController: NSViewController {
                 
                 switch authStatus {
                 case .unavailable:
-                    let thirdMessage = self.thirdMessage.setTextWithTypeAnimation(typedText: "Something went wrong, please try again!", characterDelay: 2.0)
-                    thirdMessage
-                        .subscribe(onNext: { _ in
-                            
-                        })
-                        .disposed(by: self.bag)
+                    self.thirdMessage.setTextWithTypeAnimationSimple(typedText: "Something went wrong, please try again!", characterDelay: 2.0) { }
                 case .success(_):
                     self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "segue"), sender: nil)
                 }
@@ -228,23 +232,23 @@ class LoginViewController: NSViewController {
 
 extension LoginViewController {
     private func loginStackViewAnimation() {
-        NSAnimationContext.runAnimationGroup({ _ in
+        NSAnimationContext.runAnimationGroup({ [weak self] _ in
             NSAnimationContext.current.duration = 2.0
-            self.loginInfoStack.animator().alphaValue = 1.0
-        }, completionHandler: {
-            self.emailTextField.selectText(self)
-            self.loginButton.isHidden = false
+            self?.loginInfoStack.animator().alphaValue = 1.0
+        }, completionHandler: { [weak self] in
+            self?.emailTextField.selectText(self)
+            self?.loginButton.isHidden = false
         })
     }
     
     private func tipStackViewAnimation() {
         
-        NSAnimationContext.runAnimationGroup({ context in
+        NSAnimationContext.runAnimationGroup({ [weak self] context in
             context.duration = 1.5
             context.allowsImplicitAnimation = true
-            tipViewConstraint.constant = 0.0
+            self?.tipViewConstraint.constant = 0.0
             
-            self.view.layoutSubtreeIfNeeded()
+            self?.view.layoutSubtreeIfNeeded()
         }, completionHandler: nil)
     }
     
@@ -286,8 +290,8 @@ extension LoginViewController {
         group.duration = 3
         menuButtonView.layer?.add(group, forKey: "group")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-            self.notificationCenterImageView.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: { [weak self] in
+            self?.notificationCenterImageView.isHidden = false
         })
         
         let position = CABasicAnimation(keyPath: "position")
@@ -300,8 +304,8 @@ extension LoginViewController {
         
         notificationCenterImageView.layer?.add(position, forKey: "group")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
-            self.okButton.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: { [weak self] in
+            self?.okButton.isHidden = false
         })
     }
 }

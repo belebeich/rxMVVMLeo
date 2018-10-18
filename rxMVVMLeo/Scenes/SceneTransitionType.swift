@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+enum SceneTransitionType {
+    case show
+    case modal
+}

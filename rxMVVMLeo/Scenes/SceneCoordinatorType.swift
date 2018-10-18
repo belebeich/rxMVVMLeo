@@ -6,4 +6,19 @@
 //  Copyright © 2018 Ivan . All rights reserved.
 //
 
-import Foundation
+import Cocoa
+import RxSwift
+
+protocol SceneCoordinatorType {
+    
+    @discardableResult
+    func transition(to scene: Scene, type: SceneTransitionType) -> Completable
+    
+    //func pop(animated: Bool) -> Completable
+}
+
+extension SceneCoordinatorType {
+    //    func pop() -> Completable {
+    //        return pop(animated: true)
+    //    }
+}

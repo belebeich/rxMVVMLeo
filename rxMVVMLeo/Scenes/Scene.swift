@@ -10,5 +10,5 @@ import Foundation
 
 enum Scene {
     case login(LoginViewModel)
-    case description(TranslateViewModel)
+    case main(MainViewModel)
 }

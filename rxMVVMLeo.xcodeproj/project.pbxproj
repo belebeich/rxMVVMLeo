@@ -33,11 +33,13 @@
 		2C7BB01A20BD32B90083034F /* NSTextView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */; };
 		2C81C09720AC20F90071E96E /* NSTextView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */; };
 		2C864A08215B861C00C8EB48 /* TranslateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C864A07215B861C00C8EB48 /* TranslateTableViewCell.swift */; };
+		2C8749682177259B00273DDB /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8749672177259B00273DDB /* UserDefaults.swift */; };
+		2C8749692177259B00273DDB /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8749672177259B00273DDB /* UserDefaults.swift */; };
 		2C9E74F4210E1275007E429E /* UrbanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */; };
 		2C9E74F5210E1289007E429E /* UrbanAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBA210D9466007DAEF1 /* UrbanAPIProtocol.swift */; };
 		2C9F5EBB210D9466007DAEF1 /* UrbanAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBA210D9466007DAEF1 /* UrbanAPIProtocol.swift */; };
 		2C9F5EBD210D9476007DAEF1 /* UrbanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */; };
-		2CACEED32050512E009A1EEF /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACEED22050512E009A1EEF /* TranslateViewController.swift */; };
+		2CACEED32050512E009A1EEF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACEED22050512E009A1EEF /* MainViewController.swift */; };
 		2CB2875E2164E908003AD64D /* CustomNSSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2875D2164E908003AD64D /* CustomNSSecureTextField.swift */; };
 		2CB58E3121736CAC0020A774 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB58E3021736CAC0020A774 /* User.swift */; };
 		2CB58E3221736CEC0020A774 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB58E3021736CAC0020A774 /* User.swift */; };
@@ -60,10 +62,6 @@
 		2CC6FCB320BD2DFA00885892 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C64AAEB20B846A90032E2AA /* TodayViewController.swift */; };
 		2CC6FCB620BD2E4600885892 /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */; };
 		2CCC1D81216346B600713DD7 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D80216346B600713DD7 /* Scene.swift */; };
-		2CCC1D8321634E2F00713DD7 /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D8221634E2F00713DD7 /* SceneCoordinatorType.swift */; };
-		2CCC1D8521634E3B00713DD7 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D8421634E3B00713DD7 /* SceneCoordinator.swift */; };
-		2CCC1D8721634E5200713DD7 /* Scene+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D8621634E5200713DD7 /* Scene+ViewController.swift */; };
-		2CCC1D8921634E6100713DD7 /* SceneTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D8821634E6100713DD7 /* SceneTransitionType.swift */; };
 		2CFFB53B204DBFDE007A816C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFB53A204DBFDE007A816C /* AppDelegate.swift */; };
 		2CFFB53D204DBFDE007A816C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFB53C204DBFDE007A816C /* LoginViewController.swift */; };
 		2CFFB540204DBFDE007A816C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFFB53E204DBFDE007A816C /* Main.storyboard */; };
@@ -128,11 +126,12 @@
 		2C765081214662B0002236D7 /* NSTextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextViewExtension.swift; sourceTree = "<group>"; };
 		2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Rx.swift"; sourceTree = "<group>"; };
 		2C864A07215B861C00C8EB48 /* TranslateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateTableViewCell.swift; sourceTree = "<group>"; };
+		2C8749672177259B00273DDB /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		2C9F5EBA210D9466007DAEF1 /* UrbanAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanAPIProtocol.swift; sourceTree = "<group>"; };
 		2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanAPI.swift; sourceTree = "<group>"; };
 		2CAA82962163595E0010B35B /* menubar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubar.png; sourceTree = "<group>"; };
 		2CAA8297216359660010B35B /* notificationcenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationcenter.png; sourceTree = "<group>"; };
-		2CACEED22050512E009A1EEF /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
+		2CACEED22050512E009A1EEF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2CB2875D2164E908003AD64D /* CustomNSSecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSSecureTextField.swift; sourceTree = "<group>"; };
 		2CB58E3021736CAC0020A774 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2CB58E3321736D930020A774 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -280,7 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				2C333C19204D639800E133CD /* LoginViewController.swift */,
-				2CACEED22050512E009A1EEF /* TranslateViewController.swift */,
+				2CACEED22050512E009A1EEF /* MainViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -298,6 +297,7 @@
 				2C333C20204D639800E133CD /* Info.plist */,
 				2C333C17204D639800E133CD /* AppDelegate.swift */,
 				2CB58E35217399510020A774 /* SendMail.swift */,
+				2C8749672177259B00273DDB /* UserDefaults.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -504,6 +504,9 @@
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 1;
 							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.Sandbox = {
 								enabled = 0;
 							};
@@ -514,6 +517,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
 								enabled = 1;
 							};
 							com.apple.Sandbox = {
@@ -644,20 +650,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C333C1A204D639800E133CD /* LoginViewController.swift in Sources */,
-				2CACEED32050512E009A1EEF /* TranslateViewController.swift in Sources */,
+				2CACEED32050512E009A1EEF /* MainViewController.swift in Sources */,
 				2C765082214662B0002236D7 /* NSTextViewExtension.swift in Sources */,
 				2CB58E3121736CAC0020A774 /* User.swift in Sources */,
-				2CCC1D8921634E6100713DD7 /* SceneTransitionType.swift in Sources */,
 				2CB58E3421736D930020A774 /* MainViewModel.swift in Sources */,
+				2C8749682177259B00273DDB /* UserDefaults.swift in Sources */,
 				2CB58E36217399510020A774 /* SendMail.swift in Sources */,
 				2C333C2E204D664500E133CD /* LeoAPI.swift in Sources */,
 				2CCC1D81216346B600713DD7 /* Scene.swift in Sources */,
 				2C1DAECF2057EF7B00B6CFCF /* TranslateViewModel.swift in Sources */,
 				2C328406212EF564002B444D /* NSSegmentedConrol+Rx.swift in Sources */,
 				2C81C09720AC20F90071E96E /* NSTextView+Rx.swift in Sources */,
-				2CCC1D8521634E3B00713DD7 /* SceneCoordinator.swift in Sources */,
 				2C333C18204D639800E133CD /* AppDelegate.swift in Sources */,
-				2CCC1D8321634E2F00713DD7 /* SceneCoordinatorType.swift in Sources */,
 				2C9F5EBD210D9476007DAEF1 /* UrbanAPI.swift in Sources */,
 				2C9F5EBB210D9466007DAEF1 /* UrbanAPIProtocol.swift in Sources */,
 				2C0101CA2170BAB30062721B /* NSBezierPath.swift in Sources */,
@@ -666,7 +670,6 @@
 				2C7636C0215620CB00ED94F3 /* CustomNSTextView.swift in Sources */,
 				2C7636BE2154F56C00ED94F3 /* CustomNSTextField.swift in Sources */,
 				2CB2875E2164E908003AD64D /* CustomNSSecureTextField.swift in Sources */,
-				2CCC1D8721634E5200713DD7 /* Scene+ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,6 +680,7 @@
 				2CC6FCB320BD2DFA00885892 /* TodayViewController.swift in Sources */,
 				2C1ED3E8212338EC009108DF /* CustomNSTableView.swift in Sources */,
 				2C9E74F4210E1275007E429E /* UrbanAPI.swift in Sources */,
+				2C8749692177259B00273DDB /* UserDefaults.swift in Sources */,
 				2C7BB01820BD31500083034F /* LeoAPI.swift in Sources */,
 				2C328407212EF564002B444D /* NSSegmentedConrol+Rx.swift in Sources */,
 				2CC6FCB620BD2E4600885892 /* TranslateViewModel.swift in Sources */,

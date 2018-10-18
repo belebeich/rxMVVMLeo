@@ -6,7 +6,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>$(TeamIdentifierPrefix)</string>
+		<string>rxMVVMLeo</string>
 	</array>
 	<key>com.apple.security.files.user-selected.read-only</key>
 	<true/>
@@ -14,5 +14,9 @@
 	<true/>
 	<key>com.apple.security.network.server</key>
 	<true/>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)com.ivan-lebedev.rxMVVMLeo</string>
+	</array>
 </dict>
 </plist>

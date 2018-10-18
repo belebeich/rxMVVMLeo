@@ -25,6 +25,10 @@ enum AddWord {
     case success(Bool)
 }
 
+let defaults = UserDefaults(suiteName: "rxMVVMLeo")
+
+
+
 struct LeoAPI : LeoAPIProtocol {
     
     //Types
@@ -60,10 +64,19 @@ struct LeoAPI : LeoAPIProtocol {
     //Properties
     static var shared = LeoAPI()
     
-    private let keychain = KeychainSwift()
+    let keychain = KeychainSwift()
+    
+    
+    
+    
     
     var state: BehaviorRelay<AccountStatus> {
-        if let storedToken = self.keychain.get(Keys.token) {
+//        if let storedToken = self.keychain.get(Keys.token) {
+//            return BehaviorRelay(value: AccountStatus.success(storedToken))
+//        } else {
+//            return BehaviorRelay(value: AccountStatus.unavailable)
+//        }
+        if let storedToken = defaults?.string(forKey: Keys.token) {
             return BehaviorRelay(value: AccountStatus.success(storedToken))
         } else {
             return BehaviorRelay(value: AccountStatus.unavailable)
@@ -82,15 +95,20 @@ struct LeoAPI : LeoAPIProtocol {
                 
                 if let autologin = result["user"]["autologin_key"].string {
                     
-                    self.keychain.set(autologin, forKey: Keys.token)
+                    //self.keychain.set(autologin, forKey: Keys.token)
+                    defaults?.set(autologin, forKey: Keys.token)
                     if let meatballs = result["user"]["meatballs"].int {
-                        UserDefaults.standard.setValue(meatballs, forKey: Keys.points)
+                        defaults?.setValue(meatballs, forKey: Keys.points)
                     }
                     
                     guard let cookies = HTTPCookieStorage.shared.cookies else { return AccountStatus.unavailable }
                 
                     let data = NSKeyedArchiver.archivedData(withRootObject: cookies)
-                    self.keychain.set(data, forKey: Keys.cookies)
+                    //self.keychain.set(data, forKey: Keys.cookies)
+                    
+                    
+                    
+                   defaults?.set(data, forKey: Keys.cookies)
                     
                     return AccountStatus.success(autologin)
                 } else {
@@ -122,7 +140,9 @@ struct LeoAPI : LeoAPIProtocol {
     }
     
     func add(a word: String, with translate: String) -> Observable<AddWord> {
-        guard let data = self.keychain.getData(Keys.cookies) else {  return Observable.of(AddWord.error) }
+        //guard let data = self.keychain.getData(Keys.cookies) else {  return Observable.of(AddWord.error) }
+        
+        guard let data = defaults?.value(forKey: Keys.cookies) as? Data else { return Observable.of(AddWord.error)}
         guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return Observable.of(AddWord.error) }
         
         for cookie in cookies {
@@ -151,8 +171,11 @@ struct LeoAPI : LeoAPIProtocol {
     
     func getMeatballs() -> Observable<String> {
         
-        guard let data = self.keychain.getData(Keys.cookies) else { return  Observable.of("")}
-        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return Observable.of("")}
+//        guard let data = self.keychain.getData(Keys.cookies) else { return  Observable.of("")}
+//        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return Observable.of("")}
+        
+        guard let data = defaults?.value(forKey: Keys.cookies) as? Data else { return Observable.of("")}
+        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return Observable.of("") }
         
         for cookie in cookies {
             Alamofire.HTTPCookieStorage.shared.setCookie(cookie)
@@ -183,18 +206,23 @@ struct LeoAPI : LeoAPIProtocol {
         requester
             .response { _ in
 
+//                self.state.accept(.unavailable)
+//                self.keychain.delete(Keys.cookies)
+//                self.keychain.delete(Keys.token)
+//                self.keychain.clear()
                 self.state.accept(.unavailable)
-                self.keychain.delete(Keys.cookies)
-                self.keychain.delete(Keys.token)
-                self.keychain.clear()
-                
+                defaults?.removeObject(forKey: Keys.cookies)
+                defaults?.removeObject(forKey: Keys.token)
         }
         
     }
     
     func accountInfo() -> Observable<User?> {
-        guard let data = self.keychain.getData(Keys.cookies) else { return  Observable.of(nil)}
-        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return Observable.of(nil)}
+//        guard let data = self.keychain.getData(Keys.cookies) else { return  Observable.of(nil)}
+//        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return Observable.of(nil)}
+        
+        guard let data = defaults?.value(forKey: Keys.cookies) as? Data else { return Observable.of(nil)}
+        guard let cookies = NSKeyedUnarchiver.unarchiveObject(with: data) as? [HTTPCookie] else { return Observable.of(nil) }
         
         for cookie in cookies {
             Alamofire.HTTPCookieStorage.shared.setCookie(cookie)

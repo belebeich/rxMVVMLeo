@@ -720,18 +720,18 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="FBa-13-hak"/>
                                             <constraint firstAttribute="height" constant="24" id="j6S-at-2ZW"/>
                                         </constraints>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" userInterfaceLayoutDirection="rightToLeft" alignment="right" placeholderString="email" drawsBackground="YES" usesSingleLineMode="YES" id="tac-8f-Q0L">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" state="on" focusRingType="none" userInterfaceLayoutDirection="rightToLeft" alignment="right" placeholderString="email" drawsBackground="YES" usesSingleLineMode="YES" id="tac-8f-Q0L">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                         </textFieldCell>
                                     </textField>
-                                    <secureTextField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAu-WM-9eZ" customClass="CustomNSSecureTextField" customModule="rxMVVMLeo" customModuleProvider="target">
+                                    <secureTextField focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAu-WM-9eZ" customClass="CustomNSSecureTextField" customModule="rxMVVMLeo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="aLg-yb-ijN"/>
                                         </constraints>
-                                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" focusRingType="none" userInterfaceLayoutDirection="rightToLeft" alignment="right" placeholderString="password" drawsBackground="YES" usesSingleLineMode="YES" id="vIg-zl-OUp">
+                                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" focusRingType="none" userInterfaceLayoutDirection="rightToLeft" alignment="right" placeholderString="password" drawsBackground="YES" usesSingleLineMode="YES" id="vIg-zl-OUp">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
