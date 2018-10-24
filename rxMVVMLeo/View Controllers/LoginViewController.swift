@@ -36,9 +36,9 @@ class LoginViewController: NSViewController, BindableType {
   }
   
   override func viewWillAppear() {
-//    view.window?.titlebarAppearsTransparent = true
-//    view.window?.titleVisibility = .hidden
-//    view.window?.styleMask.insert(NSWindow.StyleMask.fullSizeContentView)
+    view.window?.titlebarAppearsTransparent = true
+    view.window?.titleVisibility = .hidden
+    view.window?.styleMask.insert(NSWindow.StyleMask.fullSizeContentView)
   }
   
   override func viewWillLayout() {
