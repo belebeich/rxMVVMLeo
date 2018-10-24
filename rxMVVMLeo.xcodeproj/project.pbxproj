@@ -19,26 +19,31 @@
 		2C333C1F204D639800E133CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C333C1D204D639800E133CD /* Main.storyboard */; };
 		2C333C2C204D662500E133CD /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2B204D662500E133CD /* LoginViewModel.swift */; };
 		2C333C2E204D664500E133CD /* LeoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2D204D664500E133CD /* LeoAPI.swift */; };
-		2C5857B520A3379200C2CA47 /* LeoAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIProtocol.swift */; };
+		2C5857B520A3379200C2CA47 /* LeoAPIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIType.swift */; };
 		2C64AAE920B846A90032E2AA /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C64AAE820B846A90032E2AA /* NotificationCenter.framework */; };
 		2C64AAEF20B846A90032E2AA /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C64AAED20B846A90032E2AA /* TodayViewController.xib */; };
 		2C64AAF320B846A90032E2AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C64AAF120B846A90032E2AA /* InfoPlist.strings */; };
 		2C64AAF720B846A90032E2AA /* rxMVVMLeoToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2C64AAE720B846A90032E2AA /* rxMVVMLeoToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		2C64AAFE20B865BE0032E2AA /* LeoAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIProtocol.swift */; };
+		2C64AAFE20B865BE0032E2AA /* LeoAPIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIType.swift */; };
 		2C7636BE2154F56C00ED94F3 /* CustomNSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7636BD2154F56C00ED94F3 /* CustomNSTextField.swift */; };
 		2C7636C0215620CB00ED94F3 /* CustomNSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7636BF215620CB00ED94F3 /* CustomNSTextView.swift */; };
 		2C765082214662B0002236D7 /* NSTextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C765081214662B0002236D7 /* NSTextViewExtension.swift */; };
 		2C7BB01820BD31500083034F /* LeoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2D204D664500E133CD /* LeoAPI.swift */; };
-		2C7BB01920BD31530083034F /* LeoAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIProtocol.swift */; };
+		2C7BB01920BD31530083034F /* LeoAPIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIType.swift */; };
 		2C7BB01A20BD32B90083034F /* NSTextView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */; };
 		2C81C09720AC20F90071E96E /* NSTextView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */; };
 		2C864A08215B861C00C8EB48 /* TranslateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C864A07215B861C00C8EB48 /* TranslateTableViewCell.swift */; };
 		2C8749682177259B00273DDB /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8749672177259B00273DDB /* UserDefaults.swift */; };
 		2C8749692177259B00273DDB /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8749672177259B00273DDB /* UserDefaults.swift */; };
 		2C9E74F4210E1275007E429E /* UrbanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */; };
-		2C9E74F5210E1289007E429E /* UrbanAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBA210D9466007DAEF1 /* UrbanAPIProtocol.swift */; };
-		2C9F5EBB210D9466007DAEF1 /* UrbanAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBA210D9466007DAEF1 /* UrbanAPIProtocol.swift */; };
+		2C9E74F5210E1289007E429E /* UrbanAPIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBA210D9466007DAEF1 /* UrbanAPIType.swift */; };
+		2C9F5EBB210D9466007DAEF1 /* UrbanAPIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBA210D9466007DAEF1 /* UrbanAPIType.swift */; };
 		2C9F5EBD210D9476007DAEF1 /* UrbanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */; };
+		2CA8FDB52178A93800793848 /* Scene+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D8621634E5200713DD7 /* Scene+ViewController.swift */; };
+		2CA8FDB62178A94400793848 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D8421634E3B00713DD7 /* SceneCoordinator.swift */; };
+		2CA8FDB72178A94600793848 /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D8221634E2F00713DD7 /* SceneCoordinatorType.swift */; };
+		2CA8FDB82178A94900793848 /* SceneTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D8821634E6100713DD7 /* SceneTransitionType.swift */; };
+		2CA8FDBA2178AA6700793848 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA8FDB92178AA6700793848 /* BindableType.swift */; };
 		2CACEED32050512E009A1EEF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACEED22050512E009A1EEF /* MainViewController.swift */; };
 		2CB2875E2164E908003AD64D /* CustomNSSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2875D2164E908003AD64D /* CustomNSSecureTextField.swift */; };
 		2CB58E3121736CAC0020A774 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB58E3021736CAC0020A774 /* User.swift */; };
@@ -55,7 +60,7 @@
 		2CBDA063215928A50022F39E /* SceneTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA062215928A50022F39E /* SceneTransitionType.swift */; };
 		2CBDA06621592ED10022F39E /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA06521592ED10022F39E /* TranslateViewController.swift */; };
 		2CBDA06821593F930022F39E /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA06721593F930022F39E /* BindableType.swift */; };
-		2CBDA069215940400022F39E /* UrbanAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBA210D9466007DAEF1 /* UrbanAPIProtocol.swift */; };
+		2CBDA069215940400022F39E /* UrbanAPIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBA210D9466007DAEF1 /* UrbanAPIType.swift */; };
 		2CBDA06A215940430022F39E /* UrbanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */; };
 		2CBDA06C2159421D0022F39E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA06B2159421D0022F39E /* LoginViewModel.swift */; };
 		2CBDA06E215942400022F39E /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA06D215942400022F39E /* TranslateViewModel.swift */; };
@@ -113,7 +118,7 @@
 		2C333C2D204D664500E133CD /* LeoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoAPI.swift; sourceTree = "<group>"; };
 		2C4D92882165F09D0083DF07 /* ncButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ncButton.png; sourceTree = "<group>"; };
 		2C4D92892165F2CD0083DF07 /* menuBarWithoutButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBarWithoutButton.png; sourceTree = "<group>"; };
-		2C5857B420A3379200C2CA47 /* LeoAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoAPIProtocol.swift; sourceTree = "<group>"; };
+		2C5857B420A3379200C2CA47 /* LeoAPIType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoAPIType.swift; sourceTree = "<group>"; };
 		2C64AAE720B846A90032E2AA /* rxMVVMLeoToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = rxMVVMLeoToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C64AAE820B846A90032E2AA /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		2C64AAEB20B846A90032E2AA /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -127,8 +132,9 @@
 		2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Rx.swift"; sourceTree = "<group>"; };
 		2C864A07215B861C00C8EB48 /* TranslateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateTableViewCell.swift; sourceTree = "<group>"; };
 		2C8749672177259B00273DDB /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
-		2C9F5EBA210D9466007DAEF1 /* UrbanAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanAPIProtocol.swift; sourceTree = "<group>"; };
+		2C9F5EBA210D9466007DAEF1 /* UrbanAPIType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanAPIType.swift; sourceTree = "<group>"; };
 		2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanAPI.swift; sourceTree = "<group>"; };
+		2CA8FDB92178AA6700793848 /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
 		2CAA82962163595E0010B35B /* menubar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubar.png; sourceTree = "<group>"; };
 		2CAA8297216359660010B35B /* notificationcenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationcenter.png; sourceTree = "<group>"; };
 		2CACEED22050512E009A1EEF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -269,7 +275,7 @@
 		2C333C28204D654A00E133CD /* Leo API */ = {
 			isa = PBXGroup;
 			children = (
-				2C5857B420A3379200C2CA47 /* LeoAPIProtocol.swift */,
+				2C5857B420A3379200C2CA47 /* LeoAPIType.swift */,
 				2C333C2D204D664500E133CD /* LeoAPI.swift */,
 			);
 			path = "Leo API";
@@ -288,10 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				2CB58E372173A2D60020A774 /* Fonts */,
-				2CAA82962163595E0010B35B /* menubar.png */,
-				2C4D92892165F2CD0083DF07 /* menuBarWithoutButton.png */,
-				2C4D92882165F09D0083DF07 /* ncButton.png */,
-				2CAA8297216359660010B35B /* notificationcenter.png */,
+				2C69AA7B217DDE3E00971E53 /* Images */,
 				2C333C1B204D639800E133CD /* Assets.xcassets */,
 				2C333C21204D639800E133CD /* rxMVVMLeo.entitlements */,
 				2C333C20204D639800E133CD /* Info.plist */,
@@ -313,6 +316,17 @@
 				2C64AAF420B846A90032E2AA /* rxMVVMLeoToday.entitlements */,
 			);
 			path = rxMVVMLeoToday;
+			sourceTree = "<group>";
+		};
+		2C69AA7B217DDE3E00971E53 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				2CAA82962163595E0010B35B /* menubar.png */,
+				2C4D92892165F2CD0083DF07 /* menuBarWithoutButton.png */,
+				2C4D92882165F09D0083DF07 /* ncButton.png */,
+				2CAA8297216359660010B35B /* notificationcenter.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		2C7636BC2154F53200ED94F3 /* Subclasses */ = {
@@ -339,7 +353,7 @@
 		2C821A86210B909E00A20D9D /* Urban API */ = {
 			isa = PBXGroup;
 			children = (
-				2C9F5EBA210D9466007DAEF1 /* UrbanAPIProtocol.swift */,
+				2C9F5EBA210D9466007DAEF1 /* UrbanAPIType.swift */,
 				2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */,
 			);
 			path = "Urban API";
@@ -349,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				2CB58E3021736CAC0020A774 /* User.swift */,
+				2CA8FDB92178AA6700793848 /* BindableType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -654,8 +669,10 @@
 				2C765082214662B0002236D7 /* NSTextViewExtension.swift in Sources */,
 				2CB58E3121736CAC0020A774 /* User.swift in Sources */,
 				2CB58E3421736D930020A774 /* MainViewModel.swift in Sources */,
+				2CA8FDB62178A94400793848 /* SceneCoordinator.swift in Sources */,
 				2C8749682177259B00273DDB /* UserDefaults.swift in Sources */,
 				2CB58E36217399510020A774 /* SendMail.swift in Sources */,
+				2CA8FDB52178A93800793848 /* Scene+ViewController.swift in Sources */,
 				2C333C2E204D664500E133CD /* LeoAPI.swift in Sources */,
 				2CCC1D81216346B600713DD7 /* Scene.swift in Sources */,
 				2C1DAECF2057EF7B00B6CFCF /* TranslateViewModel.swift in Sources */,
@@ -663,12 +680,15 @@
 				2C81C09720AC20F90071E96E /* NSTextView+Rx.swift in Sources */,
 				2C333C18204D639800E133CD /* AppDelegate.swift in Sources */,
 				2C9F5EBD210D9476007DAEF1 /* UrbanAPI.swift in Sources */,
-				2C9F5EBB210D9466007DAEF1 /* UrbanAPIProtocol.swift in Sources */,
+				2C9F5EBB210D9466007DAEF1 /* UrbanAPIType.swift in Sources */,
+				2CA8FDB72178A94600793848 /* SceneCoordinatorType.swift in Sources */,
+				2CA8FDBA2178AA6700793848 /* BindableType.swift in Sources */,
 				2C0101CA2170BAB30062721B /* NSBezierPath.swift in Sources */,
-				2C5857B520A3379200C2CA47 /* LeoAPIProtocol.swift in Sources */,
+				2C5857B520A3379200C2CA47 /* LeoAPIType.swift in Sources */,
 				2C333C2C204D662500E133CD /* LoginViewModel.swift in Sources */,
 				2C7636C0215620CB00ED94F3 /* CustomNSTextView.swift in Sources */,
 				2C7636BE2154F56C00ED94F3 /* CustomNSTextField.swift in Sources */,
+				2CA8FDB82178A94900793848 /* SceneTransitionType.swift in Sources */,
 				2CB2875E2164E908003AD64D /* CustomNSSecureTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -684,8 +704,8 @@
 				2C7BB01820BD31500083034F /* LeoAPI.swift in Sources */,
 				2C328407212EF564002B444D /* NSSegmentedConrol+Rx.swift in Sources */,
 				2CC6FCB620BD2E4600885892 /* TranslateViewModel.swift in Sources */,
-				2C9E74F5210E1289007E429E /* UrbanAPIProtocol.swift in Sources */,
-				2C7BB01920BD31530083034F /* LeoAPIProtocol.swift in Sources */,
+				2C9E74F5210E1289007E429E /* UrbanAPIType.swift in Sources */,
+				2C7BB01920BD31530083034F /* LeoAPIType.swift in Sources */,
 				2CB58E3221736CEC0020A774 /* User.swift in Sources */,
 				2C7BB01A20BD32B90083034F /* NSTextView+Rx.swift in Sources */,
 			);
@@ -695,7 +715,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C64AAFE20B865BE0032E2AA /* LeoAPIProtocol.swift in Sources */,
+				2C64AAFE20B865BE0032E2AA /* LeoAPIType.swift in Sources */,
 				2CBDA05D215928750022F39E /* SceneCoordinatorType.swift in Sources */,
 				2CFFB53D204DBFDE007A816C /* LoginViewController.swift in Sources */,
 				2CBDA063215928A50022F39E /* SceneTransitionType.swift in Sources */,
@@ -709,7 +729,7 @@
 				2CBDA05B215928650022F39E /* Scene.swift in Sources */,
 				2CFFB54B204DC18C007A816C /* LeoAPI.swift in Sources */,
 				2CBDA06A215940430022F39E /* UrbanAPI.swift in Sources */,
-				2CBDA069215940400022F39E /* UrbanAPIProtocol.swift in Sources */,
+				2CBDA069215940400022F39E /* UrbanAPIType.swift in Sources */,
 				2CFFB53B204DBFDE007A816C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,9 +9,9 @@
 import Foundation
 
 struct User {
-    var nickname : String = ""
-    var native : String = ""
-    var available : Int = 0
-    var known : Int = 0
-    var refcode : String = ""
+  var nickname : String = ""
+  var native : String = ""
+  var available : Int = 0
+  var known : Int = 0
+  var refcode : String = ""
 }

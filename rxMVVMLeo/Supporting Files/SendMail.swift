@@ -11,7 +11,7 @@ import Cocoa
 class SendEmail: NSObject {
     static func send() {
         
-        let service = NSSharingService(named: NSSharingService.Name.composeEmail)!
+        guard let service = NSSharingService(named: NSSharingService.Name.composeEmail) else { return }
         service.recipients = ["belebeich@me.com"]
         service.subject = "Feedback / Write to developer"
         let os = ProcessInfo.processInfo.operatingSystemVersionString

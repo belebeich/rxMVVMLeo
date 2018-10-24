@@ -10,15 +10,7 @@ import Cocoa
 import RxSwift
 
 protocol SceneCoordinatorType {
-    
-    @discardableResult
-    func transition(to scene: Scene, type: SceneTransitionType) -> Completable
-    
-    //func pop(animated: Bool) -> Completable
+  @discardableResult
+  func transition(to scene: Scene, type: SceneTransitionType) -> Completable
 }
 
-extension SceneCoordinatorType {
-    //    func pop() -> Completable {
-    //        return pop(animated: true)
-    //    }
-}

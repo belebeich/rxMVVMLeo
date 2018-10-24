@@ -10,67 +10,38 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-    var window : NSWindowController!
+  
+  var window : NSWindow?
+  
+  func applicationDidFinishLaunching(_ aNotification: Notification) {
     
+    let storyBoard = NSStoryboard(name: NSStoryboard.Name(rawValue:"Main"), bundle: nil)
     
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
-        
-        switch LeoAPI.shared.state.value {
-        case .success( _):
-            let storyBoard = NSStoryboard(name: NSStoryboard.Name(rawValue:"Main"), bundle: nil)
-            let homeViewController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "TranslateViewController")) as! MainViewController
-            NSApp.keyWindow?.contentViewController = homeViewController
-        case .unavailable:
-            let storyBoard = NSStoryboard(name: NSStoryboard.Name(rawValue:"Main"), bundle: nil)
-            let homeViewController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "LoginViewController")) as! LoginViewController
-            NSApp.keyWindow?.contentViewController = homeViewController
-            
-        }
-//        switch LeoAPI.shared.state.value {
-//        case .success( _):
-//
-//            let storyBoard = NSStoryboard(name: NSStoryboard.Name(rawValue:"Main"), bundle: nil)
-//            window = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "MainWindowController")) as! NSWindowController
-//            let homeViewController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "TranslateViewController")) as! MainViewController
-//
-//            window.contentViewController = homeViewController
-//            window.showWindow(self)
-//
-//        case .unavailable:
-//
-//            let storyBoard = NSStoryboard(name: NSStoryboard.Name(rawValue:"Main"), bundle: nil)
-//            window = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "LoginWindowController")) as! NSWindowController
-//            let homeViewController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "LoginViewController")) as! LoginViewController
-//
-//            window.contentViewController = homeViewController
-//
-//            window.showWindow(self)
-        
-            
-//            let windowController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "WindowController")) as! NSWindowController
-//
-//            windowController.window?.makeKeyAndOrderFront(nil)
-//
-//            NSApp.keyWindow?.windowController = windowController
-//            windowController.showWindow(self)
-            
-            //let homeViewController = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "LoginViewController")) as! LoginViewController
-            
-//            let window = NSWindow(contentViewController: homeViewController)
-//            NSApp.activate(ignoringOtherApps: true)
-//            window.makeKeyAndOrderFront(self)
-//            let wc = NSWindowController(window: window)
-//            wc.showWindow(self)
-            //NSApp.keyWindow?.contentViewController = homeViewController
-      //  }
+    switch LeoAPI.shared.state.value {
+    case .success( _):
+      let wc = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "MainWindowController")) as! NSWindowController
+      window = wc.window
+      let sceneCoordinator = SceneCoordinator(window: window!)
+      let mainViewModel = MainViewModel.init(coordinator: sceneCoordinator, leo: LeoAPI.shared, urban: UrbanAPI.shared)
+      let secondScene = Scene.main(mainViewModel)
+      sceneCoordinator.transition(to: secondScene, type: .show)
+      wc.showWindow(self)
+      
+    case .unavailable:
+      let wc = storyBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "LoginWindowController")) as! NSWindowController
+      window = wc.window
+      let sceneCoordinator = SceneCoordinator(window: window!)
+      let loginViewModel = LoginViewModel.init(coordinator: sceneCoordinator, api: LeoAPI.shared)
+      let firstScene = Scene.login(loginViewModel)
+      sceneCoordinator.transition(to: firstScene, type: .show)
+      wc.showWindow(self)
     }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
-
-
+  }
+  
+  func applicationWillTerminate(_ aNotification: Notification) {
+    // Insert code here to tear down your application
+  }
+  
+  
 }
 

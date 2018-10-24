@@ -15,6 +15,7 @@ extension Scene {
         case .login(let viewModel):
             let nc = storyboard.instantiateViewController(withIdentifier: "Login") as! UINavigationController
             var vc = nc.viewControllers.first as! LoginViewController
+            //vc.bindViewModel(to: viewModel)
             vc.bindViewModel(to: viewModel)
             return nc
             

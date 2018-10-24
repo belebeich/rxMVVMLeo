@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
@@ -686,7 +686,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController storyboardIdentifier="LoginWindowController" showSeguePresentationStyle="single" id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" tabbingMode="disallowed" id="IQv-IB-iLA">
+                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="350"/>
@@ -731,7 +731,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="aLg-yb-ijN"/>
                                         </constraints>
-                                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" focusRingType="none" userInterfaceLayoutDirection="rightToLeft" alignment="right" placeholderString="password" drawsBackground="YES" usesSingleLineMode="YES" id="vIg-zl-OUp">
+                                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" allowsUndo="NO" focusRingType="none" userInterfaceLayoutDirection="rightToLeft" alignment="right" placeholderString="password" drawsBackground="YES" usesSingleLineMode="YES" id="vIg-zl-OUp">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -923,9 +923,6 @@
                                         <color key="value" red="0.86024528739999995" green="0.99962598089999999" blue="0.36041355130000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="kNl-2X-8ke" kind="show" identifier="segue" id="8A6-dC-wnZ"/>
-                                </connections>
                             </button>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2RA-3R-hcI">
                                 <rect key="frame" x="20" y="118" width="440" height="30"/>
@@ -1053,16 +1050,16 @@
         <!--Main View Controller-->
         <scene sceneID="arD-oX-Abw">
             <objects>
-                <viewController storyboardIdentifier="TranslateViewController" id="AlJ-uP-5oB" customClass="MainViewController" customModule="rxMVVMLeo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="AlJ-uP-5oB" customClass="MainViewController" customModule="rxMVVMLeo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="XWS-md-Kcv">
-                        <rect key="frame" x="0.0" y="0.0" width="492" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="492" height="483"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="50" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qeO-Ee-aMi">
-                                <rect key="frame" x="106" y="428" width="280" height="32"/>
+                                <rect key="frame" x="106" y="427" width="280" height="36"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tJ9-wT-kyz" customClass="FlatButton" customModule="FlatButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="60" height="32"/>
+                                        <rect key="frame" x="0.0" y="4" width="60" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="l93-Zx-Sva"/>
                                         </constraints>
@@ -1101,7 +1098,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nze-jt-3Ar" customClass="FlatButton" customModule="FlatButton">
-                                        <rect key="frame" x="110" y="0.0" width="60" height="32"/>
+                                        <rect key="frame" x="110" y="4" width="60" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="w6y-ad-OS1"/>
                                         </constraints>
@@ -1143,7 +1140,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hEN-yd-YU6" customClass="FlatButton" customModule="FlatButton">
-                                        <rect key="frame" x="220" y="0.0" width="60" height="32"/>
+                                        <rect key="frame" x="220" y="4" width="60" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="PQt-KW-NDZ"/>
                                         </constraints>
@@ -1197,7 +1194,7 @@
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rfo-wv-oZ2">
-                                <rect key="frame" x="184" y="20" width="123" height="36"/>
+                                <rect key="frame" x="184" y="12" width="123" height="36"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2G0-nu-lYe">
                                         <rect key="frame" x="11" y="22" width="101" height="14"/>
@@ -1260,7 +1257,7 @@
                                 </customSpacing>
                             </stackView>
                             <tabView drawsBackground="NO" type="noTabsBezelBorder" translatesAutoresizingMaskIntoConstraints="NO" id="XKm-oQ-KhL">
-                                <rect key="frame" x="16" y="57" width="460" height="365"/>
+                                <rect key="frame" x="16" y="56" width="460" height="365"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="359" id="Gp2-a7-Ehs"/>
                                 </constraints>
@@ -2082,8 +2079,9 @@
                             <constraint firstItem="qeO-Ee-aMi" firstAttribute="top" secondItem="XWS-md-Kcv" secondAttribute="top" constant="20" id="8dh-Cc-Ugg"/>
                             <constraint firstItem="qeO-Ee-aMi" firstAttribute="centerX" secondItem="XWS-md-Kcv" secondAttribute="centerX" id="A28-ZY-qKy"/>
                             <constraint firstItem="rfo-wv-oZ2" firstAttribute="centerX" secondItem="XWS-md-Kcv" secondAttribute="centerX" id="J4w-T7-1VT"/>
+                            <constraint firstItem="rfo-wv-oZ2" firstAttribute="top" secondItem="XKm-oQ-KhL" secondAttribute="bottom" constant="12" id="p1b-7D-sbE"/>
                             <constraint firstItem="XKm-oQ-KhL" firstAttribute="leading" secondItem="XWS-md-Kcv" secondAttribute="leading" constant="20" id="v0M-8z-Trc"/>
-                            <constraint firstAttribute="bottom" secondItem="rfo-wv-oZ2" secondAttribute="bottom" constant="20" id="wvk-eC-yJt"/>
+                            <constraint firstAttribute="bottom" secondItem="rfo-wv-oZ2" secondAttribute="bottom" constant="12" id="wvk-eC-yJt"/>
                         </constraints>
                     </view>
                     <connections>

@@ -9,6 +9,6 @@
 import Foundation
 import RxSwift
 
-protocol UrbanAPIProtocol {
-    func translate(of word: String) -> Observable<[String]>
+protocol UrbanAPIType {
+  func translate(of word: String) -> Observable<[String]>
 }

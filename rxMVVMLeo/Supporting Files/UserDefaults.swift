@@ -7,10 +7,23 @@
 //
 
 import Foundation
-//
-//let defaults = UserDefaults(suiteName: "rxMVVMLeo")
-//
-//class Defaults {
-//    static let shared = Defaults()
-//}
 
+enum Keys {
+  static let token = "token"
+  static let points = "meatballs"
+  static let cookies = "cookies"
+  static let segment = "segment"
+}
+
+struct Defaults {
+  static let shared = Defaults()
+  private let group = "com.ivan-lebedev.rxMVVMLeo.group"
+  
+  
+  
+  var userDefaults: UserDefaults
+  
+  init() {
+    self.userDefaults = UserDefaults.init(suiteName: group)!
+  }
+}

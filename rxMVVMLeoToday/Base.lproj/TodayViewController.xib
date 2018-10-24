@@ -26,7 +26,7 @@
             <rect key="frame" x="0.0" y="0.0" width="405" height="530"/>
             <subviews>
                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="as0-Q6-Rhc">
-                    <rect key="frame" x="24" y="402" width="356" height="5"/>
+                    <rect key="frame" x="24" y="422" width="356" height="5"/>
                 </box>
                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="30" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dy0-M4-WKz">
                     <rect key="frame" x="20" y="32" width="120" height="21"/>
@@ -60,13 +60,13 @@
                     <rect key="frame" x="0.0" y="342" width="16" height="16"/>
                 </progressIndicator>
                 <scrollView autoresizesSubviews="NO" focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kH8-OJ-C05">
-                    <rect key="frame" x="18" y="73" width="360" height="305"/>
+                    <rect key="frame" x="18" y="73" width="360" height="325"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="vCJ-sO-KdM">
-                        <rect key="frame" x="0.0" y="0.0" width="360" height="305"/>
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="325"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" id="fhm-Ii-j8m" customClass="CustomNSTableView" customModule="rxMVVMLeoToday" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="360" height="305"/>
+                                <rect key="frame" x="0.0" y="0.0" width="360" height="325"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -124,9 +124,9 @@
                     </scroller>
                 </scrollView>
                 <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J9F-gN-Uw5">
-                    <rect key="frame" x="18" y="424" width="360" height="50"/>
+                    <rect key="frame" x="18" y="444" width="360" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="7FS-Hu-ojm"/>
+                        <constraint firstAttribute="height" constant="30" id="7FS-Hu-ojm"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="charWrapping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" id="Go4-2s-gBA">
                         <font key="font" metaFont="system"/>

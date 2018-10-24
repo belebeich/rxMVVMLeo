@@ -11,15 +11,41 @@ import RxSwift
 import RxCocoa
 
 struct MainViewModel {
-    func accountInfo() -> Observable<User?> {
-        return LeoAPI.shared.accountInfo()
-    }
-    
-    func logout() {
-        return LeoAPI.shared.logout()
-    }
-    
-    func writeToDeveloper() {
-        return SendEmail.send()
-    }
+  
+  let bag = DisposeBag()
+  let sceneCoordinator : SceneCoordinatorType
+  let serviceLeo : LeoAPIType
+  let serviceUrban : UrbanAPIType
+  
+  init(coordinator: SceneCoordinatorType, leo: LeoAPIType, urban: UrbanAPIType) {
+    self.sceneCoordinator = coordinator
+    self.serviceLeo = leo
+    self.serviceUrban = urban
+  }
+  
+  func meatballs() -> Observable<String> {
+    return serviceLeo.getMeatballs()
+  }
+  
+  func logout() {
+    let logout = self.serviceLeo.logout()
+    logout
+      .subscribe(onNext: { state in
+        switch state {
+        case .unavailable:
+          NSApp.terminate(self)
+        case .success(_):
+          break
+        }
+      })
+      .disposed(by: bag)
+  }
+  
+  func accountInfo() -> Observable<User?> {
+    return serviceLeo.accountInfo()
+  }
+
+  func writeToDeveloper() {
+    return SendEmail.send()
+  }
 }
