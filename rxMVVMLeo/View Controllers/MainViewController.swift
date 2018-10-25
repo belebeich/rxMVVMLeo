@@ -451,11 +451,11 @@ extension MainViewController {
       guard let `self` = self else {
         return
       }
-      self.drawingAnimations(textView: self.firstTextView, text: "translate options", x: 179.0, y: 196.0, lenght: 48.0) { _ in
-        self.drawingAnimations(textView: self.secondTextView, text: "words input", x: 179.0, y: 169.0, lenght:  48.0) {_ in
-          self.drawingAnimations(textView: self.thirdTextView, text: "translates table will appear here", x: 179.0, y: 130, lenght: 48.0) { _ in
-            self.drawingAnimations(textView: self.fourthTextView, text: "enables with selected row", x: 179.0, y: 107.0, lenght:  48.0) { _ in
-              self.drawingAnimations(textView: self.fifthTextView, text: "available words to add", x: 179.0, y: 67.0, lenght: 158.0, completionHandler: { _ in self.sixthTextView.setTextWithTypeAnimationSimple(typedText: "UrbanDictionary and LinguaLeo are used now as translate options.") {  } })
+      self.drawingAnimations(textView: self.firstTextView, text: "translate options", x: 167.0, y: 196.0, lenght: 48.0) { _ in
+        self.drawingAnimations(textView: self.secondTextView, text: "words input", x: 167.0, y: 169.0, lenght:  48.0) {_ in
+          self.drawingAnimations(textView: self.thirdTextView, text: "translates table will appear here", x: 167.0, y: 130, lenght: 48.0) { _ in
+            self.drawingAnimations(textView: self.fourthTextView, text: "enables with selected row", x: 167.0, y: 107.0, lenght:  48.0) { _ in
+              self.drawingAnimations(textView: self.fifthTextView, text: "available words to add", x: 167.0, y: 67.0, lenght: 158.0, completionHandler: { _ in self.sixthTextView.setTextWithTypeAnimationSimple(typedText: "UrbanDictionary and LinguaLeo are used now as translate options.") {  } })
             }
           }
         }
