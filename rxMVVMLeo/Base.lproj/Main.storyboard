@@ -689,7 +689,7 @@
                     <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="350"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
@@ -760,10 +760,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="440" height="46"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" selectionGranularity="word" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="q5G-O8-z3Y">
+                                        <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" selectionGranularity="word" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="q5G-O8-z3Y">
                                             <rect key="frame" x="0.0" y="0.0" width="440" height="46"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.86024528739999995" green="0.99962598089999999" blue="0.36041355130000002" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <size key="minSize" width="440" height="46"/>
                                             <size key="maxSize" width="678" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1052,14 +1052,14 @@
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="AlJ-uP-5oB" customClass="MainViewController" customModule="rxMVVMLeo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="XWS-md-Kcv">
-                        <rect key="frame" x="0.0" y="0.0" width="492" height="483"/>
+                        <rect key="frame" x="0.0" y="0.0" width="492" height="491"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="50" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qeO-Ee-aMi">
-                                <rect key="frame" x="106" y="427" width="280" height="36"/>
+                                <rect key="frame" x="106" y="427" width="280" height="44"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tJ9-wT-kyz" customClass="FlatButton" customModule="FlatButton">
-                                        <rect key="frame" x="0.0" y="4" width="60" height="32"/>
+                                        <rect key="frame" x="0.0" y="12" width="60" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="l93-Zx-Sva"/>
                                         </constraints>
@@ -1098,7 +1098,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nze-jt-3Ar" customClass="FlatButton" customModule="FlatButton">
-                                        <rect key="frame" x="110" y="4" width="60" height="32"/>
+                                        <rect key="frame" x="110" y="12" width="60" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="w6y-ad-OS1"/>
                                         </constraints>
@@ -1140,7 +1140,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hEN-yd-YU6" customClass="FlatButton" customModule="FlatButton">
-                                        <rect key="frame" x="220" y="4" width="60" height="32"/>
+                                        <rect key="frame" x="220" y="12" width="60" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="PQt-KW-NDZ"/>
                                         </constraints>

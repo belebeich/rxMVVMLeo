@@ -10,7 +10,6 @@ import Cocoa
 
 class SendEmail: NSObject {
     static func send() {
-        
         guard let service = NSSharingService(named: NSSharingService.Name.composeEmail) else { return }
         service.recipients = ["belebeich@me.com"]
         service.subject = "Feedback / Write to developer"
@@ -20,6 +19,5 @@ class SendEmail: NSObject {
         } else {
             service.perform(withItems: ["macOS version: \(os)"])
         }
-        
     }
 }

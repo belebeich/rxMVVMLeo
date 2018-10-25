@@ -24,7 +24,7 @@ struct LoginViewModel {
     self.credentialsValid = Driver.of(false)
   }
   
-  func login(email: Driver<String>, password: Driver<String>) -> Observable<Void> {
+  func login(email: Driver<String>, password: Driver<String>) -> Observable<Bool> {
     var accountStatus = Observable.of(AccountStatus.unavailable)
     let data = Driver.combineLatest(email, password)
     data
@@ -35,14 +35,14 @@ struct LoginViewModel {
       .disposed(by: bag)
     
     return accountStatus
-      .flatMap { status -> Observable<Void> in
+      .flatMap { status -> Observable<Bool> in
         switch status {
         case .unavailable:
-          return Observable.never()
+          return Observable.of(false)
         case .success(_):
           let mainViewModel = MainViewModel.init(coordinator: self.sceneCoordinator, leo: self.service, urban: UrbanAPI.shared)
-          return self.sceneCoordinator.transition(to: Scene.main(mainViewModel), type: .show)
-            .asObservable().map { _ in }
+          self.sceneCoordinator.transition(to: Scene.main(mainViewModel), type: .show)
+          return Observable.of(true)
         }
     }
   }

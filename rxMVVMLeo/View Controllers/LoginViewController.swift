@@ -42,11 +42,7 @@ class LoginViewController: NSViewController, BindableType {
   }
   
   override func viewWillLayout() {
-    let gradientLayer = CAGradientLayer()
-    gradientLayer.colors = [NSColor.init(calibratedRed: 202/255, green: 196/255, blue: 187/255, alpha: 1.0).cgColor, NSColor.init(calibratedRed: 119/255, green: 110/255, blue: 94/255, alpha: 1.0).cgColor]
-    gradientLayer.frame = self.view.frame
-    view.layer?.insertSublayer(gradientLayer, at: 0)
-    view.wantsLayer = true
+    view.layer?.backgroundColor = NSColor.init(calibratedRed: 119/255, green: 110/255, blue: 94/255, alpha: 1.0).cgColor
     emailTextField.customizeCaretColor()
     passwordTextField.customizeCaretColor()
   }
@@ -69,7 +65,10 @@ class LoginViewController: NSViewController, BindableType {
           .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
       }
       .observeOn(MainScheduler.instance)
-      .subscribe(onNext: { _ in
+      .subscribe(onNext: { [unowned self] status in
+        if status == false {
+          self.thirdMessage.setTextWithTypeAnimationSimple(typedText: "Something went wrong, please try again!") {  }
+        }
       })
       .disposed(by: bag)
     

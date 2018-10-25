@@ -6,7 +6,6 @@
 //  Copyright © 2018 Ivan . All rights reserved.
 //
 
-import Foundation
 import Cocoa
 import RxCocoa
 import RxSwift

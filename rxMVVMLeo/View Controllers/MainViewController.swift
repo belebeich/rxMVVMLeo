@@ -15,33 +15,33 @@ class MainViewController: NSViewController, BindableType {
   private let bag = DisposeBag()
   var viewModel: MainViewModel!
   
-  @IBOutlet var sixthTextView: NSTextView!
+  @IBOutlet weak var sixthTextView: NSTextView!
   @IBOutlet weak var writeToDeveloperButton: NSButton!
   @IBOutlet weak var logoutButtons: NSStackView!
   @IBOutlet weak var noButton: NSButton!
   @IBOutlet weak var yesButton: NSButton!
-  @IBOutlet var logoutTextView: NSTextView!
-  @IBOutlet var userRefcodeTextView: NSTextView!
-  @IBOutlet var userAvailableTextView: NSTextView!
-  @IBOutlet var userKnownTextView: NSTextView!
-  @IBOutlet var userNativeTextView: NSTextView!
-  @IBOutlet var userNicknameTextView: NSTextView!
-  @IBOutlet var refcodeTextView: NSTextView!
-  @IBOutlet var availableTextView: NSTextView!
-  @IBOutlet var knownTextView: NSTextView!
-  @IBOutlet var nativeTextView: NSTextView!
-  @IBOutlet var nicknameTextView: NSTextView!
-  @IBOutlet var accountInfoTextView: NSTextView!
-  @IBOutlet var firstTextView: NSTextView!
-  @IBOutlet var secondTextView: NSTextView!
-  @IBOutlet var thirdTextView: NSTextView!
-  @IBOutlet var fourthTextView: NSTextView!
-  @IBOutlet var fifthTextView: NSTextView!
+  @IBOutlet weak var logoutTextView: NSTextView!
+  @IBOutlet weak var userRefcodeTextView: NSTextView!
+  @IBOutlet weak var userAvailableTextView: NSTextView!
+  @IBOutlet weak var userKnownTextView: NSTextView!
+  @IBOutlet weak var userNativeTextView: NSTextView!
+  @IBOutlet weak var userNicknameTextView: NSTextView!
+  @IBOutlet weak var refcodeTextView: NSTextView!
+  @IBOutlet weak var availableTextView: NSTextView!
+  @IBOutlet weak var knownTextView: NSTextView!
+  @IBOutlet weak var nativeTextView: NSTextView!
+  @IBOutlet weak var nicknameTextView: NSTextView!
+  @IBOutlet weak var accountInfoTextView: NSTextView!
+  @IBOutlet weak var firstTextView: NSTextView!
+  @IBOutlet weak var secondTextView: NSTextView!
+  @IBOutlet weak var thirdTextView: NSTextView!
+  @IBOutlet weak var fourthTextView: NSTextView!
+  @IBOutlet weak var fifthTextView: NSTextView!
   @IBOutlet weak var tipView: NSView!
   @IBOutlet weak var menuButtonView: NSImageView!
   @IBOutlet weak var notificationCenterImageView: NSImageView!
   @IBOutlet weak var menuBarImageView: NSImageView!
-  @IBOutlet var introMessage: NSTextView!
+  @IBOutlet weak var introMessage: NSTextView!
   @IBOutlet weak var tabView: NSTabView!
   @IBOutlet weak var logoutButton: NSButton!
   @IBOutlet weak var helpButton: NSButton!
@@ -56,6 +56,13 @@ class MainViewController: NSViewController, BindableType {
     view.window?.titlebarAppearsTransparent = true
     view.window?.titleVisibility = .hidden
     view.window?.styleMask.insert(NSWindow.StyleMask.fullSizeContentView)
+  }
+  
+  override func viewWillLayout() {
+    view.layer?.backgroundColor = NSColor.init(calibratedRed: 119/255, green: 110/255, blue: 94/255, alpha: 1.0).cgColor
+    view.window?.acceptsMouseMovedEvents = true
+    buttonHover()
+    shine()
   }
   
   func bindViewModel() {
@@ -121,17 +128,6 @@ class MainViewController: NSViewController, BindableType {
         self.viewModel.writeToDeveloper()
       })
       .disposed(by: bag)
-  }
-  
-  override func viewWillLayout() {
-    let gradientLayer = CAGradientLayer()
-    gradientLayer.colors = [NSColor.init(calibratedRed: 202/255, green: 196/255, blue: 187/255, alpha: 1.0).cgColor, NSColor.init(calibratedRed: 119/255, green: 110/255, blue: 94/255, alpha: 1.0).cgColor]
-    gradientLayer.frame = self.view.bounds
-    view.layer?.insertSublayer(gradientLayer, at: 0)
-    view.wantsLayer = true
-    view.window?.acceptsMouseMovedEvents = true
-    buttonHover()
-    shine()
   }
 }
 
@@ -252,31 +248,21 @@ extension MainViewController {
       .subscribe(onNext: { [unowned self] bool in
         if bool == false {
           let line = CAShapeLayer()
-          
           line.lineWidth = 2.0
-          
           line.shadowColor = CGColor.white
-          
           line.shadowOffset = CGSize.zero
           line.shadowOpacity = 1.0
-          
           line.lineCap = kCALineCapRound
           line.strokeEnd = 0.0
           line.strokeColor = CGColor.white
           line.shadowRadius = 5.0
           line.fillColor = CGColor.clear
           line.fillMode = kCAFillModeForwards
-          
-          
           let pt = NSBezierPath()
           pt.move(to: CGPoint(x: x, y: y))
-          
           pt.line(to: CGPoint(x: x + lenght, y: y))
-          
           line.path = pt.cgPath
-          
           CATransaction.begin()
-          
           let pathAnimation = CABasicAnimation(keyPath: "strokeEnd")
           pathAnimation.duration = 0.5
           pathAnimation.fromValue = 0.0
@@ -284,13 +270,10 @@ extension MainViewController {
           pathAnimation.fillMode = kCAFillModeForwards
           pathAnimation.autoreverses = false
           line.strokeEnd = 1.0
-          
           CATransaction.setCompletionBlock {
             completionHandler(true)
           }
-          
           line.add(pathAnimation, forKey: nil)
-          
           self.tabView.tabViewItem(at: 1).view?.layer?.addSublayer(line)
           CATransaction.commit()
         }
@@ -361,8 +344,8 @@ extension MainViewController {
     let solid = NSColor(white: 1, alpha: 1).cgColor
     let clear = NSColor(white: 1, alpha: lowerAlpha).cgColor
     
-    gradient.colors     = [ solid, solid, clear, clear, solid, solid ]
-    gradient.locations  = [ 0,     0.3,   0.45,  0.55,  0.7,   1     ]
+    gradient.colors = [ solid, solid, clear, clear, solid, solid ]
+    gradient.locations = [ 0, 0.3, 0.45, 0.55, 0.7, 1]
     
     let theAnimation : CABasicAnimation = CABasicAnimation(keyPath: "transform.translation.x")
     theAnimation.duration = 2

@@ -6,7 +6,6 @@
 //  Copyright © 2018 Ivan . All rights reserved.
 //
 
-import Foundation
 import AppKit
 import RxSwift
 
@@ -42,9 +41,6 @@ extension NSTextView {
       }
       }
       .share()
-    //.observeOn(MainScheduler.asyncInstance)
-    //.distinctUntilChanged()
-    
   }
   
   func setTextWithTypeAnimationSimple(typedText: String, characterDelay: TimeInterval = 5.0, handler: @escaping () -> ()) {
