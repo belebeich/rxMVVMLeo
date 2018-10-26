@@ -14,26 +14,21 @@ extension NSTextView {
     
     return Observable.create { observer in
       self.string = ""
-      
       var writingTask: DispatchWorkItem?
-      writingTask = DispatchWorkItem { [weak weakSelf = self] in
+      writingTask = DispatchWorkItem { [weak self] in
         for character in typedText {
           DispatchQueue.main.async {
-            weakSelf?.string.append(character)
+            self?.string.append(character)
           }
           Thread.sleep(forTimeInterval: characterDelay/100)
         }
       }
-      
       if let task = writingTask {
         let queue = DispatchQueue(label: "typespeed", qos: DispatchQoS.userInteractive)
         observer.onNext(true)
-        
         queue.asyncAfter(deadline: .now() + 0.05, execute: task)
-        
       }
       writingTask?.notify(queue: DispatchQueue.main) {
-        
         observer.onNext(false)
       }
       return Disposables.create {
@@ -44,27 +39,21 @@ extension NSTextView {
   }
   
   func setTextWithTypeAnimationSimple(typedText: String, characterDelay: TimeInterval = 5.0, handler: @escaping () -> ()) {
-    
     self.string = ""
-    
     var writingTask: DispatchWorkItem?
-    writingTask = DispatchWorkItem { [weak weakSelf = self] in
+    writingTask = DispatchWorkItem { [weak self] in
       for character in typedText {
         DispatchQueue.main.async {
-          weakSelf?.string.append(character)
+          self?.string.append(character)
         }
         Thread.sleep(forTimeInterval: characterDelay/100)
       }
     }
-    
     if let task = writingTask {
       let queue = DispatchQueue(label: "typespeed", qos: DispatchQoS.userInteractive)
-      
       queue.asyncAfter(deadline: .now() + 0.05, execute: task)
-      
     }
     writingTask?.notify(queue: DispatchQueue.main) {
-      
       handler()
     }
   }

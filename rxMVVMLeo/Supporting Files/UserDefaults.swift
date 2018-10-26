@@ -17,9 +17,7 @@ enum Keys {
 
 struct Defaults {
   static let shared = Defaults()
-  private let group = "com.ivan-lebedev.rxMVVMLeo.group"
-  
-  
+  private let group = "group.com.ivan-lebedev.rxMVVMLeo"
   
   var userDefaults: UserDefaults
   

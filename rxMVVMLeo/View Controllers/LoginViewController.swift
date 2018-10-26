@@ -109,6 +109,7 @@ class LoginViewController: NSViewController, BindableType {
 // MARK: - Set UI
 private extension LoginViewController {
   func setUI() {
+    loginInfoStack.isHidden = true
     loginInfoStack.animator().alphaValue = 0.0
     menuButtonView.isHidden = true
     menuBarImageView.isHidden = true
@@ -175,8 +176,9 @@ private extension LoginViewController {
 // MARK: - Animations
 private extension LoginViewController {
   func loginStackViewAnimation() {
+    loginInfoStack.isHidden = false
     NSAnimationContext.runAnimationGroup({ [weak self] context in
-      context.duration = 2.0
+      context.duration = 1.5
       self?.loginInfoStack.animator().alphaValue = 1.0
       }) { [weak self] in
         self?.emailTextField.selectText(self)

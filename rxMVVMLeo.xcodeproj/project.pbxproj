@@ -26,7 +26,6 @@
 		2C64AAF720B846A90032E2AA /* rxMVVMLeoToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2C64AAE720B846A90032E2AA /* rxMVVMLeoToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2C64AAFE20B865BE0032E2AA /* LeoAPIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIType.swift */; };
 		2C7636BE2154F56C00ED94F3 /* CustomNSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7636BD2154F56C00ED94F3 /* CustomNSTextField.swift */; };
-		2C7636C0215620CB00ED94F3 /* CustomNSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7636BF215620CB00ED94F3 /* CustomNSTextView.swift */; };
 		2C765082214662B0002236D7 /* NSTextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C765081214662B0002236D7 /* NSTextViewExtension.swift */; };
 		2C7BB01820BD31500083034F /* LeoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2D204D664500E133CD /* LeoAPI.swift */; };
 		2C7BB01920BD31530083034F /* LeoAPIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIType.swift */; };
@@ -127,7 +126,6 @@
 		2C64AAF220B846A90032E2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C64AAF420B846A90032E2AA /* rxMVVMLeoToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rxMVVMLeoToday.entitlements; sourceTree = "<group>"; };
 		2C7636BD2154F56C00ED94F3 /* CustomNSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSTextField.swift; sourceTree = "<group>"; };
-		2C7636BF215620CB00ED94F3 /* CustomNSTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSTextView.swift; sourceTree = "<group>"; };
 		2C765081214662B0002236D7 /* NSTextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextViewExtension.swift; sourceTree = "<group>"; };
 		2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Rx.swift"; sourceTree = "<group>"; };
 		2C864A07215B861C00C8EB48 /* TranslateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateTableViewCell.swift; sourceTree = "<group>"; };
@@ -333,7 +331,6 @@
 			isa = PBXGroup;
 			children = (
 				2C7636BD2154F56C00ED94F3 /* CustomNSTextField.swift */,
-				2C7636BF215620CB00ED94F3 /* CustomNSTextView.swift */,
 				2CB2875D2164E908003AD64D /* CustomNSSecureTextField.swift */,
 			);
 			path = Subclasses;
@@ -686,7 +683,6 @@
 				2C0101CA2170BAB30062721B /* NSBezierPath.swift in Sources */,
 				2C5857B520A3379200C2CA47 /* LeoAPIType.swift in Sources */,
 				2C333C2C204D662500E133CD /* LoginViewModel.swift in Sources */,
-				2C7636C0215620CB00ED94F3 /* CustomNSTextView.swift in Sources */,
 				2C7636BE2154F56C00ED94F3 /* CustomNSTextField.swift in Sources */,
 				2CA8FDB82178A94900793848 /* SceneTransitionType.swift in Sources */,
 				2CB2875E2164E908003AD64D /* CustomNSSecureTextField.swift in Sources */,
