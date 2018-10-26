@@ -51,7 +51,7 @@ struct LeoAPI : LeoAPIType {
   }
   
   static var shared = LeoAPI()
-  //let keychain = KeychainSwift()
+  let keychain = KeychainSwift()
   
   var state: BehaviorRelay<AccountStatus> {
     if let storedToken = Defaults.shared.userDefaults.string(forKey: Keys.token) {
