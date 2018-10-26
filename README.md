@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="Resources/Images/first.png" width="220px" />
-  <img src="Resources/Images/second.png" width="220px" />
-  <img src="Resources/Images/third.png" width="220px" />
+  <img src="Resources/Images/first.png" width="280px" />
+  <img src="Resources/Images/second.png" width="280px" />
+  <img src="Resources/Images/third.png" width="280px" />
 </div>
 
 # rxMVVMLeo
