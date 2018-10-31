@@ -40,7 +40,7 @@
 		<string>PF Din Mono Bold.otf</string>
 	</array>
 	<key>ATSApplicationFontsPath</key>
-	<string>Supporting Files/Fonts</string>
+	<string>Fonts</string>
 	<key>CSResourcesFileMapped</key>
 	<false/>
 </dict>
