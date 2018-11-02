@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14C86F941D912DD0CD29F39D /* libPods-rxMVVMLeoiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B52D8C83708DD285AB2563 /* libPods-rxMVVMLeoiOS.a */; };
 		2C0101CA2170BAB30062721B /* NSBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0101C92170BAB30062721B /* NSBezierPath.swift */; };
 		2C1DAECF2057EF7B00B6CFCF /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */; };
 		2C1ED3E8212338EC009108DF /* CustomNSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1ED3E7212338EC009108DF /* CustomNSTableView.swift */; };
@@ -24,14 +23,12 @@
 		2C64AAEF20B846A90032E2AA /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C64AAED20B846A90032E2AA /* TodayViewController.xib */; };
 		2C64AAF320B846A90032E2AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C64AAF120B846A90032E2AA /* InfoPlist.strings */; };
 		2C64AAF720B846A90032E2AA /* rxMVVMLeoToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2C64AAE720B846A90032E2AA /* rxMVVMLeoToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		2C64AAFE20B865BE0032E2AA /* LeoAPIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIType.swift */; };
 		2C7636BE2154F56C00ED94F3 /* CustomNSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7636BD2154F56C00ED94F3 /* CustomNSTextField.swift */; };
 		2C765082214662B0002236D7 /* NSTextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C765081214662B0002236D7 /* NSTextViewExtension.swift */; };
 		2C7BB01820BD31500083034F /* LeoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2D204D664500E133CD /* LeoAPI.swift */; };
 		2C7BB01920BD31530083034F /* LeoAPIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5857B420A3379200C2CA47 /* LeoAPIType.swift */; };
 		2C7BB01A20BD32B90083034F /* NSTextView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */; };
 		2C81C09720AC20F90071E96E /* NSTextView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */; };
-		2C864A08215B861C00C8EB48 /* TranslateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C864A07215B861C00C8EB48 /* TranslateTableViewCell.swift */; };
 		2C8749682177259B00273DDB /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8749672177259B00273DDB /* UserDefaults.swift */; };
 		2C8749692177259B00273DDB /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8749672177259B00273DDB /* UserDefaults.swift */; };
 		2C9E74F4210E1275007E429E /* UrbanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */; };
@@ -52,27 +49,10 @@
 		2CB58E3B2173A5150020A774 /* PFDinMono-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB58E392173A33A0020A774 /* PFDinMono-Bold.otf */; };
 		2CB58E3C2173A5180020A774 /* PFDinMono.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB58E3A2173A3560020A774 /* PFDinMono.otf */; };
 		2CB58E3D2173A51A0020A774 /* PFDinMono-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB58E382173A3280020A774 /* PFDinMono-Regular.otf */; };
-		2CBDA05B215928650022F39E /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA05A215928650022F39E /* Scene.swift */; };
-		2CBDA05D215928750022F39E /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA05C215928750022F39E /* SceneCoordinatorType.swift */; };
-		2CBDA05F215928840022F39E /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA05E215928840022F39E /* SceneCoordinator.swift */; };
-		2CBDA061215928960022F39E /* Scene+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA060215928960022F39E /* Scene+ViewController.swift */; };
-		2CBDA063215928A50022F39E /* SceneTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA062215928A50022F39E /* SceneTransitionType.swift */; };
-		2CBDA06621592ED10022F39E /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA06521592ED10022F39E /* TranslateViewController.swift */; };
-		2CBDA06821593F930022F39E /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA06721593F930022F39E /* BindableType.swift */; };
-		2CBDA069215940400022F39E /* UrbanAPIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBA210D9466007DAEF1 /* UrbanAPIType.swift */; };
-		2CBDA06A215940430022F39E /* UrbanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */; };
-		2CBDA06C2159421D0022F39E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA06B2159421D0022F39E /* LoginViewModel.swift */; };
-		2CBDA06E215942400022F39E /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDA06D215942400022F39E /* TranslateViewModel.swift */; };
 		2CC6FCB320BD2DFA00885892 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C64AAEB20B846A90032E2AA /* TodayViewController.swift */; };
 		2CC6FCB620BD2E4600885892 /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */; };
 		2CCC1D81216346B600713DD7 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC1D80216346B600713DD7 /* Scene.swift */; };
 		2CE12712218A370700595BEB /* PFDinMono-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE12711218A366E00595BEB /* PFDinMono-Light.otf */; };
-		2CFFB53B204DBFDE007A816C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFB53A204DBFDE007A816C /* AppDelegate.swift */; };
-		2CFFB53D204DBFDE007A816C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFB53C204DBFDE007A816C /* LoginViewController.swift */; };
-		2CFFB540204DBFDE007A816C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFFB53E204DBFDE007A816C /* Main.storyboard */; };
-		2CFFB542204DBFDE007A816C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CFFB541204DBFDE007A816C /* Assets.xcassets */; };
-		2CFFB545204DBFDE007A816C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFFB543204DBFDE007A816C /* LaunchScreen.storyboard */; };
-		2CFFB54B204DC18C007A816C /* LeoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C333C2D204D664500E133CD /* LeoAPI.swift */; };
 		42716A6BF6B07BCB60698BCB /* libPods-rxMVVMLeoToday.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 421C68A82745AC44A44460D2 /* libPods-rxMVVMLeoToday.a */; };
 		B6EACAEA0D1BAE3F74574581 /* libPods-rxMVVMLeo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D502289DD58B5DE8D608001 /* libPods-rxMVVMLeo.a */; };
 /* End PBXBuildFile section */
@@ -129,7 +109,6 @@
 		2C7636BD2154F56C00ED94F3 /* CustomNSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSTextField.swift; sourceTree = "<group>"; };
 		2C765081214662B0002236D7 /* NSTextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextViewExtension.swift; sourceTree = "<group>"; };
 		2C81C09620AC20F90071E96E /* NSTextView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Rx.swift"; sourceTree = "<group>"; };
-		2C864A07215B861C00C8EB48 /* TranslateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateTableViewCell.swift; sourceTree = "<group>"; };
 		2C8749672177259B00273DDB /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		2C9F5EBA210D9466007DAEF1 /* UrbanAPIType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanAPIType.swift; sourceTree = "<group>"; };
 		2C9F5EBC210D9476007DAEF1 /* UrbanAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanAPI.swift; sourceTree = "<group>"; };
@@ -144,28 +123,12 @@
 		2CB58E382173A3280020A774 /* PFDinMono-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PFDinMono-Regular.otf"; sourceTree = "<group>"; };
 		2CB58E392173A33A0020A774 /* PFDinMono-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PFDinMono-Bold.otf"; sourceTree = "<group>"; };
 		2CB58E3A2173A3560020A774 /* PFDinMono.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PFDinMono.otf; sourceTree = "<group>"; };
-		2CBDA05A215928650022F39E /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
-		2CBDA05C215928750022F39E /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
-		2CBDA05E215928840022F39E /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
-		2CBDA060215928960022F39E /* Scene+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scene+ViewController.swift"; sourceTree = "<group>"; };
-		2CBDA062215928A50022F39E /* SceneTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTransitionType.swift; sourceTree = "<group>"; };
-		2CBDA06521592ED10022F39E /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
-		2CBDA06721593F930022F39E /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
-		2CBDA06B2159421D0022F39E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		2CBDA06D215942400022F39E /* TranslateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
 		2CCC1D80216346B600713DD7 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		2CCC1D8221634E2F00713DD7 /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
 		2CCC1D8421634E3B00713DD7 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		2CCC1D8621634E5200713DD7 /* Scene+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scene+ViewController.swift"; sourceTree = "<group>"; };
 		2CCC1D8821634E6100713DD7 /* SceneTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTransitionType.swift; sourceTree = "<group>"; };
 		2CE12711218A366E00595BEB /* PFDinMono-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PFDinMono-Light.otf"; sourceTree = "<group>"; };
-		2CFFB538204DBFDE007A816C /* rxMVVMLeoiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rxMVVMLeoiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2CFFB53A204DBFDE007A816C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2CFFB53C204DBFDE007A816C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		2CFFB53F204DBFDE007A816C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2CFFB541204DBFDE007A816C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2CFFB544204DBFDE007A816C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2CFFB546204DBFDE007A816C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		421C68A82745AC44A44460D2 /* libPods-rxMVVMLeoToday.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rxMVVMLeoToday.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46C041E4D68A4B54A716B86B /* Pods-rxMVVMLeoiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxMVVMLeoiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-rxMVVMLeoiOS/Pods-rxMVVMLeoiOS.release.xcconfig"; sourceTree = "<group>"; };
 		9B586A8A232C7D65D18D6E8F /* Pods-rxMVVMLeo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxMVVMLeo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rxMVVMLeo/Pods-rxMVVMLeo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -194,40 +157,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2CFFB535204DBFDE007A816C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				14C86F941D912DD0CD29F39D /* libPods-rxMVVMLeoiOS.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C1CCCDF215A19BB00D37289 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				2CFFB53C204DBFDE007A816C /* LoginViewController.swift */,
-				2CBDA06521592ED10022F39E /* TranslateViewController.swift */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		2C1CCCE0215A19C900D37289 /* View Models */ = {
-			isa = PBXGroup;
-			children = (
-				2CBDA06B2159421D0022F39E /* LoginViewModel.swift */,
-				2CBDA06D215942400022F39E /* TranslateViewModel.swift */,
-			);
-			path = "View Models";
-			sourceTree = "<group>";
-		};
 		2C333C0B204D639800E133CD = {
 			isa = PBXGroup;
 			children = (
 				2C333C16204D639800E133CD /* rxMVVMLeo */,
-				2CFFB539204DBFDE007A816C /* rxMVVMLeoiOS */,
 				2C64AAEA20B846A90032E2AA /* rxMVVMLeoToday */,
 				2C333C15204D639800E133CD /* Products */,
 				CB7907A00E5AFE12846E3AFB /* Pods */,
@@ -239,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				2C333C14204D639800E133CD /* rxMVVMLeo.app */,
-				2CFFB538204DBFDE007A816C /* rxMVVMLeoiOS.app */,
 				2C64AAE720B846A90032E2AA /* rxMVVMLeoToday.appex */,
 			);
 			name = Products;
@@ -378,18 +313,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		2CBDA0592159284E0022F39E /* Scene */ = {
-			isa = PBXGroup;
-			children = (
-				2CBDA05A215928650022F39E /* Scene.swift */,
-				2CBDA05C215928750022F39E /* SceneCoordinatorType.swift */,
-				2CBDA05E215928840022F39E /* SceneCoordinator.swift */,
-				2CBDA060215928960022F39E /* Scene+ViewController.swift */,
-				2CBDA062215928A50022F39E /* SceneTransitionType.swift */,
-			);
-			path = Scene;
-			sourceTree = "<group>";
-		};
 		2CCC1D7F2163469C00713DD7 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,23 +323,6 @@
 				2CCC1D8821634E6100713DD7 /* SceneTransitionType.swift */,
 			);
 			path = Scenes;
-			sourceTree = "<group>";
-		};
-		2CFFB539204DBFDE007A816C /* rxMVVMLeoiOS */ = {
-			isa = PBXGroup;
-			children = (
-				2C1CCCE0215A19C900D37289 /* View Models */,
-				2C1CCCDF215A19BB00D37289 /* View Controllers */,
-				2CBDA0592159284E0022F39E /* Scene */,
-				2CFFB53A204DBFDE007A816C /* AppDelegate.swift */,
-				2CFFB53E204DBFDE007A816C /* Main.storyboard */,
-				2CFFB541204DBFDE007A816C /* Assets.xcassets */,
-				2CFFB543204DBFDE007A816C /* LaunchScreen.storyboard */,
-				2CFFB546204DBFDE007A816C /* Info.plist */,
-				2CBDA06721593F930022F39E /* BindableType.swift */,
-				2C864A07215B861C00C8EB48 /* TranslateTableViewCell.swift */,
-			);
-			path = rxMVVMLeoiOS;
 			sourceTree = "<group>";
 		};
 		64137FE072A7B6C90ECA9FD8 /* Frameworks */ = {
@@ -484,24 +390,6 @@
 			productReference = 2C64AAE720B846A90032E2AA /* rxMVVMLeoToday.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		2CFFB537204DBFDE007A816C /* rxMVVMLeoiOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2CFFB547204DBFDE007A816C /* Build configuration list for PBXNativeTarget "rxMVVMLeoiOS" */;
-			buildPhases = (
-				224BC2A077739EDEE5191A18 /* [CP] Check Pods Manifest.lock */,
-				2CFFB534204DBFDE007A816C /* Sources */,
-				2CFFB535204DBFDE007A816C /* Frameworks */,
-				2CFFB536204DBFDE007A816C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = rxMVVMLeoiOS;
-			productName = rxMVVMLeoiOS;
-			productReference = 2CFFB538204DBFDE007A816C /* rxMVVMLeoiOS.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -538,13 +426,9 @@
 								enabled = 1;
 							};
 							com.apple.Sandbox = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
-					};
-					2CFFB537204DBFDE007A816C = {
-						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -562,7 +446,6 @@
 			projectRoot = "";
 			targets = (
 				2C333C13204D639800E133CD /* rxMVVMLeo */,
-				2CFFB537204DBFDE007A816C /* rxMVVMLeoiOS */,
 				2C64AAE620B846A90032E2AA /* rxMVVMLeoToday */,
 			);
 		};
@@ -591,37 +474,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2CFFB536204DBFDE007A816C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2CFFB545204DBFDE007A816C /* LaunchScreen.storyboard in Resources */,
-				2CFFB542204DBFDE007A816C /* Assets.xcassets in Resources */,
-				2CFFB540204DBFDE007A816C /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		224BC2A077739EDEE5191A18 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-rxMVVMLeoiOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6C0489C45B9697CB4F9E1F59 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -711,29 +566,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2CFFB534204DBFDE007A816C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C64AAFE20B865BE0032E2AA /* LeoAPIType.swift in Sources */,
-				2CBDA05D215928750022F39E /* SceneCoordinatorType.swift in Sources */,
-				2CFFB53D204DBFDE007A816C /* LoginViewController.swift in Sources */,
-				2CBDA063215928A50022F39E /* SceneTransitionType.swift in Sources */,
-				2CBDA061215928960022F39E /* Scene+ViewController.swift in Sources */,
-				2CBDA06821593F930022F39E /* BindableType.swift in Sources */,
-				2CBDA06C2159421D0022F39E /* LoginViewModel.swift in Sources */,
-				2CBDA06621592ED10022F39E /* TranslateViewController.swift in Sources */,
-				2C864A08215B861C00C8EB48 /* TranslateTableViewCell.swift in Sources */,
-				2CBDA05F215928840022F39E /* SceneCoordinator.swift in Sources */,
-				2CBDA06E215942400022F39E /* TranslateViewModel.swift in Sources */,
-				2CBDA05B215928650022F39E /* Scene.swift in Sources */,
-				2CFFB54B204DC18C007A816C /* LeoAPI.swift in Sources */,
-				2CBDA06A215940430022F39E /* UrbanAPI.swift in Sources */,
-				2CBDA069215940400022F39E /* UrbanAPIType.swift in Sources */,
-				2CFFB53B204DBFDE007A816C /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -767,22 +599,6 @@
 				2C64AAF220B846A90032E2AA /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		2CFFB53E204DBFDE007A816C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2CFFB53F204DBFDE007A816C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		2CFFB543204DBFDE007A816C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2CFFB544204DBFDE007A816C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -975,45 +791,6 @@
 			};
 			name = Release;
 		};
-		2CFFB548204DBFDE007A816C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A4070F47096ADEF00DA6CC7B /* Pods-rxMVVMLeoiOS.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y9G5U4WZMN;
-				INFOPLIST_FILE = rxMVVMLeoiOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ivan-lebedev.rxMVVMLeoiOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		2CFFB549204DBFDE007A816C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 46C041E4D68A4B54A716B86B /* Pods-rxMVVMLeoiOS.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y9G5U4WZMN;
-				INFOPLIST_FILE = rxMVVMLeoiOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ivan-lebedev.rxMVVMLeoiOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1040,15 +817,6 @@
 			buildConfigurations = (
 				2C64AAF920B846A90032E2AA /* Debug */,
 				2C64AAFA20B846A90032E2AA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2CFFB547204DBFDE007A816C /* Build configuration list for PBXNativeTarget "rxMVVMLeoiOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2CFFB548204DBFDE007A816C /* Debug */,
-				2CFFB549204DBFDE007A816C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

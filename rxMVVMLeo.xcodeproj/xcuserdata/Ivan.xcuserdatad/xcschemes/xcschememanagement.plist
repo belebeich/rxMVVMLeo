@@ -7,17 +7,12 @@
 		<key>rxMVVMLeo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>25</integer>
+			<integer>24</integer>
 		</dict>
 		<key>rxMVVMLeoToday.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>26</integer>
-		</dict>
-		<key>rxMVVMLeoiOS.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>27</integer>
+			<integer>25</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -28,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>2C64AAE620B846A90032E2AA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2CFFB537204DBFDE007A816C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

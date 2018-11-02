@@ -711,14 +711,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JzV-ra-bD8">
-                                <rect key="frame" x="260" y="38" width="200" height="56"/>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JzV-ra-bD8">
+                                <rect key="frame" x="285" y="41" width="175" height="53"/>
                                 <subviews>
                                     <textField focusRingType="none" verticalHuggingPriority="749" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vb3-2Z-dZg" customClass="CustomNSTextField" customModule="rxMVVMLeo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="32" width="200" height="24"/>
+                                        <rect key="frame" x="0.0" y="36" width="175" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="FBa-13-hak"/>
-                                            <constraint firstAttribute="height" constant="24" id="j6S-at-2ZW"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="a70-vz-TVY"/>
                                         </constraints>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" state="on" focusRingType="none" userInterfaceLayoutDirection="rightToLeft" alignment="right" placeholderString="email" drawsBackground="YES" usesSingleLineMode="YES" id="tac-8f-Q0L">
                                             <font key="font" metaFont="system"/>
@@ -726,10 +725,10 @@
                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                         </textFieldCell>
                                     </textField>
-                                    <secureTextField focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAu-WM-9eZ" customClass="CustomNSSecureTextField" customModule="rxMVVMLeo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="24"/>
+                                    <secureTextField focusRingType="none" verticalHuggingPriority="750" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="24" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAu-WM-9eZ" customClass="CustomNSSecureTextField" customModule="rxMVVMLeo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="175" height="24"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="aLg-yb-ijN"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="YSR-LP-DCv"/>
                                         </constraints>
                                         <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" allowsUndo="NO" focusRingType="none" userInterfaceLayoutDirection="rightToLeft" alignment="right" placeholderString="password" drawsBackground="YES" usesSingleLineMode="YES" id="vIg-zl-OUp">
                                             <font key="font" metaFont="system"/>
@@ -742,8 +741,7 @@
                                     </secureTextField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="Lb3-wr-LKy"/>
-                                    <constraint firstAttribute="width" constant="200" id="wW6-QV-r6t"/>
+                                    <constraint firstAttribute="width" constant="175" id="XVE-e1-Vsq"/>
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -882,7 +880,7 @@
                                 </customSpacing>
                             </stackView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s66-pb-osK" customClass="FlatButton" customModule="FlatButton">
-                                <rect key="frame" x="400" y="8" width="60" height="24"/>
+                                <rect key="frame" x="400" y="5" width="60" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="1df-3X-Jj2"/>
                                     <constraint firstAttribute="height" constant="24" id="NT8-Jk-AEv"/>
@@ -955,7 +953,7 @@
                                 </scroller>
                             </scrollView>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWn-NK-7UG">
-                                <rect key="frame" x="15" y="-42" width="440" height="30"/>
+                                <rect key="frame" x="15" y="-45" width="440" height="30"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="dvk-It-IeJ">
                                     <rect key="frame" x="0.0" y="0.0" width="440" height="30"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -990,12 +988,10 @@
                             <constraint firstItem="2RA-3R-hcI" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="93Z-HX-R1k"/>
                             <constraint firstAttribute="trailing" secondItem="JzV-ra-bD8" secondAttribute="trailing" constant="20" id="BWM-lc-8a4"/>
                             <constraint firstItem="s66-pb-osK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="DIV-uy-PoI"/>
-                            <constraint firstItem="JzV-ra-bD8" firstAttribute="leading" secondItem="2RA-3R-hcI" secondAttribute="trailing" constant="-200" id="EyT-3e-VNP"/>
                             <constraint firstItem="EWn-NK-7UG" firstAttribute="top" secondItem="s66-pb-osK" secondAttribute="bottom" constant="20" id="Niv-Ac-L6Q"/>
                             <constraint firstItem="JzV-ra-bD8" firstAttribute="top" secondItem="2RA-3R-hcI" secondAttribute="bottom" constant="14" id="SS8-N2-iOK"/>
-                            <constraint firstItem="s66-pb-osK" firstAttribute="top" secondItem="JzV-ra-bD8" secondAttribute="bottom" constant="6" id="TEJ-zW-Oil"/>
+                            <constraint firstItem="s66-pb-osK" firstAttribute="top" secondItem="JzV-ra-bD8" secondAttribute="bottom" constant="12" id="TEJ-zW-Oil"/>
                             <constraint firstItem="2RA-3R-hcI" firstAttribute="top" secondItem="bfA-e6-jPb" secondAttribute="bottom" constant="15" id="TUW-cm-IIb"/>
-                            <constraint firstItem="JzV-ra-bD8" firstAttribute="leading" secondItem="2RA-3R-hcI" secondAttribute="trailing" constant="-200" id="UNn-X5-RFL"/>
                             <constraint firstAttribute="trailing" secondItem="EWn-NK-7UG" secondAttribute="trailing" constant="25" id="XaR-3B-U0J"/>
                             <constraint firstAttribute="trailing" secondItem="pID-54-6ph" secondAttribute="trailing" constant="20" id="aDF-0X-Njm"/>
                             <constraint firstAttribute="trailing" secondItem="s66-pb-osK" secondAttribute="trailing" constant="20" id="cod-Fj-vGt"/>
@@ -1052,14 +1048,14 @@
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="AlJ-uP-5oB" customClass="MainViewController" customModule="rxMVVMLeo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="XWS-md-Kcv">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="481"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="50" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qeO-Ee-aMi">
-                                <rect key="frame" x="100" y="427" width="280" height="33"/>
+                                <rect key="frame" x="100" y="429" width="280" height="32"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tJ9-wT-kyz" customClass="FlatButton" customModule="FlatButton">
-                                        <rect key="frame" x="0.0" y="1" width="60" height="32"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="l93-Zx-Sva"/>
                                         </constraints>
@@ -1098,7 +1094,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nze-jt-3Ar" customClass="FlatButton" customModule="FlatButton">
-                                        <rect key="frame" x="110" y="1" width="60" height="32"/>
+                                        <rect key="frame" x="110" y="0.0" width="60" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="w6y-ad-OS1"/>
                                         </constraints>
@@ -1140,7 +1136,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hEN-yd-YU6" customClass="FlatButton" customModule="FlatButton">
-                                        <rect key="frame" x="220" y="1" width="60" height="32"/>
+                                        <rect key="frame" x="220" y="0.0" width="60" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="PQt-KW-NDZ"/>
                                         </constraints>
@@ -1194,12 +1190,12 @@
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rfo-wv-oZ2">
-                                <rect key="frame" x="178" y="12" width="123" height="36"/>
+                                <rect key="frame" x="178" y="12" width="123" height="38"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2G0-nu-lYe">
-                                        <rect key="frame" x="11" y="22" width="101" height="14"/>
+                                        <rect key="frame" x="11" y="22" width="101" height="16"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="14" id="jrW-fg-IBZ"/>
+                                            <constraint firstAttribute="height" constant="16" id="jrW-fg-IBZ"/>
                                         </constraints>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="test version" id="zRV-Sh-M6V">
                                             <font key="font" size="14" name="PFDinMono-Regular"/>
@@ -1257,7 +1253,7 @@
                                 </customSpacing>
                             </stackView>
                             <tabView drawsBackground="NO" type="noTabsBezelBorder" translatesAutoresizingMaskIntoConstraints="NO" id="XKm-oQ-KhL">
-                                <rect key="frame" x="16" y="56" width="448" height="365"/>
+                                <rect key="frame" x="16" y="58" width="448" height="365"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="359" id="Gp2-a7-Ehs"/>
                                 </constraints>
