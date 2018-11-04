@@ -10,4 +10,10 @@ rxMVVMLeo is a macOS app. It helps you to add words and translates to LinguaLeo 
 
 # Setup
 
-You can find App file in Resources folder. Just download and simply drag and drop it to your Application folder.
+You can find App file in the Resources folder. Just download and simply drag and drop it to your Applications folder.
+
+# Development
+
+To start development just git clone this project and install cocoapods
+
+`$ pod install`
