@@ -117,7 +117,7 @@ class TodayViewController: NSViewController {
           self.alreadyLabel.isHidden = false
         case .success(let new):
           self.alreadyLabel.isHidden = new
-          self.addWordButton.isHidden = false
+          self.addWordButton.isEnabled = false
           viewModel.meatballs()
             .bind(to: self.availableWordsLabel.rx.text)
             .disposed(by: self.bag)
