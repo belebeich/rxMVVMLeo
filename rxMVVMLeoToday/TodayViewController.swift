@@ -13,14 +13,14 @@ import NotificationCenter
 
 class TodayViewController: NSViewController {
   
-  @IBOutlet weak var alreadyLabel: NSTextField!
-  @IBOutlet weak var translateSegmentControl: NSSegmentedControl!
-  @IBOutlet weak var translateScrollView: NSScrollView!
-  @IBOutlet internal var translateTableView: CustomNSTableView!
-  @IBOutlet weak var availableWordsLabel: NSTextField!
-  @IBOutlet weak var searchIndicator: NSProgressIndicator!
-  @IBOutlet var wordTextView: NSTextField!
-  @IBOutlet weak var addWordButton: NSButton!
+  @IBOutlet weak private var alreadyLabel: NSTextField!
+  @IBOutlet weak private var translateSegmentControl: NSSegmentedControl!
+  @IBOutlet weak private var translateScrollView: NSScrollView!
+  @IBOutlet weak private var translateTableView: CustomNSTableView!
+  @IBOutlet weak private var availableWordsLabel: NSTextField!
+  @IBOutlet weak private var searchIndicator: NSProgressIndicator!
+  @IBOutlet weak private var wordTextView: NSTextField!
+  @IBOutlet weak private var addWordButton: NSButton!
   
   private let bag = DisposeBag()
   private var translates = [String]()

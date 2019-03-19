@@ -10,42 +10,42 @@ import Cocoa
 import RxCocoa
 import RxSwift
 
-class MainViewController: NSViewController, BindableType {
+final class MainViewController: NSViewController, BindableType {
   
   private let bag = DisposeBag()
   var viewModel: MainViewModel!
   
-  @IBOutlet weak var sixthTextView: NSTextView!
-  @IBOutlet weak var writeToDeveloperButton: NSButton!
-  @IBOutlet weak var logoutButtons: NSStackView!
-  @IBOutlet weak var noButton: NSButton!
-  @IBOutlet weak var yesButton: NSButton!
-  @IBOutlet weak var logoutTextView: NSTextView!
-  @IBOutlet weak var userRefcodeTextView: NSTextView!
-  @IBOutlet weak var userAvailableTextView: NSTextView!
-  @IBOutlet weak var userKnownTextView: NSTextView!
-  @IBOutlet weak var userNativeTextView: NSTextView!
-  @IBOutlet weak var userNicknameTextView: NSTextView!
-  @IBOutlet weak var refcodeTextView: NSTextView!
-  @IBOutlet weak var availableTextView: NSTextView!
-  @IBOutlet weak var knownTextView: NSTextView!
-  @IBOutlet weak var nativeTextView: NSTextView!
-  @IBOutlet weak var nicknameTextView: NSTextView!
-  @IBOutlet weak var accountInfoTextView: NSTextView!
-  @IBOutlet weak var firstTextView: NSTextView!
-  @IBOutlet weak var secondTextView: NSTextView!
-  @IBOutlet weak var thirdTextView: NSTextView!
-  @IBOutlet weak var fourthTextView: NSTextView!
-  @IBOutlet weak var fifthTextView: NSTextView!
-  @IBOutlet weak var tipView: NSView!
-  @IBOutlet weak var menuButtonView: NSImageView!
-  @IBOutlet weak var notificationCenterImageView: NSImageView!
-  @IBOutlet weak var menuBarImageView: NSImageView!
-  @IBOutlet weak var introMessage: NSTextView!
-  @IBOutlet weak var tabView: NSTabView!
-  @IBOutlet weak var logoutButton: NSButton!
-  @IBOutlet weak var helpButton: NSButton!
-  @IBOutlet weak var accountButton: NSButton!
+  @IBOutlet weak private var sixthTextView: NSTextView!
+  @IBOutlet weak private var writeToDeveloperButton: NSButton!
+  @IBOutlet weak private var logoutButtons: NSStackView!
+  @IBOutlet weak private var noButton: NSButton!
+  @IBOutlet weak private var yesButton: NSButton!
+  @IBOutlet weak private var logoutTextView: NSTextView!
+  @IBOutlet weak private var userRefcodeTextView: NSTextView!
+  @IBOutlet weak private var userAvailableTextView: NSTextView!
+  @IBOutlet weak private var userKnownTextView: NSTextView!
+  @IBOutlet weak private var userNativeTextView: NSTextView!
+  @IBOutlet weak private var userNicknameTextView: NSTextView!
+  @IBOutlet weak private var refcodeTextView: NSTextView!
+  @IBOutlet weak private var availableTextView: NSTextView!
+  @IBOutlet weak private var knownTextView: NSTextView!
+  @IBOutlet weak private var nativeTextView: NSTextView!
+  @IBOutlet weak private var nicknameTextView: NSTextView!
+  @IBOutlet weak private var accountInfoTextView: NSTextView!
+  @IBOutlet weak private var firstTextView: NSTextView!
+  @IBOutlet weak private var secondTextView: NSTextView!
+  @IBOutlet weak private var thirdTextView: NSTextView!
+  @IBOutlet weak private var fourthTextView: NSTextView!
+  @IBOutlet weak private var fifthTextView: NSTextView!
+  @IBOutlet weak private var tipView: NSView!
+  @IBOutlet weak private var menuButtonView: NSImageView!
+  @IBOutlet weak private var notificationCenterImageView: NSImageView!
+  @IBOutlet weak private var menuBarImageView: NSImageView!
+  @IBOutlet weak private var introMessage: NSTextView!
+  @IBOutlet weak private var tabView: NSTabView!
+  @IBOutlet weak private var logoutButton: NSButton!
+  @IBOutlet weak private var helpButton: NSButton!
+  @IBOutlet weak private var accountButton: NSButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()

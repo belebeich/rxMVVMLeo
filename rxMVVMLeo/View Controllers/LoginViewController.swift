@@ -10,25 +10,25 @@ import Cocoa
 import RxSwift
 import RxCocoa
 
-class LoginViewController: NSViewController, BindableType {
+final class LoginViewController: NSViewController, BindableType {
   
   private let bag = DisposeBag()
   var viewModel: LoginViewModel!
   
-  @IBOutlet weak var tipViewConstraint: NSLayoutConstraint!
-  @IBOutlet weak var tipStackView: NSStackView!
-  @IBOutlet weak var thirdMessage: NSTextView!
-  @IBOutlet weak var okButton: NSButton!
-  @IBOutlet weak var menuButtonView: NSImageView!
-  @IBOutlet weak var tipView: NSView!
-  @IBOutlet weak var menuBarImageView: NSImageView!
-  @IBOutlet weak var notificationCenterImageView: NSImageView!
-  @IBOutlet weak var loginInfoStack: NSStackView!
-  @IBOutlet weak var firstMessage: NSTextView!
-  @IBOutlet weak var loginButton: NSButton!
-  @IBOutlet weak var emailTextField: CustomNSTextField!
-  @IBOutlet weak var passwordTextField: CustomNSTextField!
-  @IBOutlet weak var secondMessage: NSTextView!
+  @IBOutlet weak private var tipViewConstraint: NSLayoutConstraint!
+  @IBOutlet weak private var tipStackView: NSStackView!
+  @IBOutlet weak private var thirdMessage: NSTextView!
+  @IBOutlet weak private var okButton: NSButton!
+  @IBOutlet weak private var menuButtonView: NSImageView!
+  @IBOutlet weak private var tipView: NSView!
+  @IBOutlet weak private var menuBarImageView: NSImageView!
+  @IBOutlet weak private var notificationCenterImageView: NSImageView!
+  @IBOutlet weak private var loginInfoStack: NSStackView!
+  @IBOutlet weak private var firstMessage: NSTextView!
+  @IBOutlet weak private var loginButton: NSButton!
+  @IBOutlet weak private var emailTextField: CustomNSTextField!
+  @IBOutlet weak private var passwordTextField: CustomNSTextField!
+  @IBOutlet weak private var secondMessage: NSTextView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
