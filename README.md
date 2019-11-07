@@ -8,9 +8,9 @@
 
 rxMVVMLeo is a macOS app. It helps you to add words and translates to LinguaLeo service. This app is designed to work only in Notification Center.  It is build with RxSwift, MVVM, Alamofire and Coordinators.
 
-# Setup
-
-You can find App file in the Resources folder. Just download and simply drag and drop it to your Applications folder.
+<div align="center">
+  <img src="Resources/Images/animation.gif" width="280px" />
+</div>
 
 # Development
 
