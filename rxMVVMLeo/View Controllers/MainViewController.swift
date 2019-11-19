@@ -12,9 +12,6 @@ import RxSwift
 
 final class MainViewController: NSViewController, BindableType {
   
-  private let bag = DisposeBag()
-  var viewModel: MainViewModel!
-  
   @IBOutlet weak private var sixthTextView: NSTextView!
   @IBOutlet weak private var writeToDeveloperButton: NSButton!
   @IBOutlet weak private var logoutButtons: NSStackView!
@@ -47,6 +44,9 @@ final class MainViewController: NSViewController, BindableType {
   @IBOutlet weak private var helpButton: NSButton!
   @IBOutlet weak private var accountButton: NSButton!
   
+  private let disposeBag = DisposeBag()
+  var viewModel: MainViewModel!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     setUI()
@@ -59,169 +59,118 @@ final class MainViewController: NSViewController, BindableType {
   }
   
   override func viewWillLayout() {
-    view.layer?.backgroundColor = NSColor.init(calibratedRed: 119/255, green: 110/255, blue: 94/255, alpha: 1.0).cgColor
+    view.layer?.backgroundColor = Color.beige
     view.window?.acceptsMouseMovedEvents = true
     buttonHover()
     shine()
   }
   
   func bindViewModel() {
-    viewModel.accountInfo()
-      .subscribe(onNext: { [unowned self] info in
-        guard let user = info else { return }
+    viewModel.user
+      .bind { [weak self] info in
+        guard let self = self, let user = info else { return }
         self.parsedInformation(of: user)
-      })
-      .disposed(by: bag)
+      }
+      .disposed(by: disposeBag)
     
     accountButton.rx.tap
-      .subscribe(onNext: { [unowned self] _ in
+      .withLatestFrom(viewModel.user)
+      .bind { [weak self] user in
+        guard let self = self, let user = user else { return }
         self.tabView.selectTabViewItem(at: 0)
-        self.viewModel.accountInfo()
-          .subscribe(onNext: { info in
-            guard let user = info else { return }
-            self.updatedInformation(of: user)
-          })
-          .disposed(by: self.bag)
-      })
-      .disposed(by: bag)
+        self.updatedInformation(of: user)
+      }
+      .disposed(by: disposeBag)
     
     helpButton.rx.tap
-      .subscribe(onNext: { [unowned self] in
+      .bind { [weak self] in
+        guard let self = self else { return }
         self.tabView.selectTabViewItem(at: 1)
-      })
-      .disposed(by: bag)
+      }
+      .disposed(by: disposeBag)
     
     helpButton.rx.tap
       .take(1)
-      .subscribe(onNext: { [unowned self] in
-        self.helpTab()
-      })
-      .disposed(by: bag)
+      .flatMapLatest { [weak self] _ -> Observable<Bool> in
+        guard let self = self else { return .just(true) }
+        return self.introMessage.setTextWithTypeAnimation(typedText: StringKeys.MainScreen.introMessage, characterDelay: 3.0)
+      }
+      .filter { $0 == false }
+      .bind { [weak self] _ in
+        guard let self = self else { return }
+        self.notificationCenterAnimations()
+      }
+      .disposed(by: disposeBag)
     
     logoutButton.rx.tap
       .take(1)
-      .subscribe(onNext: { [unowned self] in
-        self.logoutTab()
-      })
-      .disposed(by: bag)
+      .flatMapLatest { [weak self] _ -> Observable<Bool> in
+        guard let self = self else { return .just(true) }
+        return self.logoutTextView.setTextWithTypeAnimation(typedText: StringKeys.MainScreen.logoutMessage, characterDelay: 3.0)
+      }
+      .filter { $0 == false }
+      .bind { [weak self] _ in
+        guard let self = self else { return }
+        self.logoutAnimation()
+      }
+      .disposed(by: disposeBag)
     
     logoutButton.rx.tap
-      .subscribe(onNext: {
+      .bind { [weak self] _ in
+        guard let self = self else { return }
         self.tabView.selectTabViewItem(at: 2)
-      })
-      .disposed(by: bag)
+      }
+      .disposed(by: disposeBag)
     
     noButton.rx.tap
-      .subscribe(onNext: {
+      .bind { [weak self] _ in
+        guard let self = self else { return }
         self.tabView.selectTabViewItem(at: 0)
-      })
-      .disposed(by: bag)
+      }
+      .disposed(by: disposeBag)
     
     yesButton.rx.tap
-      .subscribe(onNext: {
-        self.viewModel.logout()
-      })
-      .disposed(by: bag)
-    
+      .flatMapLatest { _ -> Observable<Bool> in
+        return .just(true)
+      }
+      .bind(to: viewModel.loggedOut)
+      .disposed(by: disposeBag)
+
     writeToDeveloperButton.rx.tap
-      .subscribe(onNext: {
-        self.viewModel.writeToDeveloper()
-      })
-      .disposed(by: bag)
+      .flatMapLatest { _ -> Observable<Bool> in
+        return .just(true)
+      }
+      .bind(to: viewModel.write)
+      .disposed(by: disposeBag)
   }
 }
 
 private extension MainViewController {
   func setUI() {
-    let neonyellowColor = NSColor.init(calibratedRed: 219/255, green: 255/255, blue: 91/255, alpha: 1.0)
-    let mainFont = NSFont.init(name: "PFDinMono-Regular", size: 13)
-    let tipsFont = NSFont.init(name: "PFDinMono-Regular", size: 11)
-    
     menuButtonView.isHidden = true
     menuBarImageView.isHidden = true
     notificationCenterImageView.isHidden = true
     logoutButtons.isHidden = true
     
-    introMessage.textColor = neonyellowColor
-    introMessage.font = mainFont
-    introMessage.sizeToFit()
+    [firstTextView, secondTextView, thirdTextView, fourthTextView, fifthTextView]
+      .forEach {
+        $0?.textColor = NSColor.white
+        $0?.font = Font.tips
+        $0?.sizeToFit()
+      }
     
-    firstTextView.textColor = NSColor.white
-    firstTextView.font = tipsFont
-    firstTextView.sizeToFit()
+    [introMessage, sixthTextView, logoutTextView]
+      .forEach {
+        $0?.textColor = Color.neonYellow
+        $0?.font = Font.main
+        $0?.sizeToFit()
+      }
     
-    secondTextView.textColor = NSColor.white
-    secondTextView.font = tipsFont
-    secondTextView.sizeToFit()
-    
-    thirdTextView.textColor = NSColor.white
-    thirdTextView.font = tipsFont
-    thirdTextView.sizeToFit()
-    
-    fourthTextView.textColor = NSColor.white
-    fourthTextView.font = tipsFont
-    fourthTextView.sizeToFit()
-    
-    fifthTextView.textColor = NSColor.white
-    fifthTextView.font = tipsFont
-    fifthTextView.sizeToFit()
-    
-    sixthTextView.textColor = neonyellowColor
-    sixthTextView.font = mainFont
-    sixthTextView.sizeToFit()
-    
-    accountInfoTextView.textColor = NSColor.white
-    accountInfoTextView.font = mainFont
-    
-    nicknameTextView.textColor = NSColor.white
-    nicknameTextView.font = mainFont
-    nativeTextView.textColor = NSColor.white
-    nativeTextView.font = mainFont
-    knownTextView.textColor = NSColor.white
-    knownTextView.font = mainFont
-    availableTextView.textColor = NSColor.white
-    availableTextView.font = mainFont
-    refcodeTextView.textColor = NSColor.white
-    refcodeTextView.font = mainFont
-    userNicknameTextView.textColor = NSColor.white
-    userNicknameTextView.font = mainFont
-    userNativeTextView.textColor = NSColor.white
-    userNativeTextView.font = mainFont
-    userKnownTextView.textColor = NSColor.white
-    userKnownTextView.font = mainFont
-    userAvailableTextView.textColor = NSColor.white
-    userAvailableTextView.font = mainFont
-    userRefcodeTextView.textColor = NSColor.white
-    userRefcodeTextView.font = mainFont
-    refcodeTextView.textColor = NSColor.white
-    refcodeTextView.font = mainFont
-    
-    logoutTextView.textColor = neonyellowColor
-    logoutTextView.font = mainFont
-  }
-  
-  func helpTab() {
-    let introMessage = self.introMessage.setTextWithTypeAnimation(typedText: "This app is designed to work only in Notification Center. It helps you to quickly translate and add some words to your LinguaLeo account.", characterDelay: 3.0)
-    
-    introMessage
-      .subscribe(onNext: { [unowned self] bool in
-        if bool == false {
-          self.animation()
-        }
-      })
-      .disposed(by: bag)
-  }
-  
-  func logoutTab() {
-    let logoutMessage = self.logoutTextView.setTextWithTypeAnimation(typedText: "Do you really want to logout from LinguaLeo account and quit from the app?", characterDelay: 3.0)
-    
-    logoutMessage
-      .subscribe(onNext: { [unowned self] bool in
-        if bool == false {
-          self.logoutAnimation()
-        }
-      })
-      .disposed(by: bag)
+    [accountInfoTextView, nicknameTextView, nativeTextView, knownTextView, availableTextView, refcodeTextView, userNicknameTextView, userNativeTextView, userAvailableTextView, userRefcodeTextView, refcodeTextView]
+      .forEach {
+        $0?.textColor = NSColor.white
+        $0?.font = Font.main
+    }
   }
 }
 
@@ -229,12 +178,12 @@ private extension MainViewController {
 extension MainViewController {
   
   override func mouseEntered(with event: NSEvent) {
-    writeToDeveloperButton.font = NSFont.init(name: "PFDinMono-Regular", size: 16)
+    writeToDeveloperButton.font = Font.developerLarge
     glowOn()
   }
   
   override func mouseExited(with event: NSEvent) {
-    writeToDeveloperButton.font = NSFont.init(name: "PFDinMono-Regular", size: 15)
+    writeToDeveloperButton.font = Font.developerRegular
     glowOff()
   }
   
@@ -242,43 +191,41 @@ extension MainViewController {
   
   private func drawingAnimations(textView: NSTextView, text: String, x: Double, y: Double, lenght: Double, completionHandler: @escaping CompletionHandler) {
     
-    let text = textView.setTextWithTypeAnimation(typedText: text, characterDelay: 5.0)
-    
-    text
-      .subscribe(onNext: { [unowned self] bool in
-        if bool == false {
-          let line = CAShapeLayer()
-          line.lineWidth = 2.0
-          line.shadowColor = CGColor.white
-          line.shadowOffset = CGSize.zero
-          line.shadowOpacity = 1.0
-          line.lineCap = kCALineCapRound
-          line.strokeEnd = 0.0
-          line.strokeColor = CGColor.white
-          line.shadowRadius = 5.0
-          line.fillColor = CGColor.clear
-          line.fillMode = kCAFillModeForwards
-          let pt = NSBezierPath()
-          pt.move(to: CGPoint(x: x, y: y))
-          pt.line(to: CGPoint(x: x + lenght, y: y))
-          line.path = pt.cgPath
-          CATransaction.begin()
-          let pathAnimation = CABasicAnimation(keyPath: "strokeEnd")
-          pathAnimation.duration = 0.5
-          pathAnimation.fromValue = 0.0
-          pathAnimation.toValue = 1.0
-          pathAnimation.fillMode = kCAFillModeForwards
-          pathAnimation.autoreverses = false
-          line.strokeEnd = 1.0
-          CATransaction.setCompletionBlock {
-            completionHandler(true)
-          }
-          line.add(pathAnimation, forKey: nil)
-          self.tabView.tabViewItem(at: 1).view?.layer?.addSublayer(line)
-          CATransaction.commit()
+    textView.setTextWithTypeAnimation(typedText: text, characterDelay: 5.0)
+      .filter { $0 == false }
+      .bind { [weak self] _ in
+        guard let self = self else { return }
+        let line = CAShapeLayer()
+        line.lineWidth = 2.0
+        line.shadowColor = CGColor.white
+        line.shadowOffset = CGSize.zero
+        line.shadowOpacity = 1.0
+        line.lineCap = kCALineCapRound
+        line.strokeEnd = 0.0
+        line.strokeColor = CGColor.white
+        line.shadowRadius = 5.0
+        line.fillColor = CGColor.clear
+        line.fillMode = kCAFillModeForwards
+        let pt = NSBezierPath()
+        pt.move(to: CGPoint(x: x, y: y))
+        pt.line(to: CGPoint(x: x + lenght, y: y))
+        line.path = pt.cgPath
+        CATransaction.begin()
+        let pathAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        pathAnimation.duration = 0.5
+        pathAnimation.fromValue = 0.0
+        pathAnimation.toValue = 1.0
+        pathAnimation.fillMode = kCAFillModeForwards
+        pathAnimation.autoreverses = false
+        line.strokeEnd = 1.0
+        CATransaction.setCompletionBlock {
+          completionHandler(true)
         }
-      })
-      .disposed(by: bag)
+        line.add(pathAnimation, forKey: nil)
+        self.tabView.tabViewItem(at: 1).view?.layer?.addSublayer(line)
+        CATransaction.commit()
+      }
+      .disposed(by: disposeBag)
   }
   
   private func logoutAnimation() {
@@ -291,7 +238,7 @@ extension MainViewController {
   }
   
   private func buttonHover() {
-    let area = NSTrackingArea.init(rect: writeToDeveloperButton.bounds,
+    let area = NSTrackingArea(rect: writeToDeveloperButton.bounds,
                                    options: [.mouseEnteredAndExited, .activeAlways],
                                    owner: self,
                                    userInfo: nil)
@@ -369,19 +316,17 @@ extension MainViewController {
   }
   
   private func parsedInformation(of user: User) {
-    accountInfoTextView.setTextWithTypeAnimationSimple(typedText: "Account info:") { [weak self] in
-      guard let `self` = self else {
-        return
-      }
-      self.nicknameTextView.setTextWithTypeAnimationSimple(typedText: "Nickname:") {
+    accountInfoTextView.setTextWithTypeAnimationSimple(typedText: StringKeys.MainScreen.accountInfo) { [weak self] in
+      guard let self = self else { return }
+      self.nicknameTextView.setTextWithTypeAnimationSimple(typedText: StringKeys.MainScreen.nickname) {
         self.userNicknameTextView.setTextWithTypeAnimationSimple(typedText: user.nickname) {
-          self.nativeTextView.setTextWithTypeAnimationSimple(typedText: "Native language:") {
+          self.nativeTextView.setTextWithTypeAnimationSimple(typedText: StringKeys.MainScreen.nativeLanguage) {
             self.userNativeTextView.setTextWithTypeAnimationSimple(typedText: user.native) {
-              self.knownTextView.setTextWithTypeAnimationSimple(typedText: "Known words:") {
+              self.knownTextView.setTextWithTypeAnimationSimple(typedText: StringKeys.MainScreen.knownWords) {
                 self.userKnownTextView.setTextWithTypeAnimationSimple(typedText: "\(user.known)") {
-                  self.availableTextView.setTextWithTypeAnimationSimple(typedText: "Available words:") {
+                  self.availableTextView.setTextWithTypeAnimationSimple(typedText: StringKeys.MainScreen.availableWords) {
                   self.userAvailableTextView.setTextWithTypeAnimationSimple(typedText: "\(user.available)") {
-                      self.refcodeTextView.setTextWithTypeAnimationSimple(typedText: "Reference code:") {
+                      self.refcodeTextView.setTextWithTypeAnimationSimple(typedText: StringKeys.MainScreen.refCode) {
                         self.userRefcodeTextView.setTextWithTypeAnimationSimple(typedText: user.refcode) { }
                       }
                     }
@@ -395,7 +340,7 @@ extension MainViewController {
     }
   }
   
-  private func animation() {
+  private func notificationCenterAnimations() {
     var animations = [CABasicAnimation]()
     
     menuBarImageView.isHidden = false
@@ -433,7 +378,8 @@ extension MainViewController {
     group.duration = 3
     menuButtonView.layer?.add(group, forKey: nil)
     
-    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) { [weak self] in
+      guard let self = self else { return }
       self.notificationCenterImageView.isHidden = false
     }
     
@@ -448,14 +394,12 @@ extension MainViewController {
     notificationCenterImageView.layer?.add(position, forKey: nil)
     
     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) { [weak self] in
-      guard let `self` = self else {
-        return
-      }
-      self.drawingAnimations(textView: self.firstTextView, text: "translate options", x: 167.0, y: 196.0, lenght: 48.0) { _ in
-        self.drawingAnimations(textView: self.secondTextView, text: "words input", x: 167.0, y: 169.0, lenght:  48.0) {_ in
-          self.drawingAnimations(textView: self.thirdTextView, text: "translates table will appear here", x: 167.0, y: 130, lenght: 48.0) { _ in
-            self.drawingAnimations(textView: self.fourthTextView, text: "enables with selected row", x: 167.0, y: 107.0, lenght:  48.0) { _ in
-              self.drawingAnimations(textView: self.fifthTextView, text: "available words to add", x: 167.0, y: 67.0, lenght: 158.0, completionHandler: { _ in self.sixthTextView.setTextWithTypeAnimationSimple(typedText: "UrbanDictionary and LinguaLeo are used now as translate options.") {  } })
+      guard let self = self else { return }
+      self.drawingAnimations(textView: self.firstTextView, text: StringKeys.MainScreen.translateOptions, x: 167.0, y: 196.0, lenght: 48.0) { _ in
+        self.drawingAnimations(textView: self.secondTextView, text: StringKeys.MainScreen.wordsInput, x: 167.0, y: 169.0, lenght:  48.0) { _ in
+          self.drawingAnimations(textView: self.thirdTextView, text: StringKeys.MainScreen.translateTable, x: 167.0, y: 130, lenght: 48.0) { _ in
+            self.drawingAnimations(textView: self.fourthTextView, text: StringKeys.MainScreen.selectedRow, x: 167.0, y: 107.0, lenght:  48.0) { _ in
+              self.drawingAnimations(textView: self.fifthTextView, text: StringKeys.MainScreen.availableWordsToAdd, x: 167.0, y: 67.0, lenght: 158.0, completionHandler: { _ in self.sixthTextView.setTextWithTypeAnimationSimple(typedText: StringKeys.MainScreen.apiMessage) {  } })
             }
           }
         }

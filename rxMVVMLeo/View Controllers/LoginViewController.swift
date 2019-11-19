@@ -12,9 +12,6 @@ import RxCocoa
 
 final class LoginViewController: NSViewController, BindableType {
   
-  private let bag = DisposeBag()
-  var viewModel: LoginViewModel!
-  
   @IBOutlet weak private var tipViewConstraint: NSLayoutConstraint!
   @IBOutlet weak private var tipStackView: NSStackView!
   @IBOutlet weak private var thirdMessage: NSTextView!
@@ -30,6 +27,9 @@ final class LoginViewController: NSViewController, BindableType {
   @IBOutlet weak private var passwordTextField: CustomNSTextField!
   @IBOutlet weak private var secondMessage: NSTextView!
   
+  private let disposeBag = DisposeBag()
+  var viewModel: LoginViewModel!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     setUI()
@@ -42,134 +42,130 @@ final class LoginViewController: NSViewController, BindableType {
   }
   
   override func viewWillLayout() {
-    view.layer?.backgroundColor = NSColor.init(calibratedRed: 119/255, green: 110/255, blue: 94/255, alpha: 1.0).cgColor
+    view.layer?.backgroundColor = Color.beige
     emailTextField.customizeCaretColor()
     passwordTextField.customizeCaretColor()
   }
   
   func bindViewModel() {
-    viewModel.credentialsValidation(email: emailTextField.rx.text.orEmpty.asDriver(), password: passwordTextField.rx.text.orEmpty.asDriver())
-      .drive(onNext: { [unowned self] valid in
-        self.loginButton.isEnabled = valid
-      })
-      .disposed(by: bag)
+
+    emailTextField.rx.text.orEmpty
+        .bind(to: viewModel.email)
+        .disposed(by: disposeBag)
     
-    let login = Observable.of(passwordTextField.rx.controlEvent, loginButton.rx.tap)
+    passwordTextField.rx.text.orEmpty
+        .bind(to: viewModel.password)
+        .disposed(by: disposeBag)
     
-    login
-      .merge()
-      .withLatestFrom(viewModel.credentialsValid)
-      .filter { $0 }
-      .flatMapLatest { [unowned self] valid in
-        self.viewModel.login(email: self.emailTextField.rx.text.orEmpty.asDriver(), password: self.passwordTextField.rx.text.orEmpty.asDriver())
-          .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
-      }
-      .observeOn(MainScheduler.instance)
-      .subscribe(onNext: { [unowned self] status in
-        if status == false {
-          self.thirdMessage.setTextWithTypeAnimationSimple(typedText: "Something went wrong, please try again!") {  }
+    viewModel.credentialsValid
+        .bind(to: loginButton.rx.isEnabled)
+        .disposed(by: disposeBag)
+    
+    Observable.of(passwordTextField.rx.controlEvent, loginButton.rx.tap)
+        .merge()
+        .withLatestFrom(viewModel.credentialsValid)
+        .distinctUntilChanged()
+        .bind(to: viewModel.loginInitiated)
+        .disposed(by: disposeBag)
+    
+    viewModel.loginInitiated
+        .withLatestFrom(viewModel.signedIn.skip(1))
+        .filter { $0 == false }
+        .bind { [weak self] _ in
+            guard let self = self else { return }
+            self.thirdMessage.setTextWithTypeAnimationSimple(typedText: StringKeys.LoginScreen.wrongMessage) {  }
         }
-      })
-      .disposed(by: bag)
+        .disposed(by: disposeBag)
     
-    let firstMessage = self.firstMessage.setTextWithTypeAnimation(typedText: "It's a demo MacOS Application that helps you to import your translated words to LinguaLeo service. This app only works in Today Notification center. Please add it as shown below.", characterDelay: 3.0)
-    
-    firstMessage
+    firstMessage.setTextWithTypeAnimation(typedText: StringKeys.LoginScreen.firstMessage, characterDelay: 3.0)
       .skip(1)
-      .subscribe(onNext: { [unowned self] bool in
-        if bool == false {
-          self.animation()
-        }
-      })
-      .disposed(by: bag)
+      .filter { $0 == false }
+      .bind{ [weak self] bool in
+        guard let self = self else { return }
+        self.notificationCenterAnimation()
+      }
+      .disposed(by: disposeBag)
     
     okButton.rx.tap
       .take(1)
-      .flatMapFirst { [unowned self] _ -> Observable<Bool> in
+      .flatMapFirst { [weak self] _ -> Observable<Bool> in
+        guard let self = self else { return .just(true) }
         self.tipStackViewAnimation()
-        let secondMessage = self.secondMessage.setTextWithTypeAnimation(typedText: "You should be logged in to export words to LinguaLeo service. Now you can do it.", characterDelay: 3.5)
-        return secondMessage
-      }
-      .subscribe(onNext: { [unowned self] bool in
         self.okButton.isEnabled = false
-        if bool == false {
-          self.loginStackViewAnimation()
-        }
-      })
-      .disposed(by: bag)
+        return self.secondMessage.setTextWithTypeAnimation(typedText: StringKeys.LoginScreen.secondMessage, characterDelay: 3.5)
+      }
+      .filter { $0 == false }
+      .bind { [weak self] bool in
+        guard let self = self else { return }
+        self.loginStackViewAnimation()
+      }
+      .disposed(by: disposeBag)
     
     emailTextField.rx.controlEvent
-      .subscribe(onNext: {
+      .bind { [weak self] _ in
+        guard let self = self else { return }
         self.passwordTextField.selectText(self)
-      })
-      .disposed(by: bag)
+      }
+      .disposed(by: disposeBag)
   }
 }
 
 // MARK: - Set UI
 private extension LoginViewController {
   func setUI() {
-    loginInfoStack.isHidden = true
+   
+    [loginInfoStack, menuButtonView, menuBarImageView, loginButton, okButton, notificationCenterImageView]
+      .forEach {
+        $0?.isHidden = true
+      }
     loginInfoStack.animator().alphaValue = 0.0
-    menuButtonView.isHidden = true
-    menuBarImageView.isHidden = true
-    okButton.isHidden = true
-    loginButton.isHidden = true
-    notificationCenterImageView.isHidden = true
     
-    let mainFont = NSFont.init(name: "PFDinMono-Regular", size: 13)
-    
-    let neonyellowColor = NSColor.init(calibratedRed: 219/255, green: 255/255, blue: 91/255, alpha: 1.0)
-    
-    emailTextField.backgroundColor = NSColor.clear
-    emailTextField.textColor = NSColor.white
+    [emailTextField, passwordTextField]
+      .forEach {
+        $0?.backgroundColor = NSColor.clear
+        $0?.textColor = NSColor.white
+      }
     
     let buttonParagraphStyle = NSMutableParagraphStyle()
     buttonParagraphStyle.alignment = .center
     
-    if let buttonFont = NSFont.init(name: "PFDinMono-Regular", size: 13) {
+    if let buttonFont = Font.main {
       let buttonAttributes : [NSAttributedStringKey:AnyObject] =
-        [NSAttributedStringKey.foregroundColor: neonyellowColor,
+        [NSAttributedStringKey.foregroundColor: Color.neonYellow,
          NSAttributedStringKey.font: buttonFont,
          NSAttributedStringKey.paragraphStyle: buttonParagraphStyle]
       
-      let buttonAttributedTitle = NSAttributedString.init(string: "Login", attributes: buttonAttributes)
-      let okButtonAttributedTitle = NSAttributedString.init(string: "Ok, got it!", attributes: buttonAttributes)
+      let buttonAttributedTitle = NSAttributedString(string: StringKeys.LoginScreen.login, attributes: buttonAttributes)
+      let okButtonAttributedTitle = NSAttributedString(string: StringKeys.LoginScreen.gotcha, attributes: buttonAttributes)
       
       loginButton.attributedTitle = buttonAttributedTitle
       okButton.attributedTitle = okButtonAttributedTitle
     }
     
-    passwordTextField.backgroundColor = NSColor.clear
-    passwordTextField.textColor = NSColor.white
-    
     let placeholderColor = NSColor.white
     let placeholderParagraphStyle = NSMutableParagraphStyle()
     placeholderParagraphStyle.alignment = .right
     
-    if let placeholderFont = NSFont.init(name: "PFDinMono-Light", size: 13) {
+    if let placeholderFont = Font.main {
       let placeholderAttributes : [NSAttributedStringKey:AnyObject] = [NSAttributedStringKey.foregroundColor: placeholderColor, NSAttributedStringKey.font: placeholderFont, NSAttributedStringKey.paragraphStyle: placeholderParagraphStyle]
       
-      let emailPlaceholderString = NSAttributedString.init(string: "email", attributes: placeholderAttributes)
-      let passwordPlaceholderString = NSAttributedString.init(string: "password", attributes: placeholderAttributes)
+      let emailPlaceholderString = NSAttributedString(string: StringKeys.LoginScreen.email, attributes: placeholderAttributes)
+      let passwordPlaceholderString = NSAttributedString(string: StringKeys.LoginScreen.password, attributes: placeholderAttributes)
       emailTextField.placeholderAttributedString = emailPlaceholderString
       passwordTextField.placeholderAttributedString = passwordPlaceholderString
     }
     
-    emailTextField.font = mainFont
-    passwordTextField.font = mainFont
+    [emailTextField, passwordTextField]
+      .forEach {
+        $0?.font = Font.main
+      }
     
-    firstMessage.textColor = neonyellowColor
-    firstMessage.font = mainFont
-    firstMessage.sizeToFit()
-    
-    secondMessage.textColor = neonyellowColor
-    secondMessage.font = mainFont
-    secondMessage.sizeToFit()
-    
-    thirdMessage.textColor = neonyellowColor
-    thirdMessage.font = mainFont
-    thirdMessage.sizeToFit()
+    [firstMessage, secondMessage, thirdMessage]
+      .forEach {
+        $0?.textColor = Color.neonYellow
+        $0?.font = Font.main
+        $0?.sizeToFit()
+      }
   }
 }
 
@@ -178,24 +174,27 @@ private extension LoginViewController {
   func loginStackViewAnimation() {
     loginInfoStack.isHidden = false
     NSAnimationContext.runAnimationGroup({ [weak self] context in
+      guard let self = self else { return }
       context.duration = 1.5
-      self?.loginInfoStack.animator().alphaValue = 1.0
+      self.loginInfoStack.animator().alphaValue = 1.0
       }) { [weak self] in
-        self?.emailTextField.selectText(self)
-        self?.loginButton.isHidden = false
+        guard let self = self else { return }
+        self.emailTextField.selectText(self)
+        self.loginButton.isHidden = false
     }
   }
   
   func tipStackViewAnimation() {
     NSAnimationContext.runAnimationGroup({ [weak self] context in
+      guard let self = self else { return }
       context.duration = 1.5
       context.allowsImplicitAnimation = true
-      self?.tipViewConstraint.constant = 0.0
-      self?.view.layoutSubtreeIfNeeded()
+      self.tipViewConstraint.constant = 0.0
+      self.view.layoutSubtreeIfNeeded()
     })
   }
   
-  func animation() {
+  func notificationCenterAnimation() {
     var animations = [CABasicAnimation]()
     
     menuBarImageView.isHidden = false
@@ -234,7 +233,8 @@ private extension LoginViewController {
     menuButtonView.layer?.add(group, forKey: "group")
     
     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) { [weak self] in
-      self?.notificationCenterImageView.isHidden = false
+      guard let self = self else { return }
+      self.notificationCenterImageView.isHidden = false
     }
     
     let position = CABasicAnimation(keyPath: "position")
@@ -248,7 +248,8 @@ private extension LoginViewController {
     notificationCenterImageView.layer?.add(position, forKey: "group")
     
     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) { [weak self] in
-      self?.okButton.isHidden = false
+      guard let self = self else { return }
+      self.okButton.isHidden = false
     }
   }
 }

@@ -6,28 +6,68 @@
 //  Copyright © 2018 Ivan . All rights reserved.
 //
 
-import Foundation
 import RxSwift
 import RxCocoa
 
-struct MainViewModel {
+protocol MainViewModelProtocol {
+  var meatballs: BehaviorRelay<String> { get }
+  var write: BehaviorRelay<Bool> { get }
+  var user: BehaviorRelay<User?> { get }
+  var loggedOut: BehaviorRelay<Bool> { get }
+}
+
+struct MainViewModel: MainViewModelProtocol {
   
-  let bag = DisposeBag()
-  let sceneCoordinator : SceneCoordinatorType
-  let serviceLeo : LeoAPIType
-  let serviceUrban : UrbanAPIType
+  var meatballs: BehaviorRelay<String>
+  var write: BehaviorRelay<Bool>
+  var user: BehaviorRelay<User?>
+  var loggedOut: BehaviorRelay<Bool>
+  
+  private let sceneCoordinator : SceneCoordinatorType
+  private let serviceLeo : LeoAPIType
+  private let serviceUrban : UrbanAPIType
+  private let disposeBag = DisposeBag()
   
   init(coordinator: SceneCoordinatorType, leo: LeoAPIType, urban: UrbanAPIType) {
     self.sceneCoordinator = coordinator
     self.serviceLeo = leo
     self.serviceUrban = urban
+    self.meatballs = BehaviorRelay(value: "")
+    self.write = BehaviorRelay(value: false)
+    self.user = BehaviorRelay(value: nil)
+    self.loggedOut = BehaviorRelay(value: false)
+    
+    bind()
   }
   
-  func meatballs() -> Observable<String> {
-    return serviceLeo.getMeatballs()
+  private func bind() {
+    serviceLeo.getMeatballs()
+      .bind(to: meatballs)
+      .disposed(by: disposeBag)
+    
+    serviceLeo.accountInfo()
+      .bind(to: user)
+      .disposed(by: disposeBag)
+    
+    
+    loggedOut
+      .filter { $0 == true }
+      .bind { _ in
+        self.logout()
+      }
+      .disposed(by: disposeBag)
+    
+    write
+      .filter { $0 == true }
+      .bind { _ in
+        SendEmail.send()
+      }
+      .disposed(by: disposeBag)
   }
-  
-  func logout() {
+}
+
+extension MainViewModel {
+  private func logout() {
     let logout = self.serviceLeo.logout()
     logout
       .subscribe(onNext: { state in
@@ -38,14 +78,6 @@ struct MainViewModel {
           break
         }
       })
-      .disposed(by: bag)
-  }
-  
-  func accountInfo() -> Observable<User?> {
-    return serviceLeo.accountInfo()
-  }
-
-  func writeToDeveloper() {
-    return SendEmail.send()
+      .disposed(by: disposeBag)
   }
 }

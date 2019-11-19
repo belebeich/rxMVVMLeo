@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23F7D0D2238400EF00402C11 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F7D0D1238400EF00402C11 /* Constants.swift */; };
 		2C0101CA2170BAB30062721B /* NSBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0101C92170BAB30062721B /* NSBezierPath.swift */; };
 		2C1DAECF2057EF7B00B6CFCF /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */; };
 		2C1ED3E8212338EC009108DF /* CustomNSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1ED3E7212338EC009108DF /* CustomNSTableView.swift */; };
@@ -83,18 +84,19 @@
 
 /* Begin PBXFileReference section */
 		0DC1891712A1F013C92C2477 /* Pods-rxMVVMLeoToday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxMVVMLeoToday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rxMVVMLeoToday/Pods-rxMVVMLeoToday.debug.xcconfig"; sourceTree = "<group>"; };
+		23F7D0D1238400EF00402C11 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../../../../Downloads/Constants.swift; sourceTree = "<group>"; };
 		2C0101C92170BAB30062721B /* NSBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSBezierPath.swift; sourceTree = "<group>"; };
 		2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
 		2C1ED3E7212338EC009108DF /* CustomNSTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSTableView.swift; sourceTree = "<group>"; };
 		2C328405212EF564002B444D /* NSSegmentedConrol+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSegmentedConrol+Rx.swift"; sourceTree = "<group>"; };
 		2C333C14204D639800E133CD /* rxMVVMLeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rxMVVMLeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C333C17204D639800E133CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2C333C19204D639800E133CD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2C333C19204D639800E133CD /* LoginViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		2C333C1B204D639800E133CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C333C1E204D639800E133CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C333C20204D639800E133CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C333C21204D639800E133CD /* rxMVVMLeo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rxMVVMLeo.entitlements; sourceTree = "<group>"; };
-		2C333C2B204D662500E133CD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		2C333C2B204D662500E133CD /* LoginViewModel.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; tabWidth = 2; };
 		2C333C2D204D664500E133CD /* LeoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoAPI.swift; sourceTree = "<group>"; };
 		2C4D92882165F09D0083DF07 /* ncButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ncButton.png; sourceTree = "<group>"; };
 		2C4D92892165F2CD0083DF07 /* menuBarWithoutButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBarWithoutButton.png; sourceTree = "<group>"; };
@@ -115,10 +117,10 @@
 		2CA8FDB92178AA6700793848 /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
 		2CAA82962163595E0010B35B /* menubar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubar.png; sourceTree = "<group>"; };
 		2CAA8297216359660010B35B /* notificationcenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationcenter.png; sourceTree = "<group>"; };
-		2CACEED22050512E009A1EEF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2CACEED22050512E009A1EEF /* MainViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		2CB2875D2164E908003AD64D /* CustomNSSecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSSecureTextField.swift; sourceTree = "<group>"; };
 		2CB58E3021736CAC0020A774 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		2CB58E3321736D930020A774 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		2CB58E3321736D930020A774 /* MainViewModel.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; tabWidth = 2; };
 		2CB58E35217399510020A774 /* SendMail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMail.swift; sourceTree = "<group>"; };
 		2CB58E382173A3280020A774 /* PFDinMono-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PFDinMono-Regular.otf"; sourceTree = "<group>"; };
 		2CB58E392173A33A0020A774 /* PFDinMono-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PFDinMono-Bold.otf"; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				2C333C21204D639800E133CD /* rxMVVMLeo.entitlements */,
 				2C333C20204D639800E133CD /* Info.plist */,
 				2C333C17204D639800E133CD /* AppDelegate.swift */,
+				23F7D0D1238400EF00402C11 /* Constants.swift */,
 				2CB58E35217399510020A774 /* SendMail.swift */,
 				2C8749672177259B00273DDB /* UserDefaults.swift */,
 			);
@@ -527,6 +530,7 @@
 				2CB58E3421736D930020A774 /* MainViewModel.swift in Sources */,
 				2CA8FDB62178A94400793848 /* SceneCoordinator.swift in Sources */,
 				2C8749682177259B00273DDB /* UserDefaults.swift in Sources */,
+				23F7D0D2238400EF00402C11 /* Constants.swift in Sources */,
 				2CB58E36217399510020A774 /* SendMail.swift in Sources */,
 				2CA8FDB52178A93800793848 /* Scene+ViewController.swift in Sources */,
 				2C333C2E204D664500E133CD /* LeoAPI.swift in Sources */,
