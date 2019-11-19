@@ -166,7 +166,7 @@ private extension MainViewController {
         $0?.sizeToFit()
       }
     
-    [accountInfoTextView, nicknameTextView, nativeTextView, knownTextView, availableTextView, refcodeTextView, userNicknameTextView, userNativeTextView, userAvailableTextView, userRefcodeTextView, refcodeTextView]
+    [accountInfoTextView, nicknameTextView, nativeTextView, knownTextView, userKnownTextView, availableTextView, refcodeTextView, userNicknameTextView, userNativeTextView, userAvailableTextView, userRefcodeTextView, refcodeTextView]
       .forEach {
         $0?.textColor = NSColor.white
         $0?.font = Font.main
