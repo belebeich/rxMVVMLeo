@@ -1048,14 +1048,14 @@
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="AlJ-uP-5oB" customClass="MainViewController" customModule="rxMVVMLeo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="XWS-md-Kcv">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="491"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="503"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="50" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qeO-Ee-aMi">
-                                <rect key="frame" x="100" y="439" width="280" height="32"/>
+                                <rect key="frame" x="100" y="445" width="280" height="38"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tJ9-wT-kyz" customClass="FlatButton" customModule="FlatButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="60" height="32"/>
+                                        <rect key="frame" x="0.0" y="3" width="60" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="Osm-uB-345"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="l93-Zx-Sva"/>
@@ -1095,7 +1095,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nze-jt-3Ar" customClass="FlatButton" customModule="FlatButton">
-                                        <rect key="frame" x="110" y="0.0" width="60" height="32"/>
+                                        <rect key="frame" x="110" y="3" width="60" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="w6y-ad-OS1"/>
                                         </constraints>
@@ -1137,7 +1137,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hEN-yd-YU6" customClass="FlatButton" customModule="FlatButton">
-                                        <rect key="frame" x="220" y="0.0" width="60" height="32"/>
+                                        <rect key="frame" x="220" y="3" width="60" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="PQt-KW-NDZ"/>
                                         </constraints>
@@ -1194,11 +1194,11 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rfo-wv-oZ2">
-                                <rect key="frame" x="174" y="12" width="132" height="48"/>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rfo-wv-oZ2">
+                                <rect key="frame" x="174" y="12" width="132" height="54"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2G0-nu-lYe">
-                                        <rect key="frame" x="16" y="32" width="101" height="16"/>
+                                        <rect key="frame" x="16" y="38" width="101" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="jrW-fg-IBZ"/>
                                         </constraints>
@@ -1209,7 +1209,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <button toolTip="write to developer" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sV8-wB-4tc" customClass="FlatButton" customModule="FlatButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="132" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="132" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="X5b-mW-4nx"/>
                                         </constraints>
@@ -1248,6 +1248,9 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="wIy-n1-Tre"/>
+                                </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
@@ -1258,7 +1261,7 @@
                                 </customSpacing>
                             </stackView>
                             <tabView drawsBackground="NO" type="noTabsBezelBorder" translatesAutoresizingMaskIntoConstraints="NO" id="XKm-oQ-KhL">
-                                <rect key="frame" x="16" y="68" width="448" height="365"/>
+                                <rect key="frame" x="16" y="74" width="448" height="365"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="359" id="Gp2-a7-Ehs"/>
                                 </constraints>
