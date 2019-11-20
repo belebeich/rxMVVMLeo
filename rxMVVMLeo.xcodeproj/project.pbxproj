@@ -192,21 +192,21 @@
 				2C333C28204D654A00E133CD /* Leo API */,
 				2C81C09520AC20E40071E96E /* Extensions */,
 				2C333C29204D655B00E133CD /* View Controllers */,
-				2C333C27204D653A00E133CD /* View Model */,
+				2C333C27204D653A00E133CD /* View Models */,
 				2C333C1D204D639800E133CD /* Main.storyboard */,
 				2C333C2A204D656800E133CD /* Supporting Files */,
 			);
 			path = rxMVVMLeo;
 			sourceTree = "<group>";
 		};
-		2C333C27204D653A00E133CD /* View Model */ = {
+		2C333C27204D653A00E133CD /* View Models */ = {
 			isa = PBXGroup;
 			children = (
 				2C333C2B204D662500E133CD /* LoginViewModel.swift */,
 				2C1DAECE2057EF7B00B6CFCF /* TranslateViewModel.swift */,
 				2CB58E3321736D930020A774 /* MainViewModel.swift */,
 			);
-			path = "View Model";
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 		2C333C28204D654A00E133CD /* Leo API */ = {

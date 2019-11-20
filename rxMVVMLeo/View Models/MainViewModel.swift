@@ -49,11 +49,18 @@ struct MainViewModel: MainViewModelProtocol {
       .bind(to: user)
       .disposed(by: disposeBag)
     
-    
     loggedOut
       .filter { $0 == true }
-      .bind { _ in
-        self.logout()
+      .flatMap { _ -> Observable<AccountStatus> in
+        return self.serviceLeo.logout()
+      }
+      .bind { state in
+        switch state {
+        case .unavailable:
+          NSApp.terminate(self)
+        case .success(_):
+          break
+        }
       }
       .disposed(by: disposeBag)
     
@@ -62,22 +69,6 @@ struct MainViewModel: MainViewModelProtocol {
       .bind { _ in
         SendEmail.send()
       }
-      .disposed(by: disposeBag)
-  }
-}
-
-extension MainViewModel {
-  private func logout() {
-    let logout = self.serviceLeo.logout()
-    logout
-      .subscribe(onNext: { state in
-        switch state {
-        case .unavailable:
-          NSApp.terminate(self)
-        case .success(_):
-          break
-        }
-      })
       .disposed(by: disposeBag)
   }
 }
